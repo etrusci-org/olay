@@ -16,10 +16,16 @@ if (isset($_GET['interval']) && ctype_digit($_GET['interval'])) {
 <script type="module">
     import { isLucky } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/isLucky.min.js';
 
-    let e = document.querySelector('.random-luck');
     let interval = <?php print($interval); ?>;
 
-    setInterval(() => {
+    let e = document.querySelector('.random-luck');
+
+    function update() {
         e.innerHTML = `${(!isLucky(0.5)) ? 'L=0' : 'L=1'}`;
+    }
+
+    update();
+    setInterval(() => {
+        update();
     }, interval);
 </script>
