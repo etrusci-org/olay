@@ -19,7 +19,11 @@ define('CONF', [
 
         'random-luck' => [
             'interval' => 13_000,
-        ]
+        ],
+
+        'random-quotes' => [
+            'interval' => 300_000,
+        ],
 
     ],
 
