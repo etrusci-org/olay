@@ -22,12 +22,13 @@ if (isset($_GET['interval']) && ctype_digit($_GET['interval'])) {
     import { padNum } from './lib/padNum.js'; // TODO: add this to nifty repo
     import { secondsToDurationString } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/secondsToDurationString.min.js';
 
-    let e = document.querySelector('.clock');
     let format = '<?php print($format); ?>';
     let interval = <?php print($interval); ?>;
     let startTime = Date.now();
 
-    setInterval(() => {
+    let e = document.querySelector('.clock');
+
+    function update() {
         if (format == 'unix') {
             e.innerHTML = `${Math.round(Date.now() / 1000)}`;
         }
@@ -44,5 +45,10 @@ if (isset($_GET['interval']) && ctype_digit($_GET['interval'])) {
         if (format == 'uptime') {
             e.innerHTML = `${secondsToDurationString(Math.round((Date.now() - startTime) / 1000))}`;
         }
+    }
+
+    update();
+    setInterval(() => {
+        update();
     }, interval);
 </script>

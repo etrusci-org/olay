@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'/lib/conf.php';
+require __DIR__.'/lib/init.php';
 
 include __DIR__.'/tpl/header.php';
 ?>
