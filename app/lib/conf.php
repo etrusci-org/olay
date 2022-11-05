@@ -17,6 +17,10 @@ define('CONF', [
             ],
         ],
 
+        'random-luck' => [
+            'interval' => 13_000,
+        ]
+
     ],
 
 ]);
