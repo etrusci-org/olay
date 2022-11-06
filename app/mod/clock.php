@@ -1,0 +1,38 @@
+<div class="output">loading...</div>
+
+
+
+
+<script type="module">
+    import { padNum } from './lib/padNum.js'; // TODO: add this to nifty repo
+    import { secondsToDurationString } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/secondsToDurationString.min.js';
+
+    const modConf = <?php print(json_encode($this->modConf)); ?>;
+    const outputElement = document.querySelector('.output');
+    const startTime = Date.now();
+
+    function update() {
+        if (modConf.format == 'unix') {
+            outputElement.innerHTML = `${Math.round(Date.now() / 1000)}`;
+        }
+
+        if (modConf.format == 'milli') {
+            outputElement.innerHTML = `${Date.now()}`;
+        }
+
+        if (modConf.format == 'human') {
+            let t = new Date();
+            outputElement.innerHTML = `${t.getFullYear()}-${padNum(t.getMonth())}-${padNum(t.getDate())} ${padNum(t.getHours())}:${padNum(t.getMinutes())}:${padNum(t.getSeconds())}`;
+        }
+
+        if (modConf.format == 'uptime') {
+            outputElement.innerHTML = `${secondsToDurationString(Math.round((Date.now() - startTime) / 1000))}`;
+        }
+    }
+
+    update();
+
+    setInterval(() => {
+        update();
+    }, modConf.updateEvery);
+</script>
