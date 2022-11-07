@@ -16,26 +16,26 @@ class Olay {
             !in_array($_GET['module'], array_keys($this->conf['module']))
         ) {
             print('[boo] none or invalid module selected');
+            exit(1);
         }
-        else {
-            $this->mod = $_GET['module'];
 
-            foreach ($this->conf['module'][$this->mod] as $k => $v) {
-                // set defaults
-                if (!is_array($v)) {
-                    $this->modConf[$k] = $v;
+        $this->mod = $_GET['module'];
+
+        foreach ($this->conf['module'][$this->mod] as $k => $v) {
+            // set defaults
+            if (!is_array($v)) {
+                $this->modConf[$k] = $v;
+            }
+            else {
+                $this->modConf[$k] = $v[0];
+            }
+            // overrides
+            if (in_array($k, array_keys($_GET))) {
+                if (ctype_digit($_GET[$k])) {
+                    $this->modConf[$k] = (int) $_GET[$k];
                 }
                 else {
-                    $this->modConf[$k] = $v[0];
-                }
-                // overrides
-                if (in_array($k, array_keys($_GET))) {
-                    if (ctype_digit($_GET[$k])) {
-                        $this->modConf[$k] = (int) $_GET[$k];
-                    }
-                    else {
-                        $this->modConf[$k] = $_GET[$k];
-                    }
+                    $this->modConf[$k] = $_GET[$k];
                 }
             }
         }
