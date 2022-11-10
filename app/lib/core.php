@@ -15,7 +15,7 @@ class Olay {
             empty(trim($_GET['module'])) ||
             !in_array($_GET['module'], array_keys($this->conf['module']))
         ) {
-            print('[boo] none or invalid module selected');
+            print('[boo] none or invalid module selected - see <a href="https://github.com/etrusci-org/olay/blob/main/README.md">README</a>');
             exit(1);
         }
 
@@ -44,6 +44,7 @@ class Olay {
 
     public function renderModule(): void {
         include __DIR__.'/../tpl/header.php';
+        include __DIR__.'/../tpl/content.php';
         include __DIR__.'/../mod/'.$this->mod.'.php';
         include __DIR__.'/../tpl/footer.php';
     }

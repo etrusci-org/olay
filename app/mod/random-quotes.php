@@ -1,8 +1,3 @@
-<div class="output">loading...</div>
-
-
-
-
 <script type="module">
     import { RandomQuoteTyper } from './lib/RandomQuoteTyper.js'; // TODO: add this to nifty repo
 

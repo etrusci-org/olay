@@ -7,9 +7,9 @@ $conf = [
     'module' => [
         'clock' => [
             'updateEvery' => 1_000,
-            'format' => [
-                'human', // 0 = default
-                'unix', // 1...N = alternative
+            'format' => [ // 0 = default, 1...N = alternative
+                'human',
+                'unix',
                 'milli',
                 'uptime',
             ],

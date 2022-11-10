@@ -1,6 +1,28 @@
+/* super basic reset */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+}
+
+body {
+    min-width: 100vw;
+    min-height: 100vh;
+    text-rendering: geometricPrecision;
+}
+
+
+
+
+/* minimal starter template */
+
 body {
     font-family: sans-serif;
     font-size: 1rem;
-    color: hsl(0, 0%, 100%);
-    background-color: hsl(269, 41%, 10%);
 }
+
+/* every module is wrapped inside this div */
+/* div.output {} */
