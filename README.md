@@ -1,47 +1,66 @@
 # Olay
 
-Live stream overlays for use as Browser-Source in OBS. **Work in progress**.
+Live stream overlay stuff for use as Browser-Source in OBS. **Work in progress**.
 
 ---
 
-## Module Overview
+## clock
 
-| Module        | Parameters              |
-|---------------|-------------------------|
-| clock         | `updateEvery`, `format` |
-| random-luck   | `updateEvery`           |
-| random-quotes | `updateEvery`           |
-
-## Parameter Default Values
+Parameters:
 
 ```text
-clock
-    updateEvery: 1000
-    format: human
+format=<FORMAT>: Change the output format
 
-random-luck
-    updateEvery: 13000
+human  -> YYYY-MM-DD HH:MM:SS, default
+unix   -> Seconds since start of unixepoch
+milli  -> Milliseconds since start of unixepoch
+uptime -> Nd NNh NNm NNs
 
-random-quotes
-    updateEvery: 300000
+updateEvery=<MILLISECONDS>: Change the update interval rate
 ```
 
-## Usage Examples
+Examples:
 
-`<olay>/?module=clock`
+`https://etrusci.org/tool/olay/?module=clock`
 
-`<olay>/?module=clock&format=human`
+`https://etrusci.org/tool/olay/?module=clock&format=human`
 
-`<olay>/?module=clock&format=unix`
+`https://etrusci.org/tool/olay/?module=clock&format=unix`
 
-`<olay>/?module=clock&format=milli`
+`https://etrusci.org/tool/olay/?module=clock&format=milli`
 
-`<olay>/?module=clock&format=milli&updateEvery=100`
+`https://etrusci.org/tool/olay/?module=clock&format=milli&updateEvery=100`
 
-`<olay>/?module=clock&format=uptime`
+`https://etrusci.org/tool/olay/?module=clock&format=uptime`
 
-`<olay>/?module=random-luck`
+---
 
-`<olay>/?module=random-quotes`
+## random-luck
 
-`<olay>/?module=random-quotes&updateEvery=60000`
+Parameters:
+
+```text
+updateEvery=<MILLISECONDS>: Change the update interval rate
+```
+
+Examples:
+
+`https://etrusci.org/tool/olay/?module=random-luck`
+
+`https://etrusci.org/tool/olay/?module=random-luck&updateEvery=2000`
+
+---
+
+## random-quotes
+
+Parameters:
+
+```text
+updateEvery=<MILLISECONDS>: Change the update interval rate
+```
+
+Examples:
+
+`https://etrusci.org/tool/olay/?module=random-quotes`
+
+`https://etrusci.org/tool/olay/?module=random-quotes&updateEvery=60000`
