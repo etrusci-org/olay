@@ -1,10 +1,5 @@
-<div class="output">loading...</div>
-
-
-
-
 <script type="module">
-    import { padNum } from './lib/padNum.js'; // TODO: add this to nifty repo
+    import { padNum } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/padNum.min.js';
     import { secondsToDurationString } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/secondsToDurationString.min.js';
 
     const modConf = <?php print(json_encode($this->modConf)); ?>;
