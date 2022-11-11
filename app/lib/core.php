@@ -34,6 +34,9 @@ class Olay {
                 if (ctype_digit($_GET[$k])) {
                     $this->modConf[$k] = (int) $_GET[$k];
                 }
+                else if ($_GET[$k] == 'true') {
+                    $this->modConf[$k] = (bool) $_GET[$k];
+                }
                 else {
                     $this->modConf[$k] = $_GET[$k];
                 }
