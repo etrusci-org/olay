@@ -6,7 +6,6 @@
 
     function update() {
         outputElement.innerHTML = `${(!isLucky(0.5)) ? 'L=0' : 'L=1'}`;
-        console.log('update on', Date.now());
     }
 
     update();
