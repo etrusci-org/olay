@@ -17,7 +17,7 @@
 
         if (modConf.format == 'human') {
             let t = new Date();
-            outputElement.innerHTML = `${t.getFullYear()}-${padNum(t.getMonth())}-${padNum(t.getDate())} ${padNum(t.getHours())}:${padNum(t.getMinutes())}:${padNum(t.getSeconds())}`;
+            outputElement.innerHTML = `${t.getFullYear()}-${padNum(t.getMonth()+1)}-${padNum(t.getDate())} ${padNum(t.getHours())}:${padNum(t.getMinutes())}:${padNum(t.getSeconds())}`;
         }
 
         if (modConf.format == 'uptime') {
