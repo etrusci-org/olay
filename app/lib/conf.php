@@ -17,6 +17,13 @@ $conf = [
         'random-luck' => [
             'updateEvery' => 13_000,
         ],
+        'random-numbers' => [
+            'updateEvery' => 3_000,
+            'format' => [ // 0 = default, 1...N = alternative
+                'simple',
+                'label',
+            ],
+        ],
         'random-quotes' => [
             'updateEvery' => 300_000,
         ],
