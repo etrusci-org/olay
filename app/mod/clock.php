@@ -2,8 +2,6 @@
     import { padNum } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/padNum.min.js';
     import { secondsToDurationString } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/secondsToDurationString.min.js';
 
-    const modConf = <?php print(json_encode($this->modConf)); ?>;
-    const outputElement = document.querySelector('.output');
     const startTime = Date.now();
 
     function update() {

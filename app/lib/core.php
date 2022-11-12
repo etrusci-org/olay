@@ -1,10 +1,9 @@
 <?php
-
-
 class Olay {
     protected array $conf;
     protected string $mod;
     protected array $modConf;
+    protected string $modConfJSON;
 
 
     public function __construct(array $conf) {
@@ -29,19 +28,25 @@ class Olay {
             else {
                 $this->modConf[$k] = $v[0];
             }
-            // overrides
+
+            // url query param overrides
             if (in_array($k, array_keys($_GET))) {
+                // numbers
                 if (ctype_digit($_GET[$k])) {
                     $this->modConf[$k] = (int) $_GET[$k];
                 }
+                // booleans
                 else if ($_GET[$k] == 'true') {
                     $this->modConf[$k] = (bool) $_GET[$k];
                 }
+                // simple key:value pairs
                 else {
                     $this->modConf[$k] = $_GET[$k];
                 }
             }
         }
+
+        $this->modConfJSON = json_encode($this->modConf, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR);
     }
 
 
