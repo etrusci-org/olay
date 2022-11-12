@@ -32,8 +32,9 @@ class Olay {
             // url query param overrides
             if (in_array($k, array_keys($_GET))) {
                 // numbers
-                if (ctype_digit($_GET[$k])) {
-                    $this->modConf[$k] = (int) $_GET[$k];
+                if (is_numeric($_GET[$k])) {
+                    // TODO: assign correct types, e.g. float AND int - works for now ;)
+                    $this->modConf[$k] = (float) $_GET[$k];
                 }
                 // booleans
                 else if ($_GET[$k] == 'true') {

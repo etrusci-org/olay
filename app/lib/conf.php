@@ -16,6 +16,7 @@ $conf = [
         ],
         'randomLuck' => [
             'updateEvery' => 13_000,
+            'luckyChance' => 0.5,
         ],
         'randomNumbers' => [
             'updateEvery' => 5_000,
