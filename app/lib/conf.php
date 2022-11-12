@@ -14,10 +14,10 @@ $conf = [
                 'uptime',
             ],
         ],
-        'random-luck' => [
+        'randomLuck' => [
             'updateEvery' => 13_000,
         ],
-        'random-numbers' => [
+        'randomNumbers' => [
             'updateEvery' => 5_000,
             'format' => [ // 0 = default, 1...N = alternative
                 'simple',
@@ -28,7 +28,7 @@ $conf = [
             'rangeStart' => 1,
             'rangeEnd' => 100_000,
         ],
-        'random-quotes' => [
+        'randomQuotes' => [
             'updateEvery' => 600_000,
         ],
     ],
