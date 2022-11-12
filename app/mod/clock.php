@@ -2,8 +2,6 @@
     import { padNum } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/padNum.min.js';
     import { secondsToDurationString } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/secondsToDurationString.min.js';
 
-    const modConf = <?php print(json_encode($this->modConf)); ?>;
-    const outputElement = document.querySelector('.output');
     const startTime = Date.now();
 
     function update() {
@@ -17,7 +15,7 @@
 
         if (modConf.format == 'human') {
             let t = new Date();
-            outputElement.innerHTML = `${t.getFullYear()}-${padNum(t.getMonth())}-${padNum(t.getDate())} ${padNum(t.getHours())}:${padNum(t.getMinutes())}:${padNum(t.getSeconds())}`;
+            outputElement.innerHTML = `${t.getFullYear()}-${padNum(t.getMonth()+1)}-${padNum(t.getDate())} ${padNum(t.getHours())}:${padNum(t.getMinutes())}:${padNum(t.getSeconds())}`;
         }
 
         if (modConf.format == 'uptime') {

@@ -1,7 +1,8 @@
 /* super basic reset */
 
 html,
-body {
+body,
+div {
     margin: 0;
     padding: 0;
     border: 0;
@@ -20,8 +21,10 @@ body {
 
 body {
     font-family: sans-serif;
-    font-size: 1rem;
+    font-size: 16px;
+    background-color: transparent;
 }
 
-/* every module is wrapped inside this div */
-/* div.output {} */
+div.olay {}
+
+div.module {}

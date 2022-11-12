@@ -4,63 +4,80 @@ Live stream overlay stuff for use as Browser-Source in OBS. **Work in progress**
 
 ---
 
-## clock
+## Modules
 
-Parameters:
+### Clock (`clock`)
 
-```text
-format=<FORMAT>: Change the output format
+| Parameter     | Valid Values                       | Default |
+|---------------|------------------------------------|---------|
+| `updateEvery` | Milliseconds (1s = 1000ms)         | `1000`  |
+| `format`      | `human`, `unix`, `milli`, `uptime` | `human` |
 
-human  -> YYYY-MM-DD HH:MM:SS, default
-unix   -> Seconds since start of unixepoch
-milli  -> Milliseconds since start of unixepoch
-uptime -> Nd NNh NNm NNs
+**Examples:**
 
-updateEvery=<MILLISECONDS>: Change the update interval rate
-```
-
-Examples:
-
-`https://etrusci.org/tool/olay/?module=clock`
-
-`https://etrusci.org/tool/olay/?module=clock&format=human`
-
-`https://etrusci.org/tool/olay/?module=clock&format=unix`
-
-`https://etrusci.org/tool/olay/?module=clock&format=milli`
-
-`https://etrusci.org/tool/olay/?module=clock&format=milli&updateEvery=100`
-
-`https://etrusci.org/tool/olay/?module=clock&format=uptime`
+- [?module=clock](https://etrusci.org/tool/olay/?module=clock)
+- [?module=clock&updateEvery=3000](https://etrusci.org/tool/olay/?module=clock&updateEvery=3000)
+- [?module=clock&format=human](https://etrusci.org/tool/olay/?module=clock&format=human)
+- [?module=clock&format=unix](https://etrusci.org/tool/olay/?module=clock&format=unix)
+- [?module=clock&format=milli](https://etrusci.org/tool/olay/?module=clock&format=milli)
+- [?module=clock&format=milli&updateEvery=100](https://etrusci.org/tool/olay/?module=clock&format=milli&updateEvery=100)
+- [?module=clock&format=uptime](https://etrusci.org/tool/olay/?module=clock&format=uptime)
 
 ---
 
-## random-luck
+### Random Luck (`randomLuck`)
 
-Parameters:
+| Parameter     | Valid Values                       | Default |
+|---------------|------------------------------------|---------|
+| `updateEvery` | Milliseconds (1s = 1000ms)         | `13000` |
+| `luckyChance` | Floats between 0.0 and 1.0          | `0.5` |
 
-```text
-updateEvery=<MILLISECONDS>: Change the update interval rate
-```
+**Examples:**
 
-Examples:
-
-`https://etrusci.org/tool/olay/?module=random-luck`
-
-`https://etrusci.org/tool/olay/?module=random-luck&updateEvery=2000`
+- [?module=randomLuck](https://etrusci.org/tool/olay/?module=randomLuck)
+- [?module=randomLuck&luckyChance=0.7](https://etrusci.org/tool/olay/?module=randomLuck&luckyChance=0.7)
+- [?module=randomLuck&updateEvery=1000](https://etrusci.org/tool/olay/?module=randomLuck&updateEvery=1000)
 
 ---
 
-## random-quotes
+### Random Numbers (`randomNumbers`)
 
-Parameters:
+| Parameter     | Valid Values                       | Default  |
+|---------------|------------------------------------|----------|
+| `updateEvery` | Milliseconds (1s = 1000ms)         | `5000`   |
+| `format`      | `simple`, `label`                  | `simple` |
+| `pad`         | `true`                             | `false`  |
+| `padChar`     | Any character                      | `0`      |
+| `rangeStart`  | Integers                           | `1`      |
+| `rangeEnd`    | Integers                           | `100000` |
 
-```text
-updateEvery=<MILLISECONDS>: Change the update interval rate
-```
+**Examples:**
 
-Examples:
+- [?module=randomNumbers](https://etrusci.org/tool/olay/?module=randomNumbers)
+- [?module=randomNumbers&updateEvery=1000](https://etrusci.org/tool/olay/?module=randomNumbers&updateEvery=1000)
+- [?module=randomNumbers&format=label](https://etrusci.org/tool/olay/?module=randomNumbers&format=label)
+- [?module=randomNumbers&pad=true](https://etrusci.org/tool/olay/?module=randomNumbers&pad=true)
+- [?module=randomNumbers&pad=true&padChar=X](https://etrusci.org/tool/olay/?module=randomNumbers&pad=true&padChar=X)
+- [?module=randomNumbers&rangeStart=100&rangeEnd=999](https://etrusci.org/tool/olay/?module=randomNumbers&rangeStart=100&rangeEnd=999)
 
-`https://etrusci.org/tool/olay/?module=random-quotes`
+---
 
-`https://etrusci.org/tool/olay/?module=random-quotes&updateEvery=60000`
+### Random Quotes (`randomQuotes`)
+
+| Parameter     | Valid Values                       | Default |
+|---------------|------------------------------------|---------|
+| `updateEvery` | Milliseconds (1s = 1000ms)         | `600000` |
+
+**Examples:**
+
+- [?module=randomQuotes](https://etrusci.org/tool/olay/?module=randomQuotes)
+- [?module=randomQuotes](https://etrusci.org/tool/olay/?module=randomQuotes)
+- [?module=randomQuotes&updateEvery=30000](https://etrusci.org/tool/olay/?module=randomQuotes&updateEvery=30000)
+
+---
+
+## License
+
+Public Domain Worldwide
+
+---
