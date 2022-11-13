@@ -2,11 +2,47 @@
 
 Live stream overlay stuff for use as Browser-Source in OBS. **Work in progress**.
 
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/etrusci-org/olay?label=current%20public%20version)](https://spartalien.com)
+
 ---
 
-## Modules
+## Usage
 
-### Clock (`clock`)
+Add a Browser-Source to your Scene:
+
+![obs-add-browser-source-1](doc/obs-add-browser-source.png)
+
+Enter the module URL and adjust the CSS/settings to your liking:
+
+![obs-browser-source-settings](doc/obs-browser-source-settings.png)
+
+---
+
+## Construct Module URLs
+
+See the module descriptions below for available parameters. We'll use the `randomNumbers` module as example here.
+
+Start with the base URL:
+
+```text
+https://etrusci.org/tool/olay/
+```
+
+Add the module parameter:
+
+```text
+https://etrusci.org/tool/olay/?module=randomNumbers
+```
+
+Add optional parameters:
+
+```text
+https://etrusci.org/tool/olay/?module=randomNumbers&updateEvery=1000&format=label
+```
+
+---
+
+## Module: `clock`
 
 | Parameter     | Valid Values                       | Default |
 |---------------|------------------------------------|---------|
@@ -25,22 +61,22 @@ Live stream overlay stuff for use as Browser-Source in OBS. **Work in progress**
 
 ---
 
-### Random Luck (`randomLuck`)
+## Module: `randomLuck`
 
-| Parameter     | Valid Values                       | Default |
-|---------------|------------------------------------|---------|
-| `updateEvery` | Milliseconds (1s = 1000ms)         | `13000` |
-| `luckyChance` | Floats between 0.0 and 1.0          | `0.5` |
+| Parameter     | Valid Values                                                | Default |
+|---------------|-------------------------------------------------------------|---------|
+| `updateEvery` | Milliseconds (1s = 1000ms)                                  | `13000` |
+| `luckyChance` | Floating-point numbers between 0.0 *(lose)* and 1.0 *(win)* | `0.5`   |
 
 **Examples:**
 
 - [?module=randomLuck](https://etrusci.org/tool/olay/?module=randomLuck)
-- [?module=randomLuck&luckyChance=0.7](https://etrusci.org/tool/olay/?module=randomLuck&luckyChance=0.7)
 - [?module=randomLuck&updateEvery=1000](https://etrusci.org/tool/olay/?module=randomLuck&updateEvery=1000)
+- [?module=randomLuck&luckyChance=0.7](https://etrusci.org/tool/olay/?module=randomLuck&luckyChance=0.7)
 
 ---
 
-### Random Numbers (`randomNumbers`)
+## Module: `randomNumbers`
 
 | Parameter     | Valid Values                       | Default  |
 |---------------|------------------------------------|----------|
@@ -62,15 +98,14 @@ Live stream overlay stuff for use as Browser-Source in OBS. **Work in progress**
 
 ---
 
-### Random Quotes (`randomQuotes`)
+## Module: `randomQuotes`
 
-| Parameter     | Valid Values                       | Default |
-|---------------|------------------------------------|---------|
+| Parameter     | Valid Values                       | Default  |
+|---------------|------------------------------------|----------|
 | `updateEvery` | Milliseconds (1s = 1000ms)         | `600000` |
 
 **Examples:**
 
-- [?module=randomQuotes](https://etrusci.org/tool/olay/?module=randomQuotes)
 - [?module=randomQuotes](https://etrusci.org/tool/olay/?module=randomQuotes)
 - [?module=randomQuotes&updateEvery=30000](https://etrusci.org/tool/olay/?module=randomQuotes&updateEvery=30000)
 
