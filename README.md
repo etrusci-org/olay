@@ -2,7 +2,7 @@
 
 Live stream overlay stuff for use as Browser-Source in OBS. **Work in progress**.
 
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/etrusci-org/olay?label=current%20public%20version)](https://spartalien.com)
+![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/etrusci-org/olay?include_prereleases&style=flat-square&label=current%20public%20version)
 
 ---
 
