@@ -16,6 +16,7 @@ Just an example module.
 ### Notes
 
 - `message` can not be `badword`.
+- Use `%20` or `+` if you want spaces in `message`.
 
 ---
 

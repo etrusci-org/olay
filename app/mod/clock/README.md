@@ -20,6 +20,7 @@ Display date and time.
 
 - `pad`, `padChar` and `format` apply only if `type` is set to `human`.
 - `format` template markup understands the following placeholders: `{year}`, `{month}`, `{day}`, `{hour}`, `{minute}`, `{second}`. They are all optional.
+- Use `%20` or `+` if you want spaces in `format`.
 
 ---
 

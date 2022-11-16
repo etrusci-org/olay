@@ -17,6 +17,7 @@ Display time passed since this module was loaded.
 ### Notes
 
 - `format` template markup understands the following placeholders: `{days}`, `{hours}`, `{minutes}`, `{seconds}`. They are all optional.
+- Use `%20` or `+` if you want spaces in `format`.
 
 ---
 

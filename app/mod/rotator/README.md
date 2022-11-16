@@ -16,7 +16,7 @@ Display multiple text items in a rotation.
 
 ### Notes
 
-- Use `%20` or `+` in the URL if you want spaces in `items`.
+- Use `%20` or `+` if you want spaces in `items`.
 
 ---
 

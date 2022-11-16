@@ -17,7 +17,7 @@ Display Kraken Ticker data.
 ### Notes
 
 - For a list of valid `pair` identifiers see <https://api.kraken.com/0/public/Ticker>.
-- Use `%20` or `+` in the URL if you want spaces in `label`.
+- Use `%20` or `+` if you want spaces in `label`.
 
 ---
 
