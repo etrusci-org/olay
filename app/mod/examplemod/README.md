@@ -21,7 +21,7 @@ Just an example module.
 
 ## Examples
 
-- [mod=examplemod](http://localhost/olay/app/?mod=examplemod)
-- [mod=examplemod&updateRate=250](http://localhost/olay/app/?mod=examplemod&updateRate=250)
-- [mod=examplemod&updateRate=250&message=foobar](http://localhost/olay/app/?mod=examplemod&updateRate=250&message=foobar)
-- [mod=examplemod&updateRate=250&message=badword](http://localhost/olay/app/?mod=examplemod&updateRate=250&message=badword)
+- [mod=examplemod](https://etrusci.org/tool/olay/?mod=examplemod)
+- [mod=examplemod&updateRate=250](https://etrusci.org/tool/olay/?mod=examplemod&updateRate=250)
+- [mod=examplemod&updateRate=250&message=foobar](https://etrusci.org/tool/olay/?mod=examplemod&updateRate=250&message=foobar)
+- [mod=examplemod&updateRate=250&message=badword](https://etrusci.org/tool/olay/?mod=examplemod&updateRate=250&message=badword)

@@ -25,9 +25,9 @@ Display date and time.
 
 ## Examples
 
-- [mod=clock](http://localhost/olay/app/?mod=clock)
-- [mod=clock&type=unix](http://localhost/olay/app/?mod=clock&type=unix)
-- [mod=clock&type=unixms&updateRate=100](http://localhost/olay/app/?mod=clock&type=unixms&updateRate=100)
-- [mod=clock&pad=false](http://localhost/olay/app/?mod=clock&pad=false)
-- [mod=clock&padChar=X](http://localhost/olay/app/?mod=clock&padChar=X)
-- [mod=clock&format={hour}:{minute}:{second}](http://localhost/olay/app/?mod=clock&format={hour}:{minute}:{second})
+- [mod=clock](https://etrusci.org/tool/olay/?mod=clock)
+- [mod=clock&type=unix](https://etrusci.org/tool/olay/?mod=clock&type=unix)
+- [mod=clock&type=unixms&updateRate=100](https://etrusci.org/tool/olay/?mod=clock&type=unixms&updateRate=100)
+- [mod=clock&pad=false](https://etrusci.org/tool/olay/?mod=clock&pad=false)
+- [mod=clock&padChar=X](https://etrusci.org/tool/olay/?mod=clock&padChar=X)
+- [mod=clock&format={hour}:{minute}:{second}](https://etrusci.org/tool/olay/?mod=clock&format={hour}:{minute}:{second})

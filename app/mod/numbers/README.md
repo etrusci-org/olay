@@ -27,10 +27,10 @@ Display numbers. Because.
 
 ## Examples
 
-- [mod=numbers](http://localhost/olay/app/?mod=numbers)
-- [mod=numbers&type=countup&rangeStart=1&rangeEnd=5](http://localhost/olay/app/?mod=numbers&type=countup&rangeStart=1&rangeEnd=5)
-- [mod=numbers&type=countup&rangeStart=1&rangeEnd=1](http://localhost/olay/app/?mod=numbers&type=countup&rangeStart=1&rangeEnd=1)
-- [mod=numbers&type=countdown&rangeStart=5&rangeEnd=1](http://localhost/olay/app/?mod=numbers&type=countdown&rangeStart=5&rangeEnd=1)
-- [mod=numbers&type=countdown&rangeStart=5&rangeEnd=5](http://localhost/olay/app/?mod=numbers&type=countdown&rangeStart=5&rangeEnd=5)
-- [mod=numbers&pad=true](http://localhost/olay/app/?mod=numbers&pad=true)
-- [mod=numbers&pad=true&padChar=X](http://localhost/olay/app/?mod=numbers&pad=true&padChar=X)
+- [mod=numbers](https://etrusci.org/tool/olay/?mod=numbers)
+- [mod=numbers&type=countup&rangeStart=1&rangeEnd=5](https://etrusci.org/tool/olay/?mod=numbers&type=countup&rangeStart=1&rangeEnd=5)
+- [mod=numbers&type=countup&rangeStart=1&rangeEnd=1](https://etrusci.org/tool/olay/?mod=numbers&type=countup&rangeStart=1&rangeEnd=1)
+- [mod=numbers&type=countdown&rangeStart=5&rangeEnd=1](https://etrusci.org/tool/olay/?mod=numbers&type=countdown&rangeStart=5&rangeEnd=1)
+- [mod=numbers&type=countdown&rangeStart=5&rangeEnd=5](https://etrusci.org/tool/olay/?mod=numbers&type=countdown&rangeStart=5&rangeEnd=5)
+- [mod=numbers&pad=true](https://etrusci.org/tool/olay/?mod=numbers&pad=true)
+- [mod=numbers&pad=true&padChar=X](https://etrusci.org/tool/olay/?mod=numbers&pad=true&padChar=X)

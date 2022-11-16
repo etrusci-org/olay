@@ -22,6 +22,6 @@ Display time passed since this module was loaded.
 
 ## Examples
 
-- [mod=uptime](http://localhost/olay/app/?mod=uptime)
-- [mod=uptime&pad=true](http://localhost/olay/app/?mod=uptime&pad=true)
-- [mod=uptime&pad=true&format={hours}:{minutes}:{seconds}](http://localhost/olay/app/?mod=uptime&pad=true&format={hours}:{minutes}:{seconds})
+- [mod=uptime](https://etrusci.org/tool/olay/?mod=uptime)
+- [mod=uptime&pad=true](https://etrusci.org/tool/olay/?mod=uptime&pad=true)
+- [mod=uptime&pad=true&format={hours}:{minutes}:{seconds}](https://etrusci.org/tool/olay/?mod=uptime&pad=true&format={hours}:{minutes}:{seconds})

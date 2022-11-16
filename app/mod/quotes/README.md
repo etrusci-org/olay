@@ -30,6 +30,6 @@ Display random quotes.
 
 ## Examples
 
-- [mod=quotes](http://localhost/olay/app/?mod=quotes)
-- [mod=quotes&updateRate=30000](http://localhost/olay/app/?mod=quotes&updateRate=30000)
-- [mod=quotes&source=https://yourwebsite.org/quotes.js](http://localhost/olay/app/?mod=quotes&source=https://yourwebsite.org/quotes.js) *(will obviously not work with this example source url)*
+- [mod=quotes](https://etrusci.org/tool/olay/?mod=quotes)
+- [mod=quotes&updateRate=30000](https://etrusci.org/tool/olay/?mod=quotes&updateRate=30000)
+- [mod=quotes&source=https://yourwebsite.org/quotes.js](https://etrusci.org/tool/olay/?mod=quotes&source=https://yourwebsite.org/quotes.js) *(will obviously not work with this example source url)*
