@@ -24,7 +24,7 @@ olay/
         README.md
 ```
 
-**2.** Edit `app/mod/examplemod/conf.json` and add the following code. This is the configuration of the module with all the possible parameters and their default values.
+**2.** Edit `conf.json` and add the following code. This is the configuration of the module with all the possible parameters and their default values.
 
 ```json
 {
