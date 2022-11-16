@@ -1,6 +1,7 @@
 <script type="module">
     import { getRandomInteger } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/getRandomInteger.min.js';
     import { padNum } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/padNum.min.js';
+    import { isPrime } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/isPrime.min.js';
 
 
     if (
@@ -19,8 +20,20 @@
 
     function update() {
         if (MODCONF.type == 'random') {
+
             let n = getRandomInteger(MODCONF.rangeStart, MODCONF.rangeEnd);
-            MODOUTPUT.innerHTML = (MODCONF.pad) ? padNum(n, MODCONF.rangeEnd.toString().length, MODCONF.padChar) : n;
+
+            let labelTypeStr = '';
+            if (MODCONF.labelType) {
+                if (!isPrime(n)) {
+                    labelTypeStr = MODCONF.labelNatural;
+                }
+                else {
+                    labelTypeStr = MODCONF.labelPrime;
+                }
+            }
+
+            MODOUTPUT.innerHTML = (MODCONF.pad) ? `${padNum(n, MODCONF.rangeEnd.toString().length, MODCONF.padChar)}${labelTypeStr}` : `${n}${labelTypeStr}`;
         }
 
         if (MODCONF.type == 'countup') {
