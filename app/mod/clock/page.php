@@ -25,7 +25,7 @@
             MODOUTPUT.innerHTML = `${Math.round(Date.now() / 1000)}`;
         }
 
-        if (MODCONF.type == 'milli') {
+        if (MODCONF.type == 'unixms') {
             MODOUTPUT.innerHTML = `${Date.now()}`;
         }
     }
