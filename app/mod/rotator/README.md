@@ -8,11 +8,11 @@ Display multiple text items in a rotation.
 
 ## Parameters
 
-| Parameter    | Valid Values                  | Default |
-|--------------|-------------------------------|---------|
-| `updateRate` | Milliseconds (1s = 1000ms)    | `10000` |
-| `items`      | Text items separated with `|` | `a|b|c` |
-| `shuffle`    | `true`, `false`               | `false` |
+| Parameter    | Valid Values                   | Default   |
+|--------------|--------------------------------|-----------|
+| `updateRate` | Milliseconds (1s = 1000ms)     | `10000`   |
+| `items`      | Text items separated with `\|` | `a\|b\|c` |
+| `shuffle`    | `true`, `false`                | `false`   |
 
 ### Notes
 
