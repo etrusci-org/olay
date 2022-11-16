@@ -90,8 +90,8 @@ All modules have access to the following variables and constants.
 
 **JavaScript:**
 
-- const `MODCONF`   (obj) Module configuration with parsed URL query parameters.
+- const `MODCONF` (obj) Module configuration with parsed URL query parameters.
 - const `MODOUTPUT` (html element) HTML module wrapper element. See `app/tpl/premod.php`.
-- func `fys(arr)` Shuffle an array in place.
+- func `fys(arr): arr` Shuffle an array in place.
 
 ---
