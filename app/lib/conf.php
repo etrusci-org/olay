@@ -4,7 +4,9 @@ const TPLDIR = __DIR__.'/../tpl/';
 const MODREGISTRY = [
     // 'examplemod',
     'clock',
-    'uptime',
-    'quotes',
+    'kraken',
     'numbers',
+    'quotes',
+    'rotator',
+    'uptime',
 ];
