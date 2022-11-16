@@ -73,7 +73,7 @@ const MODREGISTRY = [
 
 ---
 
-## Module Variables/Constants
+## Module Variables/Constants/Functions
 
 All modules have access to the following variables and constants.
 
@@ -92,5 +92,6 @@ All modules have access to the following variables and constants.
 
 - const `MODCONF`   (obj) Module configuration with parsed URL query parameters.
 - const `MODOUTPUT` (html element) HTML module wrapper element. See `app/tpl/premod.php`.
+- func `fys(arr)` Shuffle an array in place.
 
 ---
