@@ -1,39 +1,21 @@
 # Olay
 
-<!--
-
-## clock
-
-params
-- updateRate: (int) milliseconds
-- type: (str) human|unix|milli
-- pad
-- format [if type=human]
+Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://github.com/obsproject/obs-studio). Work in progress.
 
 ---
 
-## uptime
+## Basic Usage
 
-params
-- updateRate: (int) milliseconds
-- pad
-- format
+1. Add a Browser-Source to your Scene.
+2. Enter the module URL and adjust CSS and other settings to your liking.
 
 ---
 
-# Available Template Variables
+## Available Modules
 
-## PHP
+- [Clock](./app/mod/clock/README.md)
+- [Numbers](./app/mod/numbers/README.md)
+- [Quotes](./app/mod/quotes/README.md)
+- [Uptime](./app/mod/uptime/README.md)
 
-- $MODHANDLE (str) mod file name w/o extension.
-- $MODCONFFILE (str) path to mod/MODHANDLE/conf.php
-- $MODPAGEFILE (str) path to mod/MODHANDLE/page.php
-- $MODCONF (arr) mod configuration
-- $MODCONFJSON (str) mod configuration in json format
-
-## JavaScript
-
-- MODCONF (obj) mod configuration in json format
-- MODOUTPUT (element) html output element
-
--->
+---

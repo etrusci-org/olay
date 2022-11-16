@@ -22,7 +22,6 @@ Display time passed since this module was loaded.
 
 ## Examples
 
-- <http://localhost/olay/app/?mod=uptime>
-- <http://localhost/olay/app/?mod=uptime&pad=true>
-- <http://localhost/olay/app/?mod=uptime&pad=true>
-- <http://localhost/olay/app/?mod=uptime&format={hours}:{minutes}:{seconds}>
+- [mod=uptime](http://localhost/olay/app/?mod=uptime)
+- [mod=uptime&pad=true](http://localhost/olay/app/?mod=uptime&pad=true)
+- [mod=uptime&pad=true&format={hours}:{minutes}:{seconds}](http://localhost/olay/app/?mod=uptime&pad=true&format={hours}:{minutes}:{seconds})

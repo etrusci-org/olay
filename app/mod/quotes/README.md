@@ -30,6 +30,6 @@ Display random quotes.
 
 ## Examples
 
-- <http://localhost/olay/app/?mod=quotes>
-- <http://localhost/olay/app/?mod=quotes&updateRate=30000>
-- <http://localhost/olay/app/?mod=quotes&source=https://yourwebsite/quotes.js> (will not work with this dummy source url, see dev console)
+- [mod=quotes](http://localhost/olay/app/?mod=quotes)
+- [mod=quotes&updateRate=30000](http://localhost/olay/app/?mod=quotes&updateRate=30000)
+- [mod=quotes&source=https://yourwebsite.org/quotes.js](http://localhost/olay/app/?mod=quotes&source=https://yourwebsite.org/quotes.js) *(will obviously not work with this example source url)*

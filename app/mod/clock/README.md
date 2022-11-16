@@ -11,7 +11,7 @@ Display date and time.
 | Parameter    | Valid Values                    | Default                                         |
 |--------------|---------------------------------|-------------------------------------------------|
 | `updateRate` | Milliseconds (1s = 1000ms)      | `1000`                                          |
-| `type`       | `human`, `unix`, `milli`        | `human`                                         |
+| `type`       | `human`, `unix`, `unixms`       | `human`                                         |
 | `pad`        | `true`, `false`                 | `true`                                          |
 | `padChar`    | Any character except linebreaks | `0`                                             |
 | `format`     | Template markup                 | `{year}-{month}-{day} {hour}:{minute}:{second}` |
@@ -25,9 +25,9 @@ Display date and time.
 
 ## Examples
 
-- <http://localhost/olay/app/?mod=clock>
-- <http://localhost/olay/app/?mod=clock&type=unix>
-- <http://localhost/olay/app/?mod=clock&type=milli&updateRate=100>
-- <http://localhost/olay/app/?mod=clock&pad=false>
-- <http://localhost/olay/app/?mod=clock&padChar=X>
-- <http://localhost/olay/app/?mod=clock&format={hour}:{minute}:{second}>
+- [mod=clock](http://localhost/olay/app/?mod=clock)
+- [mod=clock&type=unix](http://localhost/olay/app/?mod=clock&type=unix)
+- [mod=clock&type=unixms&updateRate=100](http://localhost/olay/app/?mod=clock&type=unixms&updateRate=100)
+- [mod=clock&pad=false](http://localhost/olay/app/?mod=clock&pad=false)
+- [mod=clock&padChar=X](http://localhost/olay/app/?mod=clock&padChar=X)
+- [mod=clock&format={hour}:{minute}:{second}](http://localhost/olay/app/?mod=clock&format={hour}:{minute}:{second})
