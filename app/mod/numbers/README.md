@@ -14,7 +14,7 @@ Display numbers. Because.
 | `type`       | `random`, `countup`, `countdown` | `random` |
 | `rangeStart` | Any integer                      | `1`      |
 | `rangeEnd`   | Any integer                      | `100000` |
-| `pad`        | `true`, `false`                  | `true`   |
+| `pad`        | `true`, `false`                  | `false`  |
 | `padChar`    | Any character except linebreaks  | `0`      |
 
 ### Notes
