@@ -7,4 +7,6 @@ const MODREGISTRY = [
     'uptime',
     'quotes',
     'numbers',
+    'kraken',
+    'rotator',
 ];

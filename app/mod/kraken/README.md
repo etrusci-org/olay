@@ -1,0 +1,27 @@
+# Olay Kraken
+
+Display Kraken Ticker data.
+
+**Module Handle:** `kraken`
+
+---
+
+## Parameters
+
+| Parameter    | Valid Values                             | Default   |
+|--------------|------------------------------------------|-----------|
+| `updateRate` | Milliseconds (1s = 1000ms)               | `60000`   |
+| `pair`       | Asset pair to get data for               | `MANAUSD` |
+| `label`      | Text label to prefix the indexPrice with |           |
+
+### Notes
+
+- For a list of valid `pair` identifiers see <https://api.kraken.com/0/public/Ticker>.
+- Use `%20` or `+` in the URL if you want spaces in `label`.
+
+---
+
+## Examples
+
+- [mod=kraken](https://etrusci.org/tool/olay/?mod=kraken)
+- [mod=kraken&label=MANA/USD:+](https://etrusci.org/tool/olay/?mod=kraken&label=MANA/USD:+)
