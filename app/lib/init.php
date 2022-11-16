@@ -61,13 +61,19 @@ foreach ($_GET as $k => $v) {
             break;
 
         case 'int':
-            if (filter_var($v, FILTER_VALIDATE_INT)) {
+            if (
+                $v == '0' ||
+                filter_var($v, FILTER_VALIDATE_INT)
+            ) {
                 $MODCONF[$k] = (int) $v;
             }
             break;
 
         case 'float':
-            if (filter_var($v, FILTER_VALIDATE_FLOAT)) {
+            if ($v == '0' ||
+                $v == '0.0' ||
+                filter_var($v, FILTER_VALIDATE_FLOAT)
+            ) {
                 $MODCONF[$k] = (float) $v;
             }
             break;

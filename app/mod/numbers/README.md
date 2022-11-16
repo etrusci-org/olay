@@ -21,7 +21,6 @@ Display numbers. Because.
 
 - To count forever if `type` is set to `countup` or `countdown`, set `rangeStart` and `rangeEnd` to the same value.
 - `pad` and `padChar` apply only if `type` is set to `random`.
-- Bug: `rangeStart` and `rangeEnd` can not be `0`.
 
 ---
 
