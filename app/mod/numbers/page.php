@@ -46,5 +46,3 @@
         }
     }
 </script>
-
-<?php var_dump($MODCONF); ?>
