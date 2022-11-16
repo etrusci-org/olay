@@ -14,8 +14,10 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 ## Available Modules
 
 - [Clock](./app/mod/clock/README.md)
+- [Kraken](./app/mod/kraken/README.md)
 - [Numbers](./app/mod/numbers/README.md)
 - [Quotes](./app/mod/quotes/README.md)
+- [Rotator](./app/mod/rotator/README.md)
 - [Uptime](./app/mod/uptime/README.md)
 
 ---

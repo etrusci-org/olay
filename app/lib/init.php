@@ -6,7 +6,7 @@ require __DIR__.'/conf.php';
 
 function boo(string $message = 'something went wrong', int $code = 1): void {
     include TPLDIR.'header.php';
-    printf('<div style="background: #000; color: #f00;">%1$s</div>', $message);
+    printf('<div style="background: #300; color: #f00;">%1$s</div><div><a href="https://github.com/etrusci-org/olay/blob/main/README.md">README</a>', $message);
     include TPLDIR.'footer.php';
     exit($code);
 }
