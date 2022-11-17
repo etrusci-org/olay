@@ -4,15 +4,6 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 
 ---
 
-## Basic Usage
-
-1. Add a Browser-Source to your Scene.
-2. Enter the module URL.
-3. Adjust CSS.
-4. Adjust other settings.
-
----
-
 ## Modules
 
 Demo URLs are included in the module README. For a live demo go [there](https://etrusci.org/tool/olay/demo.html).
@@ -28,8 +19,74 @@ Demo URLs are included in the module README. For a live demo go [there](https://
 
 ## Hosting
 
-You are free to use the version hosted by me. The base URL is `https://etrusci.org/tool/olay/`. See the individual module README's for URL parameters.
+You are free to use the version hosted by me. The base URL is `https://etrusci.org/tool/olay/?`. See the individual module README's for URL parameters.
 
 If you prefer to host it yourself, see [DEVELOPMENT](./DEVELOPMENT.md).
+
+---
+
+## Basic Usage
+
+1. Add a Browser-Source to your Scene.
+2. Enter the module URL.
+3. Delete default OBS CSS.
+4. Optionally enter your own CSS.
+5. Optionally adjust other settings.
+
+---
+
+## Change The Output Style
+
+The default CSS is as follow:
+
+```css
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+    color: #00ac86;
+    background: transparent;
+}
+div.olay {}
+div.mod {}
+```
+
+`div.olay` is the outer wrapper of `div.mod`.  
+`div.mod` is the inner wrapper, where the module output will displayed.  
+but you can also only change the `body` style.
+
+Here are two examples to copy&paste into the Browser-Source's CSS field.
+
+```css
+/* Styles for the whole module page */
+body {
+    font-family: "Times New Roman", serif;
+    font-size: 32px;
+    color: #32cd32;
+    background: #006400;
+    text-shadow: #ffff00 0px 0px 5px;
+    text-align: center;
+}
+```
+
+```css
+/* Separate styles for body, div.olay and div.mod */
+body {
+    background: #006400;
+}
+
+div.olay {
+    border: 1px solid #0000ff;
+    padding: 10px;
+}
+
+div.mod {
+    color: #32cd32;
+    border: 1px solid #ffff00;
+    padding: 10px;
+}
+```
+
+New to CSS? Checkout the [CSS Docs](https://developer.mozilla.org/en-US/docs/Web/CSS)!  
+Need a color picker, [click here](https://duckduckgo.com/?t=ffab&q=color+picker&ia=answer) :-)
 
 ---

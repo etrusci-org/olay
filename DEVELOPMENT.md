@@ -24,7 +24,7 @@ olay/
         README.md
 ```
 
-**2.** Edit `conf.json` and add the following code. This is the configuration of the module with all the possible parameters and their default values.
+**2.** Edit `olay/app/mod/examplemod/conf.json` and add the following code. This is the configuration of the module with all the possible parameters and their default values.
 
 ```json
 {
@@ -33,7 +33,7 @@ olay/
 }
 ```
 
-**3.** Edit `page.php` and add the following code. This is the file that will be loaded in the browser.
+**3.** Edit `olay/app/mod/examplemod/page.php` and add the following code. This is the file that will be loaded in the browser.
 
 ```html
 <script type="module">
@@ -58,7 +58,7 @@ olay/
 </script>
 ```
 
-**4.** Edit `app/lib/conf.php` and add the module handle to the mod registry.
+**4.** Edit `olay/app/lib/conf.php` and add the module handle to the mod registry.
 
 ```php
 const MODREGISTRY = [
@@ -71,11 +71,20 @@ const MODREGISTRY = [
 
 **5.** Open <https://yourserver.org/olay/?mod=examplemod> in a webbrowser. See if you can change the message by adding `&message=yay` to the URL.
 
+
+**6.** Don't forget to write the `README.md` and add some demos to `olay/app/demo.html` when the module is ready. :-)
+
 ---
 
 ## Module Variables/Constants/Functions
 
-All modules have access to the following variables and constants.
+Usually you only need `MODCONF` and `MODOUTPUT` in JavaScript, but all modules have access to the following variables and constants.
+
+**JavaScript:**
+
+- const `MODCONF` (obj) Module configuration with parsed URL query parameters.
+- const `MODOUTPUT` (html element) HTML module wrapper element. See `olay/app/tpl/premod.php`.
+- func `fys(arr): arr` Shuffle an array in place (also returns shuffled array).
 
 **PHP:**
 
@@ -87,11 +96,5 @@ All modules have access to the following variables and constants.
 - var `$MODPAGEFILE` (string) Path to module page file.
 - var `$MODCONF` (array) Module configuration with parsed URL query parameters.
 - var `$MODCONFJSON` (string) Same as `$MODCONF` but in JSON format.
-
-**JavaScript:**
-
-- const `MODCONF` (obj) Module configuration with parsed URL query parameters.
-- const `MODOUTPUT` (html element) HTML module wrapper element. See `app/tpl/premod.php`.
-- func `fys(arr): arr` Shuffle an array in place.
 
 ---
