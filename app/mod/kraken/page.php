@@ -1,4 +1,7 @@
 <script type="module">
+    MODCONF.updateRate = Math.max(10000, MODCONF.updateRate);
+
+
     update();
     let intervalID = setInterval(() => {
         update();
