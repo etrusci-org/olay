@@ -24,4 +24,5 @@ Display Kraken Ticker data.
 ## Examples
 
 - [mod=kraken](https://etrusci.org/tool/olay/?mod=kraken)
+- [mod=kraken&updateRate=10000](https://etrusci.org/tool/olay/?mod=kraken&updateRate=10000)
 - [mod=kraken&label=MANA/USD:+](https://etrusci.org/tool/olay/?mod=kraken&label=MANA/USD:+)

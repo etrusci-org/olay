@@ -7,11 +7,15 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 ## Basic Usage
 
 1. Add a Browser-Source to your Scene.
-2. Enter the module URL and adjust CSS and other settings to your liking.
+2. Enter the module URL.
+3. Adjust CSS.
+4. Adjust other settings.
 
 ---
 
 ## Modules
+
+Demo URLs are included in the module README. For a live demo go [there](https://etrusci.org/tool/olay/demo.html).
 
 - [Clock](./app/mod/clock/README.md)
 - [Kraken](./app/mod/kraken/README.md)

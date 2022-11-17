@@ -1,4 +1,5 @@
 {
     "updateRate": 600000,
-    "source": "https://cdn.jsdelivr.net/gh/etrusci-org/spartalien.com@8.12.24/app/public/res/randomQuotes.min.js"
+    "typingSpeed": 100,
+    "source": "https://cdn.jsdelivr.net/gh/etrusci-org/quotes@main/js/quotes-s9.min.js"
 }

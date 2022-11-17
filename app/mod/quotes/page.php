@@ -1,9 +1,10 @@
 <script type="module">
     import { RandomQuoteTyper } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/RandomQuoteTyper.min.js';
-    import { randomQuotes as quotes } from '<?php print($MODCONF['source']); ?>';
+    import { quotes } from '<?php print($MODCONF['source']); ?>';
 
 
     RandomQuoteTyper.targetSelector = '.olay .mod';
+    RandomQuoteTyper.typingSpeed = MODCONF.typingSpeed;
     RandomQuoteTyper.init(quotes);
 
 

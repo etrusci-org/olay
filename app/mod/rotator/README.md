@@ -23,5 +23,6 @@ Display multiple text items in a rotation.
 ## Examples
 
 - [mod=rotator](https://etrusci.org/tool/olay/?mod=rotator)
+- [mod=rotator&items=foo|bar|hello+cruel+world](https://etrusci.org/tool/olay/?mod=rotator&items=foo|bar|hello+cruel+world)
 - [mod=rotator&updateRate=1000](https://etrusci.org/tool/olay/?mod=rotator&updateRate=1000)
 - [mod=rotator&updateRate=1000&shuffle=true](https://etrusci.org/tool/olay/?mod=rotator&updateRate=1000&shuffle=true)
