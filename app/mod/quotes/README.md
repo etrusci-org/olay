@@ -16,7 +16,7 @@ Display random quotes.
 
 ### Notes
 
-- To load a remote source, the crossorigin settings must be set accordingly on the server. Use a [CDN](https://www.jsdelivr.com) if you get an `Cross-Origin Request Blocked` error can not change these settings.
+- To load a remote source, the crossorigin settings must be set accordingly on the server. Use a [CDN](https://www.jsdelivr.com) if you get an `Cross-Origin Request Blocked` error can not change these settings. You won't have this problem if you [host](./../../../DEVELOPMENT.md) both the app and the quotes file yourself.
 - Javascript example for a valid quotes file:
   ```js
   export const quotes = [
