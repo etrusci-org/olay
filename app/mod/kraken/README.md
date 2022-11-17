@@ -16,6 +16,7 @@ Display Kraken Ticker data.
 
 ### Notes
 
+- `updateRate` can not be less than `10000`.
 - For a list of valid `pair` identifiers see <https://api.kraken.com/0/public/Ticker>.
 - Use `%20` or `+` if you want spaces in `label`.
 
