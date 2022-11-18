@@ -1,6 +1,6 @@
 # Olay
 
-Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://github.com/obsproject/obs-studio). Work in progress.
+Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://github.com/obsproject/obs-studio).
 
 ---
 
