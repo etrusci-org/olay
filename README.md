@@ -57,8 +57,17 @@ div.mod {}
 ```
 
 `div.olay` is the outer wrapper of `div.mod`.  
-`div.mod` is the inner wrapper, where the module output will displayed.  
-but you can also only change the `body` style.
+`div.mod` is the inner wrapper, where the module output will displayed.
+
+In HTML this looks like this:
+```html
+<div class="olay">
+    <div class="mod">
+        <!-- module output will here -->
+    </div>
+</div>
+```
+But you can also only change the `body` style to start. The wrappers are really just to give some more flexibility to those who want it.
 
 Here are two examples to copy&paste into the Browser-Source's CSS field.
 

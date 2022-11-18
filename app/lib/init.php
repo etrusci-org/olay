@@ -7,7 +7,12 @@ require __DIR__.'/conf.php';
 function boo(string $message = 'something went wrong', int $code = 1): void {
     include TPLDIR.'header.php';
     printf('
-        <span style="background: #300; color: #f00;">%1$s</span> &rarr; <a href="https://github.com/etrusci-org/olay/blob/main/README.md">README</a>', $message);
+        <div class="error">
+            ERROR: %1$s<br>
+            For help go to: <a href="https://github.com/etrusci-org/olay">github.com/etrusci-org/olay</a>
+        </div>',
+        $message
+    );
     include TPLDIR.'footer.php';
     exit($code);
 }
