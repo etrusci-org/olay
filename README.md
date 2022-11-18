@@ -4,9 +4,19 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 
 ---
 
+## Basic Usage
+
+1. Add a Browser-Source to your Scene.
+2. Enter the module URL.
+3. Delete default OBS CSS.
+4. Enter your own CSS.
+5. Adjust other settings.
+
+---
+
 ## Modules
 
-Demo URLs are included in the module README. For a live demo go [there](https://etrusci.org/tool/olay/demo.html).
+Demo URLs are included in the module README. For a demo go [there](https://etrusci.org/tool/olay/demo.html).
 
 - [Clock](./app/mod/clock/README.md)
 - [Kraken](./app/mod/kraken/README.md)
@@ -25,17 +35,7 @@ If you prefer to host it yourself, see [DEVELOPMENT](./DEVELOPMENT.md).
 
 ---
 
-## Basic Usage
-
-1. Add a Browser-Source to your Scene.
-2. Enter the module URL.
-3. Delete default OBS CSS.
-4. Optionally enter your own CSS.
-5. Optionally adjust other settings.
-
----
-
-## Change The Output Style
+## Change Module Output Style
 
 The default CSS is as follow:
 
