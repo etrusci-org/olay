@@ -17,6 +17,20 @@ body {
 
 
 
+/* app stuff */
+
+.error {
+    padding: 3px;
+    background: #500;
+}
+
+.error, .error a {
+    color: #f00;
+}
+
+
+
+
 /* minimal starter template */
 
 body {
