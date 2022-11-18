@@ -21,7 +21,7 @@ Demo URLs are included in the module README. For a demo go [there](https://etrus
 
 You are free to use the version hosted by me. The base URL is `https://etrusci.org/tool/olay/?`. See the individual module README's for URL parameters.
 
-If you prefer to host it yourself, see [DEVELOPMENT](./DEVELOPMENT.md).
+If you prefer to host it yourself and/or create your own modules, see [DEVELOPMENT](./DEVELOPMENT.md).
 
 ---
 
