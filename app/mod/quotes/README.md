@@ -34,4 +34,5 @@ Display random quotes.
 
 - [mod=quotes](https://etrusci.org/tool/olay/?mod=quotes)
 - [mod=quotes&updateRate=10000](https://etrusci.org/tool/olay/?mod=quotes&updateRate=10000)
+- [mod=quotes&typingSpeed=500](https://etrusci.org/tool/olay/?mod=quotes&typingSpeed=500)
 - [mod=quotes&source=https://yourwebsite.org/quotes.js](https://etrusci.org/tool/olay/?mod=quotes&source=https://yourwebsite.org/quotes.js) *(will obviously not work with this example source url)*
