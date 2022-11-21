@@ -16,7 +16,7 @@ Display numbers. Because.
 | `rangeEnd`          | Any integer                      | `100000` |
 | `pad`               | `true`, `false`                  | `false`  |
 | `padChar`           | Any character except linebreaks  | `0`      |
-| `labelType` | `true`, `false`                  | `false`  |
+| `labelType`         | `true`, `false`                  | `false`  |
 | `labelNatural`      | Any character except linebreaks  | `=N`     |
 | `labelPrime`        | Any character except linebreaks  | `=P`     |
 
