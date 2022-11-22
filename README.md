@@ -25,7 +25,7 @@ If you prefer to host it yourself and/or create your own modules, see [DEVELOPME
 
 ---
 
-## Basic Usage
+## Usage
 
 **Add a Browser-Source to your Scene:**
 
@@ -72,7 +72,7 @@ But you can also only change the `body` style to start. The wrappers are really 
 Here are two examples to copy&paste into the Browser-Source's CSS field.
 
 ```css
-/* Styles for the whole module page */
+/* Styles for the whole module page - this is most probably what you want */
 body {
     font-family: "Times New Roman", serif;
     font-size: 32px;

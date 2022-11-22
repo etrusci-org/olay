@@ -52,13 +52,17 @@ if (
 $MODCONFJSON = file_get_contents($MODCONFFILE);
 $MODCONF = json_decode($MODCONFJSON, true, JSON_THROW_ON_ERROR);
 
+// loop tru params the client wants to overwrite
 foreach ($_GET as $k => $v) {
+    // silently skip unknown params
     if (!array_key_exists($k, $MODCONF)) {
         continue;
     }
 
+    // get original/desired param value type from mod conf
     $origType = get_debug_type($MODCONF[$k]);
 
+    // overwrite mod conf parameters depending on type and validity
     switch ($origType) {
         case 'string':
             if (filter_var($v, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/./']])) {
@@ -95,6 +99,7 @@ foreach ($_GET as $k => $v) {
     }
 }
 
+// store mod conf as json for mod page scripts
 $MODCONFJSON = json_encode($MODCONF, JSON_THROW_ON_ERROR);
 
 // output

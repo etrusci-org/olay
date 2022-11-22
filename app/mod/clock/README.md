@@ -15,6 +15,8 @@ Display date and time.
 | `pad`        | `true`, `false`                 | `true`                                          |
 | `padChar`    | Any character except linebreaks | `0`                                             |
 | `format`     | Template markup                 | `{year}-{month}-{day} {hour}:{minute}:{second}` |
+| `rep`        | `true`, `false`                 | `false`                                         |
+| `repMap`     | `1`, `2`, `3`, `4`, `5`         | `1`                                             |
 
 ### Notes
 
@@ -32,3 +34,5 @@ Display date and time.
 - [mod=clock&pad=false](https://etrusci.org/tool/olay/?mod=clock&pad=false)
 - [mod=clock&padChar=X](https://etrusci.org/tool/olay/?mod=clock&padChar=X)
 - [mod=clock&format={hour}:{minute}:{second}](https://etrusci.org/tool/olay/?mod=clock&format={hour}:{minute}:{second})
+- [mod=clock&rep=true](https://etrusci.org/tool/olay/?mod=clock&rep=true)
+- [mod=clock&rep=true&repMap=4](https://etrusci.org/tool/olay/?mod=clock&rep=true&repMap=4)

@@ -1,5 +1,5 @@
 {
-    "updateRate": 3000,
+    "updateRate": 10000,
     "items": "a|b|c",
     "shuffle": false
 }

@@ -12,7 +12,7 @@ Webserver with [PHP](https://php.net) 8 support.
 
 ## Install
 
-Simply upload the contents of `olay/app/` into a directory of your webserver.
+Simply upload the contents of `olay/app/` into a directory on your webserver.
 
 ---
 

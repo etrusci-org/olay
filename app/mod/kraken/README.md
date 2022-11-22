@@ -1,6 +1,6 @@
 # Olay Kraken
 
-Display Kraken Ticker data.
+Display [Kraken](https://kraken.com) Ticker data.
 
 **Module Handle:** `kraken`
 
