@@ -20,7 +20,6 @@
 
     function update() {
         if (MODCONF.type == 'random') {
-
             let n = getRandomInteger(MODCONF.rangeStart, MODCONF.rangeEnd);
 
             let labelTypeStr = '';
