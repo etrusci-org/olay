@@ -1,3 +1,6 @@
+// TODO: move these functions to nifty repo
+
+
 function fys(arr) {
     for (let x = arr.length - 1; x > 0; x--) {
         const y = Math.floor(Math.random() * x);
