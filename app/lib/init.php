@@ -100,7 +100,7 @@ foreach ($_GET as $k => $v) {
 }
 
 // store mod conf as json for mod page scripts
-$MODCONFJSON = json_encode($MODCONF, JSON_THROW_ON_ERROR);
+$MODCONFJSON = json_encode($MODCONF, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
 // output
 include TPLDIR.'header.php';
