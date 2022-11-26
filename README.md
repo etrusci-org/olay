@@ -47,11 +47,20 @@ The default CSS is as follow:
 
 ```css
 body {
+    /* basic reset */
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    min-width: 100vw;
+    min-height: 100vh;
+    /* basic style */
     font-family: sans-serif;
     font-size: 16px;
     color: #00ac86;
     background: transparent;
 }
+/* available but empty by default */
 div.olay {}
 div.mod {}
 ```
@@ -63,7 +72,7 @@ In HTML this looks like this:
 ```html
 <div class="olay">
     <div class="mod">
-        <!-- module output will here -->
+        <!-- module output will be here -->
     </div>
 </div>
 ```
@@ -74,7 +83,7 @@ Here are two examples to copy&paste into the Browser-Source's CSS field.
 ```css
 /* Styles for the whole module page - this is most probably what you want */
 body {
-    font-family: "Times New Roman", serif;
+    font-family: 'Times New Roman', serif;
     font-size: 32px;
     color: #32cd32;
     background: #006400;
