@@ -8,5 +8,6 @@ const MODREGISTRY = [
     'numbers',
     'quotes',
     'rotator',
+    // 'twitch',
     'uptime',
 ];
