@@ -78,7 +78,7 @@ const MODREGISTRY = [
 **5.** Open <https://yourserver.org/olay/?mod=examplemod> in a webbrowser. See if you can change the message by adding `&message=yay` to the URL.
 
 
-**6.** Don't forget to write the `README.md` and add some demos to `olay/app/demo.html` when the module is ready. :-)
+**6.** Don't forget to write the `README.md` and add some demos to `olay/app/lib/demoparams.php` when the module is ready. :-)
 
 ---
 
@@ -91,6 +91,7 @@ Usually you only need `MODCONF` and `MODOUTPUT` in JavaScript, but all modules h
 - const `MODCONF` (obj) Module configuration with parsed URL query parameters.
 - const `MODOUTPUT` (html element) HTML module wrapper element. See `olay/app/tpl/premod.php`.
 - func `fys(arr): arr` Shuffle an array in place (also returns shuffled array).
+- func `replaceNumbers(num, mapKey): str` Replace numbers with other characters.
 
 **PHP:**
 

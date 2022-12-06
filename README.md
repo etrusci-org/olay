@@ -6,7 +6,7 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 
 ## Modules
 
-Demo URLs are included in the module README. For a demo go [there](https://etrusci.org/tool/olay/demo.html).
+Examples can be found in the module README. For a demo go [there](https://etrusci.org/tool/olay/demo.php).
 
 - [Clock](./app/mod/clock/README.md)
 - [Kraken](./app/mod/kraken/README.md)
