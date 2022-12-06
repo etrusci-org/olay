@@ -100,10 +100,13 @@ foreach ($_GET as $k => $v) {
 }
 
 // store mod conf as json for mod page scripts
-$MODCONFJSON = json_encode($MODCONF, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+$MODCONFJSON = json_encode($MODCONF, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
 // output
 include TPLDIR.'header.php';
 include TPLDIR.'premod.php';
+if (isset($_GET['debug'])) {
+    printf("<pre>MODCONF: %s</pre>", $MODCONFJSON);
+}
 include $MODPAGEFILE;
 include TPLDIR.'footer.php';
