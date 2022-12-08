@@ -35,10 +35,11 @@ if (!in_array($_GET['mod'], MODREGISTRY)) {
 
 // 'member/prep some vars
 $MODHANDLE = $_GET['mod'];
-$MODCONFFILE = realpath(MODDIR.$MODHANDLE.'/conf.json');
+// $MODCONFFILE = realpath(MODDIR.$MODHANDLE.'/conf.json');
+$MODCONFFILE = realpath(MODDIR.$MODHANDLE.'/conf.php');
 $MODPAGEFILE = realpath(MODDIR.$MODHANDLE.'/page.php');
 $MODCONF = [];
-$MODCONFJSON = $MODCONF;
+$MODCONFJSON = [];
 
 // stop if mod files do not exist
 if (
@@ -49,8 +50,7 @@ if (
 }
 
 // load/prepare mod conf
-$MODCONFJSON = file_get_contents($MODCONFFILE);
-$MODCONF = json_decode($MODCONFJSON, true, JSON_THROW_ON_ERROR);
+require $MODCONFFILE;
 
 // loop tru params the client wants to overwrite
 foreach ($_GET as $k => $v) {
@@ -100,7 +100,7 @@ foreach ($_GET as $k => $v) {
 }
 
 // store mod conf as json for mod page scripts
-$MODCONFJSON = json_encode($MODCONF, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+$MODCONFJSON = json_encode($MODCONF, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
 // output
 include TPLDIR.'header.php';

@@ -2,11 +2,10 @@
 <?php
 print('[olay twitch worker]'.PHP_EOL);
 
-$MODCONF = file_get_contents(__DIR__.'/conf.json');
-$MODCONF = json_decode($MODCONF, true);
+require __DIR__.'/conf.php';
 
 // cache file pattern, %s will be replaced with a handle
-$cacheFilePattern = __DIR__.'/cache/%s.json';
+$cacheFilePattern = $MODCONF['worker']['cacheDir'].'/%s.json';
 
 
 // forever
