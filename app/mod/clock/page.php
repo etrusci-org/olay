@@ -1,5 +1,6 @@
 <script type="module">
     import { padNum } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/padNum.min.js';
+    import { replaceNumbers } from './lib/replaceNumbers.js';
 
 
     update();
