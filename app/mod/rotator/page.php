@@ -1,4 +1,7 @@
 <script type="module">
+    import { fyShuffle } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/fyShuffle.min.js';
+
+
     var queue = [];
 
 
@@ -12,7 +15,7 @@
         if (queue.length == 0) {
             queue = [...MODCONF.items.split('|')];
             if (MODCONF.shuffle) {
-                fys(queue);
+                fyShuffle(queue);
             }
         }
 

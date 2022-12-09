@@ -90,8 +90,6 @@ Usually you only need `MODCONF` and `MODOUTPUT` in JavaScript, but all modules h
 
 - const `MODCONF` (obj) Module configuration with parsed URL query parameters.
 - const `MODOUTPUT` (html element) HTML module wrapper element. See `olay/app/tpl/premod.php`.
-- func `fys(arr): arr` Shuffle an array in place (also returns shuffled array).
-- func `replaceNumbers(num, mapKey): str` Replace numbers with other characters.
 
 **PHP:**
 
