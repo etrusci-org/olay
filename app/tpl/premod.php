@@ -3,9 +3,6 @@
 </div>
 
 
-<script src="./lib/helper.js"></script>
-
-
 <script>
     const MODCONF = <?php print($MODCONFJSON); ?>;
     const MODOUTPUT = document.querySelector('.olay .mod');
