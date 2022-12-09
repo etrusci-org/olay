@@ -35,7 +35,6 @@ if (!in_array($_GET['mod'], MODREGISTRY)) {
 
 // 'member/prep some vars
 $MODHANDLE = $_GET['mod'];
-// $MODCONFFILE = realpath(MODDIR.$MODHANDLE.'/conf.json');
 $MODCONFFILE = realpath(MODDIR.$MODHANDLE.'/conf.php');
 $MODPAGEFILE = realpath(MODDIR.$MODHANDLE.'/page.php');
 $MODCONF = [];
@@ -49,10 +48,15 @@ if (
     boo('mod files not found');
 }
 
-// load/prepare mod conf
+// load mod conf
 require $MODCONFFILE;
 
-// loop tru params the client wants to overwrite
+// stop if modconf var is not set
+if (!isset($MODCONF)) {
+    boo('$MODCONF var not set');
+}
+
+// bake conf with params the client wants to overwrite
 foreach ($_GET as $k => $v) {
     // silently skip unknown params
     if (!array_key_exists($k, $MODCONF)) {
