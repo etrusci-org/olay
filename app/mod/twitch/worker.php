@@ -5,8 +5,7 @@ print('[olay twitch worker]'.PHP_EOL);
 require __DIR__.'/conf.php';
 
 // cache file pattern, %s will be replaced with a handle
-$cacheFilePattern = $MODCONF['worker']['cacheDir'].'/%s.json';
-
+$cacheFilePattern = __DIR__.'/cache/%s.json';
 
 // forever
 while (true) {

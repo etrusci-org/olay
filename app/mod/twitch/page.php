@@ -114,6 +114,6 @@
 
 
     async function getCacheData(handle) {
-        return fetch(`${MODCONF.worker.cacheDir}/${handle}.json`).then((response) => response.json());
+        return fetch(`./mod/twitch/cache/${handle}.json`).then((response) => response.json());
     }
 </script>

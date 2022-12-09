@@ -8,7 +8,6 @@ $MODCONF = [
     'worker' => [
         '_comment_' => 'ATTENTION => commandsUpdateRate and commandsDelay are in seconds, not milliseconds.',
         'twitchBin' => '~/app/twitch-cli/twitch',
-        'cacheDir' => __DIR__.'/cache',
         'commandsUpdateRate' => 900,
         'commandsDelay' => 5,
         'commands' => [
