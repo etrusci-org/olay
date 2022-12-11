@@ -19,7 +19,9 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 
 ## Hosting
 
-You are free to use the version hosted by me. The base URL is `https://etrusci.org/tool/olay/?`.
+You are free to use the version hosted by me. The base URL for the latest release is `https://etrusci.org/tool/olay/?`.
+
+You can also point to a specific release by adding the version number to the URL. E.g. for version 1.0.4 you would use the URL `https://etrusci.org/tool/olay/1.0.4/?`.
 
 If you prefer to host it yourself and/or create your own modules, see [DEVELOPMENT](./DEVELOPMENT.md).
 
