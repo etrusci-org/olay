@@ -6,24 +6,45 @@ Display time passed since this module was loaded.
 
 ---
 
-## Parameters
-
-| Parameter    | Valid Values               | Default                                  |
-|--------------|----------------------------|------------------------------------------|
-| `updateRate` | Milliseconds (1s = 1000ms) | `1000`                                   |
-| `pad`        | `true`, `false`            | `false`                                  |
-| `format`     | Template markup            | `{days}d {hours}h {minutes}m {seconds}s` |
-
-### Notes
-
-- `format` template markup understands the following placeholders: `{days}`, `{hours}`, `{minutes}`, `{seconds}`. They are all optional.
-- Use `%20` or `+` if you want spaces in `format`.
-- You may want to disable the Browser-Source setting "Shutdown source when not visible" in OBS or the time will be reset when the page gets reloaded.
+You may want to disable the Browser-Source setting "Shutdown source when not visible" in OBS Studio or the time will be reset when the page gets reloaded.
 
 ---
 
-## Examples
+## Module Parameters
 
-- [mod=uptime](https://etrusci.org/tool/olay/?mod=uptime)
-- [mod=uptime&pad=true](https://etrusci.org/tool/olay/?mod=uptime&pad=true)
-- [mod=uptime&pad=true&format={hours}:{minutes}:{seconds}](https://etrusci.org/tool/olay/?mod=uptime&pad=true&format={hours}:{minutes}:{seconds})
+### updateRate
+
+In which interval the data should be reloaded.
+
+Type: integer (milliseconds)  
+Default: `1000`  
+Valid: Integers >= 1
+
+### pad
+
+Whether to pad/prefix numbers with leading characters.
+
+Type: boolean  
+Default: `false`  
+Valid: `true` | `false`
+
+### padChar
+
+Character used to pad/prefix numbers.
+
+Type: string  
+Default: `0`  
+Valid: Any characters except linebreaks  
+Requires: `pad=true`
+
+### format
+
+Human-readable format template.
+
+Type: string  
+Default: `{days}d {hours}h {minutes}m {seconds}s`  
+Valid: Any characters except linebreaks
+
+Available placeholders: `{days}`, `{hours}`, `{minutes}`, `{seconds}`
+
+---

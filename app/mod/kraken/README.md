@@ -6,24 +6,30 @@ Display [Kraken](https://kraken.com) Ticker data.
 
 ---
 
-## Parameters
+## Module Parameters
 
-| Parameter    | Valid Values                             | Default   |
-|--------------|------------------------------------------|-----------|
-| `updateRate` | Milliseconds (1s = 1000ms)               | `60000`   |
-| `pair`       | Asset pair to get data for               | `MANAUSD` |
-| `label`      | Text label to prefix the indexPrice with |           |
+### updateRate
 
-### Notes
+In which interval the data should be reloaded.
 
-- `updateRate` can not be less than `10000`.
-- For a list of valid `pair` identifiers see <https://api.kraken.com/0/public/Ticker>.
-- Use `%20` or `+` if you want spaces in `label`.
+Type: integer (milliseconds)  
+Default: `60000`  
+Valid: Integers >= 10000
+
+### pair
+
+Asset pair to get the data for.
+
+Type: string  
+Default: `MANAUSD`  
+Valid: Any key from <https://api.kraken.com/0/public/Ticker>
+
+### label
+
+Text label to prefix the index price with.
+
+Type: string  
+Default: *none*  
+Valid: Any characters except linebreaks
 
 ---
-
-## Examples
-
-- [mod=kraken](https://etrusci.org/tool/olay/?mod=kraken)
-- [mod=kraken&updateRate=10000](https://etrusci.org/tool/olay/?mod=kraken&updateRate=10000)
-- [mod=kraken&label=MANA/USD:+](https://etrusci.org/tool/olay/?mod=kraken&label=MANA/USD:+)

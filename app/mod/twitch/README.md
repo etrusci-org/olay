@@ -8,23 +8,70 @@ Needs [Twitch CLI](https://dev.twitch.tv/docs/cli) and the local `worker.php` fo
 
 ---
 
-## Parameters
+## Module Parameters
 
-| Parameter      | Valid Values                                                                                                                        | Default         |
-|----------------|-------------------------------------------------------------------------------------------------------------------------------------|-----------------|
-| `updateRate`   | Milliseconds (1s = 1000ms)                                                                                                          | `120000`        |
-| `type`         | `streamTitle`, `streamCategory`, `followerCount`, `subscriberCount`, `profileImage`, `followerList`, `subscriberList`, `bitsleader` | `followerCount` |
-| `rotator`      | `true`, `false`                                                                                                                     | `false`         |
-| `rotatorSpeed` | Milliseconds (1s = 1000ms)                                                                                                          | `2500`          |
-| `sep`          | Any character except linebreaks                                                                                                     | `<br>`          |
+### updateRate
 
+In which interval the data should be reloaded.
 
-### Notes
+Type: integer (milliseconds)  
+Default: `120000`  
+Valid: Integers >= 1
 
-- Use `%20` or `+` if you want spaces in `sep`.
+### type
+
+Which type of data to load.
+
+Type: string  
+Default: `followerCount`  
+Valid: `streamTitle` | `streamCategory` | `followerCount` | `subscriberCount` | `profileImage` | `followerList` | `subscriberList` | `bitsleader`
+
+Type description:
+- `streamTitle`: Stream title
+- `streamCategory`: Stream category
+- `followerCount`: Follower count
+- `subscriberCount`: Subscriber count
+- `profileImage`: Profile image
+- `followerList`: Follower list
+- `subscriberList`: Subscriber list
+- `bitsleader`: Bits leaderboard list
+
+### sep
+
+Separator for lists.
+
+Type: string  
+Default: `<br>`  
+Valid: Any characters except linebreaks
+Requires: `rotator=false`
+
+Will only be applied if `type=followerList`,  `type=subscriberList` or `type=bitsleader`.
+
+### rotator
+
+Rotate through data items instead of displaying them all at once.
+
+Type: boolean  
+Default: `false`  
+Valid: `true` | `false`  
+Requires: `type=followerList` | `type=subscriberList` | `type=bitsleader`
+
+### rotatorSpeed
+
+Delay between items if in rotator mode.
+
+Type: integer (milliseconds)  
+Default: `2500`  
+Valid: Integers >= 1
+Requires: `rotator=true`
 
 ---
 
+
+
+
+
+<!--
 ## Worker Configuration
 
 These can not be overriden with URL query parameters.
@@ -49,3 +96,4 @@ These can not be overriden with URL query parameters.
 cd olay/app/mod/twitch
 php worker.php
 ```
+-->

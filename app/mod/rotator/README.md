@@ -6,23 +6,30 @@ Display multiple text items in a rotation.
 
 ---
 
-## Parameters
+## Module Parameters
 
-| Parameter    | Valid Values                   | Default   |
-|--------------|--------------------------------|-----------|
-| `updateRate` | Milliseconds (1s = 1000ms)     | `10000`   |
-| `items`      | Text items separated with `\|` | `a\|b\|c` |
-| `shuffle`    | `true`, `false`                | `false`   |
+### updateRate
 
-### Notes
+In which interval the data should be reloaded.
 
-- Use `%20` or `+` if you want spaces in `items`.
+Type: integer (milliseconds)  
+Default: `5000`  
+Valid: Integers >= 1
+
+### items
+
+Text items to rotate through.
+
+Type: string  
+Default: `a|b|c|d|e|f|g`  
+Valid: Any characters except linebreaks separated with `|`
+
+### shuffle
+
+Whether to shuffle the items.
+
+Type: boolean  
+Default: `false`  
+Valid: `true` | `false`
 
 ---
-
-## Examples
-
-- [mod=rotator](https://etrusci.org/tool/olay/?mod=rotator)
-- [mod=rotator&items=foo|bar|hello+cruel+world](https://etrusci.org/tool/olay/?mod=rotator&items=foo|bar|hello+cruel+world)
-- [mod=rotator&updateRate=1000](https://etrusci.org/tool/olay/?mod=rotator&updateRate=1000)
-- [mod=rotator&updateRate=1000&shuffle=true](https://etrusci.org/tool/olay/?mod=rotator&updateRate=1000&shuffle=true)
