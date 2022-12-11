@@ -1,4 +1,8 @@
 <script type="module">
+    import { fetchJSON } from './lib/fetchJSON.js';
+
+
+    MODCONF.updateRate = Math.max(1, MODCONF.updateRate);
     let queue = [];
 
 
@@ -32,32 +36,32 @@
         let output = null;
 
         if (MODCONF.type == 'streamTitle') {
-            cacheData = await getCacheData('channel');
+            cacheData = await fetchJSON(`./mod/twitch/cache/channel.json`);
             output = cacheData.title;
         }
 
         if (MODCONF.type == 'streamCategory') {
-            cacheData = await getCacheData('channel');
+            cacheData = await fetchJSON('./mod/twitch/cache/channel.json');
             output = cacheData.game_name;
         }
 
         if (MODCONF.type == 'followerCount') {
-            cacheData = await getCacheData('follower');
+            cacheData = await fetchJSON('./mod/twitch/cache/follower.json');
             output = cacheData.length;
         }
 
         if (MODCONF.type == 'subscriberCount') {
-            cacheData = await getCacheData('subscriber');
+            cacheData = await fetchJSON('./mod/twitch/cache/subscriber.json');
             output = cacheData.length;
         }
 
         if (MODCONF.type == 'profileImage') {
-            cacheData = await getCacheData('user');
+            cacheData = await fetchJSON('./mod/twitch/cache/user.json');
             output = `<img src="${cacheData.profile_image_url}">`;
         }
 
         if (MODCONF.type == 'followerList') {
-            cacheData = await getCacheData('follower');
+            cacheData = await fetchJSON('./mod/twitch/cache/follower.json');
             let users = [];
             cacheData.forEach(v => {
                 users.push(v.from_name);
@@ -74,7 +78,7 @@
         }
 
         if (MODCONF.type == 'subscriberList') {
-            cacheData = await getCacheData('subscriber');
+            cacheData = await fetchJSON('./mod/twitch/cache/subscriber.json');
             let users = [];
             cacheData.forEach(v => {
                 users.push(v.user_name);
@@ -91,7 +95,7 @@
         }
 
         if (MODCONF.type == 'bitsleader') {
-            cacheData = await getCacheData('bitsleader');
+            cacheData = await fetchJSON('./mod/twitch/cache/bitsleader.json');
             let users = [];
             cacheData.forEach(v => {
                 users.push(`${v.rank}. (${v.score}) ${v.user_name}`);
@@ -113,7 +117,7 @@
     }
 
 
-    async function getCacheData(handle) {
-        return fetch(`./mod/twitch/cache/${handle}.json`).then((response) => response.json());
-    }
+    // async function getCacheData(handle) {
+    //     return fetch(`./mod/twitch/cache/${handle}.json`).then((response) => response.json());
+    // }
 </script>
