@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 export function replaceNumbers(num, mapKey) {
     if (mapKey === undefined) {

@@ -2,12 +2,12 @@
 const MODDIR = __DIR__.'/../mod/';
 const TPLDIR = __DIR__.'/../tpl/';
 const MODREGISTRY = [
-    // 'examplemod',
+    'examplemod',
     'clock',
     'kraken',
     'numbers',
     'quotes',
     'rotator',
-    // 'twitch',
+    'twitch',
     'uptime',
 ];

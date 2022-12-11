@@ -1,5 +1,10 @@
 <script type="module">
-    // do stuff on init
+    // do stuff on init...
+
+    // ...make sure updateRate is > 0
+    MODCONF.updateRate = Math.max(1, MODCONF.updateRate);
+
+    // ...or censor for fun
     if (MODCONF.message == 'badword') {
         MODCONF.message = 'censored';
     }

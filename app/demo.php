@@ -36,23 +36,35 @@
 require __DIR__.'/lib/conf.php';
 require __DIR__.'/lib/demoparams.php';
 
-foreach (DEMOPARAMS as $modHandle => $paramsOverrides) {
+$mod = null;
+if (isset($_GET['mod'])) {
+    $mod = trim($_GET['mod']);
+}
+
+foreach (array_keys(DEMOPARAMS) as $modHandle) {
     if (!in_array($modHandle, MODREGISTRY)) continue;
+    printf('<a href="?mod=%1$s">%1$s</a> ', $modHandle);
+}
+print('<hr>');
 
-    printf('<h2><a href="https://github.com/etrusci-org/olay/tree/main/app/mod/%1$s" target="_blank">%1$s</a></h2>', $modHandle);
-
-    foreach ($paramsOverrides as $params) {
-        $paramsPrefix = sprintf('mod=%s', $modHandle);
-        $params = (!$params) ? $paramsPrefix : sprintf('%s&%s', $paramsPrefix, $params);
-        printf('
-            <code>%2$s</code><br>
-            <iframe class="%1$s" loading="lazy" src="./?%2$s"></iframe>',
-            $modHandle,
-            $params,
-        );
+if ($mod) {
+    foreach (DEMOPARAMS as $modHandle => $paramsOverrides) {
+        if (!in_array($modHandle, MODREGISTRY)) continue;
+        if ($mod && $modHandle != $mod) continue;
+        printf('<h2><a href="https://github.com/etrusci-org/olay/tree/main/app/mod/%1$s" target="_blank">%1$s</a></h2>', $modHandle);
+        $paramsOverrides = [ '', ...$paramsOverrides ];
+        foreach ($paramsOverrides as $params) {
+            $paramsPrefix = sprintf('mod=%s', $modHandle);
+            $params = (!$params) ? $paramsPrefix : sprintf('%s&%s', $paramsPrefix, $params);
+            printf('
+                <code>%2$s</code><br>
+                <iframe class="%1$s" loading="lazy" src="./?%2$s"></iframe>',
+                $modHandle,
+                $params,
+            );
+        }
+        print('<hr>');
     }
-
-    print('<hr>');
 }
 ?>
 </body>

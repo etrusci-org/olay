@@ -3,6 +3,9 @@
     import { replaceNumbers } from './lib/replaceNumbers.js';
 
 
+    MODCONF.updateRate = Math.max(1, MODCONF.updateRate);
+
+
     update();
     let intervalID = setInterval(() => {
         update();

@@ -9,6 +9,6 @@ $MODCONF = [
     'rep' => false,
     'repMap' => 1,
     'labelType' => false,
-    'labelNatural' => '=N',
-    'labelPrime' => '=P',
+    'labelNatural' => '=natural',
+    'labelPrime' => '=prime',
 ];

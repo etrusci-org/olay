@@ -2,6 +2,7 @@
     import { fyShuffle } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/fyShuffle.min.js';
 
 
+    MODCONF.updateRate = Math.max(1, MODCONF.updateRate);
     var queue = [];
 
 
@@ -15,7 +16,7 @@
         if (queue.length == 0) {
             queue = [...MODCONF.items.split('|')];
             if (MODCONF.shuffle) {
-                fyShuffle(queue);
+                queue = fyShuffle(queue);
             }
         }
 

@@ -5,6 +5,9 @@
     import { replaceNumbers } from './lib/replaceNumbers.js';
 
 
+    MODCONF.updateRate = Math.max(1, MODCONF.updateRate);
+
+
     if (
         MODCONF.type == 'countup' ||
         MODCONF.type == 'countdown'

@@ -2,9 +2,9 @@
 $MODCONF = [
     'updateRate' => 120000,
     'type' => 'followerCount',
+    'sep' => '<br>',
     'rotator' => false,
     'rotatorSpeed' => 2500,
-    'sep' => '<br>',
     'worker' => [
         '_comment_' => 'ATTENTION => commandsUpdateRate and commandsDelay are in seconds, not milliseconds.',
         'twitchBin' => '~/app/twitch-cli/twitch',
