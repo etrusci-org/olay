@@ -6,7 +6,8 @@ For the tinkerers.
 
 ## Hosting Requirements
 
-Webserver with [PHP](https://php.net) 8 support.
+- Webserver with [PHP](https://php.net) >= 8.1.x
+- Internet connection because most modules rely on Javascript that is imported from a CDN
 
 ---
 
@@ -25,25 +26,31 @@ olay/
   app/
     mod/
       examplemod/
-        conf.json
+        conf.php
         page.php
         README.md
 ```
 
-**2.** Edit `olay/app/mod/examplemod/conf.json` and add the following code. This is the configuration of the module with all the possible parameters and their default values.
+**2.** Edit `olay/app/mod/examplemod/conf.php` and add the following code. This is the configuration of the module with all the possible parameters and their default values.
 
-```json
-{
-    "updateRate": 1000,
-    "message": "hello cruel world"
-}
+```php
+<?php
+$MODCONF = [
+    'updateRate' => 1000,
+    'message' => 'hello cruel world',
+];
 ```
 
 **3.** Edit `olay/app/mod/examplemod/page.php` and add the following code. This is the file that will be loaded in the browser.
 
 ```html
 <script type="module">
-    // do stuff on init
+    // do stuff on init...
+
+    // ...make sure updateRate is > 0
+    MODCONF.updateRate = Math.max(1, MODCONF.updateRate);
+
+    // ...or censor for fun
     if (MODCONF.message == 'badword') {
         MODCONF.message = 'censored';
     }
@@ -64,7 +71,7 @@ olay/
 </script>
 ```
 
-**4.** Edit `olay/app/lib/conf.php` and add the module handle to the mod registry.
+**4.** Edit `olay/app/lib/conf.php` and add the module handle to the mod registry. The order of the `MODREGISTRY` entries do not matter.
 
 ```php
 const MODREGISTRY = [
@@ -78,21 +85,19 @@ const MODREGISTRY = [
 **5.** Open <https://yourserver.org/olay/?mod=examplemod> in a webbrowser. See if you can change the message by adding `&message=yay` to the URL.
 
 
-**6.** Don't forget to write the `README.md` and add some demos to `olay/app/lib/demoparams.php` when the module is ready. :-)
+**6.** Don't forget to write the `README.md` and add some demos to `olay/app/lib/demoparams.php` when the module is ready.
 
 ---
 
 ## Module Variables/Constants/Functions
 
-Usually you only need `MODCONF` and `MODOUTPUT` in JavaScript, but all modules have access to the following variables and constants.
+Usually you only need the `MODCONF` and `MODOUTPUT` constants in JavaScript, but all modules have access to the following variables and constants.
 
 **JavaScript:**
-
 - const `MODCONF` (obj) Module configuration with parsed URL query parameters.
 - const `MODOUTPUT` (html element) HTML module wrapper element. See `olay/app/tpl/premod.php`.
 
 **PHP:**
-
 - const `MODDIR` (string) Path to module directory.
 - const `TPLDIR` (string) Path to template directory.
 - const `MODREGISTRY` (array) Registered module handles.
