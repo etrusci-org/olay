@@ -1,10 +1,15 @@
 # Olay Twitch (WORK IN PROGRESS)
 
-Fetch [Twitch](https://twitch.tv) [API](https://dev.twitch.tv/docs/api/reference) data for your account.  
-Only usable if you self-host.  
-Needs [Twitch CLI](https://dev.twitch.tv/docs/cli) and the local `worker.php` for fetching data.
+Fetch and display [Twitch](https://twitch.tv) [API](https://dev.twitch.tv/docs/api/reference) data for your account.  
 
 **Module Handle:** `twitch`
+
+---
+
+## Requirements
+
+- Self-hosted instance of Olay.
+- [Twitch CLI](https://dev.twitch.tv/docs/cli) and a running background **worker.php** for refreshing cached data.
 
 ---
 
@@ -62,38 +67,102 @@ Delay between items if in rotator mode.
 
 Type: integer (milliseconds)  
 Default: `2500`  
-Valid: Integers >= 1
+Valid: Integers >= 1  
 Requires: `rotator=true`
 
 ---
 
-
-
-
-
-<!--
 ## Worker Configuration
 
-These can not be overriden with URL query parameters.
+These values can not be overriden with URL query parameters.
 
-| Parameter                    | Valid Values              | Default                                                                             |
-|------------------------------|---------------------------|-------------------------------------------------------------------------------------|
-| `worker.twitchBin`           | Path to Twitch CLI binary | `~/app/twitch-cli/twitch`                                                           |
-| `worker.cacheDir`            | Path to cache directory   | `./mod/twitch/cache`                                                                |
-| `worker.commandsUpdateRate`  | Seconds                   | `900`                                                                               |
-| `worker.commandsDelay`       | Seconds                   | `5`                                                                                 |
-| `worker.commands.user`       | Twitch CLI parameters     | `api get users --unformatted --autopaginate -q login=spartalien`                    |
-| `worker.commands.channel`    | Twitch CLI parameters     | `api get /channels --unformatted --autopaginate -q broadcaster_id=540195916`        |
-| `worker.commands.follower`   | Twitch CLI parameters     | `api get users follows --unformatted --autopaginate -q to_id=540195916"`            |
-| `worker.commands.subscriber` | Twitch CLI parameters     | `api get /subscriptions --unformatted --autopaginate -q broadcaster_id=540195916"`  |
-| `worker.commands.bitsleader` | Twitch CLI parameters     | `api get /bits/leaderboard --unformatted --autopaginate -q period=all -q count=100` |
+### twitchBin
+
+Path to Twitch CLI executable.
+
+Type: string  
+Default: `~/app/twitch-cli/twitch`  
+Valid: Path to executable
+
+### commandsUpdateRate
+
+In which interval new data should be fetched/cached from the Twitch API.
+
+Type: integer (seconds)  
+Default: `900`  
+Valid: Integers >= 30
+
+Don't go to low or you'll hit a rate-limit.
+
+### commandsDelay
+
+Delay between individual API commands.
+
+Type: integer (seconds)  
+Default: `5`  
+Valid: Integers >= 1
+
+### commands.user
+
+Get user info.
+
+Type: string  
+Default: `api get users --unformatted --autopaginate -q login=spartalien`  
+Valid: Twitch CLI command
+
+### commands.channel
+
+Get channel info.
+
+Type: string  
+Default: `api get /channels --unformatted --autopaginate -q broadcaster_id=540195916`  
+Valid: Twitch CLI command
+
+### commands.follower
+
+Get followers list.
+
+Type: string  
+Default: `api get users follows --unformatted --autopaginate -q to_id=540195916`  
+Valid: Twitch CLI command
+
+### commands.subscriber
+
+Get subscribers list.
+
+Type: string  
+Default: `api get /subscriptions --unformatted --autopaginate -q broadcaster_id=540195916`  
+Valid: Twitch CLI command
+
+### commands.bitsleader
+
+Get bits leaderboard list.
+
+Type: string  
+Default: `api get /bits/leaderboard --unformatted --autopaginate -q period=all -q count=100`  
+Valid: Twitch CLI command
 
 ---
 
-## Run Worker
+## Worker Usage
+
+
+
+Make the worker file executable:
 
 ```bash
 cd olay/app/mod/twitch
-php worker.php
+chmod +x worker.php
 ```
--->
+
+Run the worker:
+
+```bash
+php worker.php 
+# or
+./worker.php
+```
+
+Stop the worker with `CTRL+C`.
+
+---
