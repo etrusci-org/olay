@@ -4,15 +4,18 @@ print('[olay twitch worker]'.PHP_EOL);
 
 require __DIR__.'/conf.php';
 
+$WORKERCONF['commandsUpdateRate'] = max(30, $WORKERCONF['commandsUpdateRate']);
+$WORKERCONF['commandsDelay'] = max(1, $WORKERCONF['commandsDelay']);
+
 // cache file pattern, %s will be replaced with a handle
 $cacheFilePattern = __DIR__.'/cache/%s.json';
 
 // forever
 while (true) {
     // loop tru commands
-    foreach ($MODCONF['worker']['commands'] as $commandKey => $command) {
+    foreach ($WORKERCONF['commands'] as $commandKey => $command) {
         // prep vars
-        $command = sprintf('%s %s', $MODCONF['worker']['twitchBin'], $command);
+        $command = sprintf('%s %s', $WORKERCONF['twitchBin'], $command);
         $output = null;
         $exitCode = null;
 
@@ -33,7 +36,7 @@ while (true) {
             !array_key_exists('data', $apiData)
         ) {
             print($commandKey.' troubles'.PHP_EOL);
-            sleep($MODCONF['worker']['commandsDelay']);
+            sleep($WORKERCONF['commandsDelay']);
             continue;
         }
 
@@ -104,10 +107,10 @@ while (true) {
         }
 
         // wait a bit before running the next command
-        sleep($MODCONF['worker']['commandsDelay']);
+        sleep($WORKERCONF['commandsDelay']);
     }
 
     // wait a bit before repeating the loop
-    printf('next run on %s'.PHP_EOL, date('Y-m-d H:i:s', time()+$MODCONF['worker']['commandsUpdateRate']));
-    sleep($MODCONF['worker']['commandsUpdateRate']);
+    printf('next run on %s'.PHP_EOL, date('Y-m-d H:i:s', time()+$WORKERCONF['commandsUpdateRate']));
+    sleep($WORKERCONF['commandsUpdateRate']);
 }
