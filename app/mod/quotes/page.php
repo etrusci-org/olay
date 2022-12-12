@@ -3,7 +3,8 @@
     import { quotes } from '<?php print($MODCONF['source']); ?>';
 
 
-    RandomQuoteTyper.targetSelector = '.olay .mod';
+    MODCONF.updateRate = Math.max(1, MODCONF.updateRate);
+    RandomQuoteTyper.targetSelector = 'div.olay div.mod';
     RandomQuoteTyper.typingSpeed = MODCONF.typingSpeed;
     RandomQuoteTyper.init(quotes);
 

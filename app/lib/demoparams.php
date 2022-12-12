@@ -1,0 +1,62 @@
+<?php
+const DEMOPARAMS = [
+    'examplemod' => [
+        'updateRate=250',
+        'message=foobar',
+        'message=badword',
+    ],
+    'clock' => [
+        'type=unix',
+        'type=unixms&updateRate=100',
+        'pad=false',
+        'padChar=X',
+        'format={hour}:{minute}:{second}',
+        'rep=true',
+        'rep=true&repMap=5',
+    ],
+    'kraken' => [
+        'label=MANA/USD:+',
+        'pair=XXBTZUSD&updateRate=10000',
+    ],
+    'numbers' => [
+        'type=countup&rangeStart=1&rangeEnd=5',
+        'type=countup&rangeStart=1&rangeEnd=1',
+        'type=countdown&rangeStart=5&rangeEnd=1',
+        'type=countdown&rangeStart=5&rangeEnd=5',
+        'pad=true',
+        'pad=true&padChar=X',
+        'rep=true',
+        'rep=true&pad=true&padChar=*',
+        'rep=true&repMap=5',
+        'labelType=true',
+        'labelType=true&labelNatural=+&labelPrime==PRIME!',
+    ],
+    'quotes' => [
+        'updateRate=30000',
+        'typingSpeed=50',
+        'source=https://cdn.jsdelivr.net/gh/etrusci-org/quotes@main/js/quotes-s9.min.js',
+    ],
+    'rotator' => [
+        'items=foo|bar|hello+cruel+world',
+        'updateRate=1000',
+        'updateRate=1000&shuffle=true',
+    ],
+    'twitch' => [
+        'type=followerCount',
+        'type=subscriberCount',
+        'type=streamTitle',
+        'type=streamCategory',
+        'type=profileImage',
+        'type=followerList',
+        'type=followerList&sep=+/+',
+        'type=subscriberList',
+        'type=bitsleader',
+        'type=followerList&rotator=true',
+        'type=subscriberList&rotator=true&rotatorSpeed=9000',
+    ],
+    'uptime' => [
+        'pad=true',
+        'pad=true&padChar=X',
+        'format={hours}:{minutes}:{seconds}',
+    ],
+];

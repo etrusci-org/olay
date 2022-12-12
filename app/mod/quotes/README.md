@@ -6,33 +6,36 @@ Display random quotes.
 
 ---
 
-## Parameters
+## Module Parameters
 
-| Parameter     | Valid Values               | Default                                                                                             |
-|---------------|----------------------------|-----------------------------------------------------------------------------------------------------|
-| `updateRate`  | Milliseconds (1s = 1000ms) | `600000`                                                                                            |
-| `typingSpeed` | Milliseconds (1s = 1000ms) | `100`                                                                                               |
-| `source`      | URL to valid quotes file   | `https://cdn.jsdelivr.net/gh/etrusci-org/quotes@main/js/quotes-s9.min.js` |
+### updateRate
 
-### Notes
+In which interval the data should be reloaded.
 
-- To load a remote source, the crossorigin settings must be set accordingly on the server. Use a [CDN](https://www.jsdelivr.com) if you get an `Cross-Origin Request Blocked` error can not change these settings. You won't have this problem if you [host](./../../../DEVELOPMENT.md) both the app and the quotes file yourself.
-- Javascript example for a valid quotes file:
-  ```js
-  export const quotes = [
-      { author: `Cow`, text: `Moooo.` },
-      { author: `Cat`, text: `Miaooooo.` },
-      { author: `Dog`, text: `Wooff.` },
-      { author: `Modem`, text: `|¬§°#@°€CHRRR°#@§°#¢!!` },
-  ];
-  ```
-- The constant name must be `quotes`.
+Type: integer (milliseconds)  
+Default: `600000`  
+Valid: Integers >= 1
+
+The typewriter script will always complete the current quote even if this value is less than the time it needs to do so. It will simply instantly start the next one when done.
+
+### typingSpeed
+
+Speed of the typewriter effect.
+
+Type: integer (milliseconds)  
+Default: `100`  
+Valid: Integers >= 1
+
+### source
+
+Quotes source file.
+
+Type: string  
+Default: `https://cdn.jsdelivr.net/gh/etrusci-org/quotes@main/js/quotes-s9.min.js`  
+Valid: URL/Path to valid quotes file
+
+To load a remote source, the [crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) settings must be set accordingly on the server. Use a [CDN](https://www.jsdelivr.com) if you get an `Cross-Origin Request Blocked` error can not change these settings. You won't have this problem if you [host](./../../../DEVELOPMENT.md) both the app and the quotes file yourself.
+
+See [this quotes repo](https://github.com/etrusci-org/quotes/) for examples if you want to create your own file.
 
 ---
-
-## Examples
-
-- [mod=quotes](https://etrusci.org/tool/olay/?mod=quotes)
-- [mod=quotes&updateRate=10000](https://etrusci.org/tool/olay/?mod=quotes&updateRate=10000)
-- [mod=quotes&typingSpeed=500](https://etrusci.org/tool/olay/?mod=quotes&typingSpeed=500)
-- [mod=quotes&source=https://yourwebsite.org/quotes.js](https://etrusci.org/tool/olay/?mod=quotes&source=https://yourwebsite.org/quotes.js) *(will obviously not work with this example source url)*

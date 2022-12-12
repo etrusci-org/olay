@@ -35,10 +35,10 @@ if (!in_array($_GET['mod'], MODREGISTRY)) {
 
 // 'member/prep some vars
 $MODHANDLE = $_GET['mod'];
-$MODCONFFILE = realpath(MODDIR.$MODHANDLE.'/conf.json');
+$MODCONFFILE = realpath(MODDIR.$MODHANDLE.'/conf.php');
 $MODPAGEFILE = realpath(MODDIR.$MODHANDLE.'/page.php');
 $MODCONF = [];
-$MODCONFJSON = $MODCONF;
+$MODCONFJSON = [];
 
 // stop if mod files do not exist
 if (
@@ -48,11 +48,15 @@ if (
     boo('mod files not found');
 }
 
-// load/prepare mod conf
-$MODCONFJSON = file_get_contents($MODCONFFILE);
-$MODCONF = json_decode($MODCONFJSON, true, JSON_THROW_ON_ERROR);
+// load mod conf
+require $MODCONFFILE;
 
-// loop tru params the client wants to overwrite
+// stop if modconf var is not set
+if (!isset($MODCONF)) {
+    boo('$MODCONF var not set');
+}
+
+// bake conf with params the client wants to overwrite
 foreach ($_GET as $k => $v) {
     // silently skip unknown params
     if (!array_key_exists($k, $MODCONF)) {
@@ -100,10 +104,30 @@ foreach ($_GET as $k => $v) {
 }
 
 // store mod conf as json for mod page scripts
-$MODCONFJSON = json_encode($MODCONF, JSON_THROW_ON_ERROR);
+$MODCONFJSON = json_encode($MODCONF, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
 // output
 include TPLDIR.'header.php';
 include TPLDIR.'premod.php';
+if (isset($_GET['debug'])) {
+    printf("<pre>MODCONF: %s</pre>", $MODCONFJSON);
+}
 include $MODPAGEFILE;
 include TPLDIR.'footer.php';
+
+// log module access, but not from demo
+if (!isset($_GET['demo']) && LOGDIR) {
+    $logFile = LOGDIR.date('Y-m-d').'.log';
+    $client = 'Other';
+    preg_match('/OBS\/[0-9.]+/', $_SERVER['HTTP_USER_AGENT'], $match);
+    if ($match) {
+        $client = $match[0];
+    }
+    $ogLine = implode('|', [
+        date('Y-m-d H:i:s e'),
+        microtime(true),
+        $client,
+        $_SERVER['QUERY_STRING'],
+    ]);
+    file_put_contents($logFile, $ogLine.PHP_EOL, LOCK_EX | FILE_APPEND);
+}

@@ -2,37 +2,77 @@
 
 Display date and time.
 
-**Module Handle:** `clock`
+**Module Handle:** `clock`  
 
 ---
 
-## Parameters
+## Module Parameters
 
-| Parameter    | Valid Values                    | Default                                         |
-|--------------|---------------------------------|-------------------------------------------------|
-| `updateRate` | Milliseconds (1s = 1000ms)      | `1000`                                          |
-| `type`       | `human`, `unix`, `unixms`       | `human`                                         |
-| `pad`        | `true`, `false`                 | `true`                                          |
-| `padChar`    | Any character except linebreaks | `0`                                             |
-| `format`     | Template markup                 | `{year}-{month}-{day} {hour}:{minute}:{second}` |
-| `rep`        | `true`, `false`                 | `false`                                         |
-| `repMap`     | `1`, `2`, `3`, `4`, `5`         | `1`                                             |
+### updateRate
 
-### Notes
+In which interval the data should be reloaded.
 
-- `pad`, `padChar` and `format` apply only if `type` is set to `human`.
-- `format` template markup understands the following placeholders: `{year}`, `{month}`, `{day}`, `{hour}`, `{minute}`, `{second}`. They are all optional.
-- Use `%20` or `+` if you want spaces in `format`.
+Type: integer (milliseconds)  
+Default: `1000`  
+Valid: Integers >= 1
+
+### type
+
+Which type of clock to load.
+
+Type: string  
+Default: `human`  
+Valid: `human` | `unix` | `unixms`
+
+Type description:
+- `human`: whatever `format` is set to
+- `unix`: unix time in seconds
+- `unixms`: unix time in milliseconds
+
+### pad
+
+Whether to pad/prefix numbers with leading characters.
+
+Type: boolean  
+Default: `true`  
+Valid: `true` | `false`  
+Requires: `type=human`
+
+### padChar
+
+Character used to pad/prefix numbers.
+
+Type: string  
+Default: `0`  
+Valid: Any characters except linebreaks  
+Requires: `type=human` & `pad=true`
+
+### format
+
+Human-readable format template.
+
+Type: string  
+Default: `{year}-{month}-{day} {hour}:{minute}:{second}`  
+Valid: Any characters except linebreaks  
+Requires: `type=human`
+
+Available placeholders: `{year}`, `{month}`, `{day}`, `{hour}`, `{minute}`, `{second}`
+
+### rep
+
+Whether to replace numbers with characters.
+
+Type: boolean  
+Default: `false`  
+Valid: `true` | `false`
+
+### repMap
+
+Character map used to replace numbers with characters.
+
+Type: integer  
+Default: `1`  
+Valid: `1` | `2` | `3` | `4` | `5`  
+Requires: `rep=true`
 
 ---
-
-## Examples
-
-- [mod=clock](https://etrusci.org/tool/olay/?mod=clock)
-- [mod=clock&type=unix](https://etrusci.org/tool/olay/?mod=clock&type=unix)
-- [mod=clock&type=unixms&updateRate=100](https://etrusci.org/tool/olay/?mod=clock&type=unixms&updateRate=100)
-- [mod=clock&pad=false](https://etrusci.org/tool/olay/?mod=clock&pad=false)
-- [mod=clock&padChar=X](https://etrusci.org/tool/olay/?mod=clock&padChar=X)
-- [mod=clock&format={hour}:{minute}:{second}](https://etrusci.org/tool/olay/?mod=clock&format={hour}:{minute}:{second})
-- [mod=clock&rep=true](https://etrusci.org/tool/olay/?mod=clock&rep=true)
-- [mod=clock&rep=true&repMap=4](https://etrusci.org/tool/olay/?mod=clock&rep=true&repMap=4)

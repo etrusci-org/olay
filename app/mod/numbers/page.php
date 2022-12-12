@@ -2,6 +2,10 @@
     import { getRandomInteger } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/getRandomInteger.min.js';
     import { padNum } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/padNum.min.js';
     import { isPrime } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/isPrime.min.js';
+    import { replaceNumbers } from './lib/replaceNumbers.js';
+
+
+    MODCONF.updateRate = Math.max(1, MODCONF.updateRate);
 
 
     if (
@@ -9,6 +13,7 @@
         MODCONF.type == 'countdown'
     ) {
         var countNum = MODCONF.rangeStart;
+        var countNumStr = MODCONF.rangeStart.toString();
     }
 
 
@@ -21,7 +26,6 @@
     function update() {
         if (MODCONF.type == 'random') {
             let n = getRandomInteger(MODCONF.rangeStart, MODCONF.rangeEnd);
-
             let labelTypeStr = '';
             if (MODCONF.labelType) {
                 if (!isPrime(n)) {
@@ -31,12 +35,18 @@
                     labelTypeStr = MODCONF.labelPrime;
                 }
             }
-
+            if (MODCONF.rep) {
+                n = replaceNumbers(n, MODCONF.repMap);
+            }
             MODOUTPUT.innerHTML = (MODCONF.pad) ? `${padNum(n, MODCONF.rangeEnd.toString().length, MODCONF.padChar)}${labelTypeStr}` : `${n}${labelTypeStr}`;
         }
 
         if (MODCONF.type == 'countup') {
-            MODOUTPUT.innerHTML = countNum;
+            countNumStr = countNum.toString();
+            if (MODCONF.rep) {
+                countNumStr = replaceNumbers(countNumStr, MODCONF.repMap);
+            }
+            MODOUTPUT.innerHTML = countNumStr;
             if (
                 MODCONF.rangeStart != MODCONF.rangeEnd &&
                 countNum >= MODCONF.rangeEnd
@@ -47,7 +57,11 @@
         }
 
         if (MODCONF.type == 'countdown') {
-            MODOUTPUT.innerHTML = countNum;
+            countNumStr = countNum.toString();
+            if (MODCONF.rep) {
+                countNumStr = replaceNumbers(countNumStr, MODCONF.repMap);
+            }
+            MODOUTPUT.innerHTML = countNumStr;
             if (
                 MODCONF.rangeStart != MODCONF.rangeEnd &&
                 countNum <= MODCONF.rangeEnd

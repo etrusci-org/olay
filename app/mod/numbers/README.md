@@ -6,36 +6,95 @@ Display numbers. Because.
 
 ---
 
-## Parameters
+## Module Parameters
 
-| Parameter           | Valid Values                     | Default  |
-|---------------------|----------------------------------|----------|
-| `updateRate`        | Milliseconds (1s = 1000ms)       | `3000`   |
-| `type`              | `random`, `countup`, `countdown` | `random` |
-| `rangeStart`        | Any integer                      | `1`      |
-| `rangeEnd`          | Any integer                      | `100000` |
-| `pad`               | `true`, `false`                  | `false`  |
-| `padChar`           | Any character except linebreaks  | `0`      |
-| `labelType`         | `true`, `false`                  | `false`  |
-| `labelNatural`      | Any character except linebreaks  | `=N`     |
-| `labelPrime`        | Any character except linebreaks  | `=P`     |
+### updateRate
 
-### Notes
+In which interval the data should be reloaded.
 
-- To count forever if `type` is set to `countup` or `countdown`, set `rangeStart` and `rangeEnd` to the same value.
-- `pad` and `padChar` apply only if `type` is set to `random`.
-- `labelNatural` and `labelPrime` apply only if `labelType` is set to `true`.
+Type: integer (milliseconds)  
+Default: `3000`  
+Valid: Integers >= 1
+
+### type
+
+Type: string  
+Default: `random`  
+Valid: `random` | `countup` | `countdown`
+
+To count forever with `countup` or `countdown`, set `rangeStart` and `rangeEnd` to the same value.
+
+### rangeStart
+
+Type: integer  
+Default: `1`  
+Valid: Any positive or negative integer
+
+### rangeEnd
+
+Type: integer  
+Default: `100000`  
+Valid: Any positive or negative integer
+
+### pad
+
+Whether to pad/prefix numbers with leading characters.
+
+Type: boolean  
+Default: `false`  
+Valid: `true` | `false`  
+Requires: `type=random`
+
+### padChar
+
+Character used to pad/prefix numbers.
+
+Type: string  
+Default: `0`  
+Valid: Any characters except linebreaks  
+Requires: `type=random` & `pad=true`
+
+### rep
+
+Whether to replace numbers with characters.
+
+Type: boolean  
+Default: `false`  
+Valid: `true` | `false`
+
+### repMap
+
+Character map used to replace numbers with characters.
+
+Type: integer  
+Default: `1`  
+Valid: `1` | `2` | `3` | `4` | `5`  
+Requires: `rep=true`
+
+### labelType
+
+Whether to add a label to numbers.
+
+Type: boolean  
+Default: `false`  
+Valid: `true` | `false`
+
+### labelNatural
+
+Label for natural numbers.
+
+Type: string  
+Default: `=natural`  
+Valid: Any characters except linebreaks  
+Requires: `labelType=true`
+
+### labelPrime
+
+Label for prime numbers.
+
+Type: string  
+Default: `=prime`  
+Valid: Any characters except linebreaks  
+Requires: `labelType=true`
 
 ---
-
-## Examples
-
-- [mod=numbers](https://etrusci.org/tool/olay/?mod=numbers)
-- [mod=numbers&type=countup&rangeStart=1&rangeEnd=5](https://etrusci.org/tool/olay/?mod=numbers&type=countup&rangeStart=1&rangeEnd=5)
-- [mod=numbers&type=countup&rangeStart=1&rangeEnd=1](https://etrusci.org/tool/olay/?mod=numbers&type=countup&rangeStart=1&rangeEnd=1)
-- [mod=numbers&type=countdown&rangeStart=5&rangeEnd=1](https://etrusci.org/tool/olay/?mod=numbers&type=countdown&rangeStart=5&rangeEnd=1)
-- [mod=numbers&type=countdown&rangeStart=5&rangeEnd=5](https://etrusci.org/tool/olay/?mod=numbers&type=countdown&rangeStart=5&rangeEnd=5)
-- [mod=numbers&pad=true](https://etrusci.org/tool/olay/?mod=numbers&pad=true)
-- [mod=numbers&pad=true&padChar=X](https://etrusci.org/tool/olay/?mod=numbers&pad=true&padChar=X)
-- [mod=numbers&labelType=true](https://etrusci.org/tool/olay/?mod=numbers&labelType=true)
-- [mod=numbers&labelType=true&labelNatural=+&labelPrime==PRIME!](https://etrusci.org/tool/olay/?mod=numbers&labelType=true&labelNatural=+&labelPrime==PRIME!)

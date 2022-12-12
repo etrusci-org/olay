@@ -1,18 +1,6 @@
-// TODO: move these functions to nifty repo
+'use strict';
 
-
-function fys(arr) {
-    for (let x = arr.length - 1; x > 0; x--) {
-        const y = Math.floor(Math.random() * x);
-        const z = arr[x];
-        arr[x] = arr[y];
-        arr[y] = z;
-    }
-    return arr;
-}
-
-
-function replaceNumbers(num, mapKey) {
+export function replaceNumbers(num, mapKey) {
     if (mapKey === undefined) {
         mapKey = 1;
     }

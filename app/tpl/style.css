@@ -1,45 +1,31 @@
-/* super basic reset */
-
-html,
-body,
-div {
+body {
+    /* Basic reset */
     margin: 0;
     padding: 0;
     border: 0;
     overflow: hidden;
-}
-
-body {
     min-width: 100vw;
     min-height: 100vh;
-}
 
-
-
-
-/* app stuff */
-
-.error {
-    padding: 3px;
-    background: #500;
-}
-
-.error, .error a {
-    color: #f00;
-}
-
-
-
-
-/* minimal starter template */
-
-body {
+    /* Basic style */
     font-family: sans-serif;
     font-size: 16px;
     color: #00ac86;
     background: transparent;
 }
 
+/* Outer module wrapper */
 div.olay {}
 
+/* Inner module wrapper */
 div.mod {}
+
+/* App stuff */
+.error {
+    padding: 3px;
+    background: #2b0000;
+}
+
+.error, .error a {
+    color: #f00;
+}
