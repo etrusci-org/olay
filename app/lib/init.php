@@ -118,11 +118,17 @@ include TPLDIR.'footer.php';
 // log module access, but not from demo
 if (!isset($_GET['demo']) && LOGDIR) {
     $logFile = LOGDIR.date('Y-m-d').'.log';
+
+    $client = 'Other';
+    preg_match('/OBS\/[0-9.]+/', $_SERVER['HTTP_USER_AGENT'], $match);
+    if ($match) {
+        $client = $match[0];
+    }
     $ogLine = implode('|', [
         date('Y-m-d H:i:s e'),
         microtime(true),
+        $client,
         $_SERVER['QUERY_STRING'],
-        $_SERVER['HTTP_USER_AGENT'],
     ]);
     file_put_contents($logFile, $ogLine.PHP_EOL, LOCK_EX | FILE_APPEND);
 }
