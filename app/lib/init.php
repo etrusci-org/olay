@@ -114,3 +114,15 @@ if (isset($_GET['debug'])) {
 }
 include $MODPAGEFILE;
 include TPLDIR.'footer.php';
+
+// log module access, but not from demo
+if (!isset($_GET['demo']) && LOGDIR) {
+    $logFile = LOGDIR.date('Y-m-d').'.log';
+    $ogLine = implode('|', [
+        date('Y-m-d H:i:s e'),
+        microtime(true),
+        $_SERVER['QUERY_STRING'],
+        $_SERVER['HTTP_USER_AGENT'],
+    ]);
+    file_put_contents($logFile, $ogLine.PHP_EOL, LOCK_EX | FILE_APPEND);
+}

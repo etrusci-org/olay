@@ -58,7 +58,7 @@ if ($mod) {
             $params = (!$params) ? $paramsPrefix : sprintf('%s&%s', $paramsPrefix, $params);
             printf('
                 <code>%2$s</code><br>
-                <iframe class="%1$s" loading="lazy" src="./?%2$s"></iframe>',
+                <iframe class="%1$s" loading="lazy" src="./?demo=true&%2$s"></iframe>',
                 $modHandle,
                 $params,
             );

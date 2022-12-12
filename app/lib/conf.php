@@ -1,6 +1,8 @@
 <?php
 const MODDIR = __DIR__.'/../mod/';
 const TPLDIR = __DIR__.'/../tpl/';
+const LOGDIR = __DIR__.'/../log/';
+const APPTIMEZONE = 'UTC';
 const MODREGISTRY = [
     'examplemod',
     'clock',
@@ -11,3 +13,5 @@ const MODREGISTRY = [
     'twitch',
     'uptime',
 ];
+
+date_default_timezone_set(APPTIMEZONE);
