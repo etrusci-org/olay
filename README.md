@@ -20,14 +20,14 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 
 ## Modules
 
-- [Clock](./app/mod/clock/README.md)
-- [ExampleMod](./app/mod/examplemod/README.md) (only for dev example)
-- [Kraken](./app/mod/kraken/README.md)
-- [Numbers](./app/mod/numbers/README.md)
-- [Quotes](./app/mod/quotes/README.md)
-- [Rotator](./app/mod/rotator/README.md)
-- [Twitch](./app/mod/twitch/README.md) (only for self-hosting)
-- [Uptime](./app/mod/uptime/README.md)
+- [Clock](./app/mod/clock/)
+- [ExampleMod](./app/mod/examplemod/) (only for dev example)
+- [Kraken](./app/mod/kraken/)
+- [Numbers](./app/mod/numbers/)
+- [Quotes](./app/mod/quotes/)
+- [Rotator](./app/mod/rotator/)
+- [Twitch](./app/mod/twitch/) (only for self-hosting)
+- [Uptime](./app/mod/uptime/)
 
 For demos of the latest release [go there](https://etrusci.org/tool/olay/demo.php).
 
