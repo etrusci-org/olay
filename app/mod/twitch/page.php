@@ -115,9 +115,4 @@
             MODOUTPUT.innerHTML = output;
         }
     }
-
-
-    // async function getCacheData(handle) {
-    //     return fetch(`./mod/twitch/cache/${handle}.json`).then((response) => response.json());
-    // }
 </script>
