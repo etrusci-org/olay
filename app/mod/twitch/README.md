@@ -47,10 +47,8 @@ Separator for lists.
 
 Type: string  
 Default: `<br>`  
-Valid: Any characters except linebreaks
-Requires: `rotator=false`
-
-Will only be applied if `type=followerList`,  `type=subscriberList` or `type=bitsleader`.
+Valid: Any characters except linebreaks  
+Requires: `rotator=false` & (`type=followerList` | `type=subscriberList` | `type=bitsleader`)
 
 ### rotator
 
