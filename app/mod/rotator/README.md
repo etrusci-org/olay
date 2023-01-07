@@ -26,7 +26,7 @@ Valid: Any characters except linebreaks separated with `|`
 
 ### itemsFromFile
 
-Whether to load the items from a file. Supports images.
+Whether to load the items from a local file. Supports images.
 
 Type: boolean  
 Default: `false`  
