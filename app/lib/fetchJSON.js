@@ -1,3 +1,3 @@
 export async function fetchJSON(url) {
-    return fetch(url).then((response) => response.json());
+    return fetch(url, { cache: 'no-store' }).then((response) => response.json());
 }
