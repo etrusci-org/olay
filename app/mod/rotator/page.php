@@ -1,9 +1,10 @@
 <script type="module">
     import { fyShuffle } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/fyShuffle.min.js';
+    import { fetchJSON } from './lib/fetchJSON.js';
 
 
     MODCONF.updateRate = Math.max(1, MODCONF.updateRate);
-    var queue = [];
+    let queue = [];
 
 
     update();
@@ -12,14 +13,29 @@
     }, MODCONF.updateRate);
 
 
-    function update() {
+    async function update() {
         if (queue.length == 0) {
-            queue = [...MODCONF.items.split('|')];
+            if (!MODCONF.itemsFromFile) {
+                queue = [...MODCONF.items.split('|')];
+            }
+            else {
+                queue = await fetchJSON('./mod/rotator/items.json');
+            }
+
             if (MODCONF.shuffle) {
                 queue = fyShuffle(queue);
             }
         }
 
-        MODOUTPUT.innerHTML = queue.splice(0, 1);
+        let item = queue.splice(0, 1)[0];
+
+        if (!MODCONF.itemsFromFile) {
+            MODOUTPUT.innerHTML = item;
+        }
+        else {
+            MODOUTPUT.innerHTML = `
+            <div class="img"><img src="${item.img}" alt="rotator item image"></div>
+            <div class="txt">${item.txt}</div>`;
+        }
     }
 </script>
