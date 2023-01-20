@@ -19,7 +19,7 @@
                 queue = [...MODCONF.items.split('|')];
             }
             else {
-                queue = await fetchJSON('./mod/rotator/items.json');
+                queue = await fetchJSON(MODCONF.itemsFile);
             }
 
             if (MODCONF.shuffle) {

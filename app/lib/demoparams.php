@@ -40,7 +40,7 @@ const DEMOPARAMS = [
         'items=foo|bar|hello+cruel+world',
         'updateRate=1000',
         'updateRate=1000&shuffle=true',
-        'itemsFromFile=true',
+        'itemsFromFile=true&itemsFile=./mod/rotator/items.example.json',
     ],
     'twitch' => [
         'type=followerCount',
