@@ -101,10 +101,8 @@ while (true) {
             }
         }
 
-        if ($cacheData) {
-            $cacheData = json_encode($cacheData, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
-            file_put_contents($cacheFile, $cacheData, LOCK_EX);
-        }
+        $cacheData = json_encode($cacheData, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+        file_put_contents($cacheFile, $cacheData, LOCK_EX);
 
         // wait a bit before running the next command
         sleep($WORKERCONF['commandsDelay']);
