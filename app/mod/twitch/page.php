@@ -47,12 +47,12 @@
 
         if (MODCONF.type == 'followerCount') {
             cacheData = await fetchJSON('./mod/twitch/cache/follower.json');
-            output = cacheData.length;
+            output = `${cacheData.length}`;
         }
 
         if (MODCONF.type == 'subscriberCount') {
             cacheData = await fetchJSON('./mod/twitch/cache/subscriber.json');
-            output = cacheData.length;
+            output = `${cacheData.length}`;
         }
 
         if (MODCONF.type == 'profileImage') {
