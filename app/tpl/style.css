@@ -3,7 +3,6 @@ body {
     margin: 0;
     padding: 0;
     border: 0;
-    overflow: hidden;
     min-width: 100vw;
     min-height: 100vh;
 
@@ -15,10 +14,10 @@ body {
 }
 
 /* Outer module wrapper */
-div.olay {}
+/* div.olay {} */
 
 /* Inner module wrapper */
-div.mod {}
+/* div.mod {} */
 
 /* App stuff */
 .error {
