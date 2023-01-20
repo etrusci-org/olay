@@ -32,7 +32,8 @@ Type: boolean
 Default: `false`  
 Valid: `true` | `false`
 
-The file is located at `olay/app/mod/rotator/items.json`. `img` can be either a local or remote path/url. `txt` can be any characters except linebreaks.
+Rename `olay/app/mod/rotator/items.example.json` to `olay/app/mod/rotator/items.json`.  
+`img` can be either a local or remote path/url. `txt` can be any characters except linebreaks.
 
 The image and text are wrapped inside individual `<div>` tags and can be targeted with CSS through `.olay .mod .img` and `.olay .mod .txt`.
 
