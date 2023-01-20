@@ -98,7 +98,11 @@
             cacheData = await fetchJSON('./mod/twitch/cache/bitsleader.json');
             let users = [];
             cacheData.forEach(v => {
-                users.push(`${v.rank}. (${v.score}) ${v.user_name}`);
+                let t = MODCONF.format;
+                t = t.replace('{rank}', v.rank);
+                t = t.replace('{score}', v.score);
+                t = t.replace('{user}', v.user_name);
+                users.push(t);
             });
             if (!MODCONF.rotator) {
                 users = users.join(MODCONF.sep);

@@ -52,6 +52,7 @@ const DEMOPARAMS = [
         'type=followerList&sep=+/+',
         'type=subscriberList',
         'type=bitsleader',
+        'type=bitsleader&format=Rank+{rank}.+{user}+(score:+{score})',
         'type=followerList&rotator=true',
         'type=subscriberList&rotator=true&rotatorSpeed=9000',
     ],

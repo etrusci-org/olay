@@ -5,6 +5,7 @@ $MODCONF = [
     'sep' => '<br>',
     'rotator' => false,
     'rotatorSpeed' => 2500,
+    'format' => '{rank}. ({score}) {user}'
 ];
 
 $WORKERCONF = [
