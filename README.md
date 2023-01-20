@@ -165,4 +165,10 @@ For modules which accept the `repMap` parameter, these are the number/character 
 4. `0=●, 1=□, 2=◆, 3=■, 4=○, 5=▶, 6=◁, 7=▲, 8=◇, 9=▼`
 5. `0=٠, 1=١, 2=٢, 3=٣, 4=٤, 5=٥, 6=٦, 7=٧, 8=٨, 9=٩`
 
+### Debug info
+
+Add `debug=true` to any parameter url to show the loaded configuration below the module.
+
+E.g. `mod=clock&debug=true`
+
 ---
