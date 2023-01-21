@@ -35,9 +35,9 @@ For demos of the latest release [go there](https://etrusci.org/tool/olay/demo.ph
 
 ## Hosting
 
-You are free to use the version hosted by me. The base URL of the latest release is `https://etrusci.org/tool/olay/?`.
+You can either load it from my server or install it on your own.
 
-You can also point to a specific release by adding the version number to the URL. E.g. for version `1.0.4` you would use the URL `https://etrusci.org/tool/olay/1.0.4/?`. This is for backwards compatibility, e.g. you decide on your own when to use a new Olay version.
+I host the latest public release. The base URL is `https://etrusci.org/tool/olay/?`.
 
 If you prefer to host it yourself and/or create your own modules, see [DEVELOPMENT](./DEVELOPMENT.md).
 
