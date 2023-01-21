@@ -35,9 +35,9 @@ For demos of the latest release [go there](https://etrusci.org/tool/olay/demo.ph
 
 ## Hosting
 
-You are free to use the version hosted by me. The base URL of the latest release is `https://etrusci.org/tool/olay/?`.
+You can either load it from my server or install it on your own.
 
-You can also point to a specific release by adding the version number to the URL. E.g. for version `1.0.4` you would use the URL `https://etrusci.org/tool/olay/1.0.4/?`. This is for backwards compatibility, e.g. you decide on your own when to use a new Olay version.
+I host the latest public release. The base URL is `https://etrusci.org/tool/olay/?`.
 
 If you prefer to host it yourself and/or create your own modules, see [DEVELOPMENT](./DEVELOPMENT.md).
 
@@ -164,5 +164,11 @@ For modules which accept the `repMap` parameter, these are the number/character 
 3. `0=9, 1=8, 2=7, 3=6, 4=5, 5=4, 6=3, 7=2, 8=1, 9=0`
 4. `0=●, 1=□, 2=◆, 3=■, 4=○, 5=▶, 6=◁, 7=▲, 8=◇, 9=▼`
 5. `0=٠, 1=١, 2=٢, 3=٣, 4=٤, 5=٥, 6=٦, 7=٧, 8=٨, 9=٩`
+
+### Debug info
+
+Add `debug=true` to any parameter url to show the loaded configuration below the module.
+
+E.g. `mod=clock&debug=true`
 
 ---

@@ -2,5 +2,9 @@
 _test.*
 _test/
 
+# my symlinked mod rotator items/assets
+app/mod/rotator/assets
+app/mod/rotator/items.json
+
 # Misc
 0000/

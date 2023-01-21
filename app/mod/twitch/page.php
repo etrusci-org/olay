@@ -47,12 +47,12 @@
 
         if (MODCONF.type == 'followerCount') {
             cacheData = await fetchJSON('./mod/twitch/cache/follower.json');
-            output = cacheData.length;
+            output = `${cacheData.length}`;
         }
 
         if (MODCONF.type == 'subscriberCount') {
             cacheData = await fetchJSON('./mod/twitch/cache/subscriber.json');
-            output = cacheData.length;
+            output = `${cacheData.length}`;
         }
 
         if (MODCONF.type == 'profileImage') {
@@ -98,7 +98,11 @@
             cacheData = await fetchJSON('./mod/twitch/cache/bitsleader.json');
             let users = [];
             cacheData.forEach(v => {
-                users.push(`${v.rank}. (${v.score}) ${v.user_name}`);
+                let t = MODCONF.format;
+                t = t.replace('{rank}', v.rank);
+                t = t.replace('{score}', v.score);
+                t = t.replace('{user}', v.user_name);
+                users.push(t);
             });
             if (!MODCONF.rotator) {
                 users = users.join(MODCONF.sep);

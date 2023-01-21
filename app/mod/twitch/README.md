@@ -1,4 +1,4 @@
-# Olay Twitch (WORK IN PROGRESS)
+# Olay Twitch
 
 Fetch and display [Twitch](https://twitch.tv) [API](https://dev.twitch.tv/docs/api/reference) data for your account.  
 
@@ -59,6 +59,8 @@ Default: `false`
 Valid: `true` | `false`  
 Requires: `type=followerList` | `type=subscriberList` | `type=bitsleader`
 
+Due to my incompetence, when initially loaded, the rotator will wait a full `rotatorSpeed` cycle before starting to run.
+
 ### rotatorSpeed
 
 Delay between items if in rotator mode.
@@ -67,6 +69,17 @@ Type: integer (milliseconds)
 Default: `2500`  
 Valid: Integers >= 1  
 Requires: `rotator=true`
+
+### format
+
+Human-readable format template.
+
+Type: string  
+Default: `{rank}. ({score}) {user}`  
+Valid: Any characters except linebreaks  
+Requires: `type=bitsleader`
+
+Available placeholders: `{rank}`, `{score}`, `{user}`
 
 ---
 
