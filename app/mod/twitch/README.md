@@ -59,6 +59,8 @@ Default: `false`
 Valid: `true` | `false`  
 Requires: `type=followerList` | `type=subscriberList` | `type=bitsleader`
 
+Due to my incompetence, when initially loaded, the rotator will wait a full `rotatorSpeed` cycle before starting to run.
+
 ### rotatorSpeed
 
 Delay between items if in rotator mode.
