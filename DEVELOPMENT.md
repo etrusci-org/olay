@@ -13,9 +13,11 @@ For the tinkerers.
 
 ## Install
 
+See if you want to adjust anything in `olay/app/lib/conf.php` first.
+
 Upload the contents of `olay/app/` into a directory on your webserver.
 
-Adjust the directory permissions on `olay/app/log` so your webserver can write to it. To disable logging you can set `LOGDIR` in `olay/app/lib/conf.php` to an empty string.
+Adjust the directory permissions on `olay/app/log/` so your webserver can write to it. To disable logging you can set `LOGDIR` in `olay/app/lib/conf.php` to an empty string.
 
 See if <https://yourserver.org/olay/demo.php> works.
 
