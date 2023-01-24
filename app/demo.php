@@ -8,6 +8,7 @@
     <style>
         body {
             font-family: sans-serif;
+            color: #000;
         }
         code {
             font-family: monospace;
@@ -15,8 +16,8 @@
         body, iframe {
             background: #ccc;
         }
-        body, a {
-            color: #000;
+        a {
+            color: #008;
         }
         iframe {
             display: block;
@@ -30,7 +31,7 @@
     </style>
 </head>
 <body>
-<h1><a href="https://github.com/etrusci-org/olay" target="_blank">Olay</a> demo</h1>
+<h1 title="README"><a href="https://github.com/etrusci-org/olay" target="_blank">Olay</a> demo</h1>
 <hr>
 <?php
 require __DIR__.'/lib/conf.php';
@@ -51,13 +52,13 @@ if ($mod) {
     foreach (DEMOPARAMS as $modHandle => $paramsOverrides) {
         if (!in_array($modHandle, MODREGISTRY)) continue;
         if ($mod && $modHandle != $mod) continue;
-        printf('<h2><a href="https://github.com/etrusci-org/olay/tree/main/app/mod/%1$s" target="_blank">%1$s</a></h2>', $modHandle);
+        printf('<h2 title="README"><a href="https://github.com/etrusci-org/olay/tree/main/app/mod/%1$s" target="_blank">%1$s</a></h2>', $modHandle);
         $paramsOverrides = [ '', ...$paramsOverrides ];
         foreach ($paramsOverrides as $params) {
             $paramsPrefix = sprintf('mod=%s', $modHandle);
             $params = (!$params) ? $paramsPrefix : sprintf('%s&%s', $paramsPrefix, $params);
             printf('
-                <code>%2$s</code><br>
+                <code title="Browser-Source URL"><a href="./?%2$s">%2$s</a></code><br>
                 <iframe class="%1$s" loading="lazy" src="./?demo=true&%2$s"></iframe>',
                 $modHandle,
                 $params,

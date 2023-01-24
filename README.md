@@ -7,14 +7,7 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 - [Modules](#modules)
 - [Hosting](#hosting)
 - [Usage](#usage)
-  - [1. Construct Module URL](#1-construct-module-url)
-  - [2. Add Browser-Source in OBS Studio](#2-add-browser-source-in-obs-studio)
-  - [3. Styling Module Output](#3-styling-module-output)
-  - [4. Customize Module Output](#4-customize-module-output)
 - [Shared Amongst Modules](#shared-amongst-modules)
-  - [updateRate Parameter](#updaterate-parameter)
-  - [Spaces in Parameter Values](#spaces-in-parameter-values)
-  - [Character Replacement Maps](#character-replacement-maps)
 
 ---
 
