@@ -111,4 +111,9 @@ Usually you only need the `MODCONF` and `MODOUTPUT` constants in JavaScript, but
 - var `$MODCONF` (array) Module configuration with parsed URL query parameters.
 - var `$MODCONFJSON` (string) Same as `$MODCONF` but in JSON format.
 
+**Module URLs:**
+
+Add `debug=true` to any module query parameters to show the loaded configuration below the output.  
+E.g. `mod=clock&debug=true`
+
 ---

@@ -4,13 +4,6 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 
 ---
 
-- [Modules](#modules)
-- [Hosting](#hosting)
-- [Usage](#usage)
-- [Shared Amongst Modules](#shared-amongst-modules)
-
----
-
 ## Modules
 
 - [Clock](./app/mod/clock/)
@@ -70,9 +63,9 @@ body {
     margin: 0;
     padding: 0;
     border: 0;
-    overflow: hidden;
     min-width: 100vw;
     min-height: 100vh;
+    overflow: hidden;
 
     /* Basic style */
     font-family: sans-serif;
@@ -160,7 +153,7 @@ For modules which accept the `repMap` parameter, these are the number/character 
 
 ### Debug info
 
-Add `debug=true` to any parameter url to show the loaded configuration below the module.
+Add `debug=true` to any module url to show the loaded configuration below the output.
 
 E.g. `mod=clock&debug=true`
 

@@ -31,7 +31,10 @@
     </style>
 </head>
 <body>
-<h1 title="README"><a href="https://github.com/etrusci-org/olay" target="_blank">Olay</a> demo</h1>
+<h1 title="README">
+    <a href="https://github.com/etrusci-org/olay" target="_blank">Olay</a> demo
+    <img src="https://img.shields.io/github/v/release/etrusci-org/olay?label=latest+release" alt="GitHub release">
+</h1>
 <hr>
 <?php
 require __DIR__.'/lib/conf.php';
