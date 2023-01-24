@@ -42,8 +42,9 @@ while (true) {
 
         $apiData = $apiData['data'];
 
+        print(date('Y-m-d H:i:s').' '.$commandKey.' -> "'.$cacheFile.'"'.PHP_EOL);
+
         if ($commandKey == 'user') {
-            print(date('Y-m-d H:i:s').' '.$commandKey.' -> "'.$cacheFile.'"'.PHP_EOL);
             $cacheData = [
                 'broadcaster_type' => $apiData[0]['broadcaster_type'],
                 'created_at' => date('Y-m-d H:i:s', strtotime($apiData[0]['created_at'])),
@@ -54,7 +55,6 @@ while (true) {
         }
 
         if ($commandKey == 'channel') {
-            print(date('Y-m-d H:i:s').' '.$commandKey.' -> "'.$cacheFile.'"'.PHP_EOL);
             $cacheData = [
                 'title' => $apiData[0]['title'],
                 'game_name' => $apiData[0]['game_name'],
@@ -62,7 +62,6 @@ while (true) {
         }
 
         if ($commandKey == 'follower') {
-            print(date('Y-m-d H:i:s').' '.$commandKey.' -> "'.$cacheFile.'"'.PHP_EOL);
             foreach ($apiData as $v) {
                 $cacheData[] = [
                     'followed_at' => date('Y-m-d H:i:s', strtotime($v['followed_at'])),
@@ -72,7 +71,6 @@ while (true) {
         }
 
         if ($commandKey == 'subscriber') {
-            print(date('Y-m-d H:i:s').' '.$commandKey.' -> "'.$cacheFile.'"'.PHP_EOL);
 
             $userCacheFile = sprintf($cacheFilePattern, 'user');
             $userCacheData = file_get_contents($userCacheFile);
@@ -91,11 +89,19 @@ while (true) {
         }
 
         if ($commandKey == 'bitsleader') {
-            print(date('Y-m-d H:i:s').' '.$commandKey.' -> "'.$cacheFile.'"'.PHP_EOL);
             foreach ($apiData as $v) {
                 $cacheData[] = [
                     'rank' => $v['rank'],
                     'score' => $v['score'],
+                    'user_name' => $v['user_name'],
+                ];
+            }
+        }
+
+        if ($commandKey == 'chatter') {
+            foreach ($apiData as $v) {
+                $cacheData[] = [
+                    'user_login' => $v['user_login'],
                     'user_name' => $v['user_name'],
                 ];
             }

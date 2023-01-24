@@ -13,7 +13,8 @@
         (
             MODCONF.type == 'followerList' ||
             MODCONF.type == 'subscriberList' ||
-            MODCONF.type == 'bitsleader'
+            MODCONF.type == 'bitsleader' ||
+            MODCONF.type == 'chatterList'
         )
     ) {
         MODOUTPUT.innerHTML = `${MODCONF.type} rotator loading...`;
@@ -103,6 +104,28 @@
                 t = t.replace('{score}', v.score);
                 t = t.replace('{user}', v.user_name);
                 users.push(t);
+            });
+            if (!MODCONF.rotator) {
+                users = users.join(MODCONF.sep);
+                output = users;
+            }
+            else {
+                if (queue.length == 0) {
+                    queue = [...users];
+                }
+            }
+        }
+
+        if (MODCONF.type == 'chatterCount') {
+            cacheData = await fetchJSON('./mod/twitch/cache/chatter.json');
+            output = `${cacheData.length}`;
+        }
+
+        if (MODCONF.type == 'chatterList') {
+            cacheData = await fetchJSON('./mod/twitch/cache/chatter.json');
+            let users = [];
+            cacheData.forEach(v => {
+                users.push(v.user_name);
             });
             if (!MODCONF.rotator) {
                 users = users.join(MODCONF.sep);

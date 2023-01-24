@@ -55,6 +55,9 @@ const DEMOPARAMS = [
         'type=bitsleader&format=Rank+{rank}.+{user}+(score:+{score})',
         'type=followerList&rotator=true',
         'type=subscriberList&rotator=true&rotatorSpeed=9000',
+        'type=chatterCount',
+        'type=chatterList',
+        'type=chatterList&rotator=true&rotatorSpeed=2000',
     ],
     'uptime' => [
         'pad=true',
