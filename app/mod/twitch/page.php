@@ -161,6 +161,11 @@
             }
         }
 
+        if (MODCONF.type == 'goal') {
+            cacheData = await fetchJSON('./mod/twitch/cache/goal.json');
+            output = `${cacheData.current_amount}${MODCONF.sep}${cacheData.target_amount}`;
+        }
+
         if (output) {
             MODOUTPUT.innerHTML = output;
         }

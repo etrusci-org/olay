@@ -120,6 +120,16 @@ while (true) {
             }
         }
 
+        if ($commandKey == 'goal') {
+            $cacheData = [
+                'created_at' => date('Y-m-d H:i:s', strtotime($apiData[0]['created_at'])),
+                'type' => $apiData[0]['type'],
+                'current_amount' => $apiData[0]['current_amount'],
+                'target_amount' => $apiData[0]['target_amount'],
+                'description' => $apiData[0]['description'],
+            ];
+        }
+
         $cacheData = json_encode($cacheData, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
         file_put_contents($cacheFile, $cacheData, LOCK_EX);
 

@@ -29,7 +29,7 @@ Which type of data to load.
 
 Type: string  
 Default: `followerCount`  
-Valid: `streamTitle` | `streamCategory` | `followerCount` | `subscriberCount` | `profileImage` | `followerList` | `subscriberList` | `bitleader` | `chatterCount` | `chatterList` | `bannedCount` | `bannedList`
+Valid: `streamTitle` | `streamCategory` | `followerCount` | `subscriberCount` | `profileImage` | `followerList` | `subscriberList` | `bitleader` | `chatterCount` | `chatterList` | `bannedCount` | `bannedList` | `goal`
 
 Type description:
 - `streamTitle`: Stream title
@@ -44,6 +44,7 @@ Type description:
 - `chatterList`: Chatter list
 - `bannedCount`: Banned users count
 - `bannedList`: Banned users list
+- `goal`: Current goal stats
 
 ### sep
 
@@ -52,7 +53,7 @@ Separator for lists.
 Type: string  
 Default: `<br>`  
 Valid: Any characters except linebreaks  
-Requires: `rotator=false` & (`type=followerList` | `type=subscriberList` | `type=bitleader` | `type=chatterList` | `type=bannedList`)
+Requires: `rotator=false` & (`type=followerList` | `type=subscriberList` | `type=bitleader` | `type=chatterList` | `type=bannedList` | `type=goal`)
 
 ### rotator
 
@@ -122,7 +123,7 @@ Valid: Integers >= 1
 Get user info.
 
 Type: string  
-Default: `api get users --unformatted --autopaginate -q login=spartalien`  
+Default: `api get /users --unformatted --autopaginate -q login=spartalien`  
 Valid: Twitch CLI command
 
 ### commands.channel
@@ -138,7 +139,7 @@ Valid: Twitch CLI command
 Get followers list.
 
 Type: string  
-Default: `api get users follows --unformatted --autopaginate -q to_id=540195916`  
+Default: `api get /users/follows --unformatted --autopaginate -q to_id=540195916`  
 Valid: Twitch CLI command
 
 ### commands.subscriber
@@ -163,6 +164,22 @@ Get chatters list.
 
 Type: string  
 Default: `api get /chat/chatters --unformatted --autopaginate -q broadcaster_id=540195916 -q moderator_id=540195916`  
+Valid: Twitch CLI command
+
+### commands.banned
+
+Get banned chatters list.
+
+Type: string  
+Default: `api get /moderation/banned --unformatted --autopaginate -q broadcaster_id=540195916`  
+Valid: Twitch CLI command
+
+### commands.goal
+
+Get current goal.
+
+Type: string  
+Default: `api get /goals --unformatted --autopaginate -q broadcaster_id=540195916`  
 Valid: Twitch CLI command
 
 ---

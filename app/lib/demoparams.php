@@ -46,6 +46,8 @@ const DEMOPARAMS = [
         'type=streamTitle',
         'type=streamCategory',
         'type=profileImage',
+        'type=goal',
+        'type=goal&sep=+/+',
         'type=followerCount',
         'type=followerList',
         'type=followerList&sep=+/+',
@@ -61,7 +63,6 @@ const DEMOPARAMS = [
         'type=bannedCount',
         'type=bannedList',
         'type=bannedList&rotator=true&rotatorSpeed=2000',
-
     ],
     'uptime' => [
         'pad=true',
