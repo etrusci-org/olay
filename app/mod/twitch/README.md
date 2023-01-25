@@ -29,7 +29,7 @@ Which type of data to load.
 
 Type: string  
 Default: `followerCount`  
-Valid: `streamTitle` | `streamCategory` | `followerCount` | `subscriberCount` | `profileImage` | `followerList` | `subscriberList` | `bitsleader`
+Valid: `streamTitle` | `streamCategory` | `followerCount` | `subscriberCount` | `profileImage` | `followerList` | `subscriberList` | `bitleader`
 
 Type description:
 - `streamTitle`: Stream title
@@ -39,7 +39,7 @@ Type description:
 - `profileImage`: Profile image
 - `followerList`: Follower list
 - `subscriberList`: Subscriber list
-- `bitsleader`: Bits leaderboard list
+- `bitleader`: Bits leaderboard list
 
 ### sep
 
@@ -48,7 +48,7 @@ Separator for lists.
 Type: string  
 Default: `<br>`  
 Valid: Any characters except linebreaks  
-Requires: `rotator=false` & (`type=followerList` | `type=subscriberList` | `type=bitsleader`)
+Requires: `rotator=false` & (`type=followerList` | `type=subscriberList` | `type=bitleader`)
 
 ### rotator
 
@@ -57,7 +57,7 @@ Rotate through data items instead of displaying them all at once.
 Type: boolean  
 Default: `false`  
 Valid: `true` | `false`  
-Requires: `type=followerList` | `type=subscriberList` | `type=bitsleader`
+Requires: `type=followerList` | `type=subscriberList` | `type=bitleader`
 
 Due to my incompetence, when initially loaded, the rotator will wait a full `rotatorSpeed` cycle before starting to run.
 
@@ -77,7 +77,7 @@ Human-readable format template.
 Type: string  
 Default: `{rank}. ({score}) {user}`  
 Valid: Any characters except linebreaks  
-Requires: `type=bitsleader`
+Requires: `type=bitleader`
 
 Available placeholders: `{rank}`, `{score}`, `{user}`
 
@@ -145,7 +145,7 @@ Type: string
 Default: `api get /subscriptions --unformatted --autopaginate -q broadcaster_id=540195916`  
 Valid: Twitch CLI command
 
-### commands.bitsleader
+### commands.bitleader
 
 Get bits leaderboard list.
 

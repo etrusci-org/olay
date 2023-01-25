@@ -88,7 +88,7 @@ while (true) {
             }
         }
 
-        if ($commandKey == 'bitsleader') {
+        if ($commandKey == 'bitleader') {
             foreach ($apiData as $v) {
                 $cacheData[] = [
                     'rank' => $v['rank'],

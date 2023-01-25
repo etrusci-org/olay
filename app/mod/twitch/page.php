@@ -13,7 +13,7 @@
         (
             MODCONF.type == 'followerList' ||
             MODCONF.type == 'subscriberList' ||
-            MODCONF.type == 'bitsleader' ||
+            MODCONF.type == 'bitleader' ||
             MODCONF.type == 'chatterList'
         )
     ) {
@@ -95,8 +95,8 @@
             }
         }
 
-        if (MODCONF.type == 'bitsleader') {
-            cacheData = await fetchJSON('./mod/twitch/cache/bitsleader.json');
+        if (MODCONF.type == 'bitleader') {
+            cacheData = await fetchJSON('./mod/twitch/cache/bitleader.json');
             let users = [];
             cacheData.forEach(v => {
                 let t = MODCONF.format;

@@ -18,7 +18,7 @@ $WORKERCONF = [
         'channel' => 'api get /channels --unformatted --autopaginate -q broadcaster_id=540195916',
         'follower' => 'api get users follows --unformatted --autopaginate -q to_id=540195916',
         'subscriber' => 'api get /subscriptions --unformatted --autopaginate -q broadcaster_id=540195916',
-        'bitsleader' => 'api get /bits/leaderboard --unformatted --autopaginate -q period=all -q count=100',
+        'bitleader' => 'api get /bits/leaderboard --unformatted --autopaginate -q period=all -q count=100',
         'chatter' => 'api get /chat/chatters --unformatted --autopaginate -q broadcaster_id=540195916 -q moderator_id=540195916',
     ],
 ];
