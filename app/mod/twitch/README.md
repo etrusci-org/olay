@@ -29,7 +29,7 @@ Which type of data to load.
 
 Type: string  
 Default: `followerCount`  
-Valid: `streamTitle` | `streamCategory` | `followerCount` | `subscriberCount` | `profileImage` | `followerList` | `subscriberList` | `bitleader` | `chatter`
+Valid: `streamTitle` | `streamCategory` | `followerCount` | `subscriberCount` | `profileImage` | `followerList` | `subscriberList` | `bitleader` | `chatterCount` | `chatterList` | `bannedCount` | `bannedList`
 
 Type description:
 - `streamTitle`: Stream title
@@ -40,7 +40,10 @@ Type description:
 - `followerList`: Follower list
 - `subscriberList`: Subscriber list
 - `bitleader`: Bits leaderboard list
-- `chatter`: Chatter list
+- `chatterCount`: Chatter count
+- `chatterList`: Chatter list
+- `bannedCount`: Banned users count
+- `bannedList`: Banned users list
 
 ### sep
 
@@ -49,7 +52,7 @@ Separator for lists.
 Type: string  
 Default: `<br>`  
 Valid: Any characters except linebreaks  
-Requires: `rotator=false` & (`type=followerList` | `type=subscriberList` | `type=bitleader` | `type=chatterList`)
+Requires: `rotator=false` & (`type=followerList` | `type=subscriberList` | `type=bitleader` | `type=chatterList` | `type=bannedList`)
 
 ### rotator
 
@@ -58,7 +61,7 @@ Rotate through data items instead of displaying them all at once.
 Type: boolean  
 Default: `false`  
 Valid: `true` | `false`  
-Requires: `type=followerList` | `type=subscriberList` | `type=bitleader` | `type=chatterList`
+Requires: `type=followerList` | `type=subscriberList` | `type=bitleader` | `type=chatterList` | `type=bannedList`
 
 Due to my incompetence, when initially loaded, the rotator will wait a full `rotatorSpeed` cycle before starting to run.
 
@@ -165,8 +168,6 @@ Valid: Twitch CLI command
 ---
 
 ## Worker Usage
-
-
 
 Make the worker file executable:
 
