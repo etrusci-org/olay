@@ -63,6 +63,8 @@ const DEMOPARAMS = [
         'type=bannedCount',
         'type=bannedList',
         'type=bannedList&rotator=true&rotatorSpeed=2000',
+        'type=emoteList',
+        'type=emoteList&rotator=true&rotatorSpeed=5000',
     ],
     'uptime' => [
         'pad=true',

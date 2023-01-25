@@ -29,7 +29,7 @@ Which type of data to load.
 
 Type: string  
 Default: `followerCount`  
-Valid: `streamTitle` | `streamCategory` | `followerCount` | `subscriberCount` | `profileImage` | `followerList` | `subscriberList` | `bitleader` | `chatterCount` | `chatterList` | `bannedCount` | `bannedList` | `goal`
+Valid: `streamTitle` | `streamCategory` | `followerCount` | `subscriberCount` | `profileImage` | `followerList` | `subscriberList` | `bitleader` | `chatterCount` | `chatterList` | `bannedCount` | `bannedList` | `goal` | `emoteList`
 
 Type description:
 - `streamTitle`: Stream title
@@ -45,6 +45,7 @@ Type description:
 - `bannedCount`: Banned users count
 - `bannedList`: Banned users list
 - `goal`: Current goal stats
+- `emoteList`: Channel emote images list
 
 ### sep
 
@@ -62,7 +63,7 @@ Rotate through data items instead of displaying them all at once.
 Type: boolean  
 Default: `false`  
 Valid: `true` | `false`  
-Requires: `type=followerList` | `type=subscriberList` | `type=bitleader` | `type=chatterList` | `type=bannedList`
+Requires: `type=followerList` | `type=subscriberList` | `type=bitleader` | `type=chatterList` | `type=bannedList` | `type=emoteList`
 
 Due to my incompetence, when initially loaded, the rotator will wait a full `rotatorSpeed` cycle before starting to run.
 
@@ -180,6 +181,14 @@ Get current goal.
 
 Type: string  
 Default: `api get /goals --unformatted --autopaginate -q broadcaster_id=540195916`  
+Valid: Twitch CLI command
+
+### commands.emote
+
+Get channel emotes.
+
+Type: string  
+Default: `api get /chat/emotes --unformatted --autopaginate -q broadcaster_id=540195916`  
 Valid: Twitch CLI command
 
 ---

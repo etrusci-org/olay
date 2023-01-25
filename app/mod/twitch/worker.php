@@ -121,13 +121,40 @@ while (true) {
         }
 
         if ($commandKey == 'goal') {
-            $cacheData = [
-                'created_at' => date('Y-m-d H:i:s', strtotime($apiData[0]['created_at'])),
-                'type' => $apiData[0]['type'],
-                'current_amount' => $apiData[0]['current_amount'],
-                'target_amount' => $apiData[0]['target_amount'],
-                'description' => $apiData[0]['description'],
-            ];
+            if (!$apiData) {
+                $cacheData = [
+                    'created_at' => null,
+                    'type' => null,
+                    'current_amount' => null,
+                    'target_amount' => null,
+                    'description' => null,
+                ];
+            }
+            else {
+                $cacheData = [
+                    'created_at' => date('Y-m-d H:i:s', strtotime($apiData[0]['created_at'])),
+                    'type' => $apiData[0]['type'],
+                    'current_amount' => $apiData[0]['current_amount'],
+                    'target_amount' => $apiData[0]['target_amount'],
+                    'description' => $apiData[0]['description'],
+                ];
+            }
+        }
+
+        if ($commandKey == 'emote') {
+            foreach ($apiData as $v) {
+                $cacheData[] = [
+                    'name' => $v['name'],
+                    'emote_type' => $v['emote_type'],
+                    'tier' => $v['tier'],
+                    'image_url' => sprintf('https://static-cdn.jtvnw.net/emoticons/v2/%1$s/%2$s/%3$s/%4$s',
+                        $v['id'],
+                        (in_array('animated', $v['format'])) ? 'animated' : $v['format'][0],
+                        end($v['theme_mode']),
+                        end($v['scale']),
+                    ),
+                ];
+            }
         }
 
         $cacheData = json_encode($cacheData, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);

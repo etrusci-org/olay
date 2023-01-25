@@ -15,7 +15,8 @@
             MODCONF.type == 'subscriberList' ||
             MODCONF.type == 'bitleader' ||
             MODCONF.type == 'chatterList' ||
-            MODCONF.type == 'bannedList'
+            MODCONF.type == 'bannedList' ||
+            MODCONF.type == 'emoteList'
         )
     ) {
         MODOUTPUT.innerHTML = `${MODCONF.type} rotator loading...`;
@@ -164,6 +165,30 @@
         if (MODCONF.type == 'goal') {
             cacheData = await fetchJSON('./mod/twitch/cache/goal.json');
             output = `${cacheData.current_amount}${MODCONF.sep}${cacheData.target_amount}`;
+        }
+
+        if (MODCONF.type == 'emoteList') {
+            cacheData = await fetchJSON('./mod/twitch/cache/emote.json');
+            let emotes = [];
+            cacheData.forEach(v => {
+                emotes.push(`
+                    <div class="emote">
+                        <div class="img"><img src="${v.image_url}"></div>
+                        <div class="name">${v.name}</div>
+                    </div>`);
+            });
+
+            if (!MODCONF.rotator) {
+                emotes = emotes.join('');
+                output = emotes;
+            }
+            else {
+                if (queue.length == 0) {
+                    queue = [...emotes];
+                }
+            }
+
+            // output = `<img src="${cacheData.profile_image_url}">`;
         }
 
         if (output) {

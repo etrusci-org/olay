@@ -22,5 +22,6 @@ $WORKERCONF = [
         'chatter' => 'api get /chat/chatters --unformatted --autopaginate -q broadcaster_id=540195916 -q moderator_id=540195916',
         'banned' => 'api get /moderation/banned --unformatted --autopaginate -q broadcaster_id=540195916',
         'goal' => 'api get /goals --unformatted --autopaginate -q broadcaster_id=540195916',
+        'emote' => 'api get /chat/emotes --unformatted --autopaginate -q broadcaster_id=540195916',
     ],
 ];
