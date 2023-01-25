@@ -107,6 +107,19 @@ while (true) {
             }
         }
 
+        if ($commandKey == 'banned') {
+            foreach ($apiData as $v) {
+                $cacheData[] = [
+                    'created_at' => date('Y-m-d H:i:s', strtotime($v['created_at'])),
+                    'moderator_login' => $v['moderator_login'],
+                    'moderator_name' => $v['moderator_name'],
+                    'reason' => $v['reason'],
+                    'user_login' => $v['user_login'],
+                    'user_name' => $v['user_name'],
+                ];
+            }
+        }
+
         $cacheData = json_encode($cacheData, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
         file_put_contents($cacheFile, $cacheData, LOCK_EX);
 

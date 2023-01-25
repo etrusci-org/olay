@@ -14,7 +14,8 @@
             MODCONF.type == 'followerList' ||
             MODCONF.type == 'subscriberList' ||
             MODCONF.type == 'bitleader' ||
-            MODCONF.type == 'chatterList'
+            MODCONF.type == 'chatterList' ||
+            MODCONF.type == 'bannedList'
         )
     ) {
         MODOUTPUT.innerHTML = `${MODCONF.type} rotator loading...`;
@@ -126,6 +127,28 @@
             let users = [];
             cacheData.forEach(v => {
                 users.push(v.user_name);
+            });
+            if (!MODCONF.rotator) {
+                users = users.join(MODCONF.sep);
+                output = users;
+            }
+            else {
+                if (queue.length == 0) {
+                    queue = [...users];
+                }
+            }
+        }
+
+        if (MODCONF.type == 'bannedCount') {
+            cacheData = await fetchJSON('./mod/twitch/cache/banned.json');
+            output = `${cacheData.length}`;
+        }
+
+        if (MODCONF.type == 'bannedList') {
+            cacheData = await fetchJSON('./mod/twitch/cache/banned.json');
+            let users = [];
+            cacheData.forEach(v => {
+                users.push(v.user_login);
             });
             if (!MODCONF.rotator) {
                 users = users.join(MODCONF.sep);
