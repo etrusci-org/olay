@@ -90,7 +90,7 @@ The relevant HTML in which each module is wrapped in looks like this:
 </div>
 ```
 
-Here are two CSS examples to copy & paste:
+Here are some CSS examples to copy & paste:
 
 ```css
 /* Styles for the whole module page - this is most probably what you want */
@@ -122,8 +122,18 @@ div.mod {
 }
 ```
 
-New to CSS? Checkout the [CSS Docs](https://developer.mozilla.org/en-US/docs/Web/CSS).  
-Need a color picker, [click here](https://duckduckgo.com/?t=ffab&q=color+picker&ia=answer).
+```css
+/* Add a prefix and/or suffix */
+div.mod:before {
+    content: 'My Prefix: ';
+}
+
+div.mod:after {
+    content: '...My Suffix';
+}
+```
+
+([CSS Docs](https://developer.mozilla.org/en-US/docs/Web/CSS), [Color Picker](https://duckduckgo.com/?t=ffab&q=color+picker&ia=answer))
 
 ### 4. Customize Module Output
 
