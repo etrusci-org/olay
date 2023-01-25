@@ -19,6 +19,10 @@
         a {
             color: #008;
         }
+        a[href*="/?mod="]:hover:after,
+        a[href*="/?mod="]:focus:after {
+            content: '↗';
+        }
         iframe {
             display: block;
             width: 30rem;
