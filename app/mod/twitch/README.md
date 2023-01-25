@@ -29,7 +29,7 @@ Which type of data to load.
 
 Type: string  
 Default: `followerCount`  
-Valid: `streamTitle` | `streamCategory` | `followerCount` | `subscriberCount` | `profileImage` | `followerList` | `subscriberList` | `bitleader`
+Valid: `streamTitle` | `streamCategory` | `followerCount` | `subscriberCount` | `profileImage` | `followerList` | `subscriberList` | `bitleader` | `chatter`
 
 Type description:
 - `streamTitle`: Stream title
@@ -40,6 +40,7 @@ Type description:
 - `followerList`: Follower list
 - `subscriberList`: Subscriber list
 - `bitleader`: Bits leaderboard list
+- `chatter`: Chatter list
 
 ### sep
 
@@ -48,7 +49,7 @@ Separator for lists.
 Type: string  
 Default: `<br>`  
 Valid: Any characters except linebreaks  
-Requires: `rotator=false` & (`type=followerList` | `type=subscriberList` | `type=bitleader`)
+Requires: `rotator=false` & (`type=followerList` | `type=subscriberList` | `type=bitleader` | `type=chatterList`)
 
 ### rotator
 
@@ -57,7 +58,7 @@ Rotate through data items instead of displaying them all at once.
 Type: boolean  
 Default: `false`  
 Valid: `true` | `false`  
-Requires: `type=followerList` | `type=subscriberList` | `type=bitleader`
+Requires: `type=followerList` | `type=subscriberList` | `type=bitleader` | `type=chatterList`
 
 Due to my incompetence, when initially loaded, the rotator will wait a full `rotatorSpeed` cycle before starting to run.
 
@@ -151,6 +152,14 @@ Get bits leaderboard list.
 
 Type: string  
 Default: `api get /bits/leaderboard --unformatted --autopaginate -q period=all -q count=100`  
+Valid: Twitch CLI command
+
+### commands.chatter
+
+Get chatters list.
+
+Type: string  
+Default: `api get /chat/chatters --unformatted --autopaginate -q broadcaster_id=540195916 -q moderator_id=540195916`  
 Valid: Twitch CLI command
 
 ---
