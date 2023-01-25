@@ -1,7 +1,7 @@
 <?php
 const MODDIR = __DIR__.'/../mod/';
 const TPLDIR = __DIR__.'/../tpl/';
-const LOGDIR = __DIR__.'/../log/';
+const LOGDIR = '';
 const APPTIMEZONE = 'UTC';
 const MODREGISTRY = [
     'examplemod',
