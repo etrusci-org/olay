@@ -1,10 +1,14 @@
+<?php
+require __DIR__.'/lib/conf.php';
+require __DIR__.'/lib/demoparams.php';
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olay demo</title>
+    <title>Olay <?php print(APPVERSION); ?> Demo</title>
     <style>
         body {
             font-family: sans-serif;
@@ -36,14 +40,12 @@
 </head>
 <body>
 <h1 title="README">
-    <a href="https://github.com/etrusci-org/olay" target="_blank">Olay</a> demo
-    <img src="https://img.shields.io/github/v/release/etrusci-org/olay?label=latest+release" alt="GitHub release">
+    <a href="https://github.com/etrusci-org/olay#readme" target="_blank">Olay</a>
+    <?php print(APPVERSION); ?>
+    Demo
 </h1>
 <hr>
 <?php
-require __DIR__.'/lib/conf.php';
-require __DIR__.'/lib/demoparams.php';
-
 $mod = null;
 if (isset($_GET['mod'])) {
     $mod = trim($_GET['mod']);
@@ -59,7 +61,7 @@ if ($mod) {
     foreach (DEMOPARAMS as $modHandle => $paramsOverrides) {
         if (!in_array($modHandle, MODREGISTRY)) continue;
         if ($mod && $modHandle != $mod) continue;
-        printf('<h2 title="README"><a href="https://github.com/etrusci-org/olay/tree/main/app/mod/%1$s" target="_blank">%1$s</a></h2>', $modHandle);
+        printf('<h2 title="README"><a href="https://github.com/etrusci-org/olay/tree/main/app/mod/%1$s#readme" target="_blank">%1$s</a></h2>', $modHandle);
         $paramsOverrides = [ '', ...$paramsOverrides ];
         foreach ($paramsOverrides as $params) {
             $paramsPrefix = sprintf('mod=%s', $modHandle);

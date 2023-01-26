@@ -22,7 +22,8 @@ body {
 
 /* App stuff */
 .error {
-    padding: 3px;
+    display: inline-block;
+    padding: 5px;
     background: #2b0000;
 }
 

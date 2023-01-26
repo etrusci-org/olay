@@ -1,4 +1,5 @@
 <?php
+const APPVERSION = 'v1.36.49-dev';
 const MODDIR = __DIR__.'/../mod/';
 const TPLDIR = __DIR__.'/../tpl/';
 const LOGDIR = '';

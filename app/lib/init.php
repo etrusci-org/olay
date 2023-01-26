@@ -8,10 +8,12 @@ function boo(string $message = 'something went wrong', int $code = 1): void {
     include TPLDIR.'header.php';
     printf('
         <div class="error">
-            ERROR: %1$s<br>
-            For help go to: <a href="https://github.com/etrusci-org/olay">github.com/etrusci-org/olay</a>
+            Olay %1$s<br>
+            <strong>ERROR: %2$s</strong><br>
+            <a href="https://github.com/etrusci-org/olay#readme">README</a>
         </div>',
-        $message
+        APPVERSION,
+        $message,
     );
     include TPLDIR.'footer.php';
     exit($code);
@@ -126,6 +128,7 @@ if (!isset($_GET['demo']) && LOGDIR) {
     $ogLine = implode('|', [
         date('Y-m-d H:i:s e'),
         microtime(true),
+        APPVERSION,
         $client,
         $_SERVER['QUERY_STRING'],
     ]);
