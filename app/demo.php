@@ -67,7 +67,7 @@ if ($mod) {
             $paramsPrefix = sprintf('mod=%s', $modHandle);
             $params = (!$params) ? $paramsPrefix : sprintf('%s&%s', $paramsPrefix, $params);
             printf('
-                <code title="Browser-Source URL"><a href="./?%2$s">%2$s</a></code><br>
+                <code title="Browser-Source URL"><a href="./?%2$s" target="_blank">%2$s</a></code><br>
                 <iframe class="%1$s" loading="lazy" src="./?demo=true&%2$s"></iframe>',
                 $modHandle,
                 $params,
