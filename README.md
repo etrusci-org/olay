@@ -23,7 +23,7 @@ For demos of the latest release [go there](https://etrusci.org/tool/olay/demo.ph
 
 You can either load it from my server or install it on your own.
 
-I host the latest public release. The base URL is `https://etrusci.org/tool/olay/?`.
+I host the [latest public release](https://github.com/etrusci-org/olay/releases). The base URL is `https://etrusci.org/tool/olay/?`.
 
 If you prefer to host it yourself and/or create your own modules, see [DEVELOPMENT](./DEVELOPMENT.md).
 
