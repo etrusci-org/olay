@@ -177,7 +177,6 @@
                         <div class="name">${v.name}</div>
                     </div>`);
             });
-
             if (!MODCONF.rotator) {
                 emotes = emotes.join('');
                 output = emotes;
@@ -187,8 +186,6 @@
                     queue = [...emotes];
                 }
             }
-
-            // output = `<img src="${cacheData.profile_image_url}">`;
         }
 
         if (output) {

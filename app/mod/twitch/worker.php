@@ -71,11 +71,9 @@ while (true) {
         }
 
         if ($commandKey == 'subscriber') {
-
             $userCacheFile = sprintf($cacheFilePattern, 'user');
             $userCacheData = file_get_contents($userCacheFile);
             $userCacheData = json_decode($userCacheData, true);
-
             foreach ($apiData as $v) {
                 if (strtolower($v['user_name']) == strtolower($userCacheData['display_name'])) {
                     continue;

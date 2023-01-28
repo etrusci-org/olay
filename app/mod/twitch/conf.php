@@ -13,7 +13,7 @@ $WORKERCONF = [
     'commandsUpdateRate' => 900,
     'commandsDelay' => 5,
     'commands' => [
-        // token scopes needed: "bits:read channel:read:subscriptions channel:read:goals moderation:read moderator:read:chatters"
+        // you can comment-out those you don't need
         'user' => 'api get /users --unformatted --autopaginate -q login=spartalien',
         'channel' => 'api get /channels --unformatted --autopaginate -q broadcaster_id=540195916',
         'follower' => 'api get /users/follows --unformatted --autopaginate -q to_id=540195916',
