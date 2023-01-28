@@ -58,6 +58,7 @@ while (true) {
             $cacheData = [
                 'title' => $apiData[0]['title'],
                 'game_name' => $apiData[0]['game_name'],
+                'tags' => $apiData[0]['tags'],
             ];
         }
 
