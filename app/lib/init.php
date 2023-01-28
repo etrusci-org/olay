@@ -10,6 +10,7 @@ function boo(string $message = 'something went wrong', int $code = 1): void {
         <div class="error">
             Olay %1$s<br>
             <strong>ERROR: %2$s</strong><br>
+            <a href="./demo.php">DEMO</a> |
             <a href="https://github.com/etrusci-org/olay#readme">README</a>
         </div>',
         APPVERSION,
