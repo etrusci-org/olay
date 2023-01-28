@@ -121,15 +121,18 @@ Valid: Integers >= 1
 
 ### commands.user
 
-Get user info.
+Get user info.  
+[API Doc](https://dev.twitch.tv/docs/api/reference/#get-users).
 
 Type: string  
 Default: `api get /users --unformatted --autopaginate -q login=spartalien`  
 Valid: Twitch CLI command
 
+
 ### commands.channel
 
-Get channel info.
+Get channel info.  
+[API Doc](https://dev.twitch.tv/docs/api/reference/#get-channel-information).
 
 Type: string  
 Default: `api get /channels --unformatted --autopaginate -q broadcaster_id=540195916`  
@@ -137,7 +140,8 @@ Valid: Twitch CLI command
 
 ### commands.follower
 
-Get followers list.
+Get followers list.  
+[API Doc](https://dev.twitch.tv/docs/api/reference/#get-users-follows).
 
 Type: string  
 Default: `api get /users/follows --unformatted --autopaginate -q to_id=540195916`  
@@ -145,7 +149,9 @@ Valid: Twitch CLI command
 
 ### commands.subscriber
 
-Get subscribers list.
+Get subscribers list.  
+Requires access token scope `channel:read:subscriptions`.  
+[API Doc](https://dev.twitch.tv/docs/api/reference/.#get-broadcaster-subscriptions)
 
 Type: string  
 Default: `api get /subscriptions --unformatted --autopaginate -q broadcaster_id=540195916`  
@@ -153,7 +159,9 @@ Valid: Twitch CLI command
 
 ### commands.bitleader
 
-Get bits leaderboard list.
+Get bits leaderboard list.  
+Requires access token scope `bits:read`.  
+[API Doc](https://dev.twitch.tv/docs/api/reference/#get-bits-leaderboard).
 
 Type: string  
 Default: `api get /bits/leaderboard --unformatted --autopaginate -q period=all -q count=100`  
@@ -161,7 +169,9 @@ Valid: Twitch CLI command
 
 ### commands.chatter
 
-Get chatters list.
+Get chatters list.  
+Requires access token scope `moderator:read:chatters`.  
+[API Doc](https://dev.twitch.tv/docs/api/reference/#get-chatters).
 
 Type: string  
 Default: `api get /chat/chatters --unformatted --autopaginate -q broadcaster_id=540195916 -q moderator_id=540195916`  
@@ -169,7 +179,9 @@ Valid: Twitch CLI command
 
 ### commands.banned
 
-Get banned chatters list.
+Get banned chatters list.  
+Requires access token scope `moderation:read`.  
+[API Doc](https://dev.twitch.tv/docs/api/reference/#get-banned-users).
 
 Type: string  
 Default: `api get /moderation/banned --unformatted --autopaginate -q broadcaster_id=540195916`  
@@ -177,7 +189,9 @@ Valid: Twitch CLI command
 
 ### commands.goal
 
-Get current goal.
+Get current goal.  
+Requires access token scope `channel:read:goals`.  
+[API Doc](https://dev.twitch.tv/docs/api/reference/#get-creator-goals).
 
 Type: string  
 Default: `api get /goals --unformatted --autopaginate -q broadcaster_id=540195916`  
@@ -185,7 +199,8 @@ Valid: Twitch CLI command
 
 ### commands.emote
 
-Get channel emotes.
+Get channel emotes.  
+[API Doc](https://dev.twitch.tv/docs/api/reference/#get-channel-emotes).
 
 Type: string  
 Default: `api get /chat/emotes --unformatted --autopaginate -q broadcaster_id=540195916`  
@@ -194,6 +209,20 @@ Valid: Twitch CLI command
 ---
 
 ## Worker Usage
+
+[Register your app on Twitch](https://dev.twitch.tv/docs/authentication/register-app) and setup the [Twitch CLI](https://dev.twitch.tv/docs/cli) first.
+
+Twitch access token scopes needed:
+- `bits:read`
+- `channel:read:subscriptions`
+- `channel:read:goals`
+- `moderation:read`
+- `moderator:read:chatters`
+
+Update token scopes with:
+```bash
+twitch-cli token -u --scopes "bits:read channel:read:subscriptions channel:read:goals moderation:read moderator:read:chatters"
+```
 
 Make the worker file executable:
 
