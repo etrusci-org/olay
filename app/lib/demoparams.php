@@ -45,6 +45,8 @@ const DEMOPARAMS = [
     'twitch' => [
         'type=streamTitle',
         'type=streamCategory',
+        'type=streamTagList',
+        'type=streamTagList&sep=,+',
         'type=profileImage',
         'type=goal',
         'type=goal&sep=+/+',

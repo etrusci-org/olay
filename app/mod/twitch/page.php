@@ -48,6 +48,11 @@
             output = cacheData.game_name;
         }
 
+        if (MODCONF.type == 'streamTagList') {
+            cacheData = await fetchJSON('./mod/twitch/cache/channel.json');
+            output = cacheData.tags.join(MODCONF.sep)
+        }
+
         if (MODCONF.type == 'followerCount') {
             cacheData = await fetchJSON('./mod/twitch/cache/follower.json');
             output = `${cacheData.length}`;

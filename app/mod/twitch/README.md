@@ -29,11 +29,12 @@ Which type of data to load.
 
 Type: string  
 Default: `followerCount`  
-Valid: `streamTitle` | `streamCategory` | `followerCount` | `subscriberCount` | `profileImage` | `followerList` | `subscriberList` | `bitleader` | `chatterCount` | `chatterList` | `bannedCount` | `bannedList` | `goal` | `emoteList`
+Valid: `streamTitle` | `streamCategory` | `streamTagList` | `followerCount` | `subscriberCount` | `profileImage` | `followerList` | `subscriberList` | `bitleader` | `chatterCount` | `chatterList` | `bannedCount` | `bannedList` | `goal` | `emoteList`
 
 Type description:
 - `streamTitle`: Stream title
 - `streamCategory`: Stream category
+- `streamTagList`: Stream tags list
 - `followerCount`: Follower count
 - `subscriberCount`: Subscriber count
 - `profileImage`: Profile image
@@ -54,7 +55,7 @@ Separator for lists.
 Type: string  
 Default: `<br>`  
 Valid: Any characters except linebreaks  
-Requires: `rotator=false` & (`type=followerList` | `type=subscriberList` | `type=bitleader` | `type=chatterList` | `type=bannedList` | `type=goal`)
+Requires: `rotator=false` & (`type=streamTagList` | `type=followerList` | `type=subscriberList` | `type=bitleader` | `type=chatterList` | `type=bannedList` | `type=goal`)
 
 ### rotator
 
