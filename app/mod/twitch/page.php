@@ -13,7 +13,10 @@
         (
             MODCONF.type == 'followerList' ||
             MODCONF.type == 'subscriberList' ||
-            MODCONF.type == 'bitsleader'
+            MODCONF.type == 'bitleader' ||
+            MODCONF.type == 'chatterList' ||
+            MODCONF.type == 'bannedList' ||
+            MODCONF.type == 'emoteList'
         )
     ) {
         MODOUTPUT.innerHTML = `${MODCONF.type} rotator loading...`;
@@ -43,6 +46,11 @@
         if (MODCONF.type == 'streamCategory') {
             cacheData = await fetchJSON('./mod/twitch/cache/channel.json');
             output = cacheData.game_name;
+        }
+
+        if (MODCONF.type == 'streamTagList') {
+            cacheData = await fetchJSON('./mod/twitch/cache/channel.json');
+            output = cacheData.tags.join(MODCONF.sep)
         }
 
         if (MODCONF.type == 'followerCount') {
@@ -94,8 +102,8 @@
             }
         }
 
-        if (MODCONF.type == 'bitsleader') {
-            cacheData = await fetchJSON('./mod/twitch/cache/bitsleader.json');
+        if (MODCONF.type == 'bitleader') {
+            cacheData = await fetchJSON('./mod/twitch/cache/bitleader.json');
             let users = [];
             cacheData.forEach(v => {
                 let t = MODCONF.format;
@@ -111,6 +119,76 @@
             else {
                 if (queue.length == 0) {
                     queue = [...users];
+                }
+            }
+        }
+
+        if (MODCONF.type == 'chatterCount') {
+            cacheData = await fetchJSON('./mod/twitch/cache/chatter.json');
+            output = `${cacheData.length}`;
+        }
+
+        if (MODCONF.type == 'chatterList') {
+            cacheData = await fetchJSON('./mod/twitch/cache/chatter.json');
+            let users = [];
+            cacheData.forEach(v => {
+                users.push(v.user_name);
+            });
+            if (!MODCONF.rotator) {
+                users = users.join(MODCONF.sep);
+                output = users;
+            }
+            else {
+                if (queue.length == 0) {
+                    queue = [...users];
+                }
+            }
+        }
+
+        if (MODCONF.type == 'bannedCount') {
+            cacheData = await fetchJSON('./mod/twitch/cache/banned.json');
+            output = `${cacheData.length}`;
+        }
+
+        if (MODCONF.type == 'bannedList') {
+            cacheData = await fetchJSON('./mod/twitch/cache/banned.json');
+            let users = [];
+            cacheData.forEach(v => {
+                users.push(v.user_login);
+            });
+            if (!MODCONF.rotator) {
+                users = users.join(MODCONF.sep);
+                output = users;
+            }
+            else {
+                if (queue.length == 0) {
+                    queue = [...users];
+                }
+            }
+        }
+
+        if (MODCONF.type == 'goal') {
+            cacheData = await fetchJSON('./mod/twitch/cache/goal.json');
+            output = `${cacheData.current_amount}${MODCONF.sep}${cacheData.target_amount}`;
+        }
+
+        if (MODCONF.type == 'emoteList') {
+            cacheData = await fetchJSON('./mod/twitch/cache/emote.json');
+            let emotes = [];
+            cacheData.forEach(v => {
+                emotes.push(`
+                    <div class="emote">
+                        <div class="img"><img src="${v.image_url}"></div>
+                        <div class="name">${v.name}</div>
+                    </div>`);
+            });
+            if (!MODCONF.rotator) {
+                emotes = emotes.join('');
+                output = emotes;
+            }
+            else {
+                if (queue.length == 0) {
+                    queue = [...emotes];
                 }
             }
         }

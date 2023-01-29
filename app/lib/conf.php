@@ -1,12 +1,14 @@
 <?php
+const APPVERSION = 'v1.45.50';
 const MODDIR = __DIR__.'/../mod/';
 const TPLDIR = __DIR__.'/../tpl/';
-const LOGDIR = __DIR__.'/../log/';
+const LOGDIR = '';
 const APPTIMEZONE = 'UTC';
 const MODREGISTRY = [
     'examplemod',
     'clock',
     'kraken',
+    'namegen',
     'numbers',
     'quotes',
     'rotator',

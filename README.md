@@ -4,25 +4,12 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 
 ---
 
-- [Modules](#modules)
-- [Hosting](#hosting)
-- [Usage](#usage)
-  - [1. Construct Module URL](#1-construct-module-url)
-  - [2. Add Browser-Source in OBS Studio](#2-add-browser-source-in-obs-studio)
-  - [3. Styling Module Output](#3-styling-module-output)
-  - [4. Customize Module Output](#4-customize-module-output)
-- [Shared Amongst Modules](#shared-amongst-modules)
-  - [updateRate Parameter](#updaterate-parameter)
-  - [Spaces in Parameter Values](#spaces-in-parameter-values)
-  - [Character Replacement Maps](#character-replacement-maps)
-
----
-
 ## Modules
 
 - [Clock](./app/mod/clock/)
 - [ExampleMod](./app/mod/examplemod/) (only for dev example)
 - [Kraken](./app/mod/kraken/)
+- [NameGen](./app/mod/namegen/)
 - [Numbers](./app/mod/numbers/)
 - [Quotes](./app/mod/quotes/)
 - [Rotator](./app/mod/rotator/)
@@ -37,7 +24,7 @@ For demos of the latest release [go there](https://etrusci.org/tool/olay/demo.ph
 
 You can either load it from my server or install it on your own.
 
-I host the latest public release. The base URL is `https://etrusci.org/tool/olay/?`.
+I host the [latest public release](https://github.com/etrusci-org/olay/releases). The base URL is `https://etrusci.org/tool/olay/?`.
 
 If you prefer to host it yourself and/or create your own modules, see [DEVELOPMENT](./DEVELOPMENT.md).
 
@@ -77,9 +64,9 @@ body {
     margin: 0;
     padding: 0;
     border: 0;
-    overflow: hidden;
     min-width: 100vw;
     min-height: 100vh;
+    overflow: hidden;
 
     /* Basic style */
     font-family: sans-serif;
@@ -104,7 +91,7 @@ The relevant HTML in which each module is wrapped in looks like this:
 </div>
 ```
 
-Here are two CSS examples to copy & paste:
+Here are some CSS examples to copy & paste:
 
 ```css
 /* Styles for the whole module page - this is most probably what you want */
@@ -136,8 +123,18 @@ div.mod {
 }
 ```
 
-New to CSS? Checkout the [CSS Docs](https://developer.mozilla.org/en-US/docs/Web/CSS).  
-Need a color picker, [click here](https://duckduckgo.com/?t=ffab&q=color+picker&ia=answer).
+```css
+/* Add a prefix and/or suffix */
+div.mod:before {
+    content: 'My Prefix: ';
+}
+
+div.mod:after {
+    content: '...My Suffix';
+}
+```
+
+([CSS Docs](https://developer.mozilla.org/en-US/docs/Web/CSS), [Color Picker](https://duckduckgo.com/?t=ffab&q=color+picker&ia=answer))
 
 ### 4. Customize Module Output
 
@@ -167,7 +164,7 @@ For modules which accept the `repMap` parameter, these are the number/character 
 
 ### Debug info
 
-Add `debug=true` to any parameter url to show the loaded configuration below the module.
+Add `debug=true` to any module url to show the loaded configuration below the output.
 
 E.g. `mod=clock&debug=true`
 

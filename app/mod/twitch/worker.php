@@ -42,8 +42,9 @@ while (true) {
 
         $apiData = $apiData['data'];
 
+        print(date('Y-m-d H:i:s').' '.$commandKey.' -> "'.$cacheFile.'"'.PHP_EOL);
+
         if ($commandKey == 'user') {
-            print(date('Y-m-d H:i:s').' '.$commandKey.' -> "'.$cacheFile.'"'.PHP_EOL);
             $cacheData = [
                 'broadcaster_type' => $apiData[0]['broadcaster_type'],
                 'created_at' => date('Y-m-d H:i:s', strtotime($apiData[0]['created_at'])),
@@ -54,15 +55,14 @@ while (true) {
         }
 
         if ($commandKey == 'channel') {
-            print(date('Y-m-d H:i:s').' '.$commandKey.' -> "'.$cacheFile.'"'.PHP_EOL);
             $cacheData = [
                 'title' => $apiData[0]['title'],
                 'game_name' => $apiData[0]['game_name'],
+                'tags' => $apiData[0]['tags'],
             ];
         }
 
         if ($commandKey == 'follower') {
-            print(date('Y-m-d H:i:s').' '.$commandKey.' -> "'.$cacheFile.'"'.PHP_EOL);
             foreach ($apiData as $v) {
                 $cacheData[] = [
                     'followed_at' => date('Y-m-d H:i:s', strtotime($v['followed_at'])),
@@ -72,12 +72,9 @@ while (true) {
         }
 
         if ($commandKey == 'subscriber') {
-            print(date('Y-m-d H:i:s').' '.$commandKey.' -> "'.$cacheFile.'"'.PHP_EOL);
-
             $userCacheFile = sprintf($cacheFilePattern, 'user');
             $userCacheData = file_get_contents($userCacheFile);
             $userCacheData = json_decode($userCacheData, true);
-
             foreach ($apiData as $v) {
                 if (strtolower($v['user_name']) == strtolower($userCacheData['display_name'])) {
                     continue;
@@ -90,13 +87,71 @@ while (true) {
             }
         }
 
-        if ($commandKey == 'bitsleader') {
-            print(date('Y-m-d H:i:s').' '.$commandKey.' -> "'.$cacheFile.'"'.PHP_EOL);
+        if ($commandKey == 'bitleader') {
             foreach ($apiData as $v) {
                 $cacheData[] = [
                     'rank' => $v['rank'],
                     'score' => $v['score'],
                     'user_name' => $v['user_name'],
+                ];
+            }
+        }
+
+        if ($commandKey == 'chatter') {
+            foreach ($apiData as $v) {
+                $cacheData[] = [
+                    'user_login' => $v['user_login'],
+                    'user_name' => $v['user_name'],
+                ];
+            }
+        }
+
+        if ($commandKey == 'banned') {
+            foreach ($apiData as $v) {
+                $cacheData[] = [
+                    'created_at' => date('Y-m-d H:i:s', strtotime($v['created_at'])),
+                    'moderator_login' => $v['moderator_login'],
+                    'moderator_name' => $v['moderator_name'],
+                    'reason' => $v['reason'],
+                    'user_login' => $v['user_login'],
+                    'user_name' => $v['user_name'],
+                ];
+            }
+        }
+
+        if ($commandKey == 'goal') {
+            if (!$apiData) {
+                $cacheData = [
+                    'created_at' => null,
+                    'type' => null,
+                    'current_amount' => null,
+                    'target_amount' => null,
+                    'description' => null,
+                ];
+            }
+            else {
+                $cacheData = [
+                    'created_at' => date('Y-m-d H:i:s', strtotime($apiData[0]['created_at'])),
+                    'type' => $apiData[0]['type'],
+                    'current_amount' => $apiData[0]['current_amount'],
+                    'target_amount' => $apiData[0]['target_amount'],
+                    'description' => $apiData[0]['description'],
+                ];
+            }
+        }
+
+        if ($commandKey == 'emote') {
+            foreach ($apiData as $v) {
+                $cacheData[] = [
+                    'name' => $v['name'],
+                    'emote_type' => $v['emote_type'],
+                    'tier' => $v['tier'],
+                    'image_url' => sprintf('https://static-cdn.jtvnw.net/emoticons/v2/%1$s/%2$s/%3$s/%4$s',
+                        $v['id'],
+                        (in_array('animated', $v['format'])) ? 'animated' : $v['format'][0],
+                        end($v['theme_mode']),
+                        end($v['scale']),
+                    ),
                 ];
             }
         }
