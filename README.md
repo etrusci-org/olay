@@ -9,6 +9,7 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 - [Clock](./app/mod/clock/)
 - [ExampleMod](./app/mod/examplemod/) (only for dev example)
 - [Kraken](./app/mod/kraken/)
+- [NameGen](./app/mod/namegen/)
 - [Numbers](./app/mod/numbers/)
 - [Quotes](./app/mod/quotes/)
 - [Rotator](./app/mod/rotator/)
