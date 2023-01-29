@@ -1,6 +1,6 @@
 # Olay NameGen
 
-Just a development example.
+Display random artist and record names.
 
 **Module Handle:** `namegen`
 
