@@ -18,6 +18,10 @@ const DEMOPARAMS = [
         'label=MANA/USD:+',
         'pair=XXBTZUSD&updateRate=10000',
     ],
+    'namegen' => [
+        'updateRate=2000',
+        'type=record',
+    ],
     'numbers' => [
         'type=countup&rangeStart=1&rangeEnd=5',
         'type=countup&rangeStart=1&rangeEnd=1',
