@@ -16,6 +16,7 @@ require __DIR__.'/lib/demoparams.php';
         }
         code {
             font-family: monospace;
+            letter-spacing: .045rem;
         }
         body, iframe {
             background: #ccc;
@@ -31,7 +32,7 @@ require __DIR__.'/lib/demoparams.php';
             display: block;
             width: 30rem;
             max-width: 100%;
-            height: 3rem;
+            height: 5rem;
             padding: .5rem;
             margin: 0 0 .5rem 0;
             border: 1px solid #666;
