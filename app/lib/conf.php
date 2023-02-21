@@ -8,6 +8,7 @@ const MODREGISTRY = [
     'examplemod',
     'clock',
     'kraken',
+    'lastfm',
     'namegen',
     'numbers',
     'quotes',

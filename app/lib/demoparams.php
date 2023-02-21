@@ -18,6 +18,12 @@ const DEMOPARAMS = [
         'label=MANA/USD:+',
         'pair=XXBTZUSD&updateRate=10000',
     ],
+    'lastfm' => [
+        'updateRate=60000',
+        'type=stats&apiUser=YOUR_USERNAME&apiKey=YOUR_API_KEY',
+        'type=recent&apiUser=YOUR_USERNAME&apiKey=YOUR_API_KEY',
+        'type=recent&apiUser=YOUR_USERNAME&apiKey=YOUR_API_KEY&apiLimit=5',
+    ],
     'namegen' => [
         'updateRate=2000',
         'type=record',
