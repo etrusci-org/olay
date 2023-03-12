@@ -57,6 +57,7 @@ const DEMOPARAMS = [
         'type=streamCategory',
         'type=streamTagList',
         'type=streamTagList&sep=,+',
+        'type=streamViewerCount',
         'type=profileImage',
         'type=goal',
         'type=goal&sep=+/+',
