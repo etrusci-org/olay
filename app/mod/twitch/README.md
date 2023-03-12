@@ -29,12 +29,13 @@ Which type of data to load.
 
 Type: string  
 Default: `followerCount`  
-Valid: `streamTitle` | `streamCategory` | `streamTagList` | `followerCount` | `subscriberCount` | `profileImage` | `followerList` | `subscriberList` | `bitleader` | `chatterCount` | `chatterList` | `bannedCount` | `bannedList` | `goal` | `emoteList`
+Valid: `streamTitle` | `streamCategory` | `streamTagList` | `streamViewerCount` | `followerCount` | `subscriberCount` | `profileImage` | `followerList` | `subscriberList` | `bitleader` | `chatterCount` | `chatterList` | `bannedCount` | `bannedList` | `goal` | `emoteList`
 
 Type description:
 - `streamTitle`: Stream title
 - `streamCategory`: Stream category
 - `streamTagList`: Stream tags list
+- `streamViewerCount`: Stream viewer count
 - `followerCount`: Follower count
 - `subscriberCount`: Subscriber count
 - `profileImage`: Profile image
@@ -137,6 +138,15 @@ Get channel info.
 
 Type: string  
 Default: `api get /channels --unformatted --autopaginate -q broadcaster_id=540195916`  
+Valid: Twitch CLI command
+
+### commands.stream
+
+Get stream info.  
+[API Doc](https://dev.twitch.tv/docs/api/reference/#get-streams).
+
+Type: string  
+Default: `api get /streams --unformatted --autopaginate -q type=live -q first=1 -q user_login=spartalien`  
 Valid: Twitch CLI command
 
 ### commands.follower

@@ -16,6 +16,7 @@ $WORKERCONF = [
         // you can comment-out those you don't need
         'user' => 'api get /users --unformatted --autopaginate -q login=spartalien',
         'channel' => 'api get /channels --unformatted --autopaginate -q broadcaster_id=540195916',
+        'stream' => 'api get /streams --unformatted --autopaginate -q type=live -q first=1 -q user_login=spartalien',
         'follower' => 'api get /users/follows --unformatted --autopaginate -q to_id=540195916',
         'subscriber' => 'api get /subscriptions --unformatted --autopaginate -q broadcaster_id=540195916',
         'bitleader' => 'api get /bits/leaderboard --unformatted --autopaginate -q period=all -q count=100',

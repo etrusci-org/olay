@@ -62,6 +62,21 @@ while (true) {
             ];
         }
 
+        if ($commandKey == 'stream') {
+            if (!$apiData) {
+                $cacheData = [
+                    'started_at' => null,
+                    'viewer_count' => null,
+                ];
+            }
+            else {
+                $cacheData = [
+                    'started_at' => date('Y-m-d H:i:s', strtotime($apiData[0]['started_at'])),
+                    'viewer_count' => $apiData[0]['viewer_count'],
+                ];
+            }
+        }
+
         if ($commandKey == 'follower') {
             foreach ($apiData as $v) {
                 $cacheData[] = [
