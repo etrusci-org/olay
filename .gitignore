@@ -1,9 +1,1 @@
-# Testing
-_test.*
-_test/
-
-# my symlinked mod rotator items/assets
-app/mod/rotator/assets
-
-# Misc
 0000/
