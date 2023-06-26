@@ -2,6 +2,7 @@ import { conf } from './clock.conf.js';
 export class Mod {
     outputElement;
     updateInterval = conf.updateInterval;
+    clockType = conf.clockType;
     formatTemplate = conf.formatTemplate;
     constructor(outputElement) {
         this.outputElement = outputElement;
@@ -14,15 +15,25 @@ export class Mod {
         if (!this.outputElement) {
             return;
         }
-        const timeNow = new Date();
-        let output = this.formatTemplate;
-        output = output.replace('{year}', String(timeNow.getFullYear()).padStart(2, '0'));
-        output = output.replace('{month}', String(timeNow.getMonth() + 1).padStart(2, '0'));
-        output = output.replace('{day}', String(timeNow.getDate()).padStart(2, '0'));
-        output = output.replace('{hour}', String(timeNow.getHours()).padStart(2, '0'));
-        output = output.replace('{minute}', String(timeNow.getMinutes()).padStart(2, '0'));
-        output = output.replace('{second}', String(timeNow.getSeconds()).padStart(2, '0'));
-        output = output.replace('{timezoneOffset}', `UTC${String(timeNow.getTimezoneOffset() / 60)}`);
-        this.outputElement.innerHTML = `${output}`;
+        this.outputElement.innerHTML = this.getOutput();
+    }
+    getOutput() {
+        const dt = new Date();
+        let out = '';
+        if (this.clockType == 'human') {
+            out = this.formatTemplate;
+            out = out.replace('{year}', String(dt.getFullYear()).padStart(2, '0'));
+            out = out.replace('{month}', String(dt.getMonth() + 1).padStart(2, '0'));
+            out = out.replace('{day}', String(dt.getDate()).padStart(2, '0'));
+            out = out.replace('{hour}', String(dt.getHours()).padStart(2, '0'));
+            out = out.replace('{minute}', String(dt.getMinutes()).padStart(2, '0'));
+            out = out.replace('{second}', String(dt.getSeconds()).padStart(2, '0'));
+            out = out.replace('{millisecond}', String(dt.getMilliseconds()).padEnd(3, '0'));
+            out = out.replace('{timezoneOffset}', `UTC${String(dt.getTimezoneOffset() / 60)}`);
+        }
+        if (this.clockType == 'robot') {
+            out = String(Math.floor(dt.getTime() / 1000));
+        }
+        return out;
     }
 }
