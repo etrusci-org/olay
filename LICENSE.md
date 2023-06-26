@@ -6,7 +6,7 @@ Public Domain Worldwide
 
 ## app/mod/namegen/data.js
 
-Many thanks to Discogs.com for providing the data for these lists!  
+Many thanks to [https://discogs.com](Discogs) for providing the data for these lists!  
 License: <http://creativecommons.org/about/cc0>
 
 Sources used:

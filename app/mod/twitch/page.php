@@ -53,6 +53,16 @@
             output = cacheData.tags.join(MODCONF.sep)
         }
 
+        if (MODCONF.type == 'streamViewerCount') {
+            cacheData = await fetchJSON('./mod/twitch/cache/stream.json');
+            if (!cacheData.started_at) {
+                output = `0`
+            }
+            else {
+                output = `${cacheData.viewer_count}`
+            }
+        }
+
         if (MODCONF.type == 'followerCount') {
             cacheData = await fetchJSON('./mod/twitch/cache/follower.json');
             output = `${cacheData.length}`;
