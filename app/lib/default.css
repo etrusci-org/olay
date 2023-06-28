@@ -1,0 +1,19 @@
+body {
+    /* Basic reset */
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow: hidden;
+
+    /* Default style */
+    font-family: sans-serif;
+    font-size: 24px;
+    background: transparent;
+}
+
+body,
+a {
+    color: #39dede;
+}
