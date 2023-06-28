@@ -3,28 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./lib/default.css">
     <title>Olay</title>
-    <style>
-        body {
-            /* Basic reset */
-            margin: 0;
-            padding: 0;
-            border: 0;
-            min-width: 100vw;
-            min-height: 100vh;
-            overflow: hidden;
-
-            /* Default style */
-            font-family: sans-serif;
-            font-size: 24px;
-            background: transparent;
-        }
-
-        body,
-        a {
-            color: #52de39;
-        }
-    </style>
 </head>
 <body>
     <!--
@@ -33,32 +13,22 @@
     -->
 
 
-    <!-- mod output -->
+    <!-- mod output element -->
     <div class="mod">
-        <h1>Olay</h1>
-        <ul>
-            <li><a href="?mod=clock">clock</a></li>
-        </ul>
+        <!-- show list of mods by default, this will be overwritten when the mod output is loaded -->
+        <div style="padding: 1rem;">
+            <h1>Olay</h1>
+            <ul>
+                <li><a href="?mod=clock">clock</a></li>
+            </ul>
+            <p>
+                (Info @ <a href="https://github.com/etrusci-org/olay/" target="_blank">GitHub</a>)
+            </p>
+        </div>
     </div>
 
 
     <!-- mod loader -->
-    <script type="module">
-        // @ts-check
-        const outputElement = document.querySelector('div.mod')
-        const modHandle = new URL(document.location.href).searchParams.get('mod')
-
-        if (modHandle) {
-            const modFile = `./mod/${modHandle}.js`
-            // @ts-expect-error: *1
-            const modScript = await import(modFile)
-            const Mod = new modScript.Mod(outputElement)
-       }
-
-        // *1
-        // Error: Top-level 'await' expressions are only allowed when the 'module' option is set to 'es2022',
-        // 'esnext', 'system', 'node16', or 'nodenext', and the 'target' option is set to 'es2017' or higher.
-        // Expect error because we've set both to es2022 in tsconfig.json
-    </script>
+    <script src="./lib/olay.js" type="module"></script>
 </body>
 </html>
