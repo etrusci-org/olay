@@ -1,7 +1,7 @@
 export const conf = {
     // clock update interval in milliseconds.
     // 1000 milliseconds = 1 second.
-    updateInterval: 1000,
+    updateInterval: 1_000,
 
     // clock type.
     // available types:
