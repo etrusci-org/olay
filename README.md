@@ -24,7 +24,7 @@ The Base URL is: `https://etrusci-org.github.io/olay/app/`
 
 ## Hosting
 
-You can either load it from my GitHub pages or host it on your own webserver.
+You can either load it from my [GitHub pages](https://etrusci-org.github.io/olay/app/) or host it on your own webserver.
 
 In any case, currently, it won't run if do not load the **overlay.html** files from a webserver. E.g. just loading it from your local filesystem won't work because of [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
 
