@@ -17,3 +17,7 @@ body,
 a {
     color: #39dede;
 }
+
+div.mod {
+    /* module output styles here */
+}
