@@ -26,6 +26,8 @@ export const modConf = {
     - {second}
     - {millisecond}
     - {timezoneOffset}
+
+    Full example: {year}-{month}-{day}<br>{hour}:{minute}:{second}.{millisecond}<br>{timezoneOffset}
     */
-    humanFormat: '{year}-{month}-{day}<br>{hour}:{minute}:{second}.{millisecond}<br>{timezoneOffset}',
+    humanFormat: '{year}-{month}-{day} {hour}:{minute}:{second}',
 }

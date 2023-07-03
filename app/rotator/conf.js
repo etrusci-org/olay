@@ -3,7 +3,7 @@ export const modConf = {
     rotator update rate in milliseconds.
     1000 milliseconds = 1 second.
     */
-    updateRate: 3_000,
+    updateRate: 10_000,
 
     /*
     whether to shuffle the items.
@@ -16,9 +16,10 @@ export const modConf = {
     html can be used, e.g. <br> for line breaks.
     */
     items: [
-        'foo',
-        'bar',
-        'moo',
-        'cow',
+        'spartalien.com',
+        'etrusci.org',
+        'spartalien.bandcamp.com',
+        'instagram.com/spartalien',
+        'twitter.com/spartalien',
     ],
 }
