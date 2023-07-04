@@ -1,27 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>body { font-size: 1.25rem; }</style>
+    <link rel="stylesheet" href="./lib/default.css">
     <title>Olay</title>
 </head>
 <body>
-    <h1>Olay</h1>
+    <div class="mod">
+        <h1>Olay</h1>
 
-    <ul>
-        <li><a href="./clock/overlay.html"><strong>clock</strong></a> (<a href="./clock/conf.js">conf</a>)</li>
-        <li><a href="./quotes/overlay.html"><strong>quotes</strong></a> (<a href="./quotes/conf.js">conf</a>)</li>
-        <li><a href="./rotator/overlay.html"><strong>rotator</strong></a> (<a href="./rotator/conf.js">conf</a>)</li>
-    </ul>
+        Available modules:
+        <ul>
+            <li><a href="./?mod=clock"><strong>clock</strong></a> <small>(<a href="./mod/clock.conf.js">default conf</a>)</small></li>
+            <li><a href="./?mod=quotes"><strong>quotes</strong></a> <small>(<a href="./mod/quotes.conf.js">default conf</a>)</small></li>
+            <li><a href="./?mod=rotator"><strong>rotator</strong></a> <small>(<a href="./mod/rotator.conf.js">default conf</a>)</small></li>
+        </ul>
 
-    <p>
-        <a href="./default.css">default.css</a>
-    </p>
+        <p>
+            For default style see <a href="./lib/default.css">default.css</a>.
+        </p>
 
-    <p>
-        More info:
-        <a href="https://github.com/etrusci-org/olay/" target="_blank">github.com/etrusci-org/olay/</a>
-    </p>
+        <p>
+            More info:
+            <a href="https://github.com/etrusci-org/olay/" target="_blank">github.com/etrusci-org/olay/</a>
+        </p>
+    </div>
+
+    <script src="./lib/olay.js"></script>
 </body>
 </html>

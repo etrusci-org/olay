@@ -3,7 +3,7 @@ export const modConf = {
     clock update rate in milliseconds.
     1000 milliseconds = 1 second.
     */
-    updateRate: 1_000,
+    updaterate: '1000',
 
     /*
     clock type.
@@ -30,4 +30,15 @@ export const modConf = {
     Full example: {year}-{month}-{day}<br>{hour}:{minute}:{second}.{millisecond}<br>{timezoneOffset}
     */
     humanFormat: '{year}-{month}-{day} {hour}:{minute}:{second}',
+
+    /*
+    whether to replace numbers with characters.
+    */
+   repnum: 'false',
+
+   /*
+   the character map to use for repnum.
+   1 - 5.
+   */
+  repmap: '1',
 }
