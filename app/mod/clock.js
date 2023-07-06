@@ -16,7 +16,7 @@ export class Mod extends ModBase
 
         if (this.conf.type == 'human') {
             const dt = new Date()
-            out = this.conf.humanFormat
+            out = this.conf.humanformat
             out = out.replace('{year}', String(dt.getFullYear()).padStart(2, '0'))
             out = out.replace('{month}', String(dt.getMonth() + 1).padStart(2, '0'))
             out = out.replace('{day}', String(dt.getDate()).padStart(2, '0'))

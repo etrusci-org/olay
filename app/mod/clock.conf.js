@@ -29,7 +29,7 @@ export const modConf = {
 
     Full example: {year}-{month}-{day}<br>{hour}:{minute}:{second}.{millisecond}<br>{timezoneOffset}
     */
-    humanFormat: '{year}-{month}-{day} {hour}:{minute}:{second}',
+    humanformat: '{year}-{month}-{day} {hour}:{minute}:{second}',
 
     /*
     whether to replace numbers with characters.
