@@ -1,5 +1,8 @@
 export class Mod extends ModBase
 {
+    // this.conf includes the default config + possible overrides from request params
+    // this.outputElement is where the output goes
+
     onInit()
     {
         this.update()
