@@ -15,7 +15,7 @@ export const modConf = {
     type: 'human',
 
     /*
-    output template, only applies if clockType is set to 'human'.
+    output template, only applies if clock type is set to 'human'.
     html can be used, e.g. <br> for line breaks.
     available placeholders:
     - {year}
@@ -26,19 +26,18 @@ export const modConf = {
     - {second}
     - {millisecond}
     - {timezoneOffset}
-
-    Full example: {year}-{month}-{day}<br>{hour}:{minute}:{second}.{millisecond}<br>{timezoneOffset}
+    full example: {year}-{month}-{day}<br>{hour}:{minute}:{second}.{millisecond}<br>{timezoneOffset}
     */
     humanformat: '{year}-{month}-{day} {hour}:{minute}:{second}',
 
     /*
     whether to replace numbers with characters.
     */
-   repnum: 'false',
+    repnum: 'false',
 
-   /*
-   the character map to use for repnum.
-   1 - 5.
-   */
-  repmap: '1',
+    /*
+    the character map to use for repnum.
+    1 - 5.
+    */
+    repmap: '1',
 }

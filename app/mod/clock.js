@@ -37,7 +37,7 @@ export class Mod extends ModBase
         }
 
         if (this.conf.repnum == 'true') {
-            out = this.replaceNumbers(out, this.conf.repmap)
+            out = replaceNumsWithChars(out, this.conf.repmap)
         }
 
         this.outputElement.innerHTML = out
