@@ -5,7 +5,6 @@ export const modConf = {
     */
     updaterate: '1000',
 
-
     /**
     * output type.
     * available types:
