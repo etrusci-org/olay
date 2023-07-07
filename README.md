@@ -7,6 +7,7 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 ## Modules
 
 - **clock** ([overlay](https://etrusci.org/tool/olay2-beta/?mod=clock), [conf](./app/mod/clock.conf.js)): Display current local date and time.
+- **colorfader** ([overlay](https://etrusci.org/tool/olay2-beta/?mod=colorfader), [conf](./app/mod/colorfader.conf.js)): Display and fade tru random colors.
 - **numbers** ([overlay](https://etrusci.org/tool/olay2-beta/?mod=numbers), [conf](./app/mod/numbers.conf.js)): Display random numbers and counters.
 - **quotes** ([overlay](https://etrusci.org/tool/olay2-beta/?mod=quotes), [conf](./app/mod/quotes.conf.js)): Display random quotes.
 - **rotator** ([overlay](https://etrusci.org/tool/olay2-beta/?mod=rotator), [conf](./app/mod/rotator.conf.js)): Display text and stuff from a list.
@@ -35,6 +36,8 @@ div.mod {
     color: #009900;
 }
 ```
+
+For the complete default style see [app/lib/default.css](./app/lib/default.css).
 
 ([CSS Reference](https://developer.mozilla.org/docs/Web/CSS))
 
