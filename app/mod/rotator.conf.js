@@ -1,20 +1,22 @@
 export const modConf = {
-    /*
-    rotator update rate in milliseconds.
-    1000 milliseconds = 1 second.
+    /**
+    * rotator update rate in milliseconds.
+    * 1000 milliseconds = 1 second.
     */
     updaterate: '10000',
 
-    /*
-    whether to shuffle the items.
-    true or false.
+    /**
+    * whether to shuffle the items.
+    * true or false.
     */
     shuffle: 'true',
 
-    /*
-    items to rotate tru.
-    start each item with |.
-    html can be used, e.g. <br> for line breaks.
+    /**
+    * items to rotate tru.
+    * start each item with |.
+    * html can be used, e.g. <br> for line breaks.
+    * use backticks (`) here so you can span it over multiple lines (better readability).
+    * you can also put it on one line like so: '|foo|bar|moo|cow'.
     */
     items: `
         |spartalien.com

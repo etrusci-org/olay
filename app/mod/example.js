@@ -1,7 +1,9 @@
 export class Mod extends ModBase
 {
-    // this.conf includes the default config + possible overrides from request params
-    // this.outputElement is where the output goes
+    // onInit() will be executed when the mod class is loaded.
+    // this.conf includes the default config + possible overrides from request params.
+    // this.outputElement is where the output goes.
+    // everything else is pretty much optional.
 
     onInit()
     {

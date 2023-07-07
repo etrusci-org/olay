@@ -1,43 +1,44 @@
 export const modConf = {
-    /*
-    clock update rate in milliseconds.
-    1000 milliseconds = 1 second.
+    /**
+    * clock update rate in milliseconds.
+    * 1000 milliseconds = 1 second.
     */
     updaterate: '1000',
 
-    /*
-    clock type.
-    available types:
-    - human = human readable
-    - unix = unixtime stamp
-    - unixms = unixtime stamp with milliseconds
+    /**
+    * clock type.
+    * available types:
+    * - human = human readable
+    * - unix = unixtime stamp
+    * - unixms = unixtime stamp with milliseconds
     */
     type: 'human',
 
-    /*
-    output template, only applies if clock type is set to 'human'.
-    html can be used, e.g. <br> for line breaks.
-    available placeholders:
-    - {year}
-    - {month}
-    - {day}
-    - {hour}
-    - {minute}
-    - {second}
-    - {millisecond}
-    - {timezoneOffset}
-    full example: {year}-{month}-{day}<br>{hour}:{minute}:{second}.{millisecond}<br>{timezoneOffset}
+    /**
+    * output template, only applies if clock type is set to 'human'.
+    * html can be used, e.g. <br> for line breaks.
+    * available placeholders:
+    * - {year}
+    * - {month}
+    * - {day}
+    * - {hour}
+    * - {minute}
+    * - {second}
+    * - {millisecond}
+    * - {timezoneOffset}
+    * full example: {year}-{month}-{day}<br>{hour}:{minute}:{second}.{millisecond}<br>{timezoneOffset}
     */
     humanformat: '{year}-{month}-{day} {hour}:{minute}:{second}',
 
-    /*
-    whether to replace numbers with characters.
+    /**
+    * whether to replace numbers with characters.
     */
     repnum: 'false',
 
-    /*
-    the character map to use for repnum.
-    1 - 5.
+    /**
+    * the character map to use for repnum.
+    * 1 - 5.
+    * see replaceNumsWithChars() in app/lib/olay.js for map contents.
     */
     repmap: '1',
 }
