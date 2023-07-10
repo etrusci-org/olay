@@ -128,7 +128,7 @@ function fyShuffle(arr) {
 
 function getRandomColorHex()
 {
-    return `#${Math.random().toString(16).slice(2, 8)}`
+    return Math.random().toString(16).slice(2, 8)
 }
 
 

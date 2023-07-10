@@ -21,14 +21,14 @@ export class Mod extends ModBase
     update()
     {
         if (this.conf.random == 'true') {
-            this.outputElement.style.backgroundColor = getRandomColorHex()
+            this.outputElement.style.backgroundColor = `#${getRandomColorHex()}`
         }
         else {
             if (this.queue.length == 0) {
                 for (const item of this.conf.list.split('|')) {
                     const value = item.trim()
                     if (value) {
-                        this.queue.push(value)
+                        this.queue.push(`#${value}`)
                     }
                 }
 
