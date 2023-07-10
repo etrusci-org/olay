@@ -1,8 +1,3 @@
-import { fyShuffle } from 'https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/javascript/fyShuffle.min.js'
-
-
-
-
 export class Mod extends ModBase
 {
     queue = []

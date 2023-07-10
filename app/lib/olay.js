@@ -21,7 +21,12 @@ window.addEventListener('load', () => {
         import(`../mod/${modHandle}.conf.js`).then((confData) => {
             Mod.loadConf(confData.modConf)
             Mod.onInit()
+        }).catch((error) => {
+            document.body.innerHTML = `failed to import "${modHandle}" conf: <code>${error}</code>`
+
         })
+    }).catch((error) => {
+        document.body.innerHTML = `failed to import "${modHandle}" module: <code>${error}</code>`
     })
 }, false)
 
@@ -48,7 +53,7 @@ class ModBase
     }
 
 
-    // 1
+    // will be automatically executed when initializing the module.
     loadConf(modConf)
     {
         this.requestParams.forEach((v, k) => {
@@ -58,10 +63,16 @@ class ModBase
         })
 
         this.conf = modConf
+
+        if (this.requestParams.has('debug')) {
+            console.debug('loaded conf:', this.conf)
+            document.body.append(`loaded conf: ${JSON.stringify(this.conf)}`)
+        }
     }
 
 
-    // 2
+    // override this in the individual module classes.
+    // it's the first thing that's executed after loadConf().
     onInit() {}
 }
 
@@ -101,7 +112,79 @@ function getRandomInteger(min, max)
 }
 
 
+function fyShuffle(arr) {
+    const copy = [...arr]
+
+    for (let i = copy.length - 1; i > 0; i--) {
+        const y = Math.floor(Math.random() * i)
+        const z = copy[i]
+        copy[i] = copy[y]
+        copy[y] = z
+    }
+
+    return copy
+}
+
+
 function getRandomColorHex()
 {
     return `#${Math.random().toString(16).slice(2, 8)}`
+}
+
+
+const RandomQuoteTyper = {
+    typingSpeed: 100,
+    targetSelector: '.randomQuoteTyper',
+    target: null,
+    quotes: null,
+    queue: [],
+    quote: null,
+    typerID: null,
+
+
+    init(quotes) {
+        this.target = document.querySelector(this.targetSelector)
+        if (quotes) {
+            this.quotes = quotes
+        }
+    },
+
+
+    typeQuote() {
+        if (!this.quotes || RandomQuoteTyper.typerID) return
+
+        if (this.queue.length == 0) {
+            this.queue = [...fyShuffle(this.quotes)]
+        }
+
+        this.quote = this.queue.pop() || null
+
+        if (!this.quote) return
+
+        const quoteStr = `"${this.quote.text}" — ${this.quote.author}`.split('')
+
+        if (!this.target) return
+
+        this.target.innerHTML = ``
+        this.target.classList.remove('doneTyping')
+
+        this.typerID = setInterval(() => {
+            if (!this.target) return
+
+            this.target.innerHTML += `${quoteStr.shift()}`
+
+            if (quoteStr.length == 0) {
+                this.stop()
+                this.target.classList.add('doneTyping')
+            }
+        }, this.typingSpeed)
+    },
+
+
+    stop() {
+        if (!this.typerID || !this.target) return
+
+        clearInterval(this.typerID)
+        this.typerID = null
+    },
 }
