@@ -1,4 +1,4 @@
-# Olay - numbers
+# [Olay](../../README.md) - numbers
 
 Display date and time.
 

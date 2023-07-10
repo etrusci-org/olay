@@ -1,4 +1,4 @@
-# Olay - clock
+# [Olay](../../README.md) - clock
 
 Display date and time.
 

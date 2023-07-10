@@ -1,4 +1,4 @@
-# Olay - quotes
+# [Olay](../../README.md) - quotes
 
 Display random quotes.
 

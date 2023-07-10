@@ -1,4 +1,4 @@
-# Olay - colorfader
+# [Olay](../../README.md) - colorfader
 
 Display date and time.
 
