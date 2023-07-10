@@ -21,12 +21,10 @@ export class Mod extends ModBase
     update()
     {
         if (this.queue.length == 0) {
-            let dump = this.conf.items.split('|')
-
-            for (let k = 0; k < dump.length; k++) {
-                const item = String(dump[k]).trim();
-                if (item) {
-                    this.queue.push(item)
+            for (const item of this.conf.items.split('|')) {
+                const value = item.trim()
+                if (value) {
+                    this.queue.push(value)
                 }
             }
 
