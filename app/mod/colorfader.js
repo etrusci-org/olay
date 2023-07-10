@@ -30,7 +30,13 @@ export class Mod extends ModBase
         }
         else {
             if (this.queue.length == 0) {
-                this.queue = [...this.conf.list]
+                for (const item of this.conf.list.split('|')) {
+                    const value = item.trim()
+                    if (value) {
+                        this.queue.push(value)
+                    }
+                }
+
                 if (this.conf.shuffle == 'true') {
                     this.queue = fyShuffle(this.queue)
                 }

@@ -7,7 +7,7 @@ export const modConf = {
     /**
     * fade to next color duration in seconds.
     */
-    duration: '3',
+    duration: '30',
 
     /**
     * fade timing function to use.
@@ -24,22 +24,25 @@ export const modConf = {
     * whether to use randomized colors or the values from the colors list below.
     * true or false.
     */
-    random: 'false',
+    random: 'true',
 
     /**
-    * if random is set to true, colors values from this list will be used.
+    * if random is set to false, color values from this list will be used.
     * any valid css color value should work. e.g. hex, rgb, hsl, etc.
+    * start each item with |.
+    * use backticks (`) here so you can span it over multiple lines (better readability).
+    * you can also put it on one line like so: '|#ff0000|#00ff00|#0000ff'.
     * color picker: https://duckduckgo.com/?t=ffab&q=color+picker&ia=answer
     */
-    list: [
-        '#ff0000',
-        '#00ff00',
-        '#0000ff',
-    ],
+    list: `
+        |#ff0000
+        |#00ff00
+        |#0000ff
+    `,
 
     /**
     * whether to shuffle the colors list.
     * true or false.
     */
-    shuffle: 'true',
+    shuffle: 'false',
 }
