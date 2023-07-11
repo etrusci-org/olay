@@ -14,10 +14,29 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 
 ---
 
+## Output Styling
+
+All modules will output their content to a `<div>` with the class `mod`. Some modules may introduce sub-elements, but in general it's enough to style `div.mod` like so:
+
+```css
+div.mod {
+    font-family: sans-serif;
+    font-size: 42px;
+    color: #009900;
+}
+```
+
+For the complete default style see [app/lib/default.css](./app/lib/default.css).
+
+([CSS Reference](https://developer.mozilla.org/docs/Web/CSS))
+
+---
+
 ## Notes
 
 - If you're unsure, test it in a webbrowser and not OBS directly. This way you can quickly edit the URL parameters or add `&debug=true` to see the current module configuration.
 - To install it on your own webserver, just copy the contents of the **olay/app/** directory.
 - If you install it on your own webserver and edit the module configurations, always enter values as *strings*. E.g. enclose in single-quotes (') or backticks (`).
+- It won't run if not loaded from a webserver. E.g. just loading it from your local filesystem won't work because of [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
 
 ---
