@@ -40,7 +40,7 @@ Valid: `random` | `countup` | `countdown`
 
 Start and end of the numbers range to use.
 
-Valid: *Integers or* `none`
+Valid: *Integers* or `none`
 
 If **type** is set to `countup` or `countdown`, **end** can be set to `none` to count forever.
 
