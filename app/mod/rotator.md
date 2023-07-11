@@ -26,7 +26,7 @@ Valid: *Integers >= 1*
 
 ### shuffle
 
-whether to shuffle the items list.
+Whether to shuffle the items list.
 
 Valid: `true` | `false`
 
