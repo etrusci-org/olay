@@ -16,7 +16,8 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 
 ## Notes
 
-- Always enter values in the module configurations as *strings*. E.g. enclose in single-quotes (') or backticks (`).
+- If you're unsure, test it in a webbrowser and not OBS directly. This way you can quickly edit the URL parameters or add `&debug=true` to see the current module configuration.
 - To install it on your own webserver, just copy the contents of the **olay/app/** directory.
+- If you install it on your own webserver and edit the module configurations, always enter values as *strings*. E.g. enclose in single-quotes (') or backticks (`).
 
 ---
