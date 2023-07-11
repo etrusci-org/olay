@@ -7,6 +7,16 @@ Display current local date and time.
 
 ---
 
+## Examples
+
+- [mod=clock](https://etrusci.org/tool/olay/?mod=clock)
+- [mod=clock&humanformat={hour}:{minute}&updaterate=60000](https://etrusci.org/tool/olay/?mod=clock&humanformat={hour}:{minute}&updaterate=60000)
+- [mod=clock&repnum=true&repmap=4](https://etrusci.org/tool/olay/?mod=clock&repnum=true&repmap=4)
+- [mod=clock&type=unix](https://etrusci.org/tool/olay/?mod=clock&type=unix)
+- [mod=clock&type=unixms&updaterate=80](https://etrusci.org/tool/olay/?mod=clock&type=unixms&updaterate=80)
+
+---
+
 ## Configuration
 
 ### updaterate
@@ -48,15 +58,5 @@ Requires: `repnum=true`
 Valid: `1` | `2` | `3` | `4` | `5`
 
 See [replaceNumsWithChars()](../lib/olay.js) for map contents.
-
----
-
-## Examples
-
-- [mod=clock](https://etrusci.org/tool/olay/?mod=clock)
-- [mod=clock&humanformat={hour}:{minute}&updaterate=60000](https://etrusci.org/tool/olay/?mod=clock&humanformat={hour}:{minute}&updaterate=60000)
-- [mod=clock&repnum=true&repmap=4](https://etrusci.org/tool/olay/?mod=clock&repnum=true&repmap=4)
-- [mod=clock&type=unix](https://etrusci.org/tool/olay/?mod=clock&type=unix)
-- [mod=clock&type=unixms&updaterate=80](https://etrusci.org/tool/olay/?mod=clock&type=unixms&updaterate=80)
 
 ---

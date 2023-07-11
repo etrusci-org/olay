@@ -7,6 +7,17 @@ Display random numbers and counters.
 
 ---
 
+## Examples
+
+- [mod=numbers](https://etrusci.org/tool/olay/?mod=numbers)
+- [mod=numbers&updaterate=2000](https://etrusci.org/tool/olay/?mod=numbers&updaterate=2000)
+- [mod=numbers&updaterate=1000&type=countup](https://etrusci.org/tool/olay/?mod=numbers&updaterate=1000&type=countup&start=0&end=10)
+- [mod=numbers&updaterate=1000&type=countdown](https://etrusci.org/tool/olay/?mod=numbers&updaterate=1000&type=countdown&start=10&end=0)
+- [mod=numbers&updaterate=1000&type=countup&end=none](https://etrusci.org/tool/olay/?mod=numbers&updaterate=1000&type=countup&end=none)
+- [mod=numbers&repnum=true&repmap=4](https://etrusci.org/tool/olay/?mod=numbers&repnum=true&repmap=4)
+
+---
+
 ## Configuration
 
 ### updaterate
@@ -47,16 +58,5 @@ Requires: `repnum=true`
 Valid: `1` | `2` | `3` | `4` | `5`
 
 See [replaceNumsWithChars()](../lib/olay.js) for map contents.
-
----
-
-## Examples
-
-- [mod=numbers](https://etrusci.org/tool/olay/?mod=numbers)
-- [mod=numbers&updaterate=2000](https://etrusci.org/tool/olay/?mod=numbers&updaterate=2000)
-- [mod=numbers&updaterate=1000&type=countup](https://etrusci.org/tool/olay/?mod=numbers&updaterate=1000&type=countup&start=0&end=10)
-- [mod=numbers&updaterate=1000&type=countdown](https://etrusci.org/tool/olay/?mod=numbers&updaterate=1000&type=countdown&start=10&end=0)
-- [mod=numbers&updaterate=1000&type=countup&end=none](https://etrusci.org/tool/olay/?mod=numbers&updaterate=1000&type=countup&end=none)
-- [mod=numbers&repnum=true&repmap=4](https://etrusci.org/tool/olay/?mod=numbers&repnum=true&repmap=4)
 
 ---

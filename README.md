@@ -12,8 +12,6 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 - [quotes](./app/mod/quotes.md)
 - [rotator](./app/mod/rotator.md)
 
-Each module documentation contains examples.
-
 ---
 
 ## Notes
