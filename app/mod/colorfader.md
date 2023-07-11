@@ -1,6 +1,6 @@
 # [Olay](../../README.md) - colorfader
 
-Display date and time.
+Display and fade tru colors.
 
 **Base URL**: <https://etrusci.org/tool/olay/?mod=colorfader>  
 **Default configuration**: [colorfader.conf.js](./colorfader.conf.js)

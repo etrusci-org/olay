@@ -1,6 +1,6 @@
 # [Olay](../../README.md) - clock
 
-Display date and time.
+Display current local date and time.
 
 **Base URL**: <https://etrusci.org/tool/olay/?mod=clock>  
 **Default configuration**: [clock.conf.js](./clock.conf.js)

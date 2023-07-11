@@ -1,6 +1,6 @@
 # [Olay](../../README.md) - numbers
 
-Display date and time.
+Display random numbers and counters.
 
 **Base URL**: <https://etrusci.org/tool/olay/?mod=numbers>  
 **Default configuration**: [numbers.conf.js](./numbers.conf.js)
