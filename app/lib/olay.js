@@ -23,7 +23,6 @@ window.addEventListener('load', () => {
             Mod.onInit()
         }).catch((error) => {
             document.body.innerHTML = `failed to import "${modHandle}" conf: <code>${error}</code>`
-
         })
     }).catch((error) => {
         document.body.innerHTML = `failed to import "${modHandle}" module: <code>${error}</code>`
