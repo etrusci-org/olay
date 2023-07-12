@@ -29,7 +29,17 @@ export class Mod extends ModBase
         }
 
         let item = this.queue.splice(0, 1)[0]
+        let out = ''
 
-        this.outputElement.innerHTML = item
+        for (const itemPart of item.split('*')) {
+            if (itemPart.startsWith('img:')) {
+                out += `<div class="img"><img src="${itemPart.substr(4)}" alt="${itemPart}"></div>`
+            }
+            else {
+                out += `<div class="txt">${itemPart}</div>`
+            }
+        }
+
+        this.outputElement.innerHTML = out
     }
 }
