@@ -52,7 +52,7 @@ class ModBase
     }
 
 
-    // will be automatically executed when initializing the module.
+    // will be automatically executed once when initializing the module.
     loadConf(modConf)
     {
         this.requestParams.forEach((v, k) => {
@@ -71,7 +71,7 @@ class ModBase
 
 
     // override this in the individual module classes.
-    // it's the first thing that's executed after loadConf().
+    // it's the first thing that's executed once after loadConf().
     onInit() {}
 }
 

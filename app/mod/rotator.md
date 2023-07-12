@@ -36,6 +36,29 @@ Items to rotate tru.
 
 Valid: *text, HTML*
 
-Start each item with `|`.
+Start each item with `|`.  
+Separate sub-items with `*`.  
+Prefix image URL/paths with `img:`.
+
+Example:
+```js
+items: `
+    |just text
+    |multiple*lines*of*text
+    |img:https://example.org/test.png
+    |text before image*img:https://example.org/test.png
+    |img:https://example.org/test.png*text after image
+`
+```
 
 ---
+
+## Output Styling
+
+```css
+/* <div> for images */
+div.img {}
+
+/* <div> for text */
+div.txt {}
+```

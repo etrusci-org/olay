@@ -1,6 +1,6 @@
 // For help see quotes.md
 
 export const modConf = {
-    updaterate: '120000',
-    typingspeed: '80',
+    updaterate: '90000',
+    typingspeed: '85',
 }

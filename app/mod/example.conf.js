@@ -1,4 +1,6 @@
 export const modConf = {
+    // Enter all values as strings!
+
     /**
     * some update rate in milliseconds.
     * 1000 milliseconds = 1 second.
