@@ -12,7 +12,7 @@ Display and fade tru colors.
 - [mod=colorfader](https://etrusci.org/tool/olay/?mod=colorfader)
 - [mod=colorfader&duration=5](https://etrusci.org/tool/olay/?mod=colorfader&duration=5)
 - [mod=colorfader&duration=5&function=ease-out](https://etrusci.org/tool/olay/?mod=colorfader&duration=5&function=ease-out)
-- [mod=colorfader&duration=5&random=false](https://etrusci.org/tool/olay/?mod=colorfader&duration=0.5&random=false)
+- [mod=colorfader&duration=0.5&random=false](https://etrusci.org/tool/olay/?mod=colorfader&duration=0.5&random=false)
 - [mod=colorfader&duration=5&random=false&list=|ff0000|00ff00|0000ff&shuffle=true](https://etrusci.org/tool/olay/?mod=colorfader&duration=5&random=false&list=|ff0000|00ff00|0000ff&shuffle=true)
 
 ---
