@@ -26,9 +26,11 @@ div.mod {
 }
 ```
 
-For the complete default style see [app/lib/default.css](./app/lib/default.css).
+Default style: [app/lib/default.css](./app/lib/default.css).
 
-([CSS Reference](https://developer.mozilla.org/docs/Web/CSS))
+For help with CSS see:
+- [CSS For Starters](./CSS.md)
+- [Full CSS Reference](https://developer.mozilla.org/docs/Web/CSS)
 
 ---
 
