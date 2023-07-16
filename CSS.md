@@ -1,10 +1,11 @@
-# CSS for Starters
+# CSS For Starters
 
 Here's a list of the most commonly used properties for your Browser-Source's CSS field. Follow the links for docs and interactive examples!
 
 - [background](https://developer.mozilla.org/en-US/docs/Web/CSS/background): Set the background.
 - [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border): Set the border.
 - [color](https://developer.mozilla.org/en-US/docs/Web/CSS/color): Set text color.
+- [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display): Set display type.
 - [font-family](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family): Set text font.
 - [font-size](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size): Set text size.
 - [font-weight](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight): Set text weight/boldness.
@@ -24,6 +25,7 @@ div.mod {
     background: #333333;
     border: 2px solid #077990;
     color: #000099;
+    display: inline-block;
     font-family: 'Times New Roman', serif;
     font-size: 24px;
     font-weight: bold;
