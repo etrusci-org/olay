@@ -14,6 +14,11 @@ body {
 }
 
 
+/*
+div.mod is nested inside <body>,
+therefore it inherits all the styles set above in "body" by default.
+see CSS.md for basic help on how to style the overlay output.
+*/
 div.mod {
     /* module output styles here */
 }
