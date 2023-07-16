@@ -18,7 +18,7 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 ## Hosting
 
 I host the current [main branch](https://github.com/etrusci-org/olay/tree/main), which is most likely ahead of the latest release.  
-Access it at: <https://etrusci.org/tool/olay/>.
+Access it at: <https://etrusci.org/tool/olay/>
 
 You can also clone this repo or download a specific [release](https://github.com/etrusci-org/olay/releases) and put it on your own webserver.
 
