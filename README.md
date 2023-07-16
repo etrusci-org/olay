@@ -44,6 +44,14 @@ For help with CSS see:
 
 ---
 
+## Browser-Source Settings
+
+![Browser-Source Settings](./browser-source.png)
+
+You must decide per use-case if you want to have both "*Shutdown source when not visible*" and "*Refresh browser when scene becomes active*" checked. For example, if you use a number counter, it'll reset when whenever the overlay becomes invisible because of a scene switch or similar actions in OBS. Also, any queue will be reset too, for example in the quotes module, and therefore you'll see more duplicates when switching scenes often.
+
+---
+
 ## Notes
 
 - If you're unsure, test it in a webbrowser and not OBS directly. This way you can quickly edit the URL parameters or add `&debug=true` to see the current module configuration.
