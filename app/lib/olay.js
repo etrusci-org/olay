@@ -15,10 +15,10 @@ window.addEventListener('load', () => {
     document.title = `${modHandle} | ${document.title}`
 
     // Load and init the mod
-    import(`../mod/${modHandle}.js`).then((modClass) => {
+    import(`../mod/${modHandle}/${modHandle}.js`).then((modClass) => {
         const Mod = new modClass.Mod(modHandle, requestParams)
 
-        import(`../mod/${modHandle}.conf.js`).then((confData) => {
+        import(`../mod/${modHandle}/${modHandle}.conf.js`).then((confData) => {
             Mod.loadConf(confData.modConf)
             Mod.onInit()
         }).catch((error) => {
