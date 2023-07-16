@@ -46,7 +46,7 @@ Valid: *text, HTML*
 
 ## Output Styling
 
-The module HTML output:
+This module adds additional HTML elements inside `div.mod`:
 
 ```html
 <div class="description">{DESCRIPTION}</div>
@@ -57,7 +57,7 @@ The module HTML output:
 </div>
 ```
 
-Available CSS classes to style:
+CSS selectors:
 
 ```css
 /* <div> for description */

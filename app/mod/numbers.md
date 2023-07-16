@@ -52,7 +52,7 @@ Valid: `true` | `false`
 
 ### repmap
 
-The character map for **repnum**.
+Character map for **repnum**.
 
 Requires: `repnum=true`  
 Valid: `1` | `2` | `3` | `4` | `5`
