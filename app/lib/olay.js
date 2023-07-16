@@ -8,6 +8,9 @@ window.addEventListener('load', () => {
 
     // Stop if "modHandle" is not set
     if (!modHandle) {
+        if (document.location.host == 'etrusci.org') {
+            document.querySelector('h1').innerHTML += ' <a href="https://github.com/etrusci-org/olay" target="_blank"><img alt="last update" src="https://img.shields.io/github/last-commit/etrusci-org/olay/main?label=main branch | updated"></a>'
+        }
         return
     }
 
