@@ -55,6 +55,9 @@ This module adds additional HTML elements inside `div.mod`:
     <span class="target">{TARGET}</span>
     <span class="unit">{UNIT}</span>
 </div>
+<div class="progressbar">
+    <div style="width: {VALUE_PERCENTAGE}%;"></div>
+</div>
 ```
 
 CSS selectors:
@@ -74,4 +77,10 @@ span.target {}
 
 /* <span> for unit */
 span.unit {}
+
+/* <div> for outer progressbar container */
+div.progressbar {}
+
+/* <div> for inner progress/percentage bar */
+div.progressbar > div {}
 ```
