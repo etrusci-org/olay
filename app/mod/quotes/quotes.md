@@ -1,4 +1,4 @@
-# [Olay](../../README.md) - quotes
+# [Olay](../../../README.md) - quotes
 
 Display random quotes.
 
@@ -32,8 +32,18 @@ Valid: *Integers >= 1*
 
 ### sourcefile
 
-Path to a JSON file that contains a list of quotes.
+URL/path to a [JSON](https://www.json.org) file that contains a list of quotes.
 
 Valid: *URL, path*
+
+Example of a valid quotes file:
+
+```json
+[
+    { "author": "Foobar", "text": "Hello cruel world." },
+    { "author": "Cow", "text": "Moo, mooo moo." },
+    { "author": "Cat", "text": "Miao, miao miao." }
+]
+```
 
 ---

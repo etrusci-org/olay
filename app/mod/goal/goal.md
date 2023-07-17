@@ -1,4 +1,4 @@
-# [Olay](../../README.md) - goal
+# [Olay](../../../README.md) - goal
 
 Display a goal status. Manually updated.
 

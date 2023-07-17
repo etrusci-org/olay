@@ -6,12 +6,12 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 
 ## Modules
 
-- [clock](./app/mod/clock.md)
-- [colorfader](./app/mod/colorfader.md)
-- [goal](./app/mod/goal.md)
-- [numbers](./app/mod/numbers.md)
-- [quotes](./app/mod/quotes.md)
-- [rotator](./app/mod/rotator.md)
+- [clock](./app/mod/clock/clock.md)
+- [colorfader](./app/mod/colorfader/colorfader.md)
+- [goal](./app/mod/goal/goal.md)
+- [numbers](./app/mod/numbers/numbers.md)
+- [quotes](./app/mod/quotes/quotes.md)
+- [rotator](./app/mod/rotator/rotator.md)
 
 ---
 

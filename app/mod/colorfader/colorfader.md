@@ -1,4 +1,4 @@
-# [Olay](../../README.md) - colorfader
+# [Olay](../../../README.md) - colorfader
 
 Display and fade tru colors.
 
@@ -35,7 +35,7 @@ Valid: *Floats >= 0.0*
 
 Fade timing function to use.
 
-Valid: `ease` | `linear` | `ease-in` | `ease-out` | `ease-in-out`
+Valid: `linear` | `ease` | `ease-in` | `ease-out` | `ease-in-out`
 
 ### random
 

@@ -1,4 +1,4 @@
-# [Olay](../../README.md) - rotator
+# [Olay](../../../README.md) - rotator
 
 Display and rotate tru text from a list.
 
