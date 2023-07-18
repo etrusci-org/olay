@@ -8,6 +8,9 @@ window.addEventListener('load', () => {
 
     // Stop if "modHandle" is not set
     if (!modHandle) {
+        if (document.location.host == 'etrusci.org') {
+            document.querySelector('h1').innerHTML += ' <a href="https://github.com/etrusci-org/olay" target="_blank"><img alt="last update" src="https://img.shields.io/github/last-commit/etrusci-org/olay/main?label=main branch | updated"></a>'
+        }
         return
     }
 
@@ -15,10 +18,10 @@ window.addEventListener('load', () => {
     document.title = `${modHandle} | ${document.title}`
 
     // Load and init the mod
-    import(`../mod/${modHandle}.js`).then((modClass) => {
+    import(`../mod/${modHandle}/${modHandle}.js`).then((modClass) => {
         const Mod = new modClass.Mod(modHandle, requestParams)
 
-        import(`../mod/${modHandle}.conf.js`).then((confData) => {
+        import(`../mod/${modHandle}/${modHandle}.conf.js`).then((confData) => {
             Mod.loadConf(confData.modConf)
             Mod.onInit()
         }).catch((error) => {
@@ -128,6 +131,11 @@ function fyShuffle(arr) {
 function getRandomColorHex()
 {
     return Math.random().toString(16).slice(2, 8)
+}
+
+
+async function fetchJSON(url) {
+    return fetch(url, { cache: 'no-store' }).then((response) => response.json())
 }
 
 

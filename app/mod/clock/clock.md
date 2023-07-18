@@ -1,4 +1,4 @@
-# [Olay](../../README.md) - clock
+# [Olay](../../../README.md) - clock
 
 Display current local date and time.
 
@@ -57,6 +57,6 @@ The character map for **repnum**.
 Requires: `repnum=true`  
 Valid: `1` | `2` | `3` | `4` | `5`
 
-See [replaceNumsWithChars()](../lib/olay.js) for map contents.
+See [replaceNumsWithChars()](../../lib/olay.js) for map contents.
 
 ---

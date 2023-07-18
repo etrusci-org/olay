@@ -1,4 +1,4 @@
-# [Olay](../../README.md) - numbers
+# [Olay](../../../README.md) - numbers
 
 Display random numbers and counters.
 
@@ -52,11 +52,11 @@ Valid: `true` | `false`
 
 ### repmap
 
-The character map for **repnum**.
+Character map for **repnum**.
 
 Requires: `repnum=true`  
 Valid: `1` | `2` | `3` | `4` | `5`
 
-See [replaceNumsWithChars()](../lib/olay.js) for map contents.
+See [replaceNumsWithChars()](../../lib/olay.js) for map contents.
 
 ---

@@ -6,11 +6,21 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 
 ## Modules
 
-- [clock](./app/mod/clock.md)
-- [colorfader](./app/mod/colorfader.md)
-- [numbers](./app/mod/numbers.md)
-- [quotes](./app/mod/quotes.md)
-- [rotator](./app/mod/rotator.md)
+- [clock](./app/mod/clock/clock.md)
+- [colorfader](./app/mod/colorfader/colorfader.md)
+- [goal](./app/mod/goal/goal.md)
+- [numbers](./app/mod/numbers/numbers.md)
+- [quotes](./app/mod/quotes/quotes.md)
+- [rotator](./app/mod/rotator/rotator.md)
+
+---
+
+## Hosting
+
+I host the current [main branch](https://github.com/etrusci-org/olay/tree/main), which is most likely ahead of the latest release.  
+Access it at: <https://etrusci.org/tool/olay/>
+
+You can also clone this repo or download a specific [release](https://github.com/etrusci-org/olay/releases) and put it on your own webserver.
 
 ---
 
@@ -26,9 +36,19 @@ div.mod {
 }
 ```
 
-For the complete default style see [app/lib/default.css](./app/lib/default.css).
+Default style: [app/lib/default.css](./app/lib/default.css).
 
-([CSS Reference](https://developer.mozilla.org/docs/Web/CSS))
+For help with CSS see:
+- [CSS For Starters](./CSS.md)
+- [Full CSS Reference](https://developer.mozilla.org/docs/Web/CSS)
+
+---
+
+## Browser-Source Settings
+
+![Browser-Source Settings](./browser-source.png)
+
+You must decide per use-case if you want to have both "*Shutdown source when not visible*" and "*Refresh browser when scene becomes active*" checked. For example, if you use a number counter, it'll reset when whenever the overlay becomes invisible because of a scene switch or similar actions in OBS. Also, any queue will be reset too, for example in the quotes module, and therefore you'll see more duplicates when switching scenes often.
 
 ---
 

@@ -1,13 +1,9 @@
-import { quotes } from 'https://cdn.jsdelivr.net/gh/etrusci-org/quotes@main/js/quotes-s9.min.js'
-
-
-
-
-
 export class Mod extends ModBase
 {
-    onInit()
+    async onInit()
     {
+        const quotes = await fetchJSON(this.conf.sourcefile)
+
         RandomQuoteTyper.targetSelector = this.outputElementSelector
         RandomQuoteTyper.typingSpeed = this.conf.typingspeed
 

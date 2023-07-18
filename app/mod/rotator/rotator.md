@@ -1,4 +1,4 @@
-# [Olay](../../README.md) - rotator
+# [Olay](../../../README.md) - rotator
 
 Display and rotate tru text from a list.
 
@@ -55,10 +55,19 @@ items: `
 
 ## Output Styling
 
-```css
-/* <div> for images */
-div.img {}
+This module adds additional HTML elements inside `div.mod`:
 
-/* <div> for text */
+```html
+<div class="txt">{TEXTLINE}</div>
+<div class="img"><img src="{IMAGE}" alt="{IMAGE}"></div>
+```
+
+CSS selectors:
+
+```css
+/* <div>'s for text lines */
 div.txt {}
+
+/* <div>'s for images */
+div.img {}
 ```
