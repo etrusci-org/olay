@@ -1,44 +1,28 @@
-body {
-    /* Basic reset */
+* {
     margin: 0;
     padding: 0;
     border: 0;
+    box-sizing: border-box;
+}
+
+body {
     min-width: 100vw;
     min-height: 100vh;
     overflow: hidden;
-
-    /* Default style */
     font-family: sans-serif;
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: #00988b;
     background: transparent;
 }
 
+/* .mod {} */
 
-/*
-div.mod is nested inside <body>,
-therefore it inherits all the styles set above in "body" by default.
-see CSS.md for basic help on how to style the overlay output.
-*/
-div.mod {
-    /* module output styles here */
-}
-
-
-/*
-progressbar styling for the modules that have one.
-only the goal module currently.
-*/
-/* outer container */
-div.progressbar {
-    width: 100%;
+.debug {
+    display: inline-block;
+    padding: .25rem;
+    margin-top: 1rem;
+    font-family: monospace;
+    font-size: .85rem;
+    color: #000;
     background-color: #ccc;
-    border: 1px solid #000;
-    border-radius: 4px;
-}
-/* inner progress/percentage bar - width will be adjusted/overriden automatically by the module */
-div.progressbar > div {
-    width: 0;
-    height: 20px;
-    background-color: #00988b;
 }
