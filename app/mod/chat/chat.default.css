@@ -1,0 +1,18 @@
+/* .mod {} */
+
+/* .chatline {} */
+
+/* .chatline.first {} */
+
+/* .chatline > .timestamp {} */
+
+/* .chatline > .channel {} */
+
+/* .chatline > .user {} */
+
+/* .chatline > .message {} */
+
+.chatline > .message > .emote {
+    height: 1rem;
+    width: auto;
+}
