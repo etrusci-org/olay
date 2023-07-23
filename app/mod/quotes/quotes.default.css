@@ -1,3 +1,9 @@
-/* .mod {} */
+.mod {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 36px;
+    color: #817558;
+}
 
-/* .mod.doneTyping {} */
+.mod.doneTyping {
+    color: #007798;
+}

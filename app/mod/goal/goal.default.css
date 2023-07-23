@@ -1,4 +1,8 @@
-/* .mod {} */
+.mod {
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+    font-size: 36px;
+    color: #007798;
+}
 
 /* .description {} */
 
@@ -11,10 +15,10 @@
 /* .status > .unit {} */
 
 .progressbar {
-    background: red;
+    background: #801a00;
 }
 
 .progressbar > div {
-    height: 1rem;
-    background: green;
+    height: 15px;
+    background: #008000;
 }

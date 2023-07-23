@@ -1,18 +1,32 @@
-/* .mod {} */
+.mod {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
 
-/* .chatline {} */
+.chatline {
+    margin-bottom: 5px;
+}
 
-/* .chatline.first {} */
+.chatline.first {
+    border: 2px solid #ff0000;
+}
 
-/* .chatline > .timestamp {} */
+.chatline > .timestamp {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+}
 
-/* .chatline > .channel {} */
+.chatline > .channel {
+    display: none;
+}
 
-/* .chatline > .user {} */
+.chatline > .user {
+    font-weight: bold;
+}
 
 /* .chatline > .message {} */
 
 .chatline > .message > .emote {
-    height: 1rem;
+    height: 18px;
     width: auto;
 }
