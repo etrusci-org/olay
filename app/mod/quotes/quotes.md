@@ -3,7 +3,8 @@
 Display random quotes.
 
 **Base URL**: <https://etrusci.org/tool/olay/?mod=quotes>  
-**Default configuration**: [quotes.conf.js](./quotes.conf.js)
+**Default configuration**: [quotes.conf.js](./quotes.conf.js)  
+**Default style**: [quotes.default.css](./quotes.default.css)
 
 ---
 
@@ -22,19 +23,19 @@ Display random quotes.
 
 Quotes update rate in milliseconds.
 
-Valid: *Integers >= 1*
+Valid: `Integers >= 1`
 
 ### typingspeed
 
 Speed of the typing effect in milliseconds.
 
-Valid: *Integers >= 1*
+Valid: `Integers >= 1`
 
 ### sourcefile
 
 URL/path to a [JSON](https://www.json.org) file that contains a list of quotes.
 
-Valid: *URL, path*
+Valid: `URL, path`
 
 Example of a valid quotes file:
 

@@ -6,6 +6,7 @@ Here's a list of the most commonly used properties for your Browser-Source's CSS
 - [border-radius](https://developer.mozilla.org/docs/Web/CSS/border-radius): Set the border edge roundness.
 - [border](https://developer.mozilla.org/docs/Web/CSS/border): Set the border.
 - [color](https://developer.mozilla.org/docs/Web/CSS/color): Set text color.
+- [content](https://developer.mozilla.org/docs/Web/CSS/content): Replace or insert content.
 - [display](https://developer.mozilla.org/docs/Web/CSS/display): Set display type.
 - [font-family](https://developer.mozilla.org/docs/Web/CSS/font-family): Set text font.
 - [font-size](https://developer.mozilla.org/docs/Web/CSS/font-size): Set text size.
@@ -22,7 +23,7 @@ Here's a list of the most commonly used properties for your Browser-Source's CSS
 Here's a fictional example that uses all the properties from the list above.
 
 ```css
-div.mod {
+.mod {
     background: #333333;
     border-radius: 5px;
     border: 2px solid #077990;
@@ -35,6 +36,10 @@ div.mod {
     opacity: 0.8;
     padding: 20px;
     text-align: center;
+}
+
+.mod::before {
+    content: 'hello cruel world! ';
 }
 ```
 

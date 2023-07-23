@@ -1,0 +1,24 @@
+.mod {
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+    font-size: 36px;
+    color: #007798;
+}
+
+/* .description {} */
+
+/* .status {} */
+
+/* .status > .value {} */
+
+/* .status > .target {} */
+
+/* .status > .unit {} */
+
+.progressbar {
+    background: #801a00;
+}
+
+.progressbar > div {
+    height: 15px;
+    background: #008000;
+}

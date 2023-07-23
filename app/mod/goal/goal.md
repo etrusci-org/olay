@@ -3,7 +3,8 @@
 Display a goal status. Manually updated.
 
 **Base URL**: <https://etrusci.org/tool/olay/?mod=goal>  
-**Default configuration**: [goal.conf.js](./goal.conf.js)
+**Default configuration**: [goal.conf.js](./goal.conf.js)  
+**Default style**: [goal.default.css](./goal.default.css)
 
 ---
 
@@ -22,28 +23,28 @@ Display a goal status. Manually updated.
 
 Goal description.
 
-Valid: *text, HTML*
+Valid: `text, HTML`
 
 ### value
 
 Current goal value.
 
-Valid: *text, HTML*
+Valid: `text, HTML`
 
 ### target
 
 Goal target value.
 
-Valid: *text, HTML*
+Valid: `text, HTML`
 
 ### unit
 
 Unit the **value** and **target** refer to.
 
-Valid: *text, HTML*
+Valid: `text, HTML`
 
 ---
-
+<!-- 
 ## Output Styling
 
 This module adds additional HTML elements inside `div.mod`:
@@ -83,4 +84,4 @@ div.progressbar {}
 
 /* <div> for inner progress/percentage bar */
 div.progressbar > div {}
-```
+``` -->
