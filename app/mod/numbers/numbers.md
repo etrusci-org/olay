@@ -3,7 +3,8 @@
 Display random numbers and counters.
 
 **Base URL**: <https://etrusci.org/tool/olay/?mod=numbers>  
-**Default configuration**: [numbers.conf.js](./numbers.conf.js)
+**Default configuration**: [numbers.conf.js](./numbers.conf.js)  
+**Default style**: [numbers.default.css](./numbers.default.css)
 
 ---
 
@@ -24,23 +25,23 @@ Display random numbers and counters.
 
 Numbers update rate in milliseconds.
 
-Valid: *Integers >= 1*
+Valid: `Integers >= 1`
 
 ### type
 
 Which type of numbers/counter to load.
 
-Valid: `random` | `countup` | `countdown`
+Valid:
 
-- `random` = Random numbers in this range will be picked.
-- `countup` = Count up from **start** to **end**.
-- `countdown` = Count down from **start** to **end**.
+- `random`: Random numbers in this range will be picked.
+- `countup`: Count up from **start** to **end**.
+- `countdown`: Count down from **start** to **end**.
 
 ### start, end
 
-Start and end of the numbers range to use.
+Smallest (*start*) and largest (*end*) number of the range to use.
 
-Valid: *Integers* or `none`
+Valid: `Integers or none`
 
 If **type** is set to `countup` or `countdown`, **end** can be set to `none` to count forever.
 
@@ -48,15 +49,22 @@ If **type** is set to `countup` or `countdown`, **end** can be set to `none` to 
 
 Whether to replace numbers with characters.
 
-Valid: `true` | `false`
+Valid:
+
+- `true`: Replace numbers with characters
+- `false`: Do not replace numbers with characters
 
 ### repmap
 
-Character map for **repnum**.
+The character map for **repnum**.
 
-Requires: `repnum=true`  
-Valid: `1` | `2` | `3` | `4` | `5`
+Requires: `repnum = true`  
+Valid:
 
-See [replaceNumsWithChars()](../../lib/olay.js) for map contents.
+- `1`: ABCDEFGHIJ
+- `2`: ZYXWVUTSRQ
+- `3`: 9876543210
+- `4`: ●□◆■○▶◁▲◇▼
+- `5`: ٠١٢٣٤٥٦٧٨٩
 
 ---

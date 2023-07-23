@@ -3,7 +3,8 @@
 Display and rotate tru text from a list.
 
 **Base URL**: <https://etrusci.org/tool/olay/?mod=rotator>  
-**Default configuration**: [rotator.conf.js](./rotator.conf.js)
+**Default configuration**: [rotator.conf.js](./rotator.conf.js)  
+**Default style**: [rotator.default.css](./rotator.default.css)
 
 ---
 
@@ -22,23 +23,26 @@ Display and rotate tru text from a list.
 
 Rotation update rate in milliseconds.
 
-Valid: *Integers >= 1*
+Valid: `Integers >= 1`
 
 ### shuffle
 
 Whether to shuffle the items list.
 
-Valid: `true` | `false`
+Valid:
+
+- `true`: Shuffle list
+- `false`: Keep list in order
 
 ### items
 
 Items to rotate tru.
 
-Valid: *text, HTML*
+Valid: `text, HTML`
 
-Start each item with `|`.  
-Separate sub-items with `*`.  
-Prefix image URL/paths with `img:`.
+- Start each item with `|`  
+- Separate sub-items with `*`  
+- Prefix image URL/paths with `img:`
 
 Example:
 ```js
@@ -52,7 +56,7 @@ items: `
 ```
 
 ---
-
+<!-- 
 ## Output Styling
 
 This module adds additional HTML elements inside `div.mod`:
@@ -70,4 +74,4 @@ div.txt {}
 
 /* <div>'s for images */
 div.img {}
-```
+``` -->

@@ -3,7 +3,8 @@
 Display current local date and time.
 
 **Base URL**: <https://etrusci.org/tool/olay/?mod=clock>  
-**Default configuration**: [clock.conf.js](./clock.conf.js)
+**Default configuration**: [clock.conf.js](./clock.conf.js)  
+**Default style**: [clock.default.css](./clock.default.css)
 
 ---
 
@@ -23,40 +24,58 @@ Display current local date and time.
 
 Clock update rate in milliseconds.
 
-Valid: *Integers >= 1*
+Valid: `Integers >= 1`
 
 ### type
 
 Which type of clock to load.
 
-Valid: `human` | `unix` | `unixms`
+Valid:
 
-- `human` = Human-readable format
-- `unix` = Unixtime stamp in seconds
-- `unixms` = Unixtime stamp in milliseconds
+- `human`: Human-readable format
+- `unix`: Unixtime stamp in seconds
+- `unixms`: Unixtime stamp in milliseconds
 
 ### humanformat
 
 Human-readable format template.
 
-Requires: `type=human`  
-Valid: *Placeholders, text, HTML*  
-Placeholders: `{year}`, `{month}`, `{day}`, `{hour}`, `{minute}`, `{second}`, `{millisecond}`, `{timezoneOffset}`  
+Requires: `type = human`  
+Valid: `Placeholders, text, HTML`
+
+Placeholders:
+
+- `{year}`: Year
+- `{month}`: Month
+- `{day}`: Day
+- `{hour}`: Hour
+- `{minute}`: Minute
+- `{second}`: Second
+- `{millisecond}`: Millisecond
+- `{timezoneOffset}`: Timezone offset (relative from UTC)
+
 Full example: `{year}-{month}-{day}<br>{hour}:{minute}:{second}.{millisecond}<br>{timezoneOffset}`
 
 ### repnum
 
 Whether to replace numbers with characters.
 
-Valid: `true` | `false`
+Valid:
+
+- `true`: Replace numbers with characters
+- `false`: Do not replace numbers with characters
 
 ### repmap
 
 The character map for **repnum**.
 
-Requires: `repnum=true`  
-Valid: `1` | `2` | `3` | `4` | `5`
+Requires: `repnum = true`  
+Valid:
 
-See [replaceNumsWithChars()](../../lib/olay.js) for map contents.
+- `1`: ABCDEFGHIJ
+- `2`: ZYXWVUTSRQ
+- `3`: 9876543210
+- `4`: ●□◆■○▶◁▲◇▼
+- `5`: ٠١٢٣٤٥٦٧٨٩
 
 ---
