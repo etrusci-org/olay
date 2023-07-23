@@ -1,11 +1,4 @@
 const appConf = {
-    githubURL: 'https://github.com/etrusci-org/olay',
-    defaultLibs: [
-        './lib/modbase.js',
-    ],
-    defaultCSS: [
-        './lib/default.css',
-    ],
     module: {
         chat: {
             css: [
@@ -94,14 +87,14 @@ window.addEventListener('load', () => {
     document.title = `${modHandle} | ${document.title}`
 
     // Load CSS and libs
-    for (const item of [...appConf.defaultCSS, ...appConf.module[modHandle].css]) {
+    for (const item of appConf.module[modHandle].css) {
         const e = document.createElement('link')
         e.rel = 'stylesheet'
         e.href = item
         document.head.appendChild(e)
     }
 
-    for (const item of [...appConf.defaultLibs, ...appConf.module[modHandle].libs]) {
+    for (const item of appConf.module[modHandle].libs) {
         const e = document.createElement('script')
         e.src = item
         document.body.appendChild(e)
