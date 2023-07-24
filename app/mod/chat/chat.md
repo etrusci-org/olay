@@ -88,6 +88,15 @@ Valid:
 - `true`: Use user color
 - `false`: Use color from *Custom CSS* field in Browser-Source
 
+### emotes
+
+Whether to parse emotes.
+
+Valid:
+
+- `true`: Parse and display emotes as images
+- `false`: Display only text value
+
 ### emotetheme
 
 Color theme for emotes images background.
@@ -96,6 +105,36 @@ Valid:
 
 - `light`: Light theme
 - `dark`: Dark theme
+
+### emotesize
+
+Size of the emotes images.
+
+Valid:
+
+- `large`: 112 x 112 pixel
+- `medium`: 56 x 56 pixel
+- `small`: 28 x 28 pixel
+
+### badge*
+
+A badge/symbol to put before the user name depending on his "status".
+
+Valid:
+
+- `text, HTML`: Show badge
+- `none`: Hide badge
+
+Available badge parameters:
+
+- `badgebroadcaster`: Symbol for broadcaster
+- `badgemoderator`: Symbol for moderator
+- `badgevip`: Symbol for VIP
+- `badgesubscriber`: Symbol for subscriber
+- `badgesubgifter`: Symbol for sub-gifter
+- `badgebits`: Symbol for bits-giver
+
+The broadcaster will always have only one badge.
 
 ### autoscroll
 

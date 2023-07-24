@@ -56,7 +56,9 @@ export class Mod extends ModBase
             return
         }
 
-        message = injectTwitchEmotes(tags['emotes'], this.conf.emotetheme, message)
+        if (this.conf.emotes == 'true') {
+            message = injectTwitchEmotes(message, tags['emotes'], this.conf.emotetheme, this.conf.emotesize)
+        }
 
         let timestamp = humanTimestamp(this.conf.timestampformat)
 
@@ -64,12 +66,42 @@ export class Mod extends ModBase
             timestamp = replaceNumsWithChars(timestamp, this.conf.repmap)
         }
 
+        let badges = ''
+
+        if (this.conf.badgebroadcaster != 'none' && tags['username'] == channel.substring(1)) {
+            badges = `<span class="broadcaster">${this.conf.badgebroadcaster}</span>`
+        }
+        else {
+            if (this.conf.badgemoderator != 'none' && tags['user-type'] == 'mod') {
+                badges = `<span class="moderator">${this.conf.badgemoderator}</span>`
+            }
+
+            if (tags['badges']) {
+                if (this.conf.badgevip != 'none' && Object.keys(tags['badges']).includes('vip')) {
+                    badges += `<span class="vip">${this.conf.badgevip}</span>`
+                }
+
+                if (this.conf.badgesubscriber != 'none' && Object.keys(tags['badges']).includes('subscriber')) {
+                    badges += `<span class="subscriber">${this.conf.badgesubscriber}</span>`
+                }
+
+                if (this.conf.badgesubgifter != 'none' && Object.keys(tags['badges']).includes('sub-gifter')) {
+                    badges += `<span class="subgifter">${this.conf.badgesubgifter}</span>`
+                }
+
+                if (this.conf.badgebits != 'none' && Object.keys(tags['badges']).includes('bits')) {
+                    badges += `<span class="bits">${this.conf.badgebits}</span>`
+                }
+            }
+        }
+
         let user = tags['display-name']
 
         const messageHTML = `
-            <div class="chatline id-${tags['id']}${(tags['first-msg']) ? ' first' : ''}">
+            <div class="chatline ${channel.substring(1)} id-${tags['id']}${(tags['first-msg']) ? ' first' : ''}">
                 <span class="timestamp">${timestamp}</span>
                 <span class="channel">${channel}</span>
+                <span class="badges">${badges}</span>
                 <span class="user"${(this.conf.usercolor && tags['color']) ? ` style="color:${tags['color']};"` : ''}>${user}</span>
                 <span class="message">${message}</span>
             </div>
