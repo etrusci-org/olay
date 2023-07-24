@@ -1,4 +1,5 @@
-function fyShuffle(arr) {
+function fyShuffle(arr)
+{
     const copy = [...arr]
 
     for (let i = copy.length - 1; i > 0; i--) {
