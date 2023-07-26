@@ -3,18 +3,29 @@
 export const modConf = {
     channels: `
         |spartalien
-        |dj_urban_o
-        |djchopper
-        |djsaywhaat
-        |dynagroove
-        |galvatron54
-        |herztechno
-        |justsamdj
-        |mamikopiano
+        |bonus_creature
+        |catch22
+        |charming_jo
+        |chrisundermind
+        |dj_freche_hexe
+        |djlostmelody
+        |eis_thiele_music
+        |existence130
+        |guddah
+        |helmahof
+        |houseproudtv
+        |jck_official
         |orochihanma
+        |plus6production
         |psymill
-        |rickstarmusic
-        |swhimmm
+        |regular_human_music
+        |sarahcoponat
+        |steely_ham
+        |tanja_v
+        |the_vixens_den
+        |vanderhoooorn
+        |vjpcat
+        |yaylife
     `,
     ignore: ``,
     limit: '100',
