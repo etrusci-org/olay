@@ -59,7 +59,7 @@ Specific color values to fade tru.
 
 Valid: `Color HEX values without leading number sign (#)`
 
-Start each item with `|`
+Start each item with `|`.
 
 ### shuffle
 
@@ -70,5 +70,23 @@ Valid:
 
 - `true`: Shuffle list
 - `false`: Keep list in order
+
+---
+
+## Output Styling
+
+### HTML Elements
+
+```html
+<div class="mod colorfader">
+    {empty_with_colored_background}
+</div>
+```
+
+### Available CSS Selectors
+
+```css
+.mod {} /* or */ .mod.colorfader {} /* Module output container */
+```
 
 ---

@@ -54,8 +54,6 @@ Placeholders:
 - `{millisecond}`: Millisecond
 - `{timezoneOffset}`: Timezone offset (relative from UTC)
 
-Full example: `{year}-{month}-{day}<br>{hour}:{minute}:{second}.{millisecond}<br>{timezoneOffset}`
-
 ### repnum
 
 Whether to replace numbers with characters.
@@ -77,5 +75,23 @@ Valid:
 - `3`: 9876543210
 - `4`: ●□◆■○▶◁▲◇▼
 - `5`: ٠١٢٣٤٥٦٧٨٩
+
+---
+
+## Output Styling
+
+### HTML Elements
+
+```html
+<div class="mod clock">
+    {date_time}
+</div>
+```
+
+### Available CSS Selectors
+
+```css
+.mod {} /* or */ .mod.clock {} /* Module output container */
+```
 
 ---

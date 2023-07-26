@@ -40,9 +40,9 @@ Items to rotate tru.
 
 Valid: `text, HTML`
 
-- Start each item with `|`  
-- Separate sub-items with `*`  
-- Prefix image URL/paths with `img:`
+Start each item with `|`.  
+Separate sub-items with `*`.  
+Prefix image URL/paths with `img:`.
 
 Example:
 ```js
@@ -56,22 +56,28 @@ items: `
 ```
 
 ---
-<!-- 
+
 ## Output Styling
 
-This module adds additional HTML elements inside `div.mod`:
+### HTML Elements
 
 ```html
-<div class="txt">{TEXTLINE}</div>
-<div class="img"><img src="{IMAGE}" alt="{IMAGE}"></div>
+<div class="mod rotator">
+    {quote_text}
+</div>
 ```
 
-CSS selectors:
+### Available CSS Selectors
 
 ```css
-/* <div>'s for text lines */
-div.txt {}
+.mod {} /* or */ .mod.rotator {} /* Module output container */
 
-/* <div>'s for images */
-div.img {}
-``` -->
+.txt {} /* Text items */
+
+.img {} /* Image items */
+
+.img > img {} /* Image tags inside image items */
+
+```
+
+---

@@ -44,44 +44,42 @@ Unit the **value** and **target** refer to.
 Valid: `text, HTML`
 
 ---
-<!-- 
+
 ## Output Styling
 
-This module adds additional HTML elements inside `div.mod`:
+### HTML Elements
 
 ```html
-<div class="description">{DESCRIPTION}</div>
+<div class="description">{description}</div>
 <div class="status">
-    <span class="value">{VALUE}</span> /
-    <span class="target">{TARGET}</span>
-    <span class="unit">{UNIT}</span>
+    <span class="value">{value}</span> /
+    <span class="target">{target}</span>
+    <span class="unit">{unit}</span>
 </div>
 <div class="progressbar">
-    <div style="width: {VALUE_PERCENTAGE}%;"></div>
+    <div style="width: {progress_percentage}%;"></div>
 </div>
 ```
 
-CSS selectors:
+### Available CSS Selectors
 
 ```css
-/* <div> for description */
-div.description {}
+.mod {} /* or */ .mod.goal {} /* Module output container */
 
-/* <div> for status */
-div.status {}
+.description {} /* Goal description */
 
-/* <span> for value */
-span.value {}
+.status {} /* Goal status */
 
-/* <span> for target */
-span.target {}
+.status > .value {} /* Value in status */
 
-/* <span> for unit */
-span.unit {}
+.status > .target {} /* Target in status */
 
-/* <div> for outer progressbar container */
-div.progressbar {}
+.status > .unit {} /* Unit in status */
 
-/* <div> for inner progress/percentage bar */
-div.progressbar > div {}
-``` -->
+.progressbar {} /* Progressbar container */
+
+.progressbar > div {} /* Progressbar percentage display */
+
+```
+
+---
