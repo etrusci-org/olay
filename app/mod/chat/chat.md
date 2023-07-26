@@ -1,6 +1,6 @@
 # [Olay](../../../README.md) - chat
 
-Display messages from one or more twitch chats.
+Display messages from one or more [Twitch](https://twitch.tv) chats.
 
 **Base URL**: <https://etrusci.org/tool/olay/?mod=chat>  
 **Default configuration**: [chat.conf.js](./chat.conf.js)  
@@ -236,6 +236,9 @@ Valid: `Integers >= 2000`
 .chatline > .user {} /* User name in chatline */
 
 .chatline > .message {} /* Message in chatline */
+
+.chatline > .message > .emote {} /* Emote image tags in message */
+
 ```
 
 ---

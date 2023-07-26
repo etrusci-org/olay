@@ -5,3 +5,8 @@
     bottom: 0;
     width: 100%;
 }
+
+.chatline > .message > .emote {
+    height: 1rem;
+    width: auto;
+}
