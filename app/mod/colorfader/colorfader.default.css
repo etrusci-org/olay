@@ -1,5 +1,10 @@
+/* For help see "Output Styling" topic in colorfader.md */
+
 body {
     background: #000000;
 }
 
-/* .mod {} */
+.mod {
+    width: 100vw;
+    height: 100vh;
+}

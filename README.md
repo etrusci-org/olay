@@ -6,6 +6,7 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 
 ## Modules
 
+- [chat](./app/mod/chat/chat.md)
 - [clock](./app/mod/clock/clock.md)
 - [colorfader](./app/mod/colorfader/colorfader.md)
 - [goal](./app/mod/goal/goal.md)
@@ -36,9 +37,9 @@ All modules will output their content inside a `<div>` with the class `mod`. Som
 }
 ```
 
-Global default style: [app/lib/default.css](./app/lib/default.css)
-
+Global default style: [app/lib/default.css](./app/lib/default.css)  
 For help with CSS see:
+
 - [CSS For Starters](./CSS.md)
 - [Full CSS Reference](https://developer.mozilla.org/docs/Web/CSS)
 

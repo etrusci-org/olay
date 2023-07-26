@@ -48,3 +48,25 @@ Example of a valid quotes file:
 ```
 
 ---
+
+## Output Styling
+
+### HTML Elements
+
+```html
+<div class="mod quotes">
+    {quote_text}
+</div>
+
+```
+
+### Available CSS Selectors
+
+```css
+.mod {} /* or */ .mod.quotes {} /* Module output container */
+
+.mod.doneTyping {} /* Typing effect has completed */
+
+```
+
+---

@@ -41,9 +41,10 @@ Valid:
 
 Smallest (*start*) and largest (*end*) number of the range to use.
 
-Valid: `Integers or none`
+Valid:
 
-If **type** is set to `countup` or `countdown`, **end** can be set to `none` to count forever.
+- `Integers`: Use this number
+- `none`: If **type** is set to `countup` or `countdown`, count forever.
 
 ### repnum
 
@@ -66,5 +67,25 @@ Valid:
 - `3`: 9876543210
 - `4`: ●□◆■○▶◁▲◇▼
 - `5`: ٠١٢٣٤٥٦٧٨٩
+
+---
+
+## Output Styling
+
+### HTML Elements
+
+```html
+<div class="mod numbers">
+    {numbers}
+</div>
+
+```
+
+### Available CSS Selectors
+
+```css
+.mod {} /* or */ .mod.numbers {} /* Module output container */
+
+```
 
 ---

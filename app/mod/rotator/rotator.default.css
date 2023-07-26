@@ -1,15 +1,1 @@
-.mod {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 36px;
-    color: #007798;
-}
-
-/* .img {} */
-
-.img > img {
-    width: 300px;
-    height: 300px;
-    border: 10px solid #007798;
-}
-
-/* .txt {} */
+/* For help see "Output Styling" topic in rotator.md */

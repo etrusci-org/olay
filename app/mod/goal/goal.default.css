@@ -1,24 +1,10 @@
-.mod {
-    font-family: Impact, 'Arial Narrow Bold', sans-serif;
-    font-size: 36px;
-    color: #007798;
-}
-
-/* .description {} */
-
-/* .status {} */
-
-/* .status > .value {} */
-
-/* .status > .target {} */
-
-/* .status > .unit {} */
+/* For help see "Output Styling" topic in goal.md */
 
 .progressbar {
     background: #801a00;
 }
 
 .progressbar > div {
-    height: 15px;
+    height: 1rem;
     background: #008000;
 }
