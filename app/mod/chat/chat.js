@@ -26,17 +26,19 @@ export class Mod extends ModBase
         this.client = new tmi.Client({
             channels: this.channels,
             options: {
-                joinInterval: parseInt(this.conf.joininterval),
+                joinInterval: Math.max(2000, parseInt(this.conf.joininterval)),
             }
         })
 
-        this.client.connect()
+        setTimeout(() => {
+            this.client.connect()
 
-        this.client.on('message', (channel, tags, message, self) => {
-            this.onMessage(channel, tags, message, self)
-        })
+            this.client.on('message', (channel, tags, message, self) => {
+                this.onMessage(channel, tags, message, self)
+            })
 
-        this.outputElement.innerHTML = ''
+            this.outputElement.innerHTML = ''
+        }, 3_000)
     }
 
 
