@@ -6,13 +6,13 @@ Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://gith
 
 ## Modules
 
-- [chat](./app/mod/chat/chat.md)
-- [clock](./app/mod/clock/clock.md)
-- [colorfader](./app/mod/colorfader/colorfader.md)
-- [goal](./app/mod/goal/goal.md)
-- [numbers](./app/mod/numbers/numbers.md)
-- [quotes](./app/mod/quotes/quotes.md)
-- [rotator](./app/mod/rotator/rotator.md)
+- [chat](./app/mod/chat/README.md)
+- [clock](./app/mod/clock/README.md)
+- [colorfader](./app/mod/colorfader/README.md)
+- [goal](./app/mod/goal/README.md)
+- [numbers](./app/mod/numbers/README.md)
+- [quotes](./app/mod/quotes/README.md)
+- [rotator](./app/mod/rotator/README.md)
 
 ---
 
@@ -36,6 +36,8 @@ All modules will output their content inside a `<div>` with the class `mod`. Som
     color: #009900;
 }
 ```
+
+For specific CSS selectors, see the individual README's of the modules.
 
 Global default style: [app/lib/default.css](./app/lib/default.css)  
 For help with CSS see:
