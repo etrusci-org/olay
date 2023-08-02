@@ -42,7 +42,7 @@ Valid: `text, HTML`
 
 Start each item with `|`.  
 Separate sub-items with `*`.  
-Prefix image URL/paths with `img:`.
+Prefix image URL/paths with `img:`.  
 Prefix video URL/paths with `vid:`.
 
 Example:
