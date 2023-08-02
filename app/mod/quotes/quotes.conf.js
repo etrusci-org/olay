@@ -1,4 +1,4 @@
-// For help see quotes.md
+// For help see quotes/README.md
 
 export const modConf = {
     updaterate: '90000',
