@@ -42,7 +42,8 @@ Valid: `text, HTML`
 
 Start each item with `|`.  
 Separate sub-items with `*`.  
-Prefix image URL/paths with `img:`.
+Prefix image URL/paths with `img:`.  
+Prefix video URL/paths with `vid:`.
 
 Example:
 ```js
@@ -52,6 +53,7 @@ items: `
     |img:https://example.org/test.png
     |text before image*img:https://example.org/test.png
     |img:https://example.org/test.png*text after image
+    |vid:https://example.org/test.mp4
 `
 ```
 
@@ -63,7 +65,9 @@ items: `
 
 ```html
 <div class="mod rotator">
-    {quote_text}
+    [<div class="txt">{text}</div>]
+    [<div class="img"><img src="{image}" alt="{image}"></div>]
+    [<div class="vid"><video src="{video}" autoplay="true" loop="true" playsinline="true"></video></div>]
 </div>
 ```
 
@@ -78,6 +82,9 @@ items: `
 
 .img > img {} /* Image tags inside image items */
 
+.vid {} /* Video items */
+
+.vid > video {} /* Video tags inside video items */
 ```
 
 ---

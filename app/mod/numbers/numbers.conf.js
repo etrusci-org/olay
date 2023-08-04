@@ -1,4 +1,4 @@
-// For help see numbers.md
+// For help see numbers/README.md
 
 export const modConf = {
     updaterate: '3000',

@@ -1,4 +1,4 @@
-// For help see goal.md
+// For help see goal/README.md
 
 export const modConf = {
     description: 'Current Goal Status',

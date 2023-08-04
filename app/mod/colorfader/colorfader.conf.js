@@ -1,4 +1,4 @@
-// For help see colorfader.md
+// For help see colorfader/README.md
 
 export const modConf = {
     delay: '0',

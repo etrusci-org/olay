@@ -1,4 +1,4 @@
-// For help see rotator.md
+// For help see rotator/README.md
 
 export const modConf = {
     updaterate: '10000',

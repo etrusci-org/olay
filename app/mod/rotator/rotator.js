@@ -35,6 +35,9 @@ export class Mod extends ModBase
             if (itemPart.startsWith('img:')) {
                 out += `<div class="img"><img src="${itemPart.substr(4)}" alt="${itemPart}"></div>`
             }
+            else if (itemPart.startsWith('vid:')) {
+                out += `<div class="vid"><video src="${itemPart.substr(4)}" autoplay="true" loop="true" playsinline="true"></video></div>`
+            }
             else {
                 out += `<div class="txt">${itemPart}</div>`
             }

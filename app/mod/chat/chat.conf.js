@@ -1,4 +1,4 @@
-// For help see chat.md
+// For help see chat/README.md
 
 export const modConf = {
     channels: `

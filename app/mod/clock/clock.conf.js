@@ -1,4 +1,4 @@
-// For help see clock.md
+// For help see clock/README.md
 
 export const modConf = {
     updaterate: '1000',
