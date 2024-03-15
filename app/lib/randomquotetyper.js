@@ -48,7 +48,7 @@ const RandomQuoteTyper = {
 
 
     stop() {
-        if (!this.typerID || !this.target) return
+        if (!this.typerID) return
 
         clearInterval(this.typerID)
         this.typerID = null
