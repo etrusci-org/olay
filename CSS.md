@@ -15,7 +15,9 @@ Here's a list of the most commonly used properties for your Browser-Source's CSS
 - [opacity](https://developer.mozilla.org/docs/Web/CSS/opacity): Set element opacity.
 - [padding](https://developer.mozilla.org/docs/Web/CSS/padding): Set padding area.
 - [text-align](https://developer.mozilla.org/docs/Web/CSS/text-align): Set horizontal alignment.
-
+- [text-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow): Add shadows to text.
+- [::before](https://developer.mozilla.org/en-US/docs/Web/CSS/::before): Create an element before another element.
+- [content](https://developer.mozilla.org/en-US/docs/Web/CSS/content): Replace content with a value.
 ---
 
 ## Example
@@ -36,9 +38,10 @@ Here's a fictional example that uses all the properties from the list above.
     opacity: 0.8;
     padding: 20px;
     text-align: center;
+    text-shadow: #ff0000 20px 20px 5px;
 }
 
-.mod::before {
+.mod::before { 
     content: 'hello cruel world! ';
 }
 ```
