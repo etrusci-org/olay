@@ -13,7 +13,7 @@ Display random quotes.
 - [mod=quotes](https://etrusci.org/tool/olay/?mod=quotes)
 - [mod=quotes&updaterate=20000](https://etrusci.org/tool/olay/?mod=quotes&updaterate=20000)
 - [mod=quotes&typingspeed=30](https://etrusci.org/tool/olay/?mod=quotes&typingspeed=40)
-- [mod=quotes&sourcefile=https://cdn.jsdelivr.net/gh/etrusci-org/quotes@main/json/quotes-s9.json](https://etrusci.org/tool/olay/?mod=quotes&sourcefile=https://cdn.jsdelivr.net/gh/etrusci-org/quotes@main/json/quotes-s9.json)
+- [mod=quotes&sourcefile=https://cdn.jsdelivr.net/gh/etrusci-org/quotes@main/json/quotes.min.json](https://etrusci.org/tool/olay/?mod=quotes&sourcefile=https://cdn.jsdelivr.net/gh/etrusci-org/quotes@main/json/quotes.min.json)
 
 ---
 
