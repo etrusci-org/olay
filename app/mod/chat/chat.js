@@ -104,7 +104,7 @@ export class Mod extends ModBase
                 <span class="timestamp">${timestamp}</span>
                 <span class="channel">${channel}</span>
                 <span class="badges">${badges}</span>
-                <span class="user"${(this.conf.usercolor && tags['color']) ? ` style="color:${tags['color']};"` : ''}>${user}</span>
+                <span class="user"${(this.conf.usercolor == 'true' && tags['color']) ? ` style="color:${tags['color']};"` : ''}>${user}</span>
                 <span class="message">${message}</span>
             </div>
         `
