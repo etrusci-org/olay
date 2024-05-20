@@ -23,6 +23,9 @@ export class Mod extends ModBase
         else if (this.conf.type == 'unixms') {
             out = String(Date.now())
         }
+        else if (this.conf.type == 'beat') {
+            out = String(`@${beatsNow()}`)
+        }
 
         if (this.conf.repnum == 'true') {
             out = replaceNumsWithChars(out, this.conf.repmap)

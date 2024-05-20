@@ -17,6 +17,7 @@ const appConf = {
                 './mod/clock/clock.default.css',
             ],
             libs: [
+                './lib/beats.js',
                 './lib/humantimestamp.js',
                 './lib/replacenumswithchars.js',
             ],
