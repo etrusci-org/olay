@@ -37,6 +37,7 @@ Valid:
 - `human`: Human-readable format
 - `unix`: Unixtime stamp in seconds
 - `unixms`: Unixtime stamp in milliseconds
+- `beats`: Internet time
 
 ### humanformat
 
