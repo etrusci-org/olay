@@ -15,6 +15,8 @@ Display current local date and time.
 - [mod=clock&repnum=true&repmap=4](https://etrusci.org/tool/olay/?mod=clock&repnum=true&repmap=4)
 - [mod=clock&type=unix](https://etrusci.org/tool/olay/?mod=clock&type=unix)
 - [mod=clock&type=unixms&updaterate=80](https://etrusci.org/tool/olay/?mod=clock&type=unixms&updaterate=80)
+- [mod=clock&type=beats](https://etrusci.org/tool/olay/?mod=clock&type=beats)
+- [mod=clock&type=beats&beatsformat=@{beats}](https://etrusci.org/tool/olay/?mod=clock&type=beats&beatsformat=@{beats})
 
 ---
 
@@ -53,6 +55,17 @@ Placeholders:
 - `{second}`: Second
 - `{millisecond}`: Millisecond
 - `{timezoneOffset}`: Timezone offset (relative from UTC)
+
+### beatsformat
+
+Internet time format template.
+
+Requires: `type = beats`  
+Valid: `Placeholders, text, HTML`
+
+Placeholders:
+
+- `{beats}`: Beats
 
 ### repnum
 

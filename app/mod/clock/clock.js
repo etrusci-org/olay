@@ -23,8 +23,8 @@ export class Mod extends ModBase
         else if (this.conf.type == 'unixms') {
             out = String(Date.now())
         }
-        else if (this.conf.type == 'beat') {
-            out = String(`@${beatsNow()}`)
+        else if (this.conf.type == 'beats') {
+            out = this.conf.beatsformat.replace('{beats}', beatsNow())
         }
 
         if (this.conf.repnum == 'true') {
