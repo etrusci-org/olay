@@ -34,10 +34,10 @@ Which type of clock to load.
 
 Valid:
 
-- `human`: Human-readable format
-- `unix`: Unixtime stamp in seconds
-- `unixms`: Unixtime stamp in milliseconds
-- `beats`: Internet time
+- `human`: [Human-readable](https://en.wikipedia.org/wiki/Human-readable_medium_and_data) date/time format
+- `unix`: [Unixtime](https://en.wikipedia.org/wiki/Unix_time) stamp in seconds
+- `unixms`: [Unixtime](https://en.wikipedia.org/wiki/Unix_time) stamp in milliseconds
+- `beats`: [Swatch internet time](https://en.wikipedia.org/wiki/Swatch_Internet_Time)
 
 ### humanformat
 
@@ -59,7 +59,7 @@ Placeholders:
 
 ### beatsformat
 
-Internet time format template.
+Swatch internet time format template.
 
 Requires: `type = beats`  
 Valid: `Placeholders, text, HTML`
