@@ -15,6 +15,8 @@ Display current local date and time.
 - [mod=clock&repnum=true&repmap=4](https://etrusci.org/tool/olay/?mod=clock&repnum=true&repmap=4)
 - [mod=clock&type=unix](https://etrusci.org/tool/olay/?mod=clock&type=unix)
 - [mod=clock&type=unixms&updaterate=80](https://etrusci.org/tool/olay/?mod=clock&type=unixms&updaterate=80)
+- [mod=clock&type=beats](https://etrusci.org/tool/olay/?mod=clock&type=beats)
+- [mod=clock&type=beats&beatsformat=@{beats}](https://etrusci.org/tool/olay/?mod=clock&type=beats&beatsformat=@{beats})
 
 ---
 
@@ -32,9 +34,10 @@ Which type of clock to load.
 
 Valid:
 
-- `human`: Human-readable format
-- `unix`: Unixtime stamp in seconds
-- `unixms`: Unixtime stamp in milliseconds
+- `human`: [Human-readable](https://en.wikipedia.org/wiki/Human-readable_medium_and_data) date/time format
+- `unix`: [Unixtime](https://en.wikipedia.org/wiki/Unix_time) stamp in seconds
+- `unixms`: [Unixtime](https://en.wikipedia.org/wiki/Unix_time) stamp in milliseconds
+- `beats`: [Swatch internet time](https://en.wikipedia.org/wiki/Swatch_Internet_Time)
 
 ### humanformat
 
@@ -53,6 +56,17 @@ Placeholders:
 - `{second}`: Second
 - `{millisecond}`: Millisecond
 - `{timezoneOffset}`: Timezone offset (relative from UTC)
+
+### beatsformat
+
+Swatch internet time format template.
+
+Requires: `type = beats`  
+Valid: `Placeholders, text, HTML`
+
+Placeholders:
+
+- `{beats}`: Beats
 
 ### repnum
 
