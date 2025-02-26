@@ -9,7 +9,7 @@ export class Olay_Clock extends Olay {
         precision: 0,
     };
     ui = {
-        mod: document.getElementById('mod')
+        mod: document.querySelector('#mod')
     };
     valid_clock_types = ['human', 'unix', 'unixms', 'beats'];
     constructor() {

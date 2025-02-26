@@ -7,7 +7,7 @@ export class Olay_Quotes extends Olay {
         endpoint: 'https://pdv.ourspace.ch/api/collections/random_quote/records/1?fields=author,quote',
     };
     ui = {
-        mod: document.getElementById('mod')
+        mod: document.querySelector('#mod')
     };
     min_updaterate = 10;
     constructor() {

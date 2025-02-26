@@ -5,7 +5,7 @@ export class Olay_Rotator extends Olay {
         items: 'foo|bar|moo|cow',
     };
     ui = {
-        mod: document.getElementById('mod')
+        mod: document.querySelector('#mod')
     };
     queue = [];
     constructor() {

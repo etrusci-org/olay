@@ -17,7 +17,7 @@ export class Olay_Quotes extends Olay
     ui: {
         mod: HTMLElement
     } = {
-        mod: document.getElementById('mod') as HTMLElement
+        mod: document.querySelector('#mod') as HTMLElement
     }
 
     min_updaterate: number = 10
