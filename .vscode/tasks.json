@@ -35,7 +35,7 @@
         {
             "label": "scss",
             "type": "shell",
-            "command": "sass ./src/:./olay/ --style compressed --no-source-map --watch",
+            "command": "sass ./src/:./olay/ --style expanded --no-source-map --watch",
             "isBackground": true,
             "presentation": {
                 "group": "olay build",

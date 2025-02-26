@@ -45,7 +45,8 @@ export class Olay_TwitchChat extends Olay
         }
 
         // @ts-ignore: the tmi client is there, promise! (see src/mod/chat/body.html)
-        this.TwitchClient = new tmi.Client({
+        // helpme: i'm too stupid to import tmi like the other modules in the mods
+        this.TwitchClient = new window.tmi.Client({
             channels: this.conf.channels,
             options: {}
         })
@@ -53,7 +54,7 @@ export class Olay_TwitchChat extends Olay
         setTimeout(async () => {
             this.ui.mod.innerHTML = 'connecting ...'
 
-            await this.TwitchClient.connect()
+            await this.TwitchClient.connect().catch(console.error)
 
             this.TwitchClient.on('message', (channel: string, tags: {[key: string]: any}, message: string, self: boolean) => {
                 this.on_message(channel, tags, message, self)
