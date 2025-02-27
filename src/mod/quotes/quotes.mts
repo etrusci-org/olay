@@ -4,42 +4,42 @@ import { fetchjson } from '../../lib/fetchjson.mjs'
 
 export class Olay_Quotes extends Olay
 {
-    conf: {
-        updaterate: number
-        format: string
-        endpoint: string
-    } = {
+    conf: Olay_Quotes_Conf = {
         updaterate: 60,
-        format: '"{quote}" – {author}',
+        typingspeed: 0.05,
+        format: '"{quote}" — {author}',
         endpoint: 'https://pdv.ourspace.ch/api/collections/random_quote/records/1?fields=author,quote',
     }
 
-    ui: {
-        mod: HTMLElement
-    } = {
+    ui: Olay_Quotes_UI = {
         mod: document.querySelector('#mod') as HTMLElement
     }
 
-    min_updaterate: number = 10
+    min_updaterate: number = 2
 
 
     constructor()
     {
         super()
 
-        for (const [k, v] of this.urlparams.entries()) {
+        for (let [k, v] of this.urlparams.entries()) {
+            v = v.trim()
 
             switch (k) {
                 case 'updaterate':
-                    this.conf.updaterate = Math.max(this.min_updaterate, Number(v)) || this.conf.updaterate
+                    this.conf.updaterate = Math.max(this.min_updaterate, Number(v) || this.conf.updaterate)
+                    break
+
+                case 'typingspeed':
+                    this.conf.typingspeed = Math.max(0, Number(v) || this.conf.typingspeed)
                     break
 
                 case 'format':
-                    this.conf.format = String(v) || this.conf.format
+                    this.conf.format = v || this.conf.format
                     break
 
                 case 'endpoint':
-                    this.conf.endpoint = String(v) || this.conf.endpoint
+                    this.conf.endpoint = v || this.conf.endpoint
                     break
 
                 default:
@@ -47,15 +47,16 @@ export class Olay_Quotes extends Olay
             }
         }
 
-        this.update_ui(true)
+        this.update_ui()
     }
 
 
-    async update_ui(init_continous: boolean = false): Promise<void>
+    async update_ui(): Promise<void>
     {
         const data: {author: string, quote: string} = await fetchjson(this.conf.endpoint)
 
         if (!data.author || !data.quote) {
+            console.error(`missing author and/or quote in response data.`)
             return
         }
 
@@ -63,12 +64,17 @@ export class Olay_Quotes extends Olay
         output = output.replace('{author}', data.author)
         output = output.replace('{quote}', data.quote)
 
-        this.ui.mod.innerHTML = output
+        this.ui.mod.innerHTML = ''
 
-        if (!init_continous) {
-            return
-        }
+        const queue = output.split('')
 
-        setInterval(async () => await this.update_ui(), this.conf.updaterate * 1000)
+        const typer_interval = setInterval(() => {
+            this.ui.mod.innerHTML += queue.shift()
+
+            if (queue.length == 0) {
+                clearInterval(typer_interval)
+                setTimeout(() => this.update_ui(), this.conf.updaterate * 1_000)
+            }
+        }, this.conf.typingspeed * 1_000)
     }
 }

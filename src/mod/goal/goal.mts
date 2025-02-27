@@ -3,25 +3,14 @@ import { Olay } from '../../lib/olay.mjs'
 
 export class Olay_Goal extends Olay
 {
-    conf: {
-        description: string
-        current: number | string
-        target: number | string
-        unit: string
-    } = {
+    conf: Olay_Goal_Conf = {
         description: 'Road to something',
         current: 5,
         target: 10,
         unit: 'something',
     }
 
-    ui: {
-        mod: HTMLElement
-        description: HTMLElement
-        current: HTMLElement
-        target: HTMLElement
-        unit: HTMLElement
-    } = {
+    ui: Olay_Goal_UI = {
         mod: document.querySelector('#mod') as HTMLElement,
         description: document.querySelector('.description') as HTMLElement,
         current: document.querySelector('.current') as HTMLElement,
@@ -34,9 +23,26 @@ export class Olay_Goal extends Olay
     {
         super()
 
-        for (const [k, v] of this.urlparams.entries()) {
+        for (let [k, v] of this.urlparams.entries()) {
+            v = v.trim()
 
             switch (k) {
+                case 'description':
+                    this.conf.description = v || this.conf.description
+                    break
+
+                case 'current':
+                    this.conf.current = Number(v) || this.conf.current
+                    break
+
+                case 'target':
+                    this.conf.target = Number(v) || this.conf.target
+                    break
+
+                case 'unit':
+                    this.conf.unit = v || this.conf.unit
+                    break
+
                 default:
                     console.warn(`skipping unknown parameter "${k}" with value "${v}"`)
             }

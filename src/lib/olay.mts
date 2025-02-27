@@ -8,10 +8,11 @@ export class Olay
 
     constructor()
     {
-        console.group('-=[ Olay | https://github.com/etrusci-org/olay ]=-')
-
         this.urlparams = new URL(document.location.href).searchParams
 
-        console.debug(this.constructor.name, this)
+        const c: string = '#00adb9'
+        console.group('%c-=[ Olay | https://github.com/etrusci-org/olay ]=-', `font-size: 200%; color: ${c};`)
+        console.debug(`%c${this.constructor.name}`, `font-size: 150%; color: #00adb9;`)
+        console.debug(this)
     }
 }

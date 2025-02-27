@@ -5,21 +5,14 @@ import { beatsnow } from '../../lib/beatsnow.mjs'
 
 export class Olay_Clock extends Olay
 {
-    conf: {
-        type: string
-        format: string
-        updaterate: number
-        precision: number
-    } = {
+    conf: Olay_Clock_Conf = {
         type: 'human',
         format: '{year}-{month}-{day} {hour}:{minute}:{second}',
         updaterate: 1,
         precision: 0,
     }
 
-    ui: {
-        mod: HTMLElement
-    } = {
+    ui: Olay_Clock_UI = {
         mod: document.querySelector('#mod') as HTMLElement
     }
 
@@ -30,22 +23,24 @@ export class Olay_Clock extends Olay
     {
         super()
 
-        for (const [k, v] of this.urlparams.entries()) {
+        for (let [k, v] of this.urlparams.entries()) {
+            v = v.trim()
+
             switch (k) {
                 case 'type':
-                    this.conf.type = (this.valid_clock_types.includes(v)) ? String(v) : this.conf.type
+                    this.conf.type = (this.valid_clock_types.includes(v)) ? v : this.conf.type
                     break
 
                 case 'format':
-                    this.conf.format = String(v) || this.conf.format
+                    this.conf.format = v || this.conf.format
                     break
 
                 case 'updaterate':
-                    this.conf.updaterate = Math.max(0, Number(v)) || this.conf.updaterate
+                    this.conf.updaterate = Math.max(0, Number(v) || this.conf.updaterate)
                     break
 
                 case 'precision':
-                    this.conf.precision = Math.max(0, Number(v)) || this.conf.precision
+                    this.conf.precision = Math.max(0, Number(v) || this.conf.precision)
                     break
 
                 default:
@@ -77,7 +72,7 @@ export class Olay_Clock extends Olay
                 break
 
             default:
-                console.error('invalid clock type:', this.urlparams.get('type'))
+                console.error(`invalid clock type: ${this.urlparams.get('type')}`)
                 break
         }
 
@@ -85,6 +80,6 @@ export class Olay_Clock extends Olay
             return
         }
 
-        setInterval(() => this.update_ui(), this.conf.updaterate * 1000)
+        setInterval(() => this.update_ui(), this.conf.updaterate * 1_000)
     }
 }

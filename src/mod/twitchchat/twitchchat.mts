@@ -1,20 +1,27 @@
+import { injecttwitchemotes } from '../../lib/injecttwitchemotes.mjs'
 import { Olay } from '../../lib/olay.mjs'
 import { striphtml } from '../../lib/striphtml.mjs'
+import { humantime } from '../../lib/humantime.mjs'
 
 
 export class Olay_TwitchChat extends Olay
 {
-    conf: {
-        channels: string[]
-    } = {
-        channels: []
+    conf: Olay_TwitchChat_Conf = {
+        channels: [],
+        ignore: [],
+        limit: 100,
+        timeformat: '{hour}:{minute}:{second}',
+        usercolor: true,
+        emotes: true,
+        emotestheme: 'light',
+        emotessize: 'large',
     }
 
-    ui: {
-        mod: HTMLElement
-    } = {
+    ui: Olay_TwitchChat_UI = {
         mod: document.querySelector('#mod') as HTMLElement,
     }
+
+    valid_emotesthemes: string[] = ['light', 'dark']
 
     TwitchClient: any
 
@@ -23,15 +30,50 @@ export class Olay_TwitchChat extends Olay
     {
         super()
 
-        for (const [k, v] of this.urlparams.entries()) {
+        for (let [k, v] of this.urlparams.entries()) {
+            v = v.trim()
+
             switch (k) {
                 case 'channels':
-                    for (const channel of v.split('|')) {
-                        const value = channel.trim()
-                        if (value) {
-                            this.conf.channels.push(value)
+                    for (let channel of v.split('|')) {
+                        channel = channel.trim()
+                        if (channel) {
+                            this.conf.channels.push(channel)
                         }
                     }
+                    break
+
+                case 'ignore':
+                    for (let user of v.split('|')) {
+                        user = user.trim()
+                        if (user) {
+                            this.conf.ignore.push(user)
+                        }
+                    }
+                    break
+
+                case 'limit':
+                    this.conf.limit = Math.max(1, Number(v) || this.conf.limit)
+                    break
+
+                case 'timeformat':
+                    this.conf.timeformat = v || this.conf.timeformat
+                    break
+
+                case 'usercolor':
+                    this.conf.usercolor = (v === 'false') ? false : this.conf.usercolor
+                    break
+
+                case 'emotes':
+                    this.conf.emotes = (v === 'false') ? false : this.conf.emotes
+                    break
+
+                case 'emotestheme':
+                    this.conf.emotestheme = (this.valid_emotesthemes.includes(v)) ? v : this.conf.emotestheme
+                    break
+
+                case 'emotessize':
+                    this.conf.emotessize = v || this.conf.emotessize
                     break
 
                 default:
@@ -44,27 +86,24 @@ export class Olay_TwitchChat extends Olay
             return
         }
 
-        // @ts-ignore: the tmi client is there, promise! (see src/mod/chat/body.html)
-        // helpme: i'm too stupid to import tmi like the other modules in the mods
-        this.TwitchClient = new window.tmi.Client({
+        this.ui.mod.innerHTML = 'initializing chat client ...'
+
+        // @ts-ignore: the tmi client is there, promise! (see src/mod/twitchchat/body.html)
+        this.TwitchClient = new tmi.Client({
             channels: this.conf.channels,
             options: {}
         })
 
-        setTimeout(async () => {
-            this.ui.mod.innerHTML = 'connecting ...'
+        this.ui.mod.innerHTML = `joining ${this.conf.channels.join(', ')} ...`
 
+        setTimeout(async () => {
             await this.TwitchClient.connect().catch(console.error)
 
             this.TwitchClient.on('message', (channel: string, tags: {[key: string]: any}, message: string, self: boolean) => {
                 this.on_message(channel, tags, message, self)
             })
 
-            this.ui.mod.innerHTML = `connected to ${this.conf.channels}`
-
-            setTimeout(() => {
-                this.ui.mod.innerHTML = ''
-            }, 3_000)
+            this.ui.mod.innerHTML = ''
         }, 3_000)
     }
 
@@ -74,26 +113,40 @@ export class Olay_TwitchChat extends Olay
             return
         }
 
+        if (this.conf.ignore.includes(tags['username'])) {
+            console.debug(`[ignore] ${tags['username']}: ${message}`)
+            return
+        }
+
         message = striphtml(message)
 
         if (!message) {
             return
         }
 
-        console.log('--- incoming message ---')
-        console.log('channel', channel)
-        console.log('tags', tags)
-        console.log('message', message)
-        console.log('self', self)
+        if (this.conf.emotes) {
+            message = injecttwitchemotes(message, tags['emotes'], this.conf.emotestheme, this.conf.emotessize)
+        }
 
-        this.ui.mod.innerHTML += `<div>${tags['display-name']}: ${message}</div>`
+        this.ui.mod.innerHTML += `
+            <div>
+                ${humantime(this.conf.timeformat)}
+                :: ${channel}
+                :: <span${(this.conf.usercolor) ? ` style="color: ${tags['color']};"` : ''}>${tags['display-name']}</span>
+                :: ${message}
+            </div>`
 
         const dump: NodeListOf<HTMLDivElement> = this.ui.mod.querySelectorAll('div')
 
-        if (dump.length > 100) {
-            if (!dump[0]) return
+        if (dump.length > this.conf.limit) {
+            if (!dump[0]) {
+                return
+            }
+
             this.ui.mod.removeChild(dump[0])
         }
+
+        // TODO: implement 'remove message after some time has passed'
 
         window.scrollTo(0, this.ui.mod.scrollHeight)
     }

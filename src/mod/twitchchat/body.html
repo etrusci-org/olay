@@ -1,11 +1,9 @@
-<div id="mod">
-    loading chat ...
-</div>
+<div id="mod"></div>
 
 
-<script src="../../lib/vendor/tmi.min.js?b={CACHE_BUST}"></script>
+<script src="../../lib/vendor/tmi.min.js?b={CACHE_BUST}" defer></script>
 
-<script type="module">
+<script type="module" defer>
     import { Olay_TwitchChat } from './twitchchat.mjs?b={CACHE_BUST}'
     new Olay_TwitchChat()
 </script>

@@ -1,19 +1,16 @@
 import { Olay } from '../../lib/olay.mjs'
+import { fyshuffle } from '../../lib/fyshuffle.mjs'
 
 
 export class Olay_Rotator extends Olay
 {
-    conf: {
-        updaterate: number
-        items: string
-    } = {
+    conf: Olay_Rotator_Conf = {
         updaterate: 3,
         items: 'foo|bar|moo|cow',
+        shuffle: false,
     }
 
-    ui: {
-        mod: HTMLElement
-    } = {
+    ui: Olay_Rotator_UI = {
         mod: document.querySelector('#mod') as HTMLElement
     }
 
@@ -24,15 +21,20 @@ export class Olay_Rotator extends Olay
     {
         super()
 
-        for (const [k, v] of this.urlparams.entries()) {
+        for (let [k, v] of this.urlparams.entries()) {
+            v = v.trim()
 
             switch (k) {
                 case 'updaterate':
-                    this.conf.updaterate = Math.max(0, Number(v)) || this.conf.updaterate
+                    this.conf.updaterate = Math.max(0, Number(v) || this.conf.updaterate)
                     break
 
                 case 'items':
-                    this.conf.items = String(v) || this.conf.items
+                    this.conf.items = v || this.conf.items
+                    break
+
+                case 'shuffle':
+                    this.conf.shuffle = (v === 'true') ? true : this.conf.shuffle
                     break
 
                 default:
@@ -54,6 +56,10 @@ export class Olay_Rotator extends Olay
             }
         }
 
+        if (this.conf.shuffle) {
+            this.queue = fyshuffle(this.queue)
+        }
+
         let item: string = this.queue.splice(0, 1)[0] || ''
 
         this.ui.mod.innerHTML = item
@@ -62,7 +68,7 @@ export class Olay_Rotator extends Olay
             return
         }
 
-        setInterval(() => this.update_ui(), this.conf.updaterate * 1000)
+        setInterval(() => this.update_ui(), this.conf.updaterate * 1_000)
     }
 
 }

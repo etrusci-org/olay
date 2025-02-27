@@ -45,5 +45,5 @@ if __name__ == '__main__':
         code = code.replace('{CACHE_BUST}', CACHE_BUST)
 
         if not out_file.is_file() or len(code) != len(out_file.read_text().strip()):
-            print(f'{time.time()} baking {mod} html ...')
+            print(f'{int(time.time())} baking {mod} html ...')
             out_file.write_text(code)
