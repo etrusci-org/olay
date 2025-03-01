@@ -1,25 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.cyan.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fuchsia.min.css">
     <style>
-        footer {
-            text-align: center;
-            margin-top: 100vh;
-        }
-
-        /* a[target="_blank"]::after {
-            content: '↗'
-        } */
-
-        .gradient {
-            background: linear-gradient(to left, var(--pico-primary), var(--pico-h1-color));
-            background-clip: text;
-            color: transparent;
-        }
+        a:link, a:visited { text-decoration: none; }
+        footer {  text-align: center; margin-top: 100vh; }
+        .gradient { background: linear-gradient(to right, var(--pico-primary), var(--pico-h1-color)); background-clip: text; color: transparent; }
     </style>
 
     <title>Olay | Livestream overlay stuff</title>
@@ -32,21 +21,23 @@
             as <a href="https://obsproject.com/kb/browser-source" target="_blank">Browser-Source</a>
             in <a href="https://obsproject.com" target="_blank">OBS Studio</a>.
         </p>
-        <ol>
-            <li>Test and setup the overlays with the forms here. If you do not enter any values, defaults will be used.</li>
-            <li>When you're happy with the output, copy & paste the URL into OBS' Browser-Source.</li>
-            <li>Remove all code from the CSS field of the Browser-Source.</li>
-            <li>Copy & paste the default CSS <small>(linked for each module below)</small> into the CSS field of the Browser-Source and start adjusting it to your liking.</li>
-        </ol>
     </header>
 
 
     <main class="container">
         <article>
-            <h2><span class="gradient">Clock</span></h2>
-            <p>Current date and time.</p>
+            <h2>Usage</h2>
+            <p>1. Test and setup the overlays below. If you do not enter any values, defaults will be used.</p>
+            <p>2. When you're happy with the output, copy & paste the URL into OBS' Browser-Source.</p>
+            <p>3. Remove all code from the CSS field from the Browser-Source.</p>
+            <p>4. Optionally, copy & paste the default CSS <small>(linked for each module below)</small> into the CSS field of the Browser-Source and start adjusting it to your liking.</p>
+        </article>
 
-            <details open>
+        <article>
+            <h2><span class="gradient">Clock</span></h2>
+            <p>Current local date and time.</p>
+
+            <details>
                 <summary>[setup]</summary>
 
                 <form action="./mod/clock/" method="get" target="_blank">
@@ -98,20 +89,20 @@
 
                     <fieldset class="grid">
                         <input type="submit" value="test settings &nearr;">
-                        <input type="reset" value="reset to defaults" class="secondary">
+                        <input type="reset" value="reset to defaults">
                     </fieldset>
                 </form>
 
-                <p><a href="./mod/goal/style.css" target="_blank" role="button">Default CSS &nearr;</a></p>
+                <p><a href="./mod/clock/style.css" target="_blank" role="button" class="contrast">Default CSS &nearr;</a></p>
            </details>
         </article>
 
 
         <article>
             <h2><span class="gradient">Goal</span></h2>
-            <p>Custom goal status.</p>
+            <p>Goal status. Manually updated.</p>
 
-            <details open>
+            <details>
                 <summary>[setup]</summary>
 
                 <form action="./mod/goal/" method="get" target="_blank">
@@ -143,7 +134,7 @@
                     </fieldset>
                 </form>
 
-                <p><a href="./mod/goal/style.css" target="_blank" role="button">Default CSS &nearr;</a></p>
+                <p><a href="./mod/goal/style.css" target="_blank" role="button" class="contrast">Default CSS &nearr;</a></p>
             </details>
         </article>
 
@@ -152,7 +143,7 @@
             <h2><span class="gradient">Quotes</span></h2>
             <p>Random quotes.</p>
 
-            <details open>
+            <details>
                 <summary>[setup]</summary>
 
                 <form action="./mod/quotes/" method="get" target="_blank">
@@ -205,16 +196,16 @@
                     </fieldset>
                 </form>
 
-                <p><a href="./mod/quotes/style.css" target="_blank" role="button">Default CSS &nearr;</a></p>
+                <p><a href="./mod/quotes/style.css" target="_blank" role="button" class="contrast">Default CSS &nearr;</a></p>
             </details>
         </article>
 
 
         <article>
             <h2><span class="gradient">Rotator</span></h2>
-            <p>Rotate through a text list.</p>
+            <p>Rotate through text items.</p>
 
-            <details open>
+            <details>
                 <summary>[setup]</summary>
 
                 <form action="./mod/rotator/" method="get" target="_blank">
@@ -229,7 +220,7 @@
                     <fieldset class="grid">
                         <label>
                             Update rate
-                            <input type="number" name="updaterate" min="10" step="any" placeholder="3">
+                            <input type="number" name="updaterate" min="0" step="any" placeholder="3">
                             <small>
                                 Seconds.
                             </small>
@@ -247,7 +238,7 @@
                     </fieldset>
                 </form>
 
-                <p><a href="./mod/rotator/style.css" target="_blank" role="button">Default CSS &nearr;</a></p>
+                <p><a href="./mod/rotator/style.css" target="_blank" role="button" class="contrast">Default CSS &nearr;</a></p>
             </details>
         </article>
 
@@ -256,8 +247,7 @@
             <h2><span class="gradient">TwitchChat</span></h2>
             <p>Messages from one or more Twitch chats.</p>
 
-
-            <details open>
+            <details>
                 <summary>[setup]</summary>
 
                 <form action="./mod/twitchchat/" method="get" target="_blank">
@@ -346,7 +336,7 @@
                     </fieldset>
                 </form>
 
-                <p><a href="./mod/twitchchat/style.css" target="_blank" role="button">Default CSS &nearr;</a></p>
+                <p><a href="./mod/twitchchat/style.css" target="_blank" role="button" class="contrast">Default CSS &nearr;</a></p>
             </details>
         </article>
     </main>
@@ -355,11 +345,30 @@
     <footer class="container">
         <p>
             <strong class="gradient">Olay</strong><br>
-            made by <a href="https://etrusci.org" target="_blank">arT2</a>
+            made by
+            <a
+                href="https://etrusci.org" target="_blank"
+                class="cf"
+                data-dur="1"
+                data-func="ease-in-out"
+                data-target="text"
+                data-r-min="0"
+                data-r-max="255"
+                data-g-min="0"
+                data-g-max="255"
+                data-b-min="0"
+                data-b-max="255"
+            >arT2</a>
         </p>
         <p><a href="https://github.com/etrusci-org/olay" target="_blank">source-code</a></p>
     </footer>
 
 
+    <script src="https://cdn.jsdelivr.net/gh/etrusci-org/elcolorfader@master/dist/elcolorfader.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            new ElColorfader().start()
+        })
+    </script>
 </body>
 </html>
