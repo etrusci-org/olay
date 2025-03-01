@@ -1,7 +1,8 @@
-import { injecttwitchemotes } from '../../lib/injecttwitchemotes.mjs'
 import { Olay } from '../../lib/olay.mjs'
 import { striphtml } from '../../lib/striphtml.mjs'
 import { humantime } from '../../lib/humantime.mjs'
+import { injecttwitchemotes } from '../../lib/injecttwitchemotes.mjs'
+import { beatsnow } from '../../lib/beatsnow.mjs'
 
 
 export class Olay_TwitchChat extends Olay
@@ -10,15 +11,16 @@ export class Olay_TwitchChat extends Olay
         channels: [],
         ignore: [],
         limit: 100,
+        removeafter: 0,
         timeformat: '{hour}:{minute}:{second}',
-        usercolor: true,
-        emotes: true,
+        usercolor: false,
+        emotes: false,
         emotestheme: 'light',
         emotessize: 'large',
     }
 
     ui: Olay_TwitchChat_UI = {
-        mod: document.querySelector('#mod') as HTMLElement,
+        mod: document.querySelector('.mod') as HTMLElement,
     }
 
     valid_emotesthemes: string[] = ['light', 'dark']
@@ -56,16 +58,20 @@ export class Olay_TwitchChat extends Olay
                     this.conf.limit = Math.max(1, Number(v) || this.conf.limit)
                     break
 
+                case 'removeafter':
+                    this.conf.removeafter = Math.max(0, Number(v) || this.conf.removeafter)
+                    break
+
                 case 'timeformat':
                     this.conf.timeformat = v || this.conf.timeformat
                     break
 
                 case 'usercolor':
-                    this.conf.usercolor = (v === 'false') ? false : this.conf.usercolor
+                    this.conf.usercolor = (v === 'true') ? true : false
                     break
 
                 case 'emotes':
-                    this.conf.emotes = (v === 'false') ? false : this.conf.emotes
+                    this.conf.emotes = (v === 'true') ? true : false
                     break
 
                 case 'emotestheme':
@@ -128,15 +134,22 @@ export class Olay_TwitchChat extends Olay
             message = injecttwitchemotes(message, tags['emotes'], this.conf.emotestheme, this.conf.emotessize)
         }
 
-        this.ui.mod.innerHTML += `
-            <div>
-                ${humantime(this.conf.timeformat)}
-                :: ${channel}
-                :: <span${(this.conf.usercolor) ? ` style="color: ${tags['color']};"` : ''}>${tags['display-name']}</span>
-                :: ${message}
-            </div>`
+        const user_color_css: string = (this.conf.usercolor && tags['color']) ? ` style="color: ${tags['color']};"` : ''
+        const timestamp: string = (!this.conf.timeformat.includes('{beats}')) ? humantime(this.conf.timeformat) : beatsnow(2)
 
-        const dump: NodeListOf<HTMLDivElement> = this.ui.mod.querySelectorAll('div')
+        const chatline: HTMLElement = document.createElement('div')
+        chatline.classList.add('chatline')
+        chatline.dataset['id'] = tags['id'] || ''
+        chatline.innerHTML = `
+            <div class="channel">${channel}</div>
+            <div class="time">${timestamp}</div>
+            <div class="user" ${user_color_css}>${tags['display-name']}</div>
+            <div class="message">${message}</div>
+        `
+
+        this.ui.mod.append(chatline)
+
+        const dump: NodeListOf<HTMLDivElement> = this.ui.mod.querySelectorAll('.chatline')
 
         if (dump.length > this.conf.limit) {
             if (!dump[0]) {
@@ -146,7 +159,14 @@ export class Olay_TwitchChat extends Olay
             this.ui.mod.removeChild(dump[0])
         }
 
-        // TODO: implement 'remove message after some time has passed'
+        if (this.conf.removeafter > 0) {
+            setTimeout(() => {
+                if (!chatline) {
+                    return
+                }
+                chatline.remove()
+            }, this.conf.removeafter * 1_000)
+        }
 
         window.scrollTo(0, this.ui.mod.scrollHeight)
     }

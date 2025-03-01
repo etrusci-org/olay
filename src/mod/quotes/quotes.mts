@@ -7,15 +7,16 @@ export class Olay_Quotes extends Olay
     conf: Olay_Quotes_Conf = {
         updaterate: 60,
         typingspeed: 0.05,
+        disabletyping: false,
         format: '"{quote}" — {author}',
         endpoint: 'https://pdv.ourspace.ch/api/collections/random_quote/records/1?fields=author,quote',
     }
 
     ui: Olay_Quotes_UI = {
-        mod: document.querySelector('#mod') as HTMLElement
+        mod: document.querySelector('.mod') as HTMLElement
     }
 
-    min_updaterate: number = 2
+    min_updaterate: number = 10
 
 
     constructor()
@@ -32,6 +33,10 @@ export class Olay_Quotes extends Olay
 
                 case 'typingspeed':
                     this.conf.typingspeed = Math.max(0, Number(v) || this.conf.typingspeed)
+                    break
+
+                case 'disabletyping':
+                    this.conf.disabletyping = (v === 'true') ? true : false
                     break
 
                 case 'format':
@@ -68,13 +73,19 @@ export class Olay_Quotes extends Olay
 
         const queue = output.split('')
 
-        const typer_interval = setInterval(() => {
-            this.ui.mod.innerHTML += queue.shift()
+        if (!this.conf.disabletyping) {
+            const typer_interval = setInterval(() => {
+                this.ui.mod.innerHTML += queue.shift()
 
-            if (queue.length == 0) {
-                clearInterval(typer_interval)
-                setTimeout(() => this.update_ui(), this.conf.updaterate * 1_000)
-            }
-        }, this.conf.typingspeed * 1_000)
+                if (queue.length == 0) {
+                    clearInterval(typer_interval)
+                    setTimeout(() => this.update_ui(), this.conf.updaterate * 1_000)
+                }
+            }, this.conf.typingspeed * 1_000)
+        }
+        else {
+            this.ui.mod.innerHTML = output
+            setTimeout(() => this.update_ui(), this.conf.updaterate * 1_000)
+        }
     }
 }

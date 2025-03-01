@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.cyan.min.css">
+    <style>
+        footer {
+            text-align: center;
+            margin-top: 100vh;
+        }
+
+        /* a[target="_blank"]::after {
+            content: '↗'
+        } */
+
+        .gradient {
+            background: linear-gradient(to left, var(--pico-primary), var(--pico-h1-color));
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+
+    <title>Olay | Livestream overlay stuff</title>
+</head>
+<body>
+    <header class="container">
+        <h1><span class="gradient">Olay</span></h1>
+        <p>
+            Livestream overlay stuff for use
+            as <a href="https://obsproject.com/kb/browser-source" target="_blank">Browser-Source</a>
+            in <a href="https://obsproject.com" target="_blank">OBS Studio</a>.
+        </p>
+        <ol>
+            <li>Test and setup the overlays with the forms here. If you do not enter any values, defaults will be used.</li>
+            <li>When you're happy with the output, copy & paste the URL into OBS' Browser-Source.</li>
+            <li>Remove all code from the CSS field of the Browser-Source.</li>
+            <li>Copy & paste the default CSS <small>(linked for each module below)</small> into the CSS field of the Browser-Source and start adjusting it to your liking.</li>
+        </ol>
+    </header>
+
+
+    <main class="container">
+        <article>
+            <h2><span class="gradient">Clock</span></h2>
+            <p>Current date and time.</p>
+
+            <details open>
+                <summary>[setup]</summary>
+
+                <form action="./mod/clock/" method="get" target="_blank">
+                    <label>
+                        Type
+                        <select name="type">
+                            <option value="human" selected>human : Standart</option>
+                            <option value="beats">beats : Internet Time</option>
+                            <option value="unix">unix : Unix Timestamp in seconds</option>
+                            <option value="unixms">unixms : Unix Timestamp in milliseconds</option>
+                        </select>
+                    </label>
+
+                    <fieldset class="grid">
+                        <label>
+                            Update rate
+                            <input type="number" name="updaterate" min="0" step="any" placeholder="0.5">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+
+                        <label>
+                            Decimal precision
+                            <input type="number" name="precision" min="0" step="1" placeholder="0">
+                            <small>
+                                Only applies if <strong>type</strong> = <code>unix</code> | <code>beats</code>
+                            </small>
+                        </label>
+                    </fieldset>
+
+                    <label>
+                        Format
+                        <input type="text" name="format" placeholder="{year}-{month}-{day} {hour}:{minute}:{second}">
+                        <small>
+                            Only applies if <strong>type</strong> = <code>human</code><br>
+                            Available variables:
+                            <code>{year}</code>
+                            <code>{month}</code>
+                            <code>{day}</code>
+                            <code>{hour}</code>
+                            <code>{minute}</code>
+                            <code>{second}</code>
+                            <code>{millisecond}</code>
+                            <code>{timezoneOffset}</code>
+                            <code>{beats}</code>
+                        </small>
+                    </label>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="test settings &nearr;">
+                        <input type="reset" value="reset to defaults" class="secondary">
+                    </fieldset>
+                </form>
+
+                <p><a href="./mod/goal/style.css" target="_blank" role="button">Default CSS &nearr;</a></p>
+           </details>
+        </article>
+
+
+        <article>
+            <h2><span class="gradient">Goal</span></h2>
+            <p>Custom goal status.</p>
+
+            <details open>
+                <summary>[setup]</summary>
+
+                <form action="./mod/goal/" method="get" target="_blank">
+                    <label>
+                        Description
+                        <input type="text" name="description" placeholder="Road to something">
+                    </label>
+
+                    <fieldset class="grid">
+                        <label>
+                            Current value
+                            <input type="number" name="current" min="0" step="any" placeholder="5">
+                        </label>
+
+                        <label>
+                            Target value
+                            <input type="number" name="target" min="0" step="any" placeholder="10">
+                        </label>
+
+                        <label>
+                            Value unit
+                            <input type="text" name="unit" placeholder="something">
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="test settings &nearr;">
+                        <input type="reset" value="reset to defaults" class="secondary">
+                    </fieldset>
+                </form>
+
+                <p><a href="./mod/goal/style.css" target="_blank" role="button">Default CSS &nearr;</a></p>
+            </details>
+        </article>
+
+
+        <article>
+            <h2><span class="gradient">Quotes</span></h2>
+            <p>Random quotes.</p>
+
+            <details open>
+                <summary>[setup]</summary>
+
+                <form action="./mod/quotes/" method="get" target="_blank">
+                    <fieldset class="grid">
+                        <label>
+                            Update rate
+                            <input type="number" name="updaterate" min="10" step="any" placeholder="60">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+
+                        <label>
+                            Format
+                            <input type="text" name="format" placeholder="&quot;{quote}&quot; — {author}">
+                            <small>
+                                Available variables:
+                                <code>{quote}</code>
+                                <code>{author}</code>
+                            </small>
+                        </label>
+                    </fieldset>
+                    <fieldset class="grid">
+                        <label>
+                            Typing speed
+                            <input type="number" name="typingspeed" min="0" step="any" placeholder="0.05">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="disabletyping" value="true">
+                            Disable typing
+                        </label>
+                    </fieldset>
+
+                    <label>
+                        API endpoint
+                        <input type="text" name="endpoint" placeholder="https://pdv.ourspace.ch/api/collections/random_quote/records/1?fields=author,quote">
+                        <small>
+                            Must return a JSON response with an author and quote field.
+                            E.g.: <code>{author: string, quote: string}</code>
+                        </small>
+                    </label>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="test settings &nearr;">
+                        <input type="reset" value="reset to defaults" class="secondary">
+                    </fieldset>
+                </form>
+
+                <p><a href="./mod/quotes/style.css" target="_blank" role="button">Default CSS &nearr;</a></p>
+            </details>
+        </article>
+
+
+        <article>
+            <h2><span class="gradient">Rotator</span></h2>
+            <p>Rotate through a text list.</p>
+
+            <details open>
+                <summary>[setup]</summary>
+
+                <form action="./mod/rotator/" method="get" target="_blank">
+                    <label>
+                        Items
+                        <input type="text" name="items" placeholder="one|two|tree|four">
+                        <small>
+                            Separate multiple with <code>|</code>
+                        </small>
+                    </label>
+
+                    <fieldset class="grid">
+                        <label>
+                            Update rate
+                            <input type="number" name="updaterate" min="10" step="any" placeholder="3">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="shuffle" value="true">
+                            Random rotation order
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="test settings &nearr;">
+                        <input type="reset" value="reset to defaults" class="secondary">
+                    </fieldset>
+                </form>
+
+                <p><a href="./mod/rotator/style.css" target="_blank" role="button">Default CSS &nearr;</a></p>
+            </details>
+        </article>
+
+
+        <article>
+            <h2><span class="gradient">TwitchChat</span></h2>
+            <p>Messages from one or more Twitch chats.</p>
+
+
+            <details open>
+                <summary>[setup]</summary>
+
+                <form action="./mod/twitchchat/" method="get" target="_blank">
+                    <label>
+                        Channel(s) to join
+                        <input type="text" name="channels" placeholder="" required>
+                        <small>
+                            Separate multiple with <code>|</code>
+                        </small>
+                    </label>
+
+                    <label>
+                        User(s) to ignore
+                        <input type="text" name="ignore" placeholder="">
+                        <small>
+                            Separate multiple with <code>|</code>
+                        </small>
+                    </label>
+
+                    <label>
+                        Timestamp format
+                        <input type="text" name="timeformat" placeholder="{hour}:{minute}:{second}">
+                        <small>
+                            Available variables:
+                            <code>{year}</code>
+                            <code>{month}</code>
+                            <code>{day}</code>
+                            <code>{hour}</code>
+                            <code>{minute}</code>
+                            <code>{second}</code>
+                            <code>{millisecond}</code>
+                            <code>{timezoneOffset}</code>
+                            <code>{beats}</code><br>
+                            If <code>{beats}</code> is present, other format input will be ignored.
+                        </small>
+                    </label>
+
+                    <fieldset class="grid">
+                        <label>
+                            Messages limit
+                            <input type="number" name="limit" min="1" step="1" placeholder="100">
+                        </label>
+
+                        <label>
+                            Remove old messages after
+                            <input type="number" name="removeafter" min="0" step="any" placeholder="0">
+                            <small>
+                                Seconds.<br>
+                                Set to <code>0</code> to keep all (still respecting limit).
+                            </small>
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="grid">
+                        <label>
+                            <input type="checkbox" name="usercolor" value="true">
+                            Use user color
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="emotes" value="true">
+                            Parse emotes
+                        </label>
+
+                        <label>
+                            Emotes theme
+                            <select name="emotestheme">
+                                <option value="light" selected>light</option>
+                                <option value="dark">dark</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Emotes size
+                            <select name="emotessize">
+                                <option value="large" selected>large</option>
+                                <option value="medium">medium</option>
+                                <option value="small">small</option>
+                            </select>
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="test settings &nearr;">
+                        <input type="reset" value="reset to defaults" class="secondary">
+                    </fieldset>
+                </form>
+
+                <p><a href="./mod/twitchchat/style.css" target="_blank" role="button">Default CSS &nearr;</a></p>
+            </details>
+        </article>
+    </main>
+
+
+    <footer class="container">
+        <p>
+            <strong class="gradient">Olay</strong><br>
+            made by <a href="https://etrusci.org" target="_blank">arT2</a>
+        </p>
+        <p><a href="https://github.com/etrusci-org/olay" target="_blank">source-code</a></p>
+    </footer>
+
+
+</body>
+</html>

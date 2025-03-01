@@ -11,7 +11,7 @@ export class Olay_Goal extends Olay
     }
 
     ui: Olay_Goal_UI = {
-        mod: document.querySelector('#mod') as HTMLElement,
+        mod: document.querySelector('.mod') as HTMLElement,
         description: document.querySelector('.description') as HTMLElement,
         current: document.querySelector('.current') as HTMLElement,
         target: document.querySelector('.target') as HTMLElement,

@@ -8,15 +8,15 @@ export class Olay_Clock extends Olay
     conf: Olay_Clock_Conf = {
         type: 'human',
         format: '{year}-{month}-{day} {hour}:{minute}:{second}',
-        updaterate: 1,
+        updaterate: 0.5,
         precision: 0,
     }
 
     ui: Olay_Clock_UI = {
-        mod: document.querySelector('#mod') as HTMLElement
+        mod: document.querySelector('.mod') as HTMLElement
     }
 
-    valid_clock_types: string[] = ['human', 'unix', 'unixms', 'beats']
+    valid_clock_types: string[] = ['human', 'beats', 'unix', 'unixms']
 
 
     constructor()
@@ -59,16 +59,16 @@ export class Olay_Clock extends Olay
                 this.ui.mod.innerHTML = humantime(this.conf.format)
                 break
 
+            case 'beats':
+                this.ui.mod.innerHTML = beatsnow(this.conf.precision)
+                break
+
             case 'unix':
                 this.ui.mod.innerHTML = String((Date.now() / 1000).toFixed(this.conf.precision))
                 break
 
             case 'unixms':
                 this.ui.mod.innerHTML = String(Date.now())
-                break
-
-            case 'beats':
-                this.ui.mod.innerHTML = beatsnow(this.conf.precision)
                 break
 
             default:

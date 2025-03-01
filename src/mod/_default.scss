@@ -1,0 +1,16 @@
+/*----------------------------------------------------------
+Global default styles applied to all modules
+----------------------------------------------------------*/
+
+html,
+body,
+.mod {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body {
+    background-color: transparent;
+}

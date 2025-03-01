@@ -6,12 +6,12 @@ export class Olay_Rotator extends Olay
 {
     conf: Olay_Rotator_Conf = {
         updaterate: 3,
-        items: 'foo|bar|moo|cow',
+        items: 'one|two|tree|four',
         shuffle: false,
     }
 
     ui: Olay_Rotator_UI = {
-        mod: document.querySelector('#mod') as HTMLElement
+        mod: document.querySelector('.mod') as HTMLElement
     }
 
     queue: string[] = []
@@ -34,7 +34,7 @@ export class Olay_Rotator extends Olay
                     break
 
                 case 'shuffle':
-                    this.conf.shuffle = (v === 'true') ? true : this.conf.shuffle
+                    this.conf.shuffle = (v === 'true') ? true : false
                     break
 
                 default:
@@ -54,10 +54,10 @@ export class Olay_Rotator extends Olay
                 if (!v) continue
                 this.queue.push(v)
             }
-        }
 
-        if (this.conf.shuffle) {
-            this.queue = fyshuffle(this.queue)
+            if (this.conf.shuffle) {
+                this.queue = fyshuffle(this.queue)
+            }
         }
 
         let item: string = this.queue.splice(0, 1)[0] || ''

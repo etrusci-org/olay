@@ -12,7 +12,7 @@ export class Olay
 
         const c: string = '#00adb9'
         console.group('%c-=[ Olay | https://github.com/etrusci-org/olay ]=-', `font-size: 200%; color: ${c};`)
-        console.debug(`%c${this.constructor.name}`, `font-size: 150%; color: #00adb9;`)
+        console.log(`%c${this.constructor.name}`, `font-size: 150%; color: #00adb9;`)
         console.debug(this)
     }
 }

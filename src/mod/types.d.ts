@@ -38,6 +38,7 @@ type Olay_Goal_UI = {
 type Olay_Quotes_Conf = {
     updaterate: number
     typingspeed: number
+    disabletyping: boolean
     format: string
     endpoint: string
 }
@@ -68,6 +69,7 @@ type Olay_TwitchChat_Conf = {
     channels: string[]
     ignore: string[]
     limit: number
+    removeafter: number
     timeformat: string
     usercolor: boolean
     emotes: boolean
