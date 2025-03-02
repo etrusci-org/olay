@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
 
-_VENDOR_PATH="./olay/lib/vendor/"
-
-mkdir -p "${_VENDOR_PATH}"
-
-cd "${_VENDOR_PATH}"
-
-curl -o tmi.min.js https://raw.githubusercontent.com/tmijs/tmi.js/refs/heads/main/dist/tmi.min.js
+curl -o ./src/lib/elcolorfader.ts https://raw.githubusercontent.com/etrusci-org/elcolorfader/refs/heads/main/src/elcolorfader.ts
+curl -o ./olay/lib/vendor/tmi.min.js https://raw.githubusercontent.com/tmijs/tmi.js/refs/heads/main/dist/tmi.min.js

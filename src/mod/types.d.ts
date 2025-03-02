@@ -14,6 +14,20 @@ type Olay_Clock_UI = {
 
 
 // -----------------------------------------------
+// Colorfader
+
+type Olay_Colorfader_Conf = {
+    // duration: number
+    // func: string
+    // target: string
+}
+
+type Olay_Colorfader_UI = {
+    mod: HTMLElement
+}
+
+
+// -----------------------------------------------
 // Countdu
 
 type Olay_Countdu_Conf = {
