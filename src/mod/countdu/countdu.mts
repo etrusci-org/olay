@@ -1,12 +1,13 @@
 // want:
                                                                         // countup Number to Number
-// countup Time to Time
+                                                                        // countup Time to Time
 // countup from Number for Duration
                                                                         // countdown Number to Number
 // countdown Time to Time
 // countdown from Number for Duration
 
 import { Olay } from '../../lib/olay.mjs'
+import { sectodur } from '../../lib/sectodur.mjs'
 
 
 export class Olay_Countdu extends Olay
@@ -15,6 +16,8 @@ export class Olay_Countdu extends Olay
         type: 'number',
         number_start: 0,
         number_end: 5,
+        time_end: '',
+        time_format: '{delta}',
         countingspeed: 1,
     }
 
@@ -23,8 +26,10 @@ export class Olay_Countdu extends Olay
     }
 
     valid_countdu_types: string[] = ['number', 'time']
-    number_current: number = 0
-    iid: number = 0
+    number_current: number
+    time_now: Date
+    future: Date
+    iid!: number
 
 
     constructor()
@@ -47,6 +52,10 @@ export class Olay_Countdu extends Olay
                     this.conf.number_end = Number(v) || this.conf.number_end
                     break
 
+                case 'time_end':
+                    this.conf.time_end = v || this.conf.time_end
+                    break
+
                 case 'countingspeed':
                     this.conf.countingspeed = Math.max(0, Number(v) || this.conf.countingspeed)
                     break
@@ -57,6 +66,8 @@ export class Olay_Countdu extends Olay
         }
 
         this.number_current = this.conf.number_start
+        this.time_now = new Date()
+        this.future = new Date(this.conf.time_end)
 
         this.update_ui(true)
     }
@@ -66,8 +77,6 @@ export class Olay_Countdu extends Olay
     {
         switch (this.conf.type) {
             case 'number':
-                console.log('number', this.number_current)
-
                 this.ui.mod.innerHTML = String(this.number_current)
 
                 if (this.number_current == this.conf.number_end) {
@@ -78,8 +87,25 @@ export class Olay_Countdu extends Olay
                 this.number_current += (this.conf.number_start < this.conf.number_end) ? 1 : -1
                 break
 
+            case 'time':
+                if (!this.conf.time_end) {
+                    this.ui.mod.innerHTML = 'no end time set'
+                    return
+                }
+
+                const now = new Date()
+                const delta = this.future.getTime() - now.getTime()
+
+                if (delta <= 0) {
+                    clearInterval(this.iid)
+                    return
+                }
+
+                this.ui.mod.innerHTML = this.conf.time_format.replace('{delta}', sectodur(delta))
+                break
+
             default:
-                console.error(`invalid clock type: ${this.urlparams.get('type')}`)
+                console.error(`invalid type: ${this.urlparams.get('type')}`)
                 break
         }
 

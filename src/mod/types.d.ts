@@ -20,6 +20,8 @@ type Olay_Countdu_Conf = {
     type: string
     number_start: number
     number_end: number
+    time_end: string
+    time_format: string
     countingspeed: number
 }
 

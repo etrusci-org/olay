@@ -101,7 +101,7 @@
 
 
         <article>
-            <h2><span class="gradient">CountDu</span></h2>
+            <h2><span class="gradient">Countdu</span></h2>
             <p>Count down/up.</p>
 
             <details open>
@@ -113,6 +113,7 @@
                             Type
                             <select name="type">
                                 <option value="number" selected>number : From number to number</option>
+                                <option value="time">time : From now to time</option>
                             </select>
                         </label>
 
@@ -130,13 +131,27 @@
                         <label>
                             Start number
                             <input type="number" name="number_start" step="any" placeholder="0">
+                            <small>
+                                Only applies if <strong>type</strong> = <code>number</code>
+                            </small>
                         </label>
 
                         <label>
                             End number
                             <input type="number" name="number_end" step="any" placeholder="5">
+                            <small>
+                                Only applies if <strong>type</strong> = <code>number</code>
+                            </small>
                         </label>
                     </fieldset>
+
+                    <label>
+                        End time
+                        <input type="text" name="time_end" placeholder="YYYY-MM-DD HH:MM:SS">
+                        <small>
+                            Only applies if <strong>type</strong> = <code>time</code>
+                        </small>
+                    </label>
 
                     <hr>
 
