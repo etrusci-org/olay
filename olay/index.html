@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fuchsia.min.css">
     <style>
         a:link, a:visited { text-decoration: none; }
         footer {  text-align: center; margin-top: 100vh; }
         .gradient { background: linear-gradient(to right, var(--pico-primary), var(--pico-h1-color)); background-clip: text; color: transparent; }
     </style>
-
     <title>Olay | Livestream overlay stuff</title>
 </head>
 <body>
@@ -81,8 +80,9 @@
                             <code>{minute}</code>
                             <code>{second}</code>
                             <code>{millisecond}</code>
-                            <code>{timezoneOffset}</code><br>
-                            If <strong>type</strong> = <code>beats</code> only <code>{beats}</code> is available.
+                            <code>{timezoneOffset}</code>
+                            <code>{beats}</code><br>
+                            The <code>{beats}</code> variable is only available if <strong>type</strong> = <code>beats</code>.
                         </small>
                     </label>
 
@@ -97,6 +97,57 @@
                 </form>
 
            </details>
+        </article>
+
+
+        <article>
+            <h2><span class="gradient">CountDu</span></h2>
+            <p>Count down/up.</p>
+
+            <details open>
+                <summary>[setup]</summary>
+
+                <form action="./mod/countdu/" method="get" target="_blank">
+                    <fieldset class="grid">
+                        <label>
+                            Type
+                            <select name="type">
+                                <option value="number" selected>number : From number to number</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Counting speed
+                            <input type="number" name="countingspeed" min="0" step="any" placeholder="1">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+                    </fieldset>
+
+
+                    <fieldset class="grid">
+                        <label>
+                            Start number
+                            <input type="number" name="number_start" step="any" placeholder="0">
+                        </label>
+
+                        <label>
+                            End number
+                            <input type="number" name="number_end" step="any" placeholder="5">
+                        </label>
+                    </fieldset>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <p><a href="./mod/countdu/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
+                </form>
+            </details>
         </article>
 
 
@@ -300,7 +351,7 @@
                             <code>{millisecond}</code>
                             <code>{timezoneOffset}</code>
                             <code>{beats}</code><br>
-                            If <code>{beats}</code> is present, other format input will be ignored.
+                            If the variable <code>{beats}</code> is present, other format input and variables will be ignored.
                         </small>
                     </label>
 

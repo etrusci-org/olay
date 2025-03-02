@@ -14,6 +14,21 @@ type Olay_Clock_UI = {
 
 
 // -----------------------------------------------
+// Countdu
+
+type Olay_Countdu_Conf = {
+    type: string
+    number_start: number
+    number_end: number
+    countingspeed: number
+}
+
+type Olay_Countdu_UI = {
+    mod: HTMLElement
+}
+
+
+// -----------------------------------------------
 // Goal
 
 type Olay_Goal_Conf = {

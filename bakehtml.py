@@ -6,6 +6,7 @@ import time
 
 MODS: list[str] = [
     'clock',
+    'countdu',
     'goal',
     'quotes',
     'rotator',
