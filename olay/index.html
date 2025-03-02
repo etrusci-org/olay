@@ -72,7 +72,7 @@
                         Format
                         <input type="text" name="format" placeholder="{year}-{month}-{day} {hour}:{minute}:{second}">
                         <small>
-                            Only applies if <strong>type</strong> = <code>human</code><br>
+                            Only applies if <strong>type</strong> = <code>human</code> | <code>beats</code><br>
                             Available variables:
                             <code>{year}</code>
                             <code>{month}</code>
@@ -81,8 +81,8 @@
                             <code>{minute}</code>
                             <code>{second}</code>
                             <code>{millisecond}</code>
-                            <code>{timezoneOffset}</code>
-                            <code>{beats}</code>
+                            <code>{timezoneOffset}</code><br>
+                            If <strong>type</strong> = <code>beats</code> only <code>{beats}</code> is available.
                         </small>
                     </label>
 
