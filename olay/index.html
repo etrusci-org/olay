@@ -8,13 +8,13 @@
     <style>
         a:link, a:visited { text-decoration: none; }
         footer {  text-align: center; margin-top: 100vh; }
-        .gradient { background: linear-gradient(to right, var(--pico-primary), var(--pico-h1-color)); background-clip: text; color: transparent; }
+        .ti { background: linear-gradient(to right, var(--pico-primary), var(--pico-h1-color)); background-clip: text; color: transparent; }
     </style>
     <title>Olay | Livestream overlay stuff</title>
 </head>
 <body>
     <header class="container">
-        <h1><span class="gradient">Olay</span></h1>
+        <h1><span class="ti">Olay</span></h1>
         <p>
             Livestream overlay stuff for use
             as <a href="https://obsproject.com/kb/browser-source" target="_blank">Browser-Source</a>
@@ -25,14 +25,25 @@
 
     <main class="container">
         <article>
-            <p>1. Test and setup the overlays below. If you do not enter any values, defaults will be used.</p>
-            <p>2. When you're happy with the output, copy & paste the URL into OBS' Browser-Source.</p>
-            <p>3. Remove all code from the CSS field of the Browser-Source. Olay provides its own default CSS for both the overlay page and individual modules.</p>
-            <p>4. Optionally, copy & paste the default CSS <small>(linked for each module below)</small> into the CSS field of the Browser-Source and start adjusting it to your liking.</p>
+            <p>
+                1. Setup and test the overlays below.
+                If you do not enter any values, defaults will be used.
+            </p>
+            <p>
+                2. When you're happy with the preview, copy & paste the URL into OBS' Browser-Source.
+            </p>
+            <p>
+                3. Remove all code from the CSS field of the Browser-Source.
+                <span class="ti">Olay</span> will load its own default CSS for each overlay.
+            </p>
+            <p>
+                4. Optionally, copy & paste the default CSS <small>(linked for each module below)</small> into the CSS field of the Browser-Source and start adjusting it to your liking.
+                Advanced users can also do this in the dev console of the webbrowser <small>(navigate to the <em>Style Editor</em> -Tab and then <em>style.css</em> )</small> - this has the benefit of providing a realtime preview of the CSS changes.
+            </p>
         </article>
 
         <article>
-            <h2><span class="gradient">Clock</span></h2>
+            <h2><span class="ti">Clock</span></h2>
             <p>Current local date and time.</p>
 
             <details>
@@ -101,10 +112,10 @@
 
 
         <article>
-            <h2><span class="gradient">Countdu</span></h2>
+            <h2><span class="ti">Countdu</span></h2>
             <p>Count down/up.</p>
 
-            <details open>
+            <details>
                 <summary>[setup]</summary>
 
                 <form action="./mod/countdu/" method="get" target="_blank">
@@ -167,7 +178,7 @@
 
 
         <article>
-            <h2><span class="gradient">Goal</span></h2>
+            <h2><span class="ti">Goal</span></h2>
             <p>Goal status. Manually updated.</p>
 
             <details>
@@ -211,7 +222,7 @@
 
 
         <article>
-            <h2><span class="gradient">Quotes</span></h2>
+            <h2><span class="ti">Quotes</span></h2>
             <p>Random quotes.</p>
 
             <details>
@@ -284,7 +295,7 @@
 
 
         <article>
-            <h2><span class="gradient">Rotator</span></h2>
+            <h2><span class="ti">Rotator</span></h2>
             <p>Rotate through text items.</p>
 
             <details>
@@ -329,7 +340,7 @@
 
 
         <article>
-            <h2><span class="gradient">TwitchChat</span></h2>
+            <h2><span class="ti">TwitchChat</span></h2>
             <p>Messages from one or more Twitch chats.</p>
 
             <details>
@@ -432,7 +443,7 @@
 
     <footer class="container">
         <p>
-            <strong class="gradient">Olay</strong><br>
+            <strong class="ti">Olay</strong><br>
             made by
             <a
                 href="https://etrusci.org" target="_blank"
@@ -440,13 +451,13 @@
                 data-dur="1.5"
                 data-func="ease-in-out"
                 data-target="text"
-                data-r-min="0"
-                data-r-max="255"
-                data-g-min="0"
-                data-g-max="255"
-                data-b-min="0"
-                data-b-max="255"
             >arT2</a>
+            <!-- data-r-min="0"
+            data-r-max="255"
+            data-g-min="0"
+            data-g-max="255"
+            data-b-min="0"
+            data-b-max="255" -->
         </p>
         <p><a href="https://github.com/etrusci-org/olay" target="_blank">source-code</a></p>
     </footer>

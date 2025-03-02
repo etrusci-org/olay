@@ -77,7 +77,7 @@ export class Olay_Clock extends Olay
                 break
 
             default:
-                console.error(`invalid clock type: ${this.urlparams.get('type')}`)
+                console.error(`invalid type: ${this.urlparams.get('type')}`)
                 break
         }
 
