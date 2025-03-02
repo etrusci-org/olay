@@ -26,10 +26,9 @@
 
     <main class="container">
         <article>
-            <h2>Usage</h2>
             <p>1. Test and setup the overlays below. If you do not enter any values, defaults will be used.</p>
             <p>2. When you're happy with the output, copy & paste the URL into OBS' Browser-Source.</p>
-            <p>3. Remove all code from the CSS field from the Browser-Source.</p>
+            <p>3. Remove all code from the CSS field of the Browser-Source. Olay provides its own default CSS for both the overlay page and individual modules.</p>
             <p>4. Optionally, copy & paste the default CSS <small>(linked for each module below)</small> into the CSS field of the Browser-Source and start adjusting it to your liking.</p>
         </article>
 
@@ -87,13 +86,16 @@
                         </small>
                     </label>
 
+                    <hr>
+
                     <fieldset class="grid">
                         <input type="submit" value="test settings &nearr;">
                         <input type="reset" value="reset to defaults">
                     </fieldset>
+
+                    <p><a href="./mod/clock/style.css" target="_blank" role="button" class="outline">Default CSS &nearr;</a></p>
                 </form>
 
-                <p><a href="./mod/clock/style.css" target="_blank" role="button" class="contrast">Default CSS &nearr;</a></p>
            </details>
         </article>
 
@@ -128,13 +130,16 @@
                         </label>
                     </fieldset>
 
+                    <hr>
+
                     <fieldset class="grid">
                         <input type="submit" value="test settings &nearr;">
-                        <input type="reset" value="reset to defaults" class="secondary">
+                        <input type="reset" value="reset to defaults">
                     </fieldset>
+
+                    <p><a href="./mod/goal/style.css" target="_blank" role="button" class="outline">Default CSS &nearr;</a></p>
                 </form>
 
-                <p><a href="./mod/goal/style.css" target="_blank" role="button" class="contrast">Default CSS &nearr;</a></p>
             </details>
         </article>
 
@@ -190,13 +195,16 @@
                         </small>
                     </label>
 
+                    <hr>
+
                     <fieldset class="grid">
                         <input type="submit" value="test settings &nearr;">
-                        <input type="reset" value="reset to defaults" class="secondary">
+                        <input type="reset" value="reset to defaults">
                     </fieldset>
+
+                    <p><a href="./mod/quotes/style.css" target="_blank" role="button" class="outline">Default CSS &nearr;</a></p>
                 </form>
 
-                <p><a href="./mod/quotes/style.css" target="_blank" role="button" class="contrast">Default CSS &nearr;</a></p>
             </details>
         </article>
 
@@ -232,13 +240,16 @@
                         </label>
                     </fieldset>
 
+                    <hr>
+
                     <fieldset class="grid">
                         <input type="submit" value="test settings &nearr;">
-                        <input type="reset" value="reset to defaults" class="secondary">
+                        <input type="reset" value="reset to defaults">
                     </fieldset>
+
+                    <p><a href="./mod/rotator/style.css" target="_blank" role="button" class="outline">Default CSS &nearr;</a></p>
                 </form>
 
-                <p><a href="./mod/rotator/style.css" target="_blank" role="button" class="contrast">Default CSS &nearr;</a></p>
             </details>
         </article>
 
@@ -330,13 +341,16 @@
                         </label>
                     </fieldset>
 
+                    <hr>
+
                     <fieldset class="grid">
                         <input type="submit" value="test settings &nearr;">
-                        <input type="reset" value="reset to defaults" class="secondary">
+                        <input type="reset" value="reset to defaults">
                     </fieldset>
+
+                    <p><a href="./mod/twitchchat/style.css" target="_blank" role="button" class="outline">Default CSS &nearr;</a></p>
                 </form>
 
-                <p><a href="./mod/twitchchat/style.css" target="_blank" role="button" class="contrast">Default CSS &nearr;</a></p>
             </details>
         </article>
     </main>
@@ -349,7 +363,7 @@
             <a
                 href="https://etrusci.org" target="_blank"
                 class="cf"
-                data-dur="1"
+                data-dur="1.5"
                 data-func="ease-in-out"
                 data-target="text"
                 data-r-min="0"
@@ -364,11 +378,7 @@
     </footer>
 
 
-    <script src="https://cdn.jsdelivr.net/gh/etrusci-org/elcolorfader@master/dist/elcolorfader.js"></script>
-    <script>
-        window.addEventListener('load', () => {
-            new ElColorfader().start()
-        })
-    </script>
+    <script src="https://cdn.jsdelivr.net/gh/etrusci-org/elcolorfader@master/dist/elcolorfader.js" defer></script>
+    <script>window.addEventListener('load', () => new ElColorfader().start())</script>
 </body>
 </html>
