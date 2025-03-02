@@ -7,4 +7,14 @@ Quotes
 .mod {
     font-family: sans-serif;
     font-size: 24px;
+
+    .quote {
+        font-family: serif;
+        font-style: italic;
+    }
+
+    .author {
+        font-size: 20px;
+    }
+
 }

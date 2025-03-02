@@ -39,7 +39,8 @@ type Olay_Quotes_Conf = {
     updaterate: number
     typingspeed: number
     disabletyping: boolean
-    format: string
+    format_quote: string
+    format_author: string
     endpoint: string
 }
 

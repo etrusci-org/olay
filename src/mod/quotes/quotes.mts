@@ -8,7 +8,8 @@ export class Olay_Quotes extends Olay
         updaterate: 60,
         typingspeed: 0.05,
         disabletyping: false,
-        format: '"{quote}" — {author}',
+        format_quote: '"{quote}"',
+        format_author: '— {author}',
         endpoint: 'https://pdv.ourspace.ch/api/collections/random_quote/records/1?fields=author,quote',
     }
 
@@ -39,8 +40,12 @@ export class Olay_Quotes extends Olay
                     this.conf.disabletyping = (v === 'true') ? true : false
                     break
 
-                case 'format':
-                    this.conf.format = v || this.conf.format
+                case 'format_quote':
+                    this.conf.format_quote = v || this.conf.format_quote
+                    break
+
+                case 'format_author':
+                    this.conf.format_author = v || this.conf.format_author
                     break
 
                 case 'endpoint':
@@ -65,26 +70,36 @@ export class Olay_Quotes extends Olay
             return
         }
 
-        let output: string = this.conf.format
-        output = output.replace('{author}', data.author)
-        output = output.replace('{quote}', data.quote)
+        const quote_ele: HTMLElement = document.createElement('div')
+        const author_ele: HTMLElement = document.createElement('div')
+
+        quote_ele.classList.add('quote')
+        author_ele.classList.add('author')
 
         this.ui.mod.innerHTML = ''
-
-        const queue = output.split('')
+        this.ui.mod.append(quote_ele, author_ele)
 
         if (!this.conf.disabletyping) {
-            const typer_interval = setInterval(() => {
-                this.ui.mod.innerHTML += queue.shift()
+            const queue_quote: string[] = this.conf.format_quote.replace('{quote}', data.quote).split('')
+            let iid = setInterval(() => {
+                quote_ele.innerHTML += queue_quote.shift()
+                if (queue_quote.length == 0) {
+                    clearInterval(iid)
 
-                if (queue.length == 0) {
-                    clearInterval(typer_interval)
-                    setTimeout(() => this.update_ui(), this.conf.updaterate * 1_000)
+                    const author_queue: string[] = this.conf.format_author.replace('{author}', data.author).split('')
+                    iid = setInterval(() => {
+                        author_ele.innerHTML += author_queue.shift()
+                        if (author_queue.length == 0) {
+                            clearInterval(iid)
+                            setTimeout(() => this.update_ui(), this.conf.updaterate * 1_000)
+                        }
+                    }, this.conf.typingspeed * 1_000)
                 }
             }, this.conf.typingspeed * 1_000)
         }
         else {
-            this.ui.mod.innerHTML = output
+            quote_ele.innerHTML = this.conf.format_quote.replace('{quote}', data.quote)
+            author_ele.innerHTML = this.conf.format_author.replace('{author}', data.author)
             setTimeout(() => this.update_ui(), this.conf.updaterate * 1_000)
         }
     }
