@@ -24,7 +24,7 @@ export class Olay_TwitchChat extends Olay
     }
 
     valid_emotesthemes: string[] = ['light', 'dark']
-
+    messages_counter: number = 0
     TwitchClient: any
 
 
@@ -134,6 +134,8 @@ export class Olay_TwitchChat extends Olay
             message = injecttwitchemotes(message, tags['emotes'], this.conf.emotestheme, this.conf.emotessize)
         }
 
+        this.messages_counter += 1
+
         const user_color_css: string = (this.conf.usercolor && tags['color']) ? ` style="color: ${tags['color']};"` : ''
         const timestamp: string = (!this.conf.timeformat.includes('{beats}')) ? humantime(this.conf.timeformat) : beatsnow(2)
 
@@ -141,6 +143,7 @@ export class Olay_TwitchChat extends Olay
         chatline.classList.add('chatline')
         chatline.dataset['id'] = tags['id'] || ''
         chatline.innerHTML = `
+            <div class="counter">${this.messages_counter}</div>
             <div class="channel">${channel}</div>
             <div class="time">${timestamp}</div>
             <div class="user" ${user_color_css}>${tags['display-name']}</div>

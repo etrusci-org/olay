@@ -10,12 +10,11 @@ TwitchChat
     position: absolute;
     bottom: 0;
 
-    .emote {
-        height: 24px;
-        width: auto;
-    }
-
     .chatline {
+        .counter {
+            display: none;
+        }
+
         .channel {
             display: none;
         }
@@ -29,16 +28,17 @@ TwitchChat
             display: inline-block;
         }
 
-        .user::before {
-            content: '[';
-        }
-
         .user::after {
-            content: ']';
+            content: ': ';
         }
 
         .message {
             display: inline-block;
+        }
+
+        .emote {
+            height: 20px;
+            width: auto;
         }
     }
 }
