@@ -7,7 +7,6 @@ export class Olay_Quotes extends Olay
     conf: Olay_Quotes_Conf = {
         updaterate: 60,
         typingspeed: 0.05,
-        disabletyping: false,
         format_quote: '"{quote}"',
         format_author: '— {author}',
         endpoint: 'https://pdv.ourspace.ch/api/collections/random_quote/records/1?fields=author,quote',
@@ -29,15 +28,11 @@ export class Olay_Quotes extends Olay
 
             switch (k) {
                 case 'updaterate':
-                    this.conf.updaterate = Math.max(this.min_updaterate, Number(v) || this.conf.updaterate)
+                    this.conf.updaterate = Math.max(this.min_updaterate, Number(v || this.conf.updaterate))
                     break
 
                 case 'typingspeed':
-                    this.conf.typingspeed = Math.max(0, Number(v) || this.conf.typingspeed)
-                    break
-
-                case 'disabletyping':
-                    this.conf.disabletyping = (v === 'true') ? true : false
+                    this.conf.typingspeed = Math.max(0, Number(v || this.conf.typingspeed))
                     break
 
                 case 'format_quote':
@@ -79,7 +74,7 @@ export class Olay_Quotes extends Olay
         this.ui.mod.innerHTML = ''
         this.ui.mod.append(quote_ele, author_ele)
 
-        if (!this.conf.disabletyping) {
+        if (this.conf.typingspeed > 0) {
             const queue_quote: string[] = this.conf.format_quote.replace('{quote}', data.quote).split('')
             let iid = setInterval(() => {
                 quote_ele.innerHTML += queue_quote.shift()

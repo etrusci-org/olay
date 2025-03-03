@@ -32,11 +32,11 @@ export class Olay_Goal extends Olay
                     break
 
                 case 'current':
-                    this.conf.current = Number(v) || this.conf.current
+                    this.conf.current = Number(v || this.conf.current)
                     break
 
                 case 'target':
-                    this.conf.target = Number(v) || this.conf.target
+                    this.conf.target = Number(v || this.conf.target)
                     break
 
                 case 'unit':

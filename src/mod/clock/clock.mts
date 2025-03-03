@@ -36,11 +36,11 @@ export class Olay_Clock extends Olay
                     break
 
                 case 'updaterate':
-                    this.conf.updaterate = Math.max(0, Number(v) || this.conf.updaterate)
+                    this.conf.updaterate = Math.max(0, Number(v || this.conf.updaterate))
                     break
 
                 case 'precision':
-                    this.conf.precision = Math.max(0, Number(v) || this.conf.precision)
+                    this.conf.precision = Math.max(0, Number(v || this.conf.precision))
                     break
 
                 default:

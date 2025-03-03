@@ -30,6 +30,16 @@ Requirements:
 - To build the [src/](./src/) files:
   - tsc
   - sass
-  - [watchhtml.sh](./watchhtml.sh) and [bakehtml.py](./bakehtml.py)
+  - bash + python3 for:
+    - [watchhtml.sh](./watchhtml.sh)
+    - [bakehtml.py](./bakehtml.py)
 
 See [./.vscode/tasks.json](.vscode/tasks.json) for build commands.
+
+---
+
+[![GitHub Release](https://img.shields.io/github/v/release/etrusci-org/olay?label=latest%20release)](https://github.com/etrusci-org/olay/releases)  
+[![GitHub Branch status](https://img.shields.io/github/checks-status/etrusci-org/olay/main)](https://www.codefactor.io/repository/github/etrusci-org/olay)  
+[![GitHub Issues](https://img.shields.io/github/issues/etrusci-org/olay)](https://github.com/etrusci-org/olay/issues)  
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/etrusci-org/olay)](https://github.com/etrusci-org/olay/pulls)  
+[![GitHub Repo stars](https://img.shields.io/github/stars/etrusci-org/olay)](https://github.com/etrusci-org/olay/stargazers)

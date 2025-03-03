@@ -45,11 +45,11 @@ export class Olay_Countdu extends Olay
                     break
 
                 case 'number_start':
-                    this.conf.number_start = Number(v) || this.conf.number_start
+                    this.conf.number_start = Number(v || this.conf.number_start)
                     break
 
                 case 'number_end':
-                    this.conf.number_end = Number(v) || this.conf.number_end
+                    this.conf.number_end = Number(v || this.conf.number_end)
                     break
 
                 case 'time_end':
@@ -57,7 +57,7 @@ export class Olay_Countdu extends Olay
                     break
 
                 case 'countingspeed':
-                    this.conf.countingspeed = Math.max(0, Number(v) || this.conf.countingspeed)
+                    this.conf.countingspeed = Math.max(0, Number(v || this.conf.countingspeed))
                     break
 
                 default:

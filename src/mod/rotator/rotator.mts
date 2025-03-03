@@ -26,7 +26,7 @@ export class Olay_Rotator extends Olay
 
             switch (k) {
                 case 'updaterate':
-                    this.conf.updaterate = Math.max(0, Number(v) || this.conf.updaterate)
+                    this.conf.updaterate = Math.max(0, Number(v || this.conf.updaterate))
                     break
 
                 case 'items':

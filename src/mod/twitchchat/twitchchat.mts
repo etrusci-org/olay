@@ -55,11 +55,11 @@ export class Olay_TwitchChat extends Olay
                     break
 
                 case 'limit':
-                    this.conf.limit = Math.max(1, Number(v) || this.conf.limit)
+                    this.conf.limit = Math.max(1, Number(v || this.conf.limit))
                     break
 
                 case 'removeafter':
-                    this.conf.removeafter = Math.max(0, Number(v) || this.conf.removeafter)
+                    this.conf.removeafter = Math.max(0, Number(v || this.conf.removeafter))
                     break
 
                 case 'timeformat':
