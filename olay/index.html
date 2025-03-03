@@ -112,6 +112,52 @@
 
 
         <article>
+            <h2><span class="ti">Colorfader</span></h2>
+            <p>Fade through random colors.</p>
+
+            <details>
+                <summary>[setup]</summary>
+
+                <form action="./mod/colorfader/" method="get" target="_blank">
+                    <fieldset class="grid">
+                        <label>
+                            Transition duration
+                            <input type="number" name="duration" min="0" step="any" placeholder="3">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+
+                        <label>
+                            Transition function
+                            <select name="func">
+                                <option value="ease-in-out" selected>ease-in-out</option>
+                                <option value="ease-in">ease-in</option>
+                                <option value="ease-out">ease-out</option>
+                                <option value="ease">ease</option>
+                                <option value="linear">linear</option>
+                                <option value="step-start">step-start</option>
+                                <option value="step-end">step-end</option>
+                            </select>
+                        </label>
+                    </fieldset>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <p><a href="./mod/colorfader/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
+                </form>
+
+            </details>
+        </article>
+
+
+
+        <article>
             <h2><span class="ti">Countdu</span></h2>
             <p>Count down/up.</p>
 
@@ -239,6 +285,17 @@
                         </label>
 
                         <label>
+                            Typing speed
+                            <input type="number" name="typingspeed" min="0" step="any" placeholder="0.05">
+                            <small>
+                                Seconds.<br>
+                                Set to <code>0</code> to disable the typing effect.
+                            </small>
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="grid">
+                        <label>
                             Quote format
                             <input type="text" name="format_quote" placeholder="&quot;{quote}&quot;">
                             <small>
@@ -254,20 +311,6 @@
                                 Available variables:
                                 <code>{author}</code>
                             </small>
-                        </label>
-                    </fieldset>
-                    <fieldset class="grid">
-                        <label>
-                            Typing speed
-                            <input type="number" name="typingspeed" min="0" step="any" placeholder="0.05">
-                            <small>
-                                Seconds.
-                            </small>
-                        </label>
-
-                        <label>
-                            <input type="checkbox" name="disabletyping" value="true">
-                            Disable typing
                         </label>
                     </fieldset>
 

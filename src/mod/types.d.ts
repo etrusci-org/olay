@@ -17,8 +17,8 @@ type Olay_Clock_UI = {
 // Colorfader
 
 type Olay_Colorfader_Conf = {
-    // duration: number
-    // func: string
+    duration: number
+    func: string
     // target: string
 }
 
@@ -69,7 +69,7 @@ type Olay_Goal_UI = {
 type Olay_Quotes_Conf = {
     updaterate: number
     typingspeed: number
-    disabletyping: boolean
+    // disabletyping: boolean
     format_quote: string
     format_author: string
     endpoint: string
