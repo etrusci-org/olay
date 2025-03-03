@@ -15,12 +15,11 @@ For more information, please refer to <http://unlicense.org>
 
 
 
-## Vendor
+## Thanks to the creators of the following stuff
 
 ### tmi.js
 
-Javascript library for the Twitch Messaging Interface.
-
+Javascript library for the Twitch Messaging Interface.  
 <https://github.com/tmijs/tmi.js>
 
 The MIT License (MIT)  

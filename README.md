@@ -14,8 +14,7 @@ Go to <https://etrusci.org/tool/olay> to test each module with a configurator. Y
 
 <!-- ## Complementary stuff
 
-- [elfloater](https://github.com/etrusci-org/elfloater)
-- [elcolorfader](https://github.com/etrusci-org/elcolorfader) -->
+- [elfloater](https://github.com/etrusci-org/elfloater) -->
 
 
 
