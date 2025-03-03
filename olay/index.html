@@ -13,6 +13,8 @@
     <title>Olay | Livestream overlay stuff</title>
 </head>
 <body>
+    <noscript>Olay needs JavaScript to work but it is disabled it in your webbrowser.</noscript>
+
     <header class="container">
         <h1><span class="ti">Olay</span></h1>
         <p>
@@ -117,7 +119,7 @@
             <h2><span class="ti">Colorfader</span></h2>
             <p>Fade through random colors.</p>
 
-            <details open>
+            <details>
                 <summary>[setup]</summary>
 
                 <form action="./mod/colorfader/" method="get" target="_blank">
@@ -532,19 +534,15 @@
                 data-func="ease-in-out"
                 data-target="text"
             >arT2</a>
-            <!-- data-r-min="0"
-            data-r-max="255"
-            data-g-min="0"
-            data-g-max="255"
-            data-b-min="0"
-            data-b-max="255" -->
         </p>
         <p><a href="https://github.com/etrusci-org/olay" target="_blank">source-code</a></p>
     </footer>
 
 
-    <script src="https://cdn.jsdelivr.net/gh/etrusci-org/elcolorfader@master/dist/elcolorfader.js" defer></script>
-    <script>
+    <script type="module" defer>
+        // @ts-check
+        import { ElColorfader } from './lib/elcolorfader.mjs'
+
         window.addEventListener('load', () => {
             document.querySelectorAll('a.cb').forEach((ele) => ele.setAttribute('href', ele.getAttribute('href') + `?cb=${Date.now()}`))
             new ElColorfader().start()

@@ -34,7 +34,7 @@ Requirements:
     - [watchhtml.sh](./watchhtml.sh)
     - [bakehtml.py](./bakehtml.py)
 
-See [./.vscode/tasks.json](.vscode/tasks.json) for build commands.
+See [tasks.json](./.vscode/tasks.json) for build commands.
 
 ---
 
