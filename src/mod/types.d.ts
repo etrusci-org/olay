@@ -19,7 +19,12 @@ type Olay_Clock_UI = {
 type Olay_Colorfader_Conf = {
     duration: number
     func: string
-    // target: string
+    r_min: number
+    r_max: number
+    g_min: number
+    g_max: number
+    b_min: number
+    b_max: number
 }
 
 type Olay_Colorfader_UI = {
@@ -69,7 +74,6 @@ type Olay_Goal_UI = {
 type Olay_Quotes_Conf = {
     updaterate: number
     typingspeed: number
-    // disabletyping: boolean
     format_quote: string
     format_author: string
     endpoint: string
