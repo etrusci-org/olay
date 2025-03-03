@@ -4,17 +4,6 @@ import pathlib
 import time
 
 
-MODS: list[str] = [
-    'clock',
-    'colorfader',
-    'countdu',
-    'goal',
-    'quotes',
-    'rotator',
-    'twitchchat',
-]
-
-
 def fancycb() -> str:
     cb: str = ''
 
@@ -22,6 +11,7 @@ def fancycb() -> str:
         cb += chr(int(n) + 97)
 
     return cb
+
 
 
 
@@ -34,7 +24,7 @@ if __name__ == '__main__':
     FOOTER_FILE: pathlib.Path = SRC_DIR.joinpath('mod', 'footer.html')
     CACHE_BUST: str = fancycb()
 
-    for mod in MODS:
+    for mod in [p.stem for p in MOD_DIR.glob('*/') if p.is_dir()]:
         body_file: pathlib.Path = MOD_DIR.joinpath(mod, 'body.html')
         out_file: pathlib.Path = OUT_DIR.joinpath(mod, 'index.html')
 
