@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,7 @@
         a:link, a:visited { text-decoration: none; }
         footer {  text-align: center; margin-top: 100vh; }
         .ti { background: linear-gradient(to right, var(--pico-primary), var(--pico-h1-color)); background-clip: text; color: transparent; }
+        [x-cloak] { display: none !important; }
     </style>
     <title>Olay | Livestream overlay stuff</title>
 </head>
@@ -45,8 +46,19 @@
             </p>
         </article>
 
+
         <!-- Clock -->
-        <article>
+        <article
+            x-data="{
+                type: 'human',
+                format_placeholder: '',
+                update_format_placeholder() {
+                    if (this.type == 'human') this.format_placeholder = '{year}-{month}-{day} {hour}:{minute}:{second}'
+                    if (this.type == 'beats') this.format_placeholder = '{beats}'
+                },
+            }"
+            x-init="update_format_placeholder()"
+        >
             <h2><span class="ti">Clock</span></h2>
             <p>Current local date and time.</p>
 
@@ -56,37 +68,31 @@
                 <form action="./mod/clock/" method="get" target="_blank">
                     <label>
                         Type
-                        <select name="type">
-                            <option value="human" selected>human : Standart</option>
+                        <select name="type" x-model="type" x-on:change="update_format_placeholder()">
+                            <option value="human" selected>human : Human-readable date/time</option>
                             <option value="beats">beats : Internet Time</option>
                             <option value="unix">unix : Unix Timestamp in seconds</option>
                             <option value="unixms">unixms : Unix Timestamp in milliseconds</option>
                         </select>
                     </label>
 
-                    <fieldset class="grid">
-                        <label>
-                            Update rate
-                            <input type="number" name="updaterate" min="0" step="any" placeholder="0.5">
-                            <small>
-                                Seconds.
-                            </small>
-                        </label>
-
-                        <label>
-                            Decimal precision
-                            <input type="number" name="precision" min="0" step="1" placeholder="0">
-                            <small>
-                                Only applies if <strong>type</strong> = <code>unix</code> | <code>beats</code>
-                            </small>
-                        </label>
-                    </fieldset>
+                    <label x-show="['unix', 'beats'].includes(type)" x-cloak>
+                        Decimal precision
+                        <input type="number" name="precision" min="0" step="1" placeholder="0">
+                    </label>
 
                     <label>
-                        Format
-                        <input type="text" name="format" placeholder="{year}-{month}-{day} {hour}:{minute}:{second}">
+                        Update rate
+                        <input type="number" name="updaterate" min="0" step="any" placeholder="0.5">
                         <small>
-                            Only applies if <strong>type</strong> = <code>human</code> | <code>beats</code><br>
+                            Seconds.
+                        </small>
+                    </label>
+
+                    <label x-show="['human', 'beats'].includes(type)" x-cloak>
+                        Format
+                        <input type="text" name="format" x-bind:placeholder="format_placeholder">
+                        <small x-show="type == 'human'" x-cloak>
                             Available variables:
                             <code>{year}</code>
                             <code>{month}</code>
@@ -96,8 +102,10 @@
                             <code>{second}</code>
                             <code>{millisecond}</code>
                             <code>{timezoneOffset}</code>
-                            <code>{beats}</code><br>
-                            The <code>{beats}</code> variable is only available if <strong>type</strong> = <code>beats</code>.
+                        </small>
+                        <small x-show="type == 'beats'" x-cloak>
+                            Available variables:
+                            <code>{beats}</code>
                         </small>
                     </label>
 
@@ -110,12 +118,16 @@
 
                     <p><a href="./mod/clock/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
                 </form>
+            </details>
 
-           </details>
         </article>
 
+
         <!-- Colorfader -->
-        <article>
+        <article
+            x-data="{}"
+            x-init=""
+        >
             <h2><span class="ti">Colorfader</span></h2>
             <p>Fade through random colors.</p>
 
@@ -123,64 +135,57 @@
                 <summary>[setup]</summary>
 
                 <form action="./mod/colorfader/" method="get" target="_blank">
-                    <fieldset class="grid">
-                        <label>
-                            Transition duration
-                            <input type="number" name="duration" min="0" step="any" placeholder="3">
-                            <small>
-                                Seconds.
-                            </small>
-                        </label>
 
-                        <label>
-                            Transition function
-                            <select name="func">
-                                <option value="ease-in-out" selected>ease-in-out</option>
-                                <option value="ease-in">ease-in</option>
-                                <option value="ease-out">ease-out</option>
-                                <option value="ease">ease</option>
-                                <option value="linear">linear</option>
-                                <option value="step-start">step-start</option>
-                                <option value="step-end">step-end</option>
-                            </select>
-                        </label>
-                    </fieldset>
+                    <label>
+                        Transition duration
+                        <input type="number" name="duration" min="0" step="any" placeholder="3">
+                        <small>
+                            Seconds.
+                        </small>
+                    </label>
 
-                    <fieldset class="grid">
-                        <label>
-                            Red minimum
-                            <input type="number" name="r_min" min="0" max="255" step="1" placeholder="70">
-                        </label>
+                    <label>
+                        Transition function
+                        <select name="func">
+                            <option value="ease-in-out" selected>ease-in-out</option>
+                            <option value="ease-in">ease-in</option>
+                            <option value="ease-out">ease-out</option>
+                            <option value="ease">ease</option>
+                            <option value="linear">linear</option>
+                            <option value="step-start">step-start</option>
+                            <option value="step-end">step-end</option>
+                        </select>
+                    </label>
 
-                        <label>
-                            Red maximum
-                            <input type="number" name="r_max" min="0" max="255" step="1" placeholder="180">
-                        </label>
-                    </fieldset>
+                    <label>
+                        Red minimum
+                        <input type="number" name="r_min" min="0" max="255" step="1" placeholder="70">
+                    </label>
 
-                    <fieldset class="grid">
-                        <label>
-                            Green minimum
-                            <input type="number" name="g_min" min="0" max="255" step="1" placeholder="70">
-                        </label>
+                    <label>
+                        Red maximum
+                        <input type="number" name="r_max" min="0" max="255" step="1" placeholder="180">
+                    </label>
 
-                        <label>
-                            Green maximum
-                            <input type="number" name="g_max" min="0" max="255" step="1" placeholder="180">
-                        </label>
-                    </fieldset>
+                    <label>
+                        Green minimum
+                        <input type="number" name="g_min" min="0" max="255" step="1" placeholder="70">
+                    </label>
 
-                    <fieldset class="grid">
-                        <label>
-                            Blue minimum
-                            <input type="number" name="b_min" min="0" max="255" step="1" placeholder="70">
-                        </label>
+                    <label>
+                        Green maximum
+                        <input type="number" name="g_max" min="0" max="255" step="1" placeholder="180">
+                    </label>
 
-                        <label>
-                            Blue maximum
-                            <input type="number" name="b_max" min="0" max="255" step="1" placeholder="180">
-                        </label>
-                    </fieldset>
+                    <label>
+                        Blue minimum
+                        <input type="number" name="b_min" min="0" max="255" step="1" placeholder="70">
+                    </label>
+
+                    <label>
+                        Blue maximum
+                        <input type="number" name="b_max" min="0" max="255" step="1" placeholder="180">
+                    </label>
 
                     <hr>
 
@@ -191,12 +196,18 @@
 
                     <p><a href="./mod/colorfader/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
                 </form>
-
             </details>
+
+
+
         </article>
 
+
         <!-- Countdu -->
-        <article>
+        <article
+            x-data="{ type: 'number' }"
+            x-init=""
+        >
             <h2><span class="ti">Countdu</span></h2>
             <p>Count down/up.</p>
 
@@ -204,49 +215,35 @@
                 <summary>[setup]</summary>
 
                 <form action="./mod/countdu/" method="get" target="_blank">
-                    <fieldset class="grid">
-                        <label>
-                            Type
-                            <select name="type">
-                                <option value="number" selected>number : From number to number</option>
-                                <option value="time">time : From now to time</option>
-                            </select>
-                        </label>
-
-                        <label>
-                            Counting speed
-                            <input type="number" name="countingspeed" min="0" step="any" placeholder="1">
-                            <small>
-                                Seconds.
-                            </small>
-                        </label>
-                    </fieldset>
-
-
-                    <fieldset class="grid">
-                        <label>
-                            Start number
-                            <input type="number" name="number_start" step="any" placeholder="0">
-                            <small>
-                                Only applies if <strong>type</strong> = <code>number</code>
-                            </small>
-                        </label>
-
-                        <label>
-                            End number
-                            <input type="number" name="number_end" step="any" placeholder="5">
-                            <small>
-                                Only applies if <strong>type</strong> = <code>number</code>
-                            </small>
-                        </label>
-                    </fieldset>
+                    <label>
+                        Type
+                        <select name="type" x-model="type">
+                            <option value="number" selected>number : From number to number</option>
+                            <option value="time">time : From now to time</option>
+                        </select>
+                    </label>
 
                     <label>
+                        Counting speed
+                        <input type="number" name="countingspeed" min="0" step="any" placeholder="1">
+                        <small>
+                            Seconds.
+                        </small>
+                    </label>
+
+                    <label x-show="type == 'number'" x-cloak>
+                        Start number
+                        <input type="number" name="number_start" step="any" placeholder="0">
+                    </label>
+
+                    <label x-show="type == 'number'" x-cloak>
+                        End number
+                        <input type="number" name="number_end" step="any" placeholder="5">
+                    </label>
+
+                    <label x-show="type == 'time'" x-cloak>
                         End time
                         <input type="text" name="time_end" placeholder="YYYY-MM-DD HH:MM:SS">
-                        <small>
-                            Only applies if <strong>type</strong> = <code>time</code>
-                        </small>
                     </label>
 
                     <hr>
@@ -261,10 +258,14 @@
             </details>
         </article>
 
+
         <!-- Goal -->
-        <article>
+        <article
+            x-data="{}"
+            x-init=""
+        >
             <h2><span class="ti">Goal</span></h2>
-            <p>Goal status. Manually updated.</p>
+            <p>Goal status.</p>
 
             <details>
                 <summary>[setup]</summary>
@@ -275,22 +276,20 @@
                         <input type="text" name="description" placeholder="Road to something">
                     </label>
 
-                    <fieldset class="grid">
-                        <label>
-                            Current value
-                            <input type="number" name="current" min="0" step="any" placeholder="5">
-                        </label>
+                    <label>
+                        Current value
+                        <input type="number" name="current" min="0" step="any" placeholder="5">
+                    </label>
 
-                        <label>
-                            Target value
-                            <input type="number" name="target" min="0" step="any" placeholder="10">
-                        </label>
+                    <label>
+                        Target value
+                        <input type="number" name="target" min="0" step="any" placeholder="10">
+                    </label>
 
-                        <label>
-                            Value unit
-                            <input type="text" name="unit" placeholder="something">
-                        </label>
-                    </fieldset>
+                    <label>
+                        Value unit
+                        <input type="text" name="unit" placeholder="something">
+                    </label>
 
                     <hr>
 
@@ -305,8 +304,12 @@
             </details>
         </article>
 
+
         <!-- Quotes -->
-        <article>
+        <article
+            x-data=""
+            x-init=""
+        >
             <h2><span class="ti">Quotes</span></h2>
             <p>Random quotes.</p>
 
@@ -314,44 +317,40 @@
                 <summary>[setup]</summary>
 
                 <form action="./mod/quotes/" method="get" target="_blank">
-                    <fieldset class="grid">
-                        <label>
-                            Update rate
-                            <input type="number" name="updaterate" min="10" step="any" placeholder="60">
-                            <small>
-                                Seconds.
-                            </small>
-                        </label>
+                    <label>
+                        Update rate
+                        <input type="number" name="updaterate" min="10" step="any" placeholder="60">
+                        <small>
+                            Seconds.
+                        </small>
+                    </label>
 
-                        <label>
-                            Typing speed
-                            <input type="number" name="typingspeed" min="0" step="any" placeholder="0.05">
-                            <small>
-                                Seconds.<br>
-                                Set to <code>0</code> to disable the typing effect.
-                            </small>
-                        </label>
-                    </fieldset>
+                    <label>
+                        Typing speed
+                        <input type="number" name="typingspeed" min="0" step="any" placeholder="0.05">
+                        <small>
+                            Seconds.<br>
+                            Set to <code>0</code> to disable the typing effect.
+                        </small>
+                    </label>
 
-                    <fieldset class="grid">
-                        <label>
-                            Quote format
-                            <input type="text" name="format_quote" placeholder="&quot;{quote}&quot;">
-                            <small>
-                                Available variables:
-                                <code>{quote}</code>
-                            </small>
-                        </label>
+                    <label>
+                        Quote format
+                        <input type="text" name="format_quote" placeholder="&quot;{quote}&quot;">
+                        <small>
+                            Available variables:
+                            <code>{quote}</code>
+                        </small>
+                    </label>
 
-                        <label>
-                            Author format
-                            <input type="text" name="format_author" placeholder="— {author}">
-                            <small>
-                                Available variables:
-                                <code>{author}</code>
-                            </small>
-                        </label>
-                    </fieldset>
+                    <label>
+                        Author format
+                        <input type="text" name="format_author" placeholder="— {author}">
+                        <small>
+                            Available variables:
+                            <code>{author}</code>
+                        </small>
+                    </label>
 
                     <label>
                         API endpoint
@@ -375,8 +374,12 @@
             </details>
         </article>
 
+
         <!-- Rotator -->
-        <article>
+        <article
+            x-data=""
+            x-init=""
+        >
             <h2><span class="ti">Rotator</span></h2>
             <p>Rotate through text items.</p>
 
@@ -392,20 +395,18 @@
                         </small>
                     </label>
 
-                    <fieldset class="grid">
-                        <label>
-                            Update rate
-                            <input type="number" name="updaterate" min="0" step="any" placeholder="3">
-                            <small>
-                                Seconds.
-                            </small>
-                        </label>
+                    <label>
+                        Update rate
+                        <input type="number" name="updaterate" min="0" step="any" placeholder="3">
+                        <small>
+                            Seconds.
+                        </small>
+                    </label>
 
-                        <label>
-                            <input type="checkbox" name="shuffle" value="true">
-                            Random rotation order
-                        </label>
-                    </fieldset>
+                    <label>
+                        <input type="checkbox" name="shuffle" value="true">
+                        Random rotation order
+                    </label>
 
                     <hr>
 
@@ -420,8 +421,12 @@
             </details>
         </article>
 
+
         <!-- TwitchChat -->
-        <article>
+        <article
+            x-data="{ parse_emotes: false }"
+            x-init=""
+        >
             <h2><span class="ti">TwitchChat</span></h2>
             <p>Messages from one or more Twitch chats.</p>
 
@@ -463,50 +468,46 @@
                         </small>
                     </label>
 
-                    <fieldset class="grid">
-                        <label>
-                            Messages limit
-                            <input type="number" name="limit" min="1" step="1" placeholder="100">
-                        </label>
+                    <label>
+                        Messages limit
+                        <input type="number" name="limit" min="1" step="1" placeholder="100">
+                    </label>
 
-                        <label>
-                            Remove old messages after
-                            <input type="number" name="removeafter" min="0" step="any" placeholder="0">
-                            <small>
-                                Seconds.<br>
-                                Set to <code>0</code> to keep all (still respecting limit).
-                            </small>
-                        </label>
-                    </fieldset>
+                    <label>
+                        Remove old messages after
+                        <input type="number" name="removeafter" min="0" step="any" placeholder="0">
+                        <small>
+                            Seconds.<br>
+                            Set to <code>0</code> to keep all (still respecting limit).
+                        </small>
+                    </label>
 
-                    <fieldset class="grid">
-                        <label>
-                            <input type="checkbox" name="usercolor" value="true">
-                            Use user color
-                        </label>
+                    <label>
+                        <input type="checkbox" name="usercolor" value="true">
+                        Use user color
+                    </label>
 
-                        <label>
-                            <input type="checkbox" name="emotes" value="true">
-                            Parse emotes
-                        </label>
+                    <label>
+                        <input type="checkbox" name="emotes" value="true" x-model="parse_emotes">
+                        Parse emotes
+                    </label>
 
-                        <label>
-                            Emotes theme
-                            <select name="emotestheme">
-                                <option value="light" selected>light</option>
-                                <option value="dark">dark</option>
-                            </select>
-                        </label>
+                    <label x-show="parse_emotes" x-cloak>
+                        Emotes theme
+                        <select name="emotestheme">
+                            <option value="light" selected>light</option>
+                            <option value="dark">dark</option>
+                        </select>
+                    </label>
 
-                        <label>
-                            Emotes size
-                            <select name="emotessize">
-                                <option value="large" selected>large</option>
-                                <option value="medium">medium</option>
-                                <option value="small">small</option>
-                            </select>
-                        </label>
-                    </fieldset>
+                    <label x-show="parse_emotes" x-cloak>
+                        Emotes size
+                        <select name="emotessize">
+                            <option value="large">large</option>
+                            <option value="medium" selected>medium</option>
+                            <option value="small">small</option>
+                        </select>
+                    </label>
 
                     <hr>
 
@@ -520,7 +521,10 @@
 
             </details>
         </article>
+
     </main>
+
+
 
 
     <footer class="container">
@@ -539,6 +543,8 @@
     </footer>
 
 
+
+
     <script type="module" defer>
         // @ts-check
         import { ElColorfader } from './lib/elcolorfader.mjs'
@@ -548,5 +554,7 @@
             new ElColorfader().start()
         })
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js" defer></script>
 </body>
 </html>
