@@ -1,13 +1,5 @@
-// want:
-                                                                        // countup Number to Number
-                                                                        // countup Time to Time
-// countup from Number for Duration
-                                                                        // countdown Number to Number
-// countdown Time to Time
-// countdown from Number for Duration
-
 import { Olay } from '../../lib/olay.mjs'
-import { sectodur } from '../../lib/sectodur.mjs'
+// import { sectodur } from '../../lib/sectodur.mjs'
 
 
 export class Olay_Countdu extends Olay
@@ -27,7 +19,7 @@ export class Olay_Countdu extends Olay
 
     valid_countdu_types: string[] = ['number', 'time']
     number_current: number
-    time_now: Date
+    // time_now: Date
     future: Date
     iid!: number
 
@@ -66,8 +58,8 @@ export class Olay_Countdu extends Olay
         }
 
         this.number_current = this.conf.number_start
-        this.time_now = new Date()
-        this.future = new Date(this.conf.time_end)
+        // this.time_now = new Date()
+        this.future = new Date(new Date(this.conf.time_end).toISOString())
 
         this.update_ui(true)
     }
@@ -101,7 +93,9 @@ export class Olay_Countdu extends Olay
                     return
                 }
 
-                this.ui.mod.innerHTML = this.conf.time_format.replace('{delta}', sectodur(delta))
+                // FIXME: delta is wrong - i guess because getTime() is always UTC?? will investigate later
+                // this.ui.mod.innerHTML = this.conf.time_format.replace('{delta}', sectodur(delta))
+                this.ui.mod.innerHTML = this.conf.time_format.replace('{delta}', String(delta / 1000))
                 break
 
             default:
