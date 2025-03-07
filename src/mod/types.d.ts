@@ -52,6 +52,22 @@ type Olay_Countdu_UI = {
 
 
 // -----------------------------------------------
+// Floater
+
+type Olay_Floater_Conf = {
+    vel_x: number
+    vel_y: number
+    flip_x: boolean
+    flip_y: boolean
+    colorchange: boolean
+}
+
+type Olay_Floater_UI = {
+    mod: HTMLElement
+}
+
+
+// -----------------------------------------------
 // Goal
 
 type Olay_Goal_Conf = {

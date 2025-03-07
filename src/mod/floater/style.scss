@@ -1,0 +1,22 @@
+@use '../_default.scss';
+
+/*---------------------
+Floater
+---------------------*/
+
+.mod {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    .text-floater {
+        font-family: monospace;
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 0.8;
+        transition: color 0.20s linear;
+    }
+}
