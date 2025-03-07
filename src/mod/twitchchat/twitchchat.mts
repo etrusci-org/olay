@@ -137,8 +137,7 @@ export class Olay_TwitchChat extends Olay
         this.messages_counter += 1
 
         const user_color_css: string = (this.conf.usercolor && tags['color']) ? ` style="color: ${tags['color']};"` : ''
-        const timestamp: string = (!this.conf.timeformat.includes('{beats}')) ? humantime(this.conf.timeformat) : beatsnow(2)
-        // MAYBE: make it possible to have a custom format for beats too
+        const timestamp: string = (!this.conf.timeformat.includes('{beats}')) ? humantime(this.conf.timeformat) : beatsnow(2, this.conf.timeformat)
 
         const chatline: HTMLElement = document.createElement('div')
         chatline.classList.add('chatline')

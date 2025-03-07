@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" data-theme="dark">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,14 +23,11 @@
             as <a href="https://obsproject.com/kb/browser-source" target="_blank">Browser-Source</a>
             in <a href="https://obsproject.com" target="_blank">OBS Studio</a>.
         </p>
-    </header>
 
-
-    <main class="container">
         <!-- TODO: Rewrite usage docs later -->
         <article>
             <p>
-                1. Setup and test the overlays below.
+                1. Setup and preview the overlays below.
                 If you do not enter any values, defaults will be used.
             </p>
             <p>
@@ -45,8 +42,12 @@
                 Advanced users can also do this in the developer console of the webbrowser <small>(navigate to the <em>Style Editor</em> -Tab and select <em>style.css</em> )</small> - this has the benefit of providing a realtime preview of your changes.
             </p>
         </article>
+    </header>
 
 
+
+
+    <main class="container">
         <!-- Clock -->
         <article
             x-data="{
@@ -54,7 +55,7 @@
                 format_placeholder: '',
                 update_format_placeholder() {
                     if (this.type == 'human') this.format_placeholder = '{year}-{month}-{day} {hour}:{minute}:{second}'
-                    if (this.type == 'beats') this.format_placeholder = '{beats}'
+                    if (this.type == 'beats') this.format_placeholder = '@{beats}'
                 },
             }"
             x-init="update_format_placeholder()"
@@ -156,6 +157,8 @@
                             <option value="step-end">step-end</option>
                         </select>
                     </label>
+
+                    <!-- MAYBE: change color range number inputs to range inputs -->
 
                     <label>
                         Red minimum
@@ -465,7 +468,7 @@
                             <code>{millisecond}</code>
                             <code>{timezoneOffset}</code>
                             <code>{beats}</code><br>
-                            If the variable <code>{beats}</code> is present, other format input and variables will be ignored.
+                            If the variable <code>{beats}</code> is present, other format variables will be ignored and the precision will be auto-set to <code>2</code>.
                         </small>
                     </label>
 

@@ -61,7 +61,7 @@ export class Olay_Clock extends Olay
 
             case 'beats':
                 if (this.conf.format.includes('{beats}')) {
-                    this.ui.mod.innerHTML = this.conf.format.replace('{beats}', beatsnow(this.conf.precision))
+                    this.ui.mod.innerHTML = beatsnow(this.conf.precision, this.conf.format)
                 }
                 else {
                     this.ui.mod.innerHTML = beatsnow(this.conf.precision)
