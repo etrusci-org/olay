@@ -10,8 +10,10 @@ export class Olay_Countdu extends Olay
         type: 'number',
         number_start: 0,
         number_end: 5,
+        number_reached_message: 'end number reached: {end_number}',
         time_end: '',
         time_format: '{delta}',
+        time_reached_message: 'end time reached: {end_time}',
         countingspeed: 1,
     }
 
@@ -45,8 +47,16 @@ export class Olay_Countdu extends Olay
                     this.conf.number_end = Number(v || this.conf.number_end)
                     break
 
+                case 'number_reached_message':
+                    this.conf.number_reached_message = v || this.conf.number_reached_message
+                    break
+
                 case 'time_end':
                     this.conf.time_end = v || this.conf.time_end
+                    break
+
+                case 'time_reached_message':
+                    this.conf.time_reached_message = v || this.conf.time_reached_message
                     break
 
                 case 'countingspeed':
@@ -59,8 +69,7 @@ export class Olay_Countdu extends Olay
         }
 
         this.number_current = this.conf.number_start
-        this.future = new Date(new Date(this.conf.time_end).toISOString())
-        console.log(this.future)
+        this.future = new Date(this.conf.time_end)
 
         this.update_ui(true)
     }
@@ -74,6 +83,7 @@ export class Olay_Countdu extends Olay
 
                 if (this.number_current == this.conf.number_end) {
                     clearInterval(this.iid)
+                    this.ui.mod.innerHTML = this.conf.number_reached_message.replace('{end_number}', String(this.conf.number_end))
                     return
                 }
 
@@ -91,6 +101,7 @@ export class Olay_Countdu extends Olay
 
                 if (delta <= 0) {
                     clearInterval(this.iid)
+                    this.ui.mod.innerHTML = this.conf.time_reached_message.replace('{end_time}', String(this.conf.time_end))
                     return
                 }
 
