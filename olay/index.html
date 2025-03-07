@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" data-theme="light">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
     <style>
         a:link, a:visited { text-decoration: none; }
         a:focus, a:hover, a:active { text-decoration: underline; }
-        footer {  text-align: center; margin-top: 100vh; }
+        footer {  text-align: center; margin-top: 50vh; }
         .ti { background: linear-gradient(to right, var(--pico-primary), var(--pico-h1-color)); background-clip: text; color: transparent; }
         [x-cloak] { display: none !important; }
     </style>
@@ -25,22 +25,21 @@
             in <a href="https://obsproject.com" target="_blank">OBS Studio</a>.
         </p>
 
-        <hr>
-
         <!-- TODO: Rewrite usage docs later and add screenshots and/or video tutorial -->
+        <h2>Get started</h2>
         <p>
-            1. Setup and preview the overlays below.
+            <strong>1.</strong> Setup and preview the overlays below.
             If you do not enter any values, defaults will be used.
         </p>
         <p>
-            2. When you're happy with the preview, copy & paste the URL into OBS' Browser-Source.
+            <strong>2.</strong> When you're happy with the preview, copy & paste the URL into OBS' Browser-Source.
         </p>
         <p>
-            3. Remove all code from the CSS field of the Browser-Source.
+            <strong>3.</strong> Remove all code from the CSS field of the Browser-Source.
             <span class="ti">Olay</span> will load its own styles for each overlay.
         </p>
         <p>
-            4. Optionally, copy & paste the default CSS <small>(linked for each module below)</small> into the CSS field of the Browser-Source and start adjusting it to your liking.
+            <strong>4.</strong> Optionally, copy & paste the parts of the default CSS <small>(linked for each module below)</small> you want to adjust into the CSS field of the Browser-Source and start adjusting it to your liking.
             Advanced users can also do this in the developer console of the webbrowser <small>(navigate to the <em>Style Editor</em> - Tab and select <em>style.css</em>)</small> - this has the benefit of providing a realtime preview of your changes.
         </p>
 
@@ -162,8 +161,6 @@
                         </select>
                     </label>
 
-                    <!-- MAYBE: change color range number inputs to range inputs -->
-
                     <label>
                         Red minimum
                         <input type="number" name="r_min" min="0" max="255" step="1" placeholder="70">
@@ -219,7 +216,7 @@
             <p>Count down/up.</p>
             <!-- if ResistFingerprinting is turned on in the webbrowser, type=time will not yield correct results. -->
 
-            <details open>
+            <details>
                 <summary>[setup]</summary>
 
                 <form action="./mod/countdu/" method="get" target="_blank">
@@ -273,10 +270,6 @@
                         </small>
                     </label>
 
-                    <!-- TODO:
-                    number_reached_message
-                    time_reached_message -->
-
                     <hr>
 
                     <fieldset class="grid">
@@ -286,6 +279,57 @@
 
                     <p><a href="./mod/countdu/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
                 </form>
+            </details>
+        </article>
+
+
+        <!-- Floater -->
+        <article
+            x-data="{}"
+            x-init=""
+        >
+            <h2><span class="ti">Floater</span></h2>
+            <p>Text floater.</p>
+
+            <details>
+                <summary>[setup]</summary>
+
+                <form action="./mod/floater/" method="get" target="_blank">
+                    <label>
+                        Velocity on x-axis
+                        <input type="number" name="vel_x" min="0" step="any" placeholder="1.0">
+                    </label>
+
+                    <label>
+                        Velocity on y-axis
+                        <input type="number" name="vel_y" min="0" step="any" placeholder="1.0">
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="flip_x" value="true">
+                        Flip x-axis on left and right edge collision
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="flip_y" value="true">
+                        Flip y-axis on top and bottom edge collision
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="colorchange" value="true">
+                        Change to random color on edge collision
+                    </label>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <p><a href="./mod/floater/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
+                </form>
+
             </details>
         </article>
 
@@ -467,7 +511,7 @@
                 <form action="./mod/twitchchat/" method="get" target="_blank">
                     <label>
                         Channel(s) to join
-                        <input type="text" name="channels" placeholder="" required>
+                        <input type="text" name="channels" placeholder="chanone|chantwo" required>
                         <small>
                             Separate multiple with <code>|</code>
                         </small>
@@ -475,9 +519,10 @@
 
                     <label>
                         User(s) to ignore
-                        <input type="text" name="ignore" placeholder="">
+                        <input type="text" name="ignore" placeholder="userone|usertwo">
                         <small>
-                            Separate multiple with <code>|</code>
+                            Separate multiple with <code>|</code>.<br>
+                            Enter user names, not display names.
                         </small>
                     </label>
 
@@ -570,7 +615,14 @@
                 data-target="text"
             >arT2</a>
         </p>
-        <p><a href="https://github.com/etrusci-org/olay" target="_blank">source-code</a></p>
+        <p>
+            <a href="https://github.com/etrusci-org/olay" target="_blank">source-code</a><br>
+            <a href="https://github.com/etrusci-org/olay/releases" target="_blank"><img src="https://img.shields.io/github/v/release/etrusci-org/olay?label=latest%20release" loading="lazy" alt="GitHub Release"></a>
+            <a href="https://www.codefactor.io/repository/github/etrusci-org/olay" target="_blank"><img src="https://img.shields.io/github/checks-status/etrusci-org/olay/main" loading="lazy" alt="GitHub Branch status"></a>
+            <a href="https://github.com/etrusci-org/olay/issues" target="_blank"><img src="https://img.shields.io/github/issues/etrusci-org/olay" loading="lazy" alt="GitHub Issues"></a>
+            <a href="https://github.com/etrusci-org/olay/pulls" target="_blank"><img src="https://img.shields.io/github/issues-pr/etrusci-org/olay" loading="lazy" alt="GitHub Pull Requests"></a>
+            <a href="https://github.com/etrusci-org/olay/stargazers" target="_blank"><img src="https://img.shields.io/github/stars/etrusci-org/olay" loading="lazy" alt="GitHub Repository stars"></a>
+        </p>
     </footer>
 
 
@@ -580,8 +632,20 @@
         // @ts-check
         import { ElColorfader } from './lib/elcolorfader.mjs'
 
+        // auto-theme depending on daytime
         window.addEventListener('load', () => {
+            const h = new Date().getHours()
+            if (h >= 6 && h <= 17) {
+                document.documentElement.dataset['theme'] = 'light'
+            }
+            else {
+                document.documentElement.dataset['theme'] = 'dark'
+            }
+
+            // cachebust on module style links
             document.querySelectorAll('a.cb').forEach((ele) => ele.setAttribute('href', ele.getAttribute('href') + `?cb=${Date.now()}`))
+
+            // because
             new ElColorfader().start()
         })
     </script>
