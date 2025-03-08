@@ -55,6 +55,7 @@ type Olay_Countdu_UI = {
 // Floater
 
 type Olay_Floater_Conf = {
+    text: string
     vel_x: number
     vel_y: number
     flip_x: boolean
