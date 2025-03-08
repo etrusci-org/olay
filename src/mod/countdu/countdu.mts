@@ -48,7 +48,12 @@ export class Olay_Countdu extends Olay
                     break
 
                 case 'number_reached_message':
-                    this.conf.number_reached_message = v || this.conf.number_reached_message
+                    if (v == 'none') {
+                        this.conf.number_reached_message = ''
+                    }
+                    else {
+                        this.conf.number_reached_message = v || this.conf.number_reached_message
+                    }
                     break
 
                 case 'time_end':
@@ -56,7 +61,12 @@ export class Olay_Countdu extends Olay
                     break
 
                 case 'time_reached_message':
-                    this.conf.time_reached_message = v || this.conf.time_reached_message
+                    if (v == 'none') {
+                        this.conf.time_reached_message = ''
+                    }
+                    else {
+                        this.conf.time_reached_message = v || this.conf.time_reached_message
+                    }
                     break
 
                 case 'countingspeed':
