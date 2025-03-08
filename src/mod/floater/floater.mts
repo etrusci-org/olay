@@ -7,6 +7,7 @@ import { ElFloaterLoader } from '../../lib/elfloater.mjs'
 export class Olay_Floater extends Olay
 {
     conf: Olay_Floater_Conf = {
+        text: 'hello<br>cruel<br>world',
         vel_x: 1.0,
         vel_y: 1.0,
         flip_x: false,
@@ -27,6 +28,10 @@ export class Olay_Floater extends Olay
             v = v.trim()
 
             switch (k) {
+                case 'text':
+                    this.conf.text = v || this.conf.text
+                    break
+
                 case 'vel_x':
                     this.conf.vel_x = Math.max(0, Number(v || this.conf.vel_x))
                     break
@@ -58,6 +63,7 @@ export class Olay_Floater extends Olay
             return
         }
 
+        floater.innerHTML = this.conf.text
         floater.dataset['velX'] = String(this.conf.vel_x)
         floater.dataset['velY'] = String(this.conf.vel_y)
         floater.dataset['flipX'] = String(this.conf.flip_x)
