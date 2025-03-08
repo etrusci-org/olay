@@ -6,8 +6,8 @@
     <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fuchsia.min.css">
     <style>
-        a:link, a:visited { text-decoration: none; }
-        a:focus, a:hover, a:active { text-decoration: underline; }
+        a:link, a:visited { text-decoration-style: dotted; }
+        a:focus, a:hover, a:active { text-decoration-style: wavy; }
         details summary { font-weight: bold; }
         details summary:hover { color: var(--pico-primary); }
         footer {  text-align: center; margin-top: 50vh; }
@@ -26,8 +26,6 @@
             as <a href="https://obsproject.com/kb/browser-source" target="_blank">Browser-Source</a>
             in <a href="https://obsproject.com" target="_blank">OBS Studio</a>.
         </p>
-
-        <!-- <hr> -->
 
         <details>
             <summary>[get started]</summary>
@@ -57,8 +55,6 @@
 
             <hr>
         </details>
-
-
     </header>
 
 
@@ -97,7 +93,7 @@
 
                     <label x-show="['unix', 'beats'].includes(type)" x-cloak>
                         Decimal precision
-                        <input type="number" name="precision" min="0" step="1" placeholder="0">
+                        <input type="number" name="precision" min="0" max="100" step="1" placeholder="0">
                     </label>
 
                     <label>
@@ -266,7 +262,7 @@
                         <input type="text" name="number_reached_message" placeholder="end number reached: {end_number}">
                         <small>
                             Available variables: <code>{end_number}</code><br>
-                            Set to <code>none</code> to disable this.
+                            Set to <code>none</code> to show nothing when the end number was reached.
                         </small>
                     </label>
 
@@ -283,7 +279,7 @@
                         <input type="text" name="time_reached_message" placeholder="end time reached: {end_time}">
                         <small>
                             Available variables: <code>{end_time}</code><br>
-                            Set to <code>none</code> to disable this.
+                            Set to <code>none</code> to show nothing when the end time was reached.
                         </small>
                     </label>
 
@@ -562,7 +558,7 @@
                             <code>{millisecond}</code>
                             <code>{timezoneOffset}</code>
                             <code>{beats}</code><br>
-                            If the variable <code>{beats}</code> is present, other format variables will be ignored and the precision will be auto-set to <code>2</code>.
+                            If the variable <code>{beats}</code> is present, other format variables will be ignored and the decimal precision will be auto-set to <code>2</code>.
                         </small>
                     </label>
 
