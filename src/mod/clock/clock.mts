@@ -1,6 +1,7 @@
 import { Olay } from '../../lib/olay.mjs'
 import { humantime } from '../../lib/humantime.mjs'
 import { beatsnow } from '../../lib/beatsnow.mjs'
+import { clampnumber } from '../../lib/clampnumber.mjs'
 
 
 export class Olay_Clock extends Olay
@@ -40,7 +41,7 @@ export class Olay_Clock extends Olay
                     break
 
                 case 'precision':
-                    this.conf.precision = Math.max(0, Number(v || this.conf.precision))
+                    this.conf.precision = clampnumber(Number(v || this.conf.precision), 0, 100)
                     break
 
                 default:
