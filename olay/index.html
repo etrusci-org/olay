@@ -8,6 +8,8 @@
     <style>
         a:link, a:visited { text-decoration: none; }
         a:focus, a:hover, a:active { text-decoration: underline; }
+        details summary { font-weight: bold; }
+        details summary:hover { color: var(--pico-primary); }
         footer {  text-align: center; margin-top: 50vh; }
         .ti { background: linear-gradient(to right, var(--pico-primary), var(--pico-h1-color)); background-clip: text; color: transparent; }
         [x-cloak] { display: none !important; }
@@ -25,28 +27,38 @@
             in <a href="https://obsproject.com" target="_blank">OBS Studio</a>.
         </p>
 
-        <!-- TODO: Rewrite usage docs later and add screenshots and/or video tutorial -->
-        <h2>Get started</h2>
-        <p>
-            <strong>1.</strong> Setup and preview the overlays below.
-            If you do not enter any values, defaults will be used.
-        </p>
-        <p>
-            <strong>2.</strong> When you're happy with the preview, copy & paste the URL into OBS' Browser-Source.
-        </p>
-        <p>
-            <strong>3.</strong> Remove all code from the CSS field of the Browser-Source.
-            <span class="ti">Olay</span> will load its own styles for each overlay.
-        </p>
-        <p>
-            <strong>4.</strong> Optionally, copy & paste the parts of the default CSS <small>(linked for each module below)</small> you want to adjust into the CSS field of the Browser-Source and start adjusting it to your liking.
-            Advanced users can also do this in the developer console of the webbrowser <small>(navigate to the <em>Style Editor</em> - Tab and select <em>style.css</em>)</small> - this has the benefit of providing a realtime preview of your changes.
-        </p>
-        <p>
-            Feel free to <a href="https://github.com/etrusci-org/olay/discussions" target="_blank">start a new discussion</a> if you need more help with, or have specific questions, about Olay.
-        </p>
+        <!-- <hr> -->
 
-        <hr>
+        <details>
+            <summary>[get started]</summary>
+
+            <!--
+            User Guide
+            TODO: rewrite this in more comprehendable form.
+            -->
+            <p>
+                <strong>1.</strong> Setup and preview the overlays below.
+                If you do not enter any values, defaults will be used.
+            </p>
+            <p>
+                <strong>2.</strong> When you're happy with the preview, copy & paste the URL into OBS' Browser-Source.
+            </p>
+            <p>
+                <strong>3.</strong> Remove all code from the CSS field of the Browser-Source.
+                <span class="ti">Olay</span> will load its own styles for each overlay.
+            </p>
+            <p>
+                <strong>4.</strong> Optionally, copy & paste the parts of the default CSS <small>(linked for each module below)</small> you want to adjust into the CSS field of the Browser-Source and start adjusting it to your liking.
+                Advanced users can also do this in the developer console of the webbrowser <small>(navigate to the <em>Style Editor</em> - Tab and select <em>style.css</em>)</small> - this has the benefit of providing a realtime preview of your changes.
+            </p>
+            <p>
+                Feel free to <a href="https://github.com/etrusci-org/olay/discussions" target="_blank">start a new discussion</a> if you need more help with, or have specific questions about, <span class="ti">Olay</span>.
+            </p>
+
+            <hr>
+        </details>
+
+
     </header>
 
 
@@ -626,12 +638,7 @@
             >arT2</a>
         </p>
         <p>
-            <a href="https://github.com/etrusci-org/olay" target="_blank">source-code</a><br>
-            <a href="https://github.com/etrusci-org/olay/releases" target="_blank"><img src="https://img.shields.io/github/v/release/etrusci-org/olay?label=latest%20release" loading="lazy" alt="GitHub Release"></a>
-            <a href="https://www.codefactor.io/repository/github/etrusci-org/olay" target="_blank"><img src="https://img.shields.io/github/checks-status/etrusci-org/olay/main" loading="lazy" alt="GitHub Branch status"></a>
-            <a href="https://github.com/etrusci-org/olay/issues" target="_blank"><img src="https://img.shields.io/github/issues/etrusci-org/olay" loading="lazy" alt="GitHub Issues"></a>
-            <a href="https://github.com/etrusci-org/olay/pulls" target="_blank"><img src="https://img.shields.io/github/issues-pr/etrusci-org/olay" loading="lazy" alt="GitHub Pull Requests"></a>
-            <a href="https://github.com/etrusci-org/olay/stargazers" target="_blank"><img src="https://img.shields.io/github/stars/etrusci-org/olay" loading="lazy" alt="GitHub Repository stars"></a>
+            <a href="https://github.com/etrusci-org/olay" target="_blank">source-code</a>
         </p>
     </footer>
 

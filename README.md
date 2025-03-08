@@ -12,13 +12,6 @@ Go to <https://etrusci.org/tool/olay> to test each module with a configurator. Y
 
 
 
-<!-- ## Complementary stuff
-
-- [elfloater](https://github.com/etrusci-org/elfloater) -->
-
-
-
-
 ## Self-hosting
 
 You can also clone this repository or download a specific release and put it on your own webserver.
@@ -35,7 +28,18 @@ Requirements:
 
 See [tasks.json](./.vscode/tasks.json) for build commands.
 
+Once you've built the source, just copy the [olay/](./olay/) directory to your webserver.
+
+
+
+
+## License
+
+See [LICENSE.md](./LICENSE.md).
+
+
 ---
+
 
 [![GitHub Release](https://img.shields.io/github/v/release/etrusci-org/olay?label=latest%20release)](https://github.com/etrusci-org/olay/releases)  
 [![GitHub Branch status](https://img.shields.io/github/checks-status/etrusci-org/olay/main)](https://www.codefactor.io/repository/github/etrusci-org/olay)  

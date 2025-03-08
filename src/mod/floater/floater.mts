@@ -57,19 +57,20 @@ export class Olay_Floater extends Olay
             }
         }
 
-        const floater = this.ui.mod.querySelector('.text-floater')
+        const floater = this.ui.mod.querySelector('.floater')
 
         if (!(floater instanceof HTMLElement)) {
             return
         }
 
         floater.innerHTML = this.conf.text
+
         floater.dataset['velX'] = String(this.conf.vel_x)
         floater.dataset['velY'] = String(this.conf.vel_y)
         floater.dataset['flipX'] = String(this.conf.flip_x)
         floater.dataset['flipY'] = String(this.conf.flip_y)
         floater.dataset['randomColor'] = String(this.conf.colorchange)
 
-        new ElFloaterLoader('.text-floater', '.mod')
+        new ElFloaterLoader('.floater', '.mod')
     }
 }
