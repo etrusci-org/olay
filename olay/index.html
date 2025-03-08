@@ -42,6 +42,9 @@
             <strong>4.</strong> Optionally, copy & paste the parts of the default CSS <small>(linked for each module below)</small> you want to adjust into the CSS field of the Browser-Source and start adjusting it to your liking.
             Advanced users can also do this in the developer console of the webbrowser <small>(navigate to the <em>Style Editor</em> - Tab and select <em>style.css</em>)</small> - this has the benefit of providing a realtime preview of your changes.
         </p>
+        <p>
+            Feel free to <a href="https://github.com/etrusci-org/olay/discussions" target="_blank">start a new discussion</a> if you need more help with, or have specific questions, about Olay.
+        </p>
 
         <hr>
     </header>
@@ -250,7 +253,8 @@
                         On end number reached message
                         <input type="text" name="number_reached_message" placeholder="end number reached: {end_number}">
                         <small>
-                            Available variables: <code>{end_number}</code>
+                            Available variables: <code>{end_number}</code><br>
+                            Set to <code>none</code> to disable this.
                         </small>
                     </label>
 
@@ -266,7 +270,8 @@
                         On end time reached message
                         <input type="text" name="time_reached_message" placeholder="end time reached: {end_time}">
                         <small>
-                            Available variables: <code>{end_time}</code>
+                            Available variables: <code>{end_time}</code><br>
+                            Set to <code>none</code> to disable this.
                         </small>
                     </label>
 
@@ -295,6 +300,11 @@
                 <summary>[setup]</summary>
 
                 <form action="./mod/floater/" method="get" target="_blank">
+                    <label>
+                        Text
+                        <input type="text" name="text" placeholder="hello&lt;br&gt;cruel&lt;br&gt;world">
+                    </label>
+
                     <label>
                         Velocity on x-axis
                         <input type="number" name="vel_x" min="0" step="any" placeholder="1.0">
