@@ -51,6 +51,20 @@ type Olay_Countdu_UI = {
 
 
 // -----------------------------------------------
+// Dnmap
+
+type Olay_Dnmap_Conf = {
+    type: string
+    updaterate: number
+}
+
+type Olay_Dnmap_UI = {
+    mod: HTMLElement
+    img: HTMLImageElement
+}
+
+
+// -----------------------------------------------
 // Floater
 
 type Olay_Floater_Conf = {
