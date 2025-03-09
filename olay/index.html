@@ -74,11 +74,20 @@
             }"
             x-init="update_end_message()"
         >
-            <h2><span class="ti">Clock</span></h2>
-            <p>Current local date and time.</p>
+            <h2><span class="ti">clock</span></h2>
+            <p>Current local date/time in various formats.</p>
 
             <details>
                 <summary>[setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li><a href="https://en.wikipedia.org/wiki/Human-readable_medium_and_data" target="_blank">Human readable</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Swatch_Internet_Time" target="_blank">Internet time</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Unix_time" target="_blank">Unix time</a></li>
+                </ul>
+
+                <hr>
 
                 <form action="./mod/clock/" method="get" target="_blank">
                     <label>
@@ -145,11 +154,18 @@
             x-data="{}"
             x-init=""
         >
-            <h2><span class="ti">Color fader</span></h2>
-            <p>Fade through random colors.</p>
+            <h2><span class="ti">colorfader</span></h2>
+            <p>Continously fade through random colors.</p>
 
             <details>
                 <summary>[setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function#values" target="_blank">Transition function descriptions</a></li>
+                </ul>
+
+                <hr>
 
                 <form action="./mod/colorfader/" method="get" target="_blank">
 
@@ -230,12 +246,18 @@
             }"
             x-init="update_end_message_placeholder()"
         >
-            <h2><span class="ti">Count Up/Down</span></h2>
-            <p>Count down/up.</p>
-            <!-- if ResistFingerprinting is turned on in the webbrowser, type=time will not yield correct results. -->
+            <h2><span class="ti">countdu</span></h2>
+            <p>Count down/up with a number or time range.</p>
 
             <details>
                 <summary>[setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li>If <em>ResistFingerprinting</em> is turned on in the webbrowser, <code>time</code> counters may not yield correct results because the local timezone will not be accessible to JavaScript.</li>
+                </ul>
+
+                <hr>
 
                 <form action="./mod/countdu/" method="get" target="_blank">
                     <label>
@@ -301,16 +323,23 @@
         </article>
 
 
-        <!-- Dnmap -->
+        <!-- dnmap -->
         <article
             x-data="{}"
             x-init=""
         >
-            <h2><span class="ti">Day/Night Map</span></h2>
-            <p>Day/night map.</p>
+            <h2><span class="ti">dnmap</span></h2>
+            <p>A world map that shows the current day and night on Earth and the positions of the Sun <small>(subsolar point)</small> and the Moon <small>(sublunar point)</small>.</p>
 
             <details>
                 <summary>[setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li>Map image provided by <a href="https://www.timeanddate.com/worldclock/sunearth.html" target="_blank">timeanddate.com</a></li>
+                </ul>
+
+                <hr>
 
                 <form action="./mod/dnmap/" method="get" target="_blank">
                     <label>
@@ -343,16 +372,23 @@
         </article>
 
 
-        <!-- Floater -->
+        <!-- floater -->
         <article
             x-data="{}"
             x-init=""
         >
-            <h2><span class="ti">Text Floater</span></h2>
-            <p>Text floater.</p>
+            <h2><span class="ti">floater</span></h2>
+            <p>Let a text float around the screen like the old DVD logo screensaver.</p>
 
             <details>
                 <summary>[setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li>Flipping may not always work on the first edge collision but then does afterwards.</li>
+                </ul>
+
+                <hr>
 
                 <form action="./mod/floater/" method="get" target="_blank">
                     <label>
@@ -368,6 +404,22 @@
                     <label>
                         Velocity on y-axis
                         <input type="number" name="vel_y" min="0" step="any" placeholder="1.0">
+                    </label>
+
+                    <label>
+                        Start position on x-axis
+                        <input type="number" name="pos_x" min="-1" step="1" placeholder="-1">
+                        <small>
+                            Enter <code>-1</code> for random position.
+                        </small>
+                    </label>
+
+                    <label>
+                        Start position on y-axis
+                        <input type="number" name="pos_y" min="-1" step="1" placeholder="-1">
+                        <small>
+                            Enter <code>-1</code> for random position.
+                        </small>
                     </label>
 
                     <label>
@@ -399,13 +451,13 @@
         </article>
 
 
-        <!-- Goal -->
+        <!-- goal -->
         <article
             x-data="{}"
             x-init=""
         >
-            <h2><span class="ti">Goal Status</span></h2>
-            <p>Goal status.</p>
+            <h2><span class="ti">goal</span></h2>
+            <p>Status of one of your personal goals.</p>
 
             <details>
                 <summary>[setup]</summary>
@@ -445,16 +497,23 @@
         </article>
 
 
-        <!-- Quotes -->
+        <!-- quotes -->
         <article
             x-data=""
             x-init=""
         >
-            <h2><span class="ti">Random Quotes</span></h2>
-            <p>Random quotes.</p>
+            <h2><span class="ti">quotes</span></h2>
+            <p>Curated random quotes from various art and life topics.</p>
 
             <details>
                 <summary>[setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li>Default quotes provided by <a href="https://pdv.ourspace.ch" target="_blank">PolyDataVault</a>.</li>
+                </ul>
+
+                <hr>
 
                 <form action="./mod/quotes/" method="get" target="_blank">
                     <label>
@@ -493,10 +552,10 @@
                     </label>
 
                     <label>
-                        API endpoint
+                        Quotes API endpoint
                         <input type="text" name="endpoint" placeholder="https://pdv.ourspace.ch/api/collections/random_quote/records/1?fields=author,quote">
                         <small>
-                            Must return a JSON response with an author and quote field.
+                            Must return a JSON response for a single item with an author and quote field.
                             E.g.: <code>{author: string, quote: string}</code>
                         </small>
                     </label>
@@ -515,13 +574,13 @@
         </article>
 
 
-        <!-- Rotator -->
+        <!-- rotator -->
         <article
             x-data=""
             x-init=""
         >
-            <h2><span class="ti">Text Rotator</span></h2>
-            <p>Rotate through text items.</p>
+            <h2><span class="ti">rotator</span></h2>
+            <p>Continously rotate through text items.</p>
 
             <details>
                 <summary>[setup]</summary>
@@ -562,13 +621,13 @@
         </article>
 
 
-        <!-- TwitchChat -->
+        <!-- twitchchat -->
         <article
             x-data="{ parse_emotes: false }"
             x-init=""
         >
-            <h2><span class="ti">Twitch Chat</span></h2>
-            <p>Messages from one or more Twitch chats.</p>
+            <h2><span class="ti">twitchchat</span></h2>
+            <p>Chat messages from one or more <a href="https://twitch.tv" target="_blank">Twitch</a> channels.</p>
 
             <details>
                 <summary>[setup]</summary>
