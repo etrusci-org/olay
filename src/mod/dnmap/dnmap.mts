@@ -9,13 +9,13 @@ export class Olay_Dnmap extends Olay
     }
 
     ui: Olay_Dnmap_UI = {
-        mod: document.querySelector('.mod') as HTMLElement,
+        mod: document.querySelector('.mod') as HTMLDivElement,
         img: document.querySelector('.mod img') as HTMLImageElement,
     }
 
+    min_updaterate: number = 180
     valid_image_types: string[] = ['map', 'satellite']
     img_url: string = 'https://www.timeanddate.com/scripts/sunmap.php?iso={iso}&earth={earth}'
-    min_updaterate: number = 180
 
 
     constructor()

@@ -1,4 +1,4 @@
-export function sectodur(ms: number, padsec: boolean = false): string
+export function mstodur(ms: number, padsec: boolean = false): string
 {
     const sec: number = Math.max(0, Math.floor(ms / 1_000))
 

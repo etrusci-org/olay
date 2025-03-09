@@ -20,7 +20,7 @@ export class Olay_TwitchChat extends Olay
     }
 
     ui: Olay_TwitchChat_UI = {
-        mod: document.querySelector('.mod') as HTMLElement,
+        mod: document.querySelector('.mod') as HTMLDivElement,
     }
 
     valid_emotesthemes: string[] = ['light', 'dark']
@@ -174,91 +174,3 @@ export class Olay_TwitchChat extends Olay
         window.scrollTo(0, this.ui.mod.scrollHeight)
     }
 }
-
-
-
-
-
-
-
-
-
-/* tags object
-
-message = test :)
-{
-    "badge-info": {
-        "subscriber": "28"
-    },
-    "badges": {
-        "broadcaster": "1",
-        "subscriber": "0"
-    },
-    "client-nonce": "cb2e83191e3ccf1a6c5397c8014a517c",
-    "color": "#9ACD32",
-    "display-name": "SPARTALIEN",
-    "emotes": {
-        "1": [
-            "5-6"
-        ]
-    },
-    "first-msg": false,
-    "flags": null,
-    "id": "c2ea8fc8-ee93-415e-9bb0-c4a963fdba10",
-    "mod": false,
-    "returning-chatter": false,
-    "room-id": "540195916",
-    "subscriber": true,
-    "tmi-sent-ts": "1740575059873",
-    "turbo": false,
-    "user-id": "540195916",
-    "user-type": null,
-    "emotes-raw": "1:5-6",
-    "badge-info-raw": "subscriber/28",
-    "badges-raw": "broadcaster/1,subscriber/0",
-    "username": "spartalien",
-    "message-type": "chat"
-}
-
----
-
-message = :)
-{
-    "badge-info": {
-        "subscriber": "28"
-    },
-    "badges": {
-        "broadcaster": "1",
-        "subscriber": "0"
-    },
-    "client-nonce": "c4a827db318e295422618c5f81655fcd",
-    "color": "#9ACD32",
-    "display-name": "SPARTALIEN",
-    "emote-only": true,
-    "emotes": {
-        "1": [
-            "0-1"
-        ]
-    },
-    "first-msg": false,
-    "flags": null,
-    "id": "1205a800-a92c-4bf1-98db-09ac81a67d7e",
-    "mod": false,
-    "returning-chatter": false,
-    "room-id": "540195916",
-    "subscriber": true,
-    "tmi-sent-ts": "1740575215663",
-    "turbo": false,
-    "user-id": "540195916",
-    "user-type": null,
-    "emotes-raw": "1:0-1",
-    "badge-info-raw": "subscriber/28",
-    "badges-raw": "broadcaster/1,subscriber/0",
-    "username": "spartalien",
-    "message-type": "chat"
-}
-
-
-
-
-*/

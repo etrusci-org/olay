@@ -16,7 +16,7 @@ export class Olay_Colorfader extends Olay
     }
 
     ui: Olay_Colorfader_UI = {
-        mod: document.querySelector('.mod') as HTMLElement
+        mod: document.querySelector('.mod') as HTMLDivElement
     }
 
 
@@ -65,14 +65,14 @@ export class Olay_Colorfader extends Olay
             }
         }
 
+        this.ui.mod.dataset['dur'] = String(this.conf.duration)
+        this.ui.mod.dataset['func'] = this.conf.func
         this.ui.mod.dataset['rMin'] = String(this.conf.r_min)
         this.ui.mod.dataset['rMax'] = String(this.conf.r_max)
         this.ui.mod.dataset['gMin'] = String(this.conf.g_min)
         this.ui.mod.dataset['gMax'] = String(this.conf.g_max)
         this.ui.mod.dataset['bMin'] = String(this.conf.b_min)
         this.ui.mod.dataset['bMax'] = String(this.conf.b_max)
-        this.ui.mod.dataset['dur'] = String(this.conf.duration)
-        this.ui.mod.dataset['func'] = this.conf.func
         this.ui.mod.dataset['target'] = 'background'
 
         new ElColorfader('.mod').start()

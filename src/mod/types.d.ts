@@ -9,7 +9,7 @@ type Olay_Clock_Conf = {
 }
 
 type Olay_Clock_UI = {
-    mod: HTMLElement
+    mod: HTMLDivElement
 }
 
 
@@ -28,7 +28,7 @@ type Olay_Colorfader_Conf = {
 }
 
 type Olay_Colorfader_UI = {
-    mod: HTMLElement
+    mod: HTMLDivElement
 }
 
 
@@ -46,7 +46,7 @@ type Olay_Countdu_Conf = {
 }
 
 type Olay_Countdu_UI = {
-    mod: HTMLElement
+    mod: HTMLDivElement
 }
 
 
@@ -59,7 +59,7 @@ type Olay_Dnmap_Conf = {
 }
 
 type Olay_Dnmap_UI = {
-    mod: HTMLElement
+    mod: HTMLDivElement
     img: HTMLImageElement
 }
 
@@ -79,7 +79,8 @@ type Olay_Floater_Conf = {
 }
 
 type Olay_Floater_UI = {
-    mod: HTMLElement
+    mod: HTMLDivElement
+    floater: HTMLDivElement
 }
 
 
@@ -94,11 +95,11 @@ type Olay_Goal_Conf = {
 }
 
 type Olay_Goal_UI = {
-    mod: HTMLElement
-    description: HTMLElement
-    current: HTMLElement
-    target: HTMLElement
-    unit: HTMLElement
+    mod: HTMLDivElement
+    description: HTMLDivElement
+    current: HTMLDivElement
+    target: HTMLDivElement
+    unit: HTMLDivElement
 }
 
 
@@ -114,7 +115,9 @@ type Olay_Quotes_Conf = {
 }
 
 type Olay_Quotes_UI = {
-    mod: HTMLElement
+    mod: HTMLDivElement
+    quote: HTMLDivElement
+    author: HTMLDivElement
 }
 
 
@@ -128,7 +131,7 @@ type Olay_Rotator_Conf = {
 }
 
 type Olay_Rotator_UI = {
-    mod: HTMLElement
+    mod: HTMLDivElement
 }
 
 
@@ -141,7 +144,7 @@ type Olay_Soho_Conf = {
 }
 
 type Olay_Soho_UI = {
-    mod: HTMLElement
+    mod: HTMLDivElement
     img: HTMLImageElement
 }
 
@@ -162,5 +165,5 @@ type Olay_TwitchChat_Conf = {
 }
 
 type Olay_TwitchChat_UI = {
-    mod: HTMLElement
+    mod: HTMLDivElement
 }

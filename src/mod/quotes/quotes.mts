@@ -13,7 +13,9 @@ export class Olay_Quotes extends Olay
     }
 
     ui: Olay_Quotes_UI = {
-        mod: document.querySelector('.mod') as HTMLElement
+        mod: document.querySelector('.mod') as HTMLDivElement,
+        quote: document.querySelector('.mod .quote') as HTMLDivElement,
+        author: document.querySelector('.mod .author') as HTMLDivElement,
     }
 
     min_updaterate: number = 10
@@ -61,29 +63,23 @@ export class Olay_Quotes extends Olay
         const data: {author: string, quote: string} = await fetchjson(this.conf.endpoint)
 
         if (!data.author || !data.quote) {
-            console.error(`missing author and/or quote in response data.`)
+            console.error(`missing author and/or quote in response data:`, data)
             return
         }
 
-        const quote_ele: HTMLElement = document.createElement('div')
-        const author_ele: HTMLElement = document.createElement('div')
-
-        quote_ele.classList.add('quote')
-        author_ele.classList.add('author')
-
-        this.ui.mod.innerHTML = ''
-        this.ui.mod.append(quote_ele, author_ele)
+        this.ui.quote.innerHTML = ''
+        this.ui.author.innerHTML = ''
 
         if (this.conf.typingspeed > 0) {
             const queue_quote: string[] = this.conf.format_quote.replace('{quote}', data.quote).split('')
             let iid = setInterval(() => {
-                quote_ele.innerHTML += queue_quote.shift()
+                this.ui.quote.innerHTML += queue_quote.shift()
                 if (queue_quote.length == 0) {
                     clearInterval(iid)
 
                     const author_queue: string[] = this.conf.format_author.replace('{author}', data.author).split('')
                     iid = setInterval(() => {
-                        author_ele.innerHTML += author_queue.shift()
+                        this.ui.author.innerHTML += author_queue.shift()
                         if (author_queue.length == 0) {
                             clearInterval(iid)
                             setTimeout(() => this.update_ui(), this.conf.updaterate * 1_000)
@@ -93,8 +89,8 @@ export class Olay_Quotes extends Olay
             }, this.conf.typingspeed * 1_000)
         }
         else {
-            quote_ele.innerHTML = this.conf.format_quote.replace('{quote}', data.quote)
-            author_ele.innerHTML = this.conf.format_author.replace('{author}', data.author)
+            this.ui.quote.innerHTML = this.conf.format_quote.replace('{quote}', data.quote)
+            this.ui.author.innerHTML = this.conf.format_author.replace('{author}', data.author)
             setTimeout(() => this.update_ui(), this.conf.updaterate * 1_000)
         }
     }

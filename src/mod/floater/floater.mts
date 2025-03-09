@@ -18,7 +18,8 @@ export class Olay_Floater extends Olay
     }
 
     ui: Olay_Floater_UI = {
-        mod: document.querySelector('.mod') as HTMLElement
+        mod: document.querySelector('.mod') as HTMLDivElement,
+        floater: document.querySelector('.mod .floater') as HTMLDivElement,
     }
 
 
@@ -67,27 +68,27 @@ export class Olay_Floater extends Olay
             }
         }
 
-        const floater = this.ui.mod.querySelector('.floater')
+        // const floater = this.ui.mod.querySelector('.floater')
 
-        if (!(floater instanceof HTMLElement)) {
+        if (!(this.ui.floater instanceof HTMLDivElement)) {
             return
         }
 
-        floater.innerHTML = this.conf.text
+        this.ui.floater.innerHTML = this.conf.text
 
         if (this.conf.pos_x >= 0) {
-            floater.dataset['posX'] = String(this.conf.pos_x)
+            this.ui.floater.dataset['posX'] = String(this.conf.pos_x)
         }
 
         if (this.conf.pos_y >= 0) {
-            floater.dataset['posY'] = String(this.conf.pos_y)
+            this.ui.floater.dataset['posY'] = String(this.conf.pos_y)
         }
 
-        floater.dataset['velX'] = String(this.conf.vel_x)
-        floater.dataset['velY'] = String(this.conf.vel_y)
-        floater.dataset['flipX'] = String(this.conf.flip_x)
-        floater.dataset['flipY'] = String(this.conf.flip_y)
-        floater.dataset['randomColor'] = String(this.conf.colorchange)
+        this.ui.floater.dataset['velX'] = String(this.conf.vel_x)
+        this.ui.floater.dataset['velY'] = String(this.conf.vel_y)
+        this.ui.floater.dataset['flipX'] = String(this.conf.flip_x)
+        this.ui.floater.dataset['flipY'] = String(this.conf.flip_y)
+        this.ui.floater.dataset['randomColor'] = String(this.conf.colorchange)
 
         new ElFloaterLoader('.floater', '.mod')
     }

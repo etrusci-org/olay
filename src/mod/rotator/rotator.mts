@@ -11,7 +11,7 @@ export class Olay_Rotator extends Olay
     }
 
     ui: Olay_Rotator_UI = {
-        mod: document.querySelector('.mod') as HTMLElement
+        mod: document.querySelector('.mod') as HTMLDivElement
     }
 
     queue: string[] = []

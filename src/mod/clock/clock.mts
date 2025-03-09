@@ -14,7 +14,7 @@ export class Olay_Clock extends Olay
     }
 
     ui: Olay_Clock_UI = {
-        mod: document.querySelector('.mod') as HTMLElement
+        mod: document.querySelector('.mod') as HTMLDivElement
     }
 
     valid_clock_types: string[] = ['human', 'beats', 'unix', 'unixms']

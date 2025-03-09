@@ -1,27 +1,15 @@
-// {
-//     'all': None,
-//     'c2': ('LASCO C2', 'https://soho.nascom.nasa.gov/data/realtime/c2/1024/latest.jpg'),
-//     'c3': ('LASCO C3', 'https://soho.nascom.nasa.gov/data/realtime/c3/1024/latest.jpg'),
-//     'eit_171': ('EIT 171', 'https://soho.nascom.nasa.gov/data/realtime/eit_171/1024/latest.jpg'),
-//     'eit_195': ('EIT 195', 'https://soho.nascom.nasa.gov/data/realtime/eit_195/1024/latest.jpg'),
-//     'eit_284': ('EIT 284', 'https://soho.nascom.nasa.gov/data/realtime/eit_284/1024/latest.jpg'),
-//     'eit_304': ('EIT 304', 'https://soho.nascom.nasa.gov/data/realtime/eit_304/1024/latest.jpg'),
-//     'hmi_igr': ('SDO/HMI Continuum', 'https://soho.nascom.nasa.gov/data/realtime/hmi_igr/1024/latest.jpg'),
-//     'hmi_mag': ('SDO/HMI Magnetogram', 'https://soho.nascom.nasa.gov/data/realtime/hmi_mag/1024/latest.jpg'),
-// }
-
 import { Olay } from '../../lib/olay.mjs'
 
 
 export class Olay_Soho extends Olay
 {
     conf: Olay_Soho_Conf = {
-        camera: 'eit_304',
+        camera: 'c2',
         updaterate: 900,
     }
 
     ui: Olay_Soho_UI = {
-        mod: document.querySelector('.mod') as HTMLElement,
+        mod: document.querySelector('.mod') as HTMLDivElement,
         img: document.querySelector('.mod img') as HTMLImageElement,
     }
 
@@ -49,7 +37,6 @@ export class Olay_Soho extends Olay
             switch (k) {
                 case 'camera':
                     this.conf.camera = (Object.keys(this.camera_images).includes(v)) ? v : this.conf.camera
-                    console.log(this.conf.camera)
                     break
 
                 case 'updaterate':

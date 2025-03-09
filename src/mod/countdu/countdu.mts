@@ -1,7 +1,7 @@
 // if ResistFingerprinting is turned on in the webbrowser, type=time will not yield correct results.
 
 import { Olay } from '../../lib/olay.mjs'
-import { sectodur } from '../../lib/sectodur.mjs'
+import { mstodur } from '../../lib/mstodur.mjs'
 
 
 export class Olay_Countdu extends Olay
@@ -17,7 +17,7 @@ export class Olay_Countdu extends Olay
     }
 
     ui: Olay_Countdu_UI = {
-        mod: document.querySelector('.mod') as HTMLElement
+        mod: document.querySelector('.mod') as HTMLDivElement
     }
 
     default_number_end_message: string = 'end number reached: {end_number}'
@@ -116,7 +116,7 @@ export class Olay_Countdu extends Olay
                     return
                 }
 
-                this.ui.mod.innerHTML = this.conf.time_format.replace('{delta}', sectodur(delta))
+                this.ui.mod.innerHTML = this.conf.time_format.replace('{delta}', mstodur(delta))
                 break
 
             default:
