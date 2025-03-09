@@ -620,6 +620,58 @@
             </details>
         </article>
 
+        <!-- soho -->
+        <article
+            x-data=""
+            x-init=""
+        >
+            <h2><span class="ti">soho</span></h2>
+            <p>Current images of the sun in various spectrums.</p>
+
+            <details open>
+                <summary>[setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li>Images provided by <a href="https://soho.nascom.nasa.gov/data/realtime-images.html" target="_blank">SOHO.</a></li>
+                </ul>
+
+                <form action="./mod/soho/" method="get" target="_blank">
+                    <label>
+                        Camera
+                        <select name="camera">
+                            <option value="c2">C2</option>
+                            <option value="c3">C3</option>
+                            <option value="eit_171">EIT 171</option>
+                            <option value="eit_195">EIT 195</option>
+                            <option value="eit_284">EIT 284</option>
+                            <option value="eit_304" selected>EIT 304</option>
+                            <option value="hmi_igr">HMI IGR</option>
+                            <option value="hmi_mag">HMI MAG</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Update rate
+                        <input type="number" name="updaterate" min="300" step="any" placeholder="900">
+                        <small>
+                            Seconds.
+                        </small>
+                    </label>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <p><a href="./mod/soho/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
+                </form>
+
+            </details>
+        </article>
+
 
         <!-- twitchchat -->
         <article
