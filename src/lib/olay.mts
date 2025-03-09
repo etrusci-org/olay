@@ -16,6 +16,6 @@ export class Olay
         console.log(`%c${this.constructor.name}`, `font-size: 150%; color: ${OLAY_COLOR};`)
         console.debug(this)
 
-        document.title = this.constructor.name.replace('_', ' | ')
+        document.title = `Olay | ${this.constructor.name.replace('Olay_', '').toLowerCase()}`
     }
 }

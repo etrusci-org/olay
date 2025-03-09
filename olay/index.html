@@ -46,7 +46,7 @@
                 <span class="ti">Olay</span> will load its own styles for each overlay.
             </p>
             <p>
-                <strong>4.</strong> Optionally, copy & paste the parts of the default CSS <small>(linked for each module below)</small> you want to adjust into the CSS field of the Browser-Source and start adjusting it to your liking.
+                <strong>4.</strong> Optionally, copy & paste the parts of the default CSS <small>(displayed for each module below)</small> you want to adjust into the CSS field of the Browser-Source and start adjusting it to your liking.
                 Advanced users can also do this in the developer console of the webbrowser <small>(navigate to the <em>Style Editor</em> - Tab and select <em>style.css</em>)</small> - this has the benefit of providing a realtime preview of your changes.
             </p>
             <p>
@@ -141,7 +141,10 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <p><a href="./mod/clock/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
+                    <details>
+                        <summary>[Default CSS]</summary>
+                        <pre data-mod-style="clock"></pre>
+                    </details>
                 </form>
 
             </details>
@@ -226,7 +229,10 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <p><a href="./mod/colorfader/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
+                    <details>
+                        <summary>[Default CSS]</summary>
+                        <pre data-mod-style="colorfader"></pre>
+                    </details>
                 </form>
 
             </details>
@@ -316,7 +322,10 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <p><a href="./mod/countdu/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
+                    <details>
+                        <summary>[Default CSS]</summary>
+                        <pre data-mod-style="countdu"></pre>
+                    </details>
                 </form>
             </details>
         </article>
@@ -364,7 +373,10 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <p><a href="./mod/dnmap/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
+                    <details>
+                        <summary>[Default CSS]</summary>
+                        <pre data-mod-style="dnmap"></pre>
+                    </details>
                 </form>
 
             </details>
@@ -443,7 +455,10 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <p><a href="./mod/floater/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
+                    <details>
+                        <summary>[Default CSS]</summary>
+                        <pre data-mod-style="floater"></pre>
+                    </details>
                 </form>
 
             </details>
@@ -489,7 +504,10 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <p><a href="./mod/goal/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
+                    <details>
+                        <summary>[Default CSS]</summary>
+                        <pre data-mod-style="goal"></pre>
+                    </details>
                 </form>
 
             </details>
@@ -566,7 +584,10 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <p><a href="./mod/quotes/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
+                    <details>
+                        <summary>[Default CSS]</summary>
+                        <pre data-mod-style="quotes"></pre>
+                    </details>
                 </form>
 
             </details>
@@ -613,7 +634,10 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <p><a href="./mod/rotator/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
+                    <details>
+                        <summary>[Default CSS]</summary>
+                        <pre data-mod-style="rotator"></pre>
+                    </details>
                 </form>
 
             </details>
@@ -665,7 +689,10 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <p><a href="./mod/soho/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
+                    <details>
+                        <summary>[Default CSS]</summary>
+                        <pre data-mod-style="soho"></pre>
+                    </details>
                 </form>
 
             </details>
@@ -767,7 +794,10 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <p><a href="./mod/twitchchat/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
+                    <details>
+                        <summary>[Default CSS]</summary>
+                        <pre data-mod-style="twitchchat"></pre>
+                    </details>
                 </form>
 
             </details>
@@ -800,22 +830,37 @@
 
     <script type="module" defer>
         // @ts-check
+        import { fetchtext } from './lib/fetchtext.mjs'
         import { ElColorfader } from './lib/elcolorfader.mjs'
 
-        // auto-theme depending on daytime
-        window.addEventListener('load', () => {
+        const load_css_previews = async () => {
+            const csspreviews = document.querySelectorAll('pre[data-mod-style]')
+
+            for (const ele of csspreviews) {
+                if (!(ele instanceof HTMLPreElement)) {
+                    return
+                }
+
+                const cssfile = `./mod/${ele.dataset['modStyle']}/style.css?cb=${Date.now()}`
+                const css = await fetchtext(cssfile)
+                ele.textContent = css
+            }
+        }
+
+
+        const auto_theme = () => {
             const h = new Date().getHours()
-            if (h >= 6 && h <= 17) {
-                document.documentElement.dataset['theme'] = 'light'
-            }
-            else {
-                document.documentElement.dataset['theme'] = 'dark'
-            }
+            document.documentElement.dataset['theme'] = (h >= 6 && h <= 17) ? 'light' : 'dark'
+        }
 
-            // cachebust on module style links
-            document.querySelectorAll('a.cb').forEach((ele) => ele.setAttribute('href', ele.getAttribute('href') + `?cb=${Date.now()}`))
+        // const add_cachebust = () => {
+        //     document.querySelectorAll('a.cb').forEach((ele) => ele.setAttribute('href', ele.getAttribute('href') + `?cb=${Date.now()}`))
+        // }
 
-            // because
+        window.addEventListener('load', () => {
+            auto_theme()
+            // add_cachebust()
+            load_css_previews()
             new ElColorfader().start()
         })
     </script>
