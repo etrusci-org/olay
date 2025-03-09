@@ -69,6 +69,8 @@ type Olay_Dnmap_UI = {
 
 type Olay_Floater_Conf = {
     text: string
+    pos_x: number
+    pos_y: number
     vel_x: number
     vel_y: number
     flip_x: boolean

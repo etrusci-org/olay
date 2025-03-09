@@ -8,6 +8,8 @@ export class Olay_Floater extends Olay
 {
     conf: Olay_Floater_Conf = {
         text: 'hello<br>cruel<br>world',
+        pos_x: -1,
+        pos_y: -1,
         vel_x: 1.0,
         vel_y: 1.0,
         flip_x: false,
@@ -30,6 +32,14 @@ export class Olay_Floater extends Olay
             switch (k) {
                 case 'text':
                     this.conf.text = v || this.conf.text
+                    break
+
+                case 'pos_x':
+                    this.conf.pos_x = Math.max(-1, Number(v || this.conf.pos_x))
+                    break
+
+                case 'pos_y':
+                    this.conf.pos_y = Math.max(-1, Number(v || this.conf.pos_y))
                     break
 
                 case 'vel_x':
@@ -64,6 +74,14 @@ export class Olay_Floater extends Olay
         }
 
         floater.innerHTML = this.conf.text
+
+        if (this.conf.pos_x >= 0) {
+            floater.dataset['posX'] = String(this.conf.pos_x)
+        }
+
+        if (this.conf.pos_y >= 0) {
+            floater.dataset['posY'] = String(this.conf.pos_y)
+        }
 
         floater.dataset['velX'] = String(this.conf.vel_x)
         floater.dataset['velY'] = String(this.conf.vel_y)
