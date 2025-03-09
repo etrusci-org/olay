@@ -2,6 +2,8 @@
 
 Livestream overlay stuff for use as [Browser-Source](https://obsproject.com/kb/browser-source) in [OBS Studio](https://obsproject.com/).
 
+**This README is still work in progress until 3.0.0 is released.**
+
 
 
 

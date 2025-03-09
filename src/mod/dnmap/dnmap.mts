@@ -49,7 +49,7 @@ export class Olay_Dnmap extends Olay
             .replace('{iso}', new Date().toISOString())
             .replace('{earth}', (this.conf.type == 'satellite') ? '1' : '0')
 
-        this.ui.img.src = img_url
+        this.ui.img.setAttribute('src', img_url)
 
         if (!init_continous) {
             return
