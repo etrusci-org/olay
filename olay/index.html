@@ -66,13 +66,13 @@
         <article
             x-data="{
                 type: 'human',
-                format_placeholder: '',
-                update_format_placeholder() {
-                    if (this.type == 'human') this.format_placeholder = '{year}-{month}-{day} {hour}:{minute}:{second}'
-                    if (this.type == 'beats') this.format_placeholder = '@{beats}'
+                end_message: '',
+                update_end_message() {
+                    if (this.type == 'human') this.end_message = '{year}-{month}-{day} {hour}:{minute}:{second}'
+                    if (this.type == 'beats') this.end_message = '@{beats}'
                 },
             }"
-            x-init="update_format_placeholder()"
+            x-init="update_end_message()"
         >
             <h2><span class="ti">Clock</span></h2>
             <p>Current local date and time.</p>
@@ -83,7 +83,7 @@
                 <form action="./mod/clock/" method="get" target="_blank">
                     <label>
                         Type
-                        <select name="type" x-model="type" x-on:change="update_format_placeholder()">
+                        <select name="type" x-model="type" x-on:change="update_end_message()">
                             <option value="human" selected>human : Human-readable date/time</option>
                             <option value="beats">beats : Internet Time</option>
                             <option value="unix">unix : Unix Timestamp in seconds</option>
@@ -92,8 +92,8 @@
                     </label>
 
                     <label x-show="['unix', 'beats'].includes(type)" x-cloak>
-                        Decimal precision
-                        <input type="number" name="precision" min="0" max="100" step="1" placeholder="0">
+                        Decimals
+                        <input type="number" name="decimals" min="0" max="100" step="1" placeholder="0">
                     </label>
 
                     <label>
@@ -106,21 +106,23 @@
 
                     <label x-show="['human', 'beats'].includes(type)" x-cloak>
                         Format
-                        <input type="text" name="format" x-bind:placeholder="format_placeholder">
-                        <small x-show="type == 'human'" x-cloak>
-                            Available variables:
-                            <code>{year}</code>
-                            <code>{month}</code>
-                            <code>{day}</code>
-                            <code>{hour}</code>
-                            <code>{minute}</code>
-                            <code>{second}</code>
-                            <code>{millisecond}</code>
-                            <code>{timezoneOffset}</code>
-                        </small>
-                        <small x-show="type == 'beats'" x-cloak>
-                            Available variables:
-                            <code>{beats}</code>
+                        <input type="text" name="format" x-bind:placeholder="end_message">
+                        <small>
+                            <span x-show="type == 'human'" x-cloak>
+                                Available variables:
+                                <code>{year}</code>
+                                <code>{month}</code>
+                                <code>{day}</code>
+                                <code>{hour}</code>
+                                <code>{minute}</code>
+                                <code>{second}</code>
+                                <code>{millisecond}</code>
+                                <code>{timezoneOffset}</code>
+                            </span>
+                            <span x-show="type == 'beats'" x-cloak>
+                                Available variables:
+                                <code>{beats}</code>
+                            </span>
                         </small>
                     </label>
 
@@ -220,20 +222,27 @@
 
         <!-- Countdu -->
         <article
-            x-data="{ type: 'number' }"
-            x-init=""
+            x-data="{
+                type: 'number',
+                end_message_placeholder: '',
+                update_end_message_placeholder() {
+                    if (this.type == 'number') this.end_message_placeholder = 'end number reached: {end_number}'
+                    if (this.type == 'time') this.end_message_placeholder = 'end time reached: {end_time}'
+                },
+            }"
+            x-init="update_end_message_placeholder()"
         >
             <h2><span class="ti">Countdu</span></h2>
             <p>Count down/up.</p>
             <!-- if ResistFingerprinting is turned on in the webbrowser, type=time will not yield correct results. -->
 
-            <details>
+            <details open>
                 <summary>[setup]</summary>
 
                 <form action="./mod/countdu/" method="get" target="_blank">
                     <label>
                         Type
-                        <select name="type" x-model="type">
+                        <select name="type" x-model="type" x-on:change="update_end_message_placeholder()">
                             <option value="number" selected>number : From number to number</option>
                             <option value="time">time : From now to time</option>
                         </select>
@@ -257,15 +266,6 @@
                         <input type="number" name="number_end" step="any" placeholder="5">
                     </label>
 
-                    <label x-show="type == 'number'" x-cloak>
-                        On end number reached message
-                        <input type="text" name="number_reached_message" placeholder="end number reached: {end_number}">
-                        <small>
-                            Available variables: <code>{end_number}</code><br>
-                            Set to <code>none</code> to show nothing when the end number was reached.
-                        </small>
-                    </label>
-
                     <label x-show="type == 'time'" x-cloak>
                         End time
                         <input type="text" name="time_end" placeholder="YYYY-MM-DD HH:MM:SS">
@@ -274,12 +274,19 @@
                         </small>
                     </label>
 
-                    <label x-show="type == 'time'" x-cloak>
-                        On end time reached message
-                        <input type="text" name="time_reached_message" placeholder="end time reached: {end_time}">
+                    <label>
+                        On end message
+                        <input type="text" name="end_message" x-bind:placeholder="end_message_placeholder">
                         <small>
-                            Available variables: <code>{end_time}</code><br>
-                            Set to <code>none</code> to show nothing when the end time was reached.
+                            <span x-show="type == 'number'" x-cloak>
+                                Available variables:
+                                <code>{end_number}</code>
+                            </span>
+                            <span x-show="type == 'time'" x-cloak>
+                                Available variables:
+                                <code>{end_time}</code>
+                            </span>
+                            <br>Set to <code>none</code> to show nothing on end.
                         </small>
                     </label>
 
@@ -558,7 +565,7 @@
                             <code>{millisecond}</code>
                             <code>{timezoneOffset}</code>
                             <code>{beats}</code><br>
-                            If the variable <code>{beats}</code> is present, other format variables will be ignored and the decimal precision will be auto-set to <code>2</code>.
+                            If the variable <code>{beats}</code> is present, other format variables will be ignored and the decimals will be auto-set to <code>2</code>.
                         </small>
                     </label>
 

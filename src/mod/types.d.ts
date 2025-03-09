@@ -5,7 +5,7 @@ type Olay_Clock_Conf = {
     type: string
     format: string
     updaterate: number
-    precision: number
+    decimals: number
 }
 
 type Olay_Clock_UI = {
@@ -39,11 +39,10 @@ type Olay_Countdu_Conf = {
     type: string
     number_start: number
     number_end: number
-    number_reached_message: string
     time_end: string
     time_format: string
-    time_reached_message: string
     countingspeed: number
+    end_message: string
 }
 
 type Olay_Countdu_UI = {

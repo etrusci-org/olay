@@ -10,7 +10,7 @@ export class Olay_Clock extends Olay
         type: 'human',
         format: '{year}-{month}-{day} {hour}:{minute}:{second}',
         updaterate: 0.5,
-        precision: 0,
+        decimals: 0,
     }
 
     ui: Olay_Clock_UI = {
@@ -40,8 +40,8 @@ export class Olay_Clock extends Olay
                     this.conf.updaterate = Math.max(0, Number(v || this.conf.updaterate))
                     break
 
-                case 'precision':
-                    this.conf.precision = clampnumber(Number(v || this.conf.precision), 0, 100)
+                case 'decimals':
+                    this.conf.decimals = clampnumber(Number(v || this.conf.decimals), 0, 100)
                     break
 
                 default:
@@ -62,15 +62,15 @@ export class Olay_Clock extends Olay
 
             case 'beats':
                 if (this.conf.format.includes('{beats}')) {
-                    this.ui.mod.innerHTML = beatsnow(this.conf.precision, this.conf.format)
+                    this.ui.mod.innerHTML = beatsnow(this.conf.decimals, this.conf.format)
                 }
                 else {
-                    this.ui.mod.innerHTML = beatsnow(this.conf.precision)
+                    this.ui.mod.innerHTML = beatsnow(this.conf.decimals)
                 }
                 break
 
             case 'unix':
-                this.ui.mod.innerHTML = String((Date.now() / 1000).toFixed(this.conf.precision))
+                this.ui.mod.innerHTML = String((Date.now() / 1000).toFixed(this.conf.decimals))
                 break
 
             case 'unixms':
