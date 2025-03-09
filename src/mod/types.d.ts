@@ -133,6 +133,20 @@ type Olay_Rotator_UI = {
 
 
 // -----------------------------------------------
+// Soho
+
+type Olay_Soho_Conf = {
+    camera: string
+    updaterate: number
+}
+
+type Olay_Soho_UI = {
+    mod: HTMLElement
+    img: HTMLImageElement
+}
+
+
+// -----------------------------------------------
 // TwitchChat
 
 type Olay_TwitchChat_Conf = {
