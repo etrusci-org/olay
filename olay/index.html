@@ -62,7 +62,7 @@
 
     <main class="container">
 
-        <!-- Clock -->
+        <!-- clock -->
         <article
             x-data="{
                 type: 'human',
@@ -135,17 +135,17 @@
 
                     <p><a href="./mod/clock/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
                 </form>
-            </details>
 
+            </details>
         </article>
 
 
-        <!-- Colorfader -->
+        <!-- colorfader -->
         <article
             x-data="{}"
             x-init=""
         >
-            <h2><span class="ti">Colorfader</span></h2>
+            <h2><span class="ti">Color fader</span></h2>
             <p>Fade through random colors.</p>
 
             <details>
@@ -213,14 +213,12 @@
 
                     <p><a href="./mod/colorfader/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
                 </form>
+
             </details>
-
-
-
         </article>
 
 
-        <!-- Countdu -->
+        <!-- countdu -->
         <article
             x-data="{
                 type: 'number',
@@ -232,11 +230,11 @@
             }"
             x-init="update_end_message_placeholder()"
         >
-            <h2><span class="ti">Countdu</span></h2>
+            <h2><span class="ti">Count Up/Down</span></h2>
             <p>Count down/up.</p>
             <!-- if ResistFingerprinting is turned on in the webbrowser, type=time will not yield correct results. -->
 
-            <details open>
+            <details>
                 <summary>[setup]</summary>
 
                 <form action="./mod/countdu/" method="get" target="_blank">
@@ -303,12 +301,54 @@
         </article>
 
 
+        <!-- Dnmap -->
+        <article
+            x-data="{}"
+            x-init=""
+        >
+            <h2><span class="ti">Day/Night Map</span></h2>
+            <p>Day/night map.</p>
+
+            <details>
+                <summary>[setup]</summary>
+
+                <form action="./mod/dnmap/" method="get" target="_blank">
+                    <label>
+                        Type
+                        <select name="type">
+                            <option value="map" selected>map : Simple map</option>
+                            <option value="satellite">satellite : Satellite-like map</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Update rate
+                        <input type="number" name="updaterate" min="180" step="1" placeholder="300">
+                        <small>
+                            Seconds.
+                        </small>
+                    </label>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <p><a href="./mod/dnmap/style.css" target="_blank" role="button" class="outline cb">Default CSS &nearr;</a></p>
+                </form>
+
+            </details>
+        </article>
+
+
         <!-- Floater -->
         <article
             x-data="{}"
             x-init=""
         >
-            <h2><span class="ti">Floater</span></h2>
+            <h2><span class="ti">Text Floater</span></h2>
             <p>Text floater.</p>
 
             <details>
@@ -364,7 +404,7 @@
             x-data="{}"
             x-init=""
         >
-            <h2><span class="ti">Goal</span></h2>
+            <h2><span class="ti">Goal Status</span></h2>
             <p>Goal status.</p>
 
             <details>
@@ -410,7 +450,7 @@
             x-data=""
             x-init=""
         >
-            <h2><span class="ti">Quotes</span></h2>
+            <h2><span class="ti">Random Quotes</span></h2>
             <p>Random quotes.</p>
 
             <details>
@@ -480,7 +520,7 @@
             x-data=""
             x-init=""
         >
-            <h2><span class="ti">Rotator</span></h2>
+            <h2><span class="ti">Text Rotator</span></h2>
             <p>Rotate through text items.</p>
 
             <details>
@@ -527,7 +567,7 @@
             x-data="{ parse_emotes: false }"
             x-init=""
         >
-            <h2><span class="ti">TwitchChat</span></h2>
+            <h2><span class="ti">Twitch Chat</span></h2>
             <p>Messages from one or more Twitch chats.</p>
 
             <details>
