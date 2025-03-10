@@ -97,9 +97,9 @@ type Olay_Goal_Conf = {
 type Olay_Goal_UI = {
     mod: HTMLDivElement
     description: HTMLDivElement
-    current: HTMLDivElement
-    target: HTMLDivElement
-    unit: HTMLDivElement
+    current: HTMLSpanElement
+    target: HTMLSpanElement
+    unit: HTMLSpanElement
 }
 
 

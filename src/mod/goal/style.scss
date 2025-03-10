@@ -2,29 +2,37 @@
 
 /*---------------------
 goal
+
+available selectors:
+
+div.mod
+div.mod div.description
+div.mod span.current
+div.mod span.target
+div.mod span.unit
 ---------------------*/
 
-.mod {
+div.mod {
     font-family: sans-serif;
     font-size: 24px;
 
-    .description {
+    div.description {
         font-weight: bold;
     }
 
-    .current {
-        display: inline-block;
+    span.current {
+        font-family: monospace;
     }
 
-    .current::after {
+    span.current::after {
         content: ' / ';
     }
 
-    .target {
-        display: inline-block;
+    span.target {
+        font-family: monospace;
     }
 
-    .unit {
-        display: inline-block;
+    span.unit {
+        font-style: italic;
     }
 }

@@ -2,17 +2,23 @@
 
 /*---------------------
 quotes
+
+available selectors:
+
+div.mod
+div.mod div.quote
+div.mod div.author
 ---------------------*/
 
-.mod {
+div.mod {
     font-family: sans-serif;
     font-size: 24px;
 
-    .quote {
+    div.quote {
         font-family: serif;
     }
 
-    .author {
+    div.author {
         font-size: 18px;
     }
 }

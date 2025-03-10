@@ -13,7 +13,7 @@ export class Olay_Soho extends Olay
         img: document.querySelector('.mod img') as HTMLImageElement,
     }
 
-    min_updaterate: number = 300
+    min_updaterate: number = 600
 
     camera_images: {[key: string]: string} = {
         'c2': 'https://soho.nascom.nasa.gov/data/realtime/c2/1024/latest.jpg',

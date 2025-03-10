@@ -139,26 +139,24 @@ export class Olay_TwitchChat extends Olay
         const user_color_css: string = (this.conf.usercolor && tags['color']) ? ` style="color: ${tags['color']};"` : ''
         const timestamp: string = (!this.conf.timeformat.includes('{beats}')) ? humantime(this.conf.timeformat) : beatsnow(2, this.conf.timeformat)
 
-        const chatline: HTMLElement = document.createElement('div')
+        const chatline: HTMLDivElement = document.createElement('div')
         chatline.classList.add('chatline')
         chatline.dataset['id'] = tags['id'] || ''
         chatline.innerHTML = `
-            <div class="counter">${this.messages_counter}</div>
-            <div class="channel">${channel}</div>
-            <div class="time">${timestamp}</div>
-            <div class="user" ${user_color_css}>${tags['display-name']}</div>
-            <div class="message">${message}</div>
+            <span class="counter">${this.messages_counter}</span>
+            <span class="channel">${channel}</span>
+            <span class="time">${timestamp}</span>
+            <span class="user" ${user_color_css}>${tags['display-name']}</span>
+            <span class="message">${message}</span>
         `
 
         this.ui.mod.append(chatline)
 
         const dump: NodeListOf<HTMLDivElement> = this.ui.mod.querySelectorAll('.chatline')
-
         if (dump.length > this.conf.limit) {
             if (!dump[0]) {
                 return
             }
-
             this.ui.mod.removeChild(dump[0])
         }
 

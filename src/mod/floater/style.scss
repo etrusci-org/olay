@@ -2,9 +2,14 @@
 
 /*---------------------
 floater
+
+available selectors:
+
+div.mod
+div.mod div.floater
 ---------------------*/
 
-.mod {
+div.mod {
     position: absolute;
     top: 0;
     left: 0;
@@ -17,6 +22,6 @@ floater
         font-weight: bold;
         text-align: center;
         line-height: 0.8;
-        transition: color 0.10s linear;
+        transition: color 0.15s linear;
     }
 }

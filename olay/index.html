@@ -8,9 +8,8 @@
     <style>
         a:link, a:visited { text-decoration-style: dotted; }
         a:focus, a:hover, a:active { text-decoration-style: wavy; }
-        details summary { font-weight: bold; }
         details summary:hover { color: var(--pico-primary); }
-        footer {  text-align: center; margin-top: 50vh; }
+        footer { text-align: center; margin-top: 50vh; }
         .ti { background: linear-gradient(to right, var(--pico-primary), var(--pico-h1-color)); background-clip: text; color: transparent; }
         [x-cloak] { display: none !important; }
     </style>
@@ -157,7 +156,7 @@
             x-init=""
         >
             <h2><span class="ti">colorfader</span></h2>
-            <p>Fade through random colors.</p>
+            <p>Fade the whole page through random colors.</p>
 
             <details>
                 <summary>[setup]</summary>
@@ -252,7 +251,7 @@
             x-init="update_end_message_placeholder()"
         >
             <h2><span class="ti">countdu</span></h2>
-            <p>Count down/up with a number or time range.</p>
+            <p>Count down/up within a number or time range.</p>
 
             <details>
                 <summary>[setup]</summary>
@@ -643,6 +642,49 @@
             </details>
         </article>
 
+
+        <!-- skyrecorder -->
+        <article
+            x-data=""
+            x-init=""
+        >
+            <h2><span class="ti">skyrecorder</span></h2>
+            <p>Recent live view of the sky somehwere in Europe.</p>
+
+            <details>
+                <summary>[setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li>Image provided by <a href="https://sky.etrusci.org" target="_blank">SKYRECORDER</a>.</li>
+                    <li>There will be a new image every ~30 minutes if all systems are running. It is dark at night.</li>
+                </ul>
+
+                <form action="./mod/skyrecorder/" method="get" target="_blank">
+                    <label>
+                        Update rate
+                        <input type="number" name="updaterate" min="600" step="any" placeholder="900">
+                        <small>
+                            Seconds.
+                        </small>
+                    </label>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <details>
+                        <summary>[Default CSS]</summary>
+                        <pre data-mod-style="skyrecorder"></pre>
+                    </details>
+                </form>
+
+            </details>
+
+        </article>
+
+
         <!-- soho -->
         <article
             x-data=""
@@ -676,7 +718,7 @@
 
                     <label>
                         Update rate
-                        <input type="number" name="updaterate" min="300" step="any" placeholder="900">
+                        <input type="number" name="updaterate" min="600" step="any" placeholder="900">
                         <small>
                             Seconds.
                         </small>
@@ -833,6 +875,11 @@
         import { fetchtext } from './lib/fetchtext.mjs'
         import { ElColorfader } from './lib/elcolorfader.mjs'
 
+        const auto_theme = () => {
+            const h = new Date().getHours()
+            document.documentElement.dataset['theme'] = (h >= 6 && h <= 17) ? 'light' : 'dark'
+        }
+
         const load_css_previews = async () => {
             const csspreviews = document.querySelectorAll('pre[data-mod-style]')
 
@@ -847,19 +894,8 @@
             }
         }
 
-
-        const auto_theme = () => {
-            const h = new Date().getHours()
-            document.documentElement.dataset['theme'] = (h >= 6 && h <= 17) ? 'light' : 'dark'
-        }
-
-        // const add_cachebust = () => {
-        //     document.querySelectorAll('a.cb').forEach((ele) => ele.setAttribute('href', ele.getAttribute('href') + `?cb=${Date.now()}`))
-        // }
-
         window.addEventListener('load', () => {
             auto_theme()
-            // add_cachebust()
             load_css_previews()
             new ElColorfader().start()
         })
