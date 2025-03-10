@@ -62,13 +62,13 @@
         <article
             x-data="{
                 type: 'human',
-                end_message: '',
-                update_end_message() {
-                    if (this.type == 'human') this.end_message = '{year}-{month}-{day} {hour}:{minute}:{second}'
-                    if (this.type == 'beats') this.end_message = '@{beats}'
+                format_placeholder: '',
+                update_format_placeholder() {
+                    if (this.type == 'human') this.format_placeholder = '{year}-{month}-{day} {hour}:{minute}:{second}'
+                    if (this.type == 'beats') this.format_placeholder = '@{beats}'
                 },
             }"
-            x-init="update_end_message()"
+            x-init="update_format_placeholder()"
         >
             <h2><span class="ti">clock</span></h2>
             <p>Current local date/time in various formats.</p>
@@ -85,32 +85,34 @@
                 <hr>
 
                 <form action="./mod/clock/" method="get" target="_blank">
-                    <label>
-                        Type
-                        <select name="type" x-model="type" x-on:change="update_end_message()">
-                            <option value="human" selected>human : Human-readable date/time</option>
-                            <option value="beats">beats : Internet Time</option>
-                            <option value="unix">unix : Unix Timestamp in seconds</option>
-                            <option value="unixms">unixms : Unix Timestamp in milliseconds</option>
-                        </select>
-                    </label>
+                    <div class="grid">
+                        <label>
+                            Type
+                            <select name="type" x-model="type" x-on:change="update_format_placeholder()">
+                                <option value="human" selected>human : Human-readable date/time</option>
+                                <option value="beats">beats : Internet time</option>
+                                <option value="unix">unix : Unix timestamp in seconds</option>
+                                <option value="unixms">unixms : Unix timestamp in milliseconds</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Update rate
+                            <input type="number" name="updaterate" min="0" step="any" placeholder="0.5">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+                    </div>
 
                     <label x-show="['unix', 'beats'].includes(type)" x-cloak>
                         Decimals
                         <input type="number" name="decimals" min="0" max="100" step="1" placeholder="0">
                     </label>
 
-                    <label>
-                        Update rate
-                        <input type="number" name="updaterate" min="0" step="any" placeholder="0.5">
-                        <small>
-                            Seconds.
-                        </small>
-                    </label>
-
                     <label x-show="['human', 'beats'].includes(type)" x-cloak>
                         Format
-                        <input type="text" name="format" x-bind:placeholder="end_message">
+                        <input type="text" name="format" x-bind:placeholder="format_placeholder">
                         <small>
                             <span x-show="type == 'human'" x-cloak>
                                 Available variables:
@@ -166,57 +168,64 @@
                 <hr>
 
                 <form action="./mod/colorfader/" method="get" target="_blank">
+                    <div class="grid">
+                        <label>
+                            Transition duration
+                            <input type="number" name="duration" min="0" step="any" placeholder="3">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
 
-                    <label>
-                        Transition duration
-                        <input type="number" name="duration" min="0" step="any" placeholder="3">
-                        <small>
-                            Seconds.
-                        </small>
-                    </label>
+                        <label>
+                            Transition function
+                            <select name="func">
+                                <option value="ease-in-out" selected>ease-in-out</option>
+                                <option value="ease-in">ease-in</option>
+                                <option value="ease-out">ease-out</option>
+                                <option value="ease">ease</option>
+                                <option value="linear">linear</option>
+                                <option value="step-start">step-start</option>
+                                <option value="step-end">step-end</option>
+                            </select>
+                        </label>
+                    </div>
 
-                    <label>
-                        Transition function
-                        <select name="func">
-                            <option value="ease-in-out" selected>ease-in-out</option>
-                            <option value="ease-in">ease-in</option>
-                            <option value="ease-out">ease-out</option>
-                            <option value="ease">ease</option>
-                            <option value="linear">linear</option>
-                            <option value="step-start">step-start</option>
-                            <option value="step-end">step-end</option>
-                        </select>
-                    </label>
+                    <div class="grid">
+                        <label>
+                            Red minimum
+                            <input type="number" name="rmin" min="0" max="255" step="1" placeholder="70">
+                        </label>
 
-                    <label>
-                        Red minimum
-                        <input type="number" name="rmin" min="0" max="255" step="1" placeholder="70">
-                    </label>
+                        <label>
+                            Red maximum
+                            <input type="number" name="rmax" min="0" max="255" step="1" placeholder="180">
+                        </label>
+                    </div>
 
-                    <label>
-                        Red maximum
-                        <input type="number" name="rmax" min="0" max="255" step="1" placeholder="180">
-                    </label>
+                    <div class="grid">
+                        <label>
+                            Green minimum
+                            <input type="number" name="gmin" min="0" max="255" step="1" placeholder="70">
+                        </label>
 
-                    <label>
-                        Green minimum
-                        <input type="number" name="gmin" min="0" max="255" step="1" placeholder="70">
-                    </label>
+                        <label>
+                            Green maximum
+                            <input type="number" name="gmax" min="0" max="255" step="1" placeholder="180">
+                        </label>
+                    </div>
 
-                    <label>
-                        Green maximum
-                        <input type="number" name="gmax" min="0" max="255" step="1" placeholder="180">
-                    </label>
+                    <div class="grid">
+                        <label>
+                            Blue minimum
+                            <input type="number" name="bmin" min="0" max="255" step="1" placeholder="70">
+                        </label>
 
-                    <label>
-                        Blue minimum
-                        <input type="number" name="bmin" min="0" max="255" step="1" placeholder="70">
-                    </label>
-
-                    <label>
-                        Blue maximum
-                        <input type="number" name="bmax" min="0" max="255" step="1" placeholder="180">
-                    </label>
+                        <label>
+                            Blue maximum
+                            <input type="number" name="bmax" min="0" max="255" step="1" placeholder="180">
+                        </label>
+                    </div>
 
                     <hr>
 
@@ -261,31 +270,35 @@
                 <hr>
 
                 <form action="./mod/countdu/" method="get" target="_blank">
-                    <label>
-                        Type
-                        <select name="type" x-model="type" x-on:change="update_endmessage_placeholder()">
-                            <option value="number" selected>number : From number to number</option>
-                            <option value="time">time : From now to time</option>
-                        </select>
-                    </label>
+                    <div class="grid">
+                        <label>
+                            Type
+                            <select name="type" x-model="type" x-on:change="update_endmessage_placeholder()">
+                                <option value="number" selected>number : From number to number</option>
+                                <option value="time">time : From now to time</option>
+                            </select>
+                        </label>
 
-                    <label>
-                        Counting speed
-                        <input type="number" name="countingspeed" min="0" step="any" placeholder="1">
-                        <small>
-                            Seconds.
-                        </small>
-                    </label>
+                        <label>
+                            Counting speed
+                            <input type="number" name="countingspeed" min="0" step="any" placeholder="1">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+                    </div>
 
-                    <label x-show="type == 'number'" x-cloak>
-                        Start number
-                        <input type="number" name="startnumber" step="any" placeholder="0">
-                    </label>
+                    <div class="grid" x-show="type == 'number'" x-cloak>
+                        <label>
+                            Start number
+                            <input type="number" name="startnumber" step="any" placeholder="0">
+                        </label>
 
-                    <label x-show="type == 'number'" x-cloak>
-                        End number
-                        <input type="number" name="endnumber" step="any" placeholder="5">
-                    </label>
+                        <label>
+                            End number
+                            <input type="number" name="endnumber" step="any" placeholder="5">
+                        </label>
+                    </div>
 
                     <label x-show="type == 'time'" x-cloak>
                         End time
@@ -346,21 +359,23 @@
                 <hr>
 
                 <form action="./mod/dnmap/" method="get" target="_blank">
-                    <label>
-                        Type
-                        <select name="type">
-                            <option value="map" selected>map : Simple map</option>
-                            <option value="satellite">satellite : Satellite-like map</option>
-                        </select>
-                    </label>
+                    <div class="grid">
+                        <label>
+                            Type
+                            <select name="type">
+                                <option value="map" selected>map : Simple map</option>
+                                <option value="satellite">satellite : Satellite-like map</option>
+                            </select>
+                        </label>
 
-                    <label>
-                        Update rate
-                        <input type="number" name="updaterate" min="180" step="1" placeholder="300">
-                        <small>
-                            Seconds.
-                        </small>
-                    </label>
+                        <label>
+                            Update rate
+                            <input type="number" name="updaterate" min="180" step="1" placeholder="300">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+                    </div>
 
                     <hr>
 
@@ -403,31 +418,35 @@
                         <input type="text" name="text" placeholder="hello&lt;br&gt;cruel&lt;br&gt;world">
                     </label>
 
-                    <label>
-                        Velocity on x-axis
-                        <input type="number" name="velx" min="0" step="any" placeholder="1.0">
-                    </label>
+                    <div class="grid">
+                        <label>
+                            Velocity on x-axis
+                            <input type="number" name="velx" min="0" step="any" placeholder="1.0">
+                        </label>
 
-                    <label>
-                        Velocity on y-axis
-                        <input type="number" name="vely" min="0" step="any" placeholder="1.0">
-                    </label>
+                        <label>
+                            Velocity on y-axis
+                            <input type="number" name="vely" min="0" step="any" placeholder="1.0">
+                        </label>
+                    </div>
 
-                    <label>
-                        Start position on x-axis
-                        <input type="number" name="posx" min="-1" step="1" placeholder="-1">
-                        <small>
-                            Enter <code>-1</code> for random position.
-                        </small>
-                    </label>
+                    <div class="grid">
+                        <label>
+                            Start position on x-axis
+                            <input type="number" name="posx" min="-1" step="1" placeholder="-1">
+                            <small>
+                                Enter <code>-1</code> for random position on x-axis.
+                            </small>
+                        </label>
 
-                    <label>
-                        Start position on y-axis
-                        <input type="number" name="posy" min="-1" step="1" placeholder="-1">
-                        <small>
-                            Enter <code>-1</code> for random position.
-                        </small>
-                    </label>
+                        <label>
+                            Start position on y-axis
+                            <input type="number" name="posy" min="-1" step="1" placeholder="-1">
+                            <small>
+                                Enter <code>-1</code> for random position on y-axis.
+                            </small>
+                        </label>
+                    </div>
 
                     <label>
                         <input type="checkbox" name="flipx" value="true">
@@ -478,20 +497,22 @@
                         <input type="text" name="description" placeholder="Road to something">
                     </label>
 
-                    <label>
-                        Current value
-                        <input type="number" name="current" min="0" step="any" placeholder="5">
-                    </label>
+                    <div class="grid">
+                        <label>
+                            Current value
+                            <input type="number" name="current" min="0" step="any" placeholder="5">
+                        </label>
 
-                    <label>
-                        Target value
-                        <input type="number" name="target" min="0" step="any" placeholder="10">
-                    </label>
+                        <label>
+                            Target value
+                            <input type="number" name="target" min="0" step="any" placeholder="10">
+                        </label>
 
-                    <label>
-                        Value unit
-                        <input type="text" name="unit" placeholder="something">
-                    </label>
+                        <label>
+                            Value unit
+                            <input type="text" name="unit" placeholder="something">
+                        </label>
+                    </div>
 
                     <hr>
 
@@ -529,40 +550,44 @@
                 <hr>
 
                 <form action="./mod/quotes/" method="get" target="_blank">
-                    <label>
-                        Update rate
-                        <input type="number" name="updaterate" min="10" step="any" placeholder="60">
-                        <small>
-                            Seconds.
-                        </small>
-                    </label>
+                    <div class="grid">
+                        <label>
+                            Update rate
+                            <input type="number" name="updaterate" min="10" step="any" placeholder="60">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
 
-                    <label>
-                        Typing speed
-                        <input type="number" name="typingspeed" min="0" step="any" placeholder="0.05">
-                        <small>
-                            Seconds.<br>
-                            Set to <code>0</code> to disable the typing effect.
-                        </small>
-                    </label>
+                        <label>
+                            Typing speed
+                            <input type="number" name="typingspeed" min="0" step="any" placeholder="0.05">
+                            <small>
+                                Seconds.<br>
+                                Set to <code>0</code> to disable the typing effect.
+                            </small>
+                        </label>
+                    </div>
 
-                    <label>
-                        Quote format
-                        <input type="text" name="quoteformat" placeholder="&quot;{quote}&quot;">
-                        <small>
-                            Available variables:
-                            <code>{quote}</code>
-                        </small>
-                    </label>
+                    <div class="grid">
+                        <label>
+                            Quote format
+                            <input type="text" name="quoteformat" placeholder="&quot;{quote}&quot;">
+                            <small>
+                                Available variables:
+                                <code>{quote}</code>
+                            </small>
+                        </label>
 
-                    <label>
-                        Author format
-                        <input type="text" name="authorformat" placeholder="— {author}">
-                        <small>
-                            Available variables:
-                            <code>{author}</code>
-                        </small>
-                    </label>
+                        <label>
+                            Author format
+                            <input type="text" name="authorformat" placeholder="— {author}">
+                            <small>
+                                Available variables:
+                                <code>{author}</code>
+                            </small>
+                        </label>
+                    </div>
 
                     <label>
                         Quotes API endpoint
@@ -657,27 +682,29 @@
                 </ul>
 
                 <form action="./mod/soho/" method="get" target="_blank">
-                    <label>
-                        Camera
-                        <select name="camera">
-                            <option value="c2" selected>C2</option>
-                            <option value="c3">C3</option>
-                            <option value="eit_171">EIT 171</option>
-                            <option value="eit_195">EIT 195</option>
-                            <option value="eit_284">EIT 284</option>
-                            <option value="eit_304">EIT 304</option>
-                            <option value="hmi_igr">HMI IGR</option>
-                            <option value="hmi_mag">HMI MAG</option>
-                        </select>
-                    </label>
+                    <div class="grid">
+                        <label>
+                            Camera
+                            <select name="camera">
+                                <option value="c2" selected>C2</option>
+                                <option value="c3">C3</option>
+                                <option value="eit_171">EIT 171</option>
+                                <option value="eit_195">EIT 195</option>
+                                <option value="eit_284">EIT 284</option>
+                                <option value="eit_304">EIT 304</option>
+                                <option value="hmi_igr">HMI IGR</option>
+                                <option value="hmi_mag">HMI MAG</option>
+                            </select>
+                        </label>
 
-                    <label>
-                        Update rate
-                        <input type="number" name="updaterate" min="600" step="any" placeholder="900">
-                        <small>
-                            Seconds.
-                        </small>
-                    </label>
+                        <label>
+                            Update rate
+                            <input type="number" name="updaterate" min="600" step="any" placeholder="900">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+                    </div>
 
                     <hr>
 
@@ -743,19 +770,21 @@
                         </small>
                     </label>
 
-                    <label>
-                        Messages limit
-                        <input type="number" name="limit" min="1" step="1" placeholder="100">
-                    </label>
+                    <div class="grid">
+                        <label>
+                            Limit displayed messages
+                            <input type="number" name="limit" min="1" step="1" placeholder="100">
+                        </label>
 
-                    <label>
-                        Remove old messages after
-                        <input type="number" name="removeafter" min="0" step="any" placeholder="0">
-                        <small>
-                            Seconds.<br>
-                            Set to <code>0</code> to keep all (still respecting limit).
-                        </small>
-                    </label>
+                        <label>
+                            Remove old messages after
+                            <input type="number" name="removeafter" min="0" step="any" placeholder="0">
+                            <small>
+                                Seconds.<br>
+                                Set to <code>0</code> to keep all (still respecting limit).
+                            </small>
+                        </label>
+                    </div>
 
                     <label>
                         <input type="checkbox" name="usercolor" value="true">
@@ -767,22 +796,24 @@
                         Parse emotes
                     </label>
 
-                    <label x-show="parse_emotes" x-cloak>
-                        Emotes theme
-                        <select name="emotestheme">
-                            <option value="light" selected>light</option>
-                            <option value="dark">dark</option>
-                        </select>
-                    </label>
+                    <div class="grid" x-show="parse_emotes" x-cloak>
+                        <label>
+                            Emotes theme
+                            <select name="emotestheme">
+                                <option value="light" selected>light</option>
+                                <option value="dark">dark</option>
+                            </select>
+                        </label>
 
-                    <label x-show="parse_emotes" x-cloak>
-                        Emotes size
-                        <select name="emotessize">
-                            <option value="large">large</option>
-                            <option value="medium" selected>medium</option>
-                            <option value="small">small</option>
-                        </select>
-                    </label>
+                        <label>
+                            Emotes size
+                            <select name="emotessize">
+                                <option value="large">large</option>
+                                <option value="medium" selected>medium</option>
+                                <option value="small">small</option>
+                            </select>
+                        </label>
+                    </div>
 
                     <hr>
 
