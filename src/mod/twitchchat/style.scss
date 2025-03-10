@@ -13,7 +13,7 @@ div.mod div.chatline span.time
 div.mod div.chatline span.user
 div.mod div.chatline span.user::after
 div.mod div.chatline span.message
-div.mod div.chatline img.emote
+div.mod div.chatline span.message img.emote
 ---------------------*/
 
 div.mod {
@@ -45,11 +45,12 @@ div.mod {
 
         span.message {
             font-family: monospace;
+
+            img.emote {
+                width: auto;
+                height: 20px;
+            }
         }
 
-        img.emote {
-            width: auto;
-            height: 20px;
-        }
     }
 }
