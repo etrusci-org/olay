@@ -190,32 +190,32 @@
 
                     <label>
                         Red minimum
-                        <input type="number" name="r_min" min="0" max="255" step="1" placeholder="70">
+                        <input type="number" name="rmin" min="0" max="255" step="1" placeholder="70">
                     </label>
 
                     <label>
                         Red maximum
-                        <input type="number" name="r_max" min="0" max="255" step="1" placeholder="180">
+                        <input type="number" name="rmax" min="0" max="255" step="1" placeholder="180">
                     </label>
 
                     <label>
                         Green minimum
-                        <input type="number" name="g_min" min="0" max="255" step="1" placeholder="70">
+                        <input type="number" name="gmin" min="0" max="255" step="1" placeholder="70">
                     </label>
 
                     <label>
                         Green maximum
-                        <input type="number" name="g_max" min="0" max="255" step="1" placeholder="180">
+                        <input type="number" name="gmax" min="0" max="255" step="1" placeholder="180">
                     </label>
 
                     <label>
                         Blue minimum
-                        <input type="number" name="b_min" min="0" max="255" step="1" placeholder="70">
+                        <input type="number" name="bmin" min="0" max="255" step="1" placeholder="70">
                     </label>
 
                     <label>
                         Blue maximum
-                        <input type="number" name="b_max" min="0" max="255" step="1" placeholder="180">
+                        <input type="number" name="bmax" min="0" max="255" step="1" placeholder="180">
                     </label>
 
                     <hr>
@@ -239,13 +239,13 @@
         <article
             x-data="{
                 type: 'number',
-                end_message_placeholder: '',
-                update_end_message_placeholder() {
-                    if (this.type == 'number') this.end_message_placeholder = 'end number reached: {end_number}'
-                    if (this.type == 'time') this.end_message_placeholder = 'end time reached: {end_time}'
+                endmessage_placeholder: '',
+                update_endmessage_placeholder() {
+                    if (this.type == 'number') this.endmessage_placeholder = 'end number reached: {endnumber}'
+                    if (this.type == 'time') this.endmessage_placeholder = 'end time reached: {endtime}'
                 },
             }"
-            x-init="update_end_message_placeholder()"
+            x-init="update_endmessage_placeholder()"
         >
             <h2><span class="ti">countdu</span></h2>
             <p>Count down/up within a number or time range.</p>
@@ -263,7 +263,7 @@
                 <form action="./mod/countdu/" method="get" target="_blank">
                     <label>
                         Type
-                        <select name="type" x-model="type" x-on:change="update_end_message_placeholder()">
+                        <select name="type" x-model="type" x-on:change="update_endmessage_placeholder()">
                             <option value="number" selected>number : From number to number</option>
                             <option value="time">time : From now to time</option>
                         </select>
@@ -279,17 +279,17 @@
 
                     <label x-show="type == 'number'" x-cloak>
                         Start number
-                        <input type="number" name="number_start" step="any" placeholder="0">
+                        <input type="number" name="startnumber" step="any" placeholder="0">
                     </label>
 
                     <label x-show="type == 'number'" x-cloak>
                         End number
-                        <input type="number" name="number_end" step="any" placeholder="5">
+                        <input type="number" name="endnumber" step="any" placeholder="5">
                     </label>
 
                     <label x-show="type == 'time'" x-cloak>
                         End time
-                        <input type="text" name="time_end" placeholder="YYYY-MM-DD HH:MM:SS">
+                        <input type="text" name="endtime" placeholder="YYYY-MM-DD HH:MM:SS">
                         <small>
                             In your local timezone.
                         </small>
@@ -297,15 +297,15 @@
 
                     <label>
                         On end message
-                        <input type="text" name="end_message" x-bind:placeholder="end_message_placeholder">
+                        <input type="text" name="endmessage" x-bind:placeholder="endmessage_placeholder">
                         <small>
                             <span x-show="type == 'number'" x-cloak>
                                 Available variables:
-                                <code>{end_number}</code>
+                                <code>{endnumber}</code>
                             </span>
                             <span x-show="type == 'time'" x-cloak>
                                 Available variables:
-                                <code>{end_time}</code>
+                                <code>{endtime}</code>
                             </span>
                             <br>Set to <code>none</code> to show nothing on end.
                         </small>
@@ -385,7 +385,7 @@
             x-init=""
         >
             <h2><span class="ti">floater</span></h2>
-            <p>Let a text float around the screen like the old DVD logo screensaver.</p>
+            <p>Floating text like the old DVD logo screensaver.</p>
 
             <details>
                 <summary>[setup]</summary>
@@ -405,17 +405,17 @@
 
                     <label>
                         Velocity on x-axis
-                        <input type="number" name="vel_x" min="0" step="any" placeholder="1.0">
+                        <input type="number" name="velx" min="0" step="any" placeholder="1.0">
                     </label>
 
                     <label>
                         Velocity on y-axis
-                        <input type="number" name="vel_y" min="0" step="any" placeholder="1.0">
+                        <input type="number" name="vely" min="0" step="any" placeholder="1.0">
                     </label>
 
                     <label>
                         Start position on x-axis
-                        <input type="number" name="pos_x" min="-1" step="1" placeholder="-1">
+                        <input type="number" name="posx" min="-1" step="1" placeholder="-1">
                         <small>
                             Enter <code>-1</code> for random position.
                         </small>
@@ -423,24 +423,24 @@
 
                     <label>
                         Start position on y-axis
-                        <input type="number" name="pos_y" min="-1" step="1" placeholder="-1">
+                        <input type="number" name="posy" min="-1" step="1" placeholder="-1">
                         <small>
                             Enter <code>-1</code> for random position.
                         </small>
                     </label>
 
                     <label>
-                        <input type="checkbox" name="flip_x" value="true">
+                        <input type="checkbox" name="flipx" value="true">
                         Flip x-axis on left and right edge collision
                     </label>
 
                     <label>
-                        <input type="checkbox" name="flip_y" value="true">
+                        <input type="checkbox" name="flipy" value="true">
                         Flip y-axis on top and bottom edge collision
                     </label>
 
                     <label>
-                        <input type="checkbox" name="colorchange" value="true">
+                        <input type="checkbox" name="changecolor" value="true">
                         Change to random color on edge collision
                     </label>
 
@@ -548,7 +548,7 @@
 
                     <label>
                         Quote format
-                        <input type="text" name="format_quote" placeholder="&quot;{quote}&quot;">
+                        <input type="text" name="quoteformat" placeholder="&quot;{quote}&quot;">
                         <small>
                             Available variables:
                             <code>{quote}</code>
@@ -557,7 +557,7 @@
 
                     <label>
                         Author format
-                        <input type="text" name="format_author" placeholder="— {author}">
+                        <input type="text" name="authorformat" placeholder="— {author}">
                         <small>
                             Available variables:
                             <code>{author}</code>
@@ -619,8 +619,8 @@
                     </label>
 
                     <label>
-                        <input type="checkbox" name="shuffle" value="true">
-                        Random rotation order
+                        <input type="checkbox" name="random" value="true">
+                        Random order
                     </label>
 
                     <hr>

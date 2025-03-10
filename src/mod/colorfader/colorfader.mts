@@ -7,12 +7,12 @@ export class Olay_Colorfader extends Olay
     conf: Olay_Colorfader_Conf = {
         duration: 3,
         func: 'ease-in-out',
-        r_min: 70,
-        r_max: 180,
-        g_min: 70,
-        g_max: 180,
-        b_min: 70,
-        b_max: 180,
+        rmin: 70,
+        rmax: 180,
+        gmin: 70,
+        gmax: 180,
+        bmin: 70,
+        bmax: 180,
     }
 
     ui: Olay_Colorfader_UI = {
@@ -36,28 +36,28 @@ export class Olay_Colorfader extends Olay
                     this.conf.func = v || this.conf.func
                     break
 
-                case 'r_min':
-                    this.conf.r_min = Math.max(0, Number(v || this.conf.r_min))
+                case 'rmin':
+                    this.conf.rmin = Math.max(0, Number(v || this.conf.rmin))
                     break
 
-                case 'r_max':
-                    this.conf.r_max = Math.max(0, Number(v || this.conf.r_max))
+                case 'rmax':
+                    this.conf.rmax = Math.max(0, Number(v || this.conf.rmax))
                     break
 
-                case 'g_min':
-                    this.conf.g_min = Math.max(0, Number(v || this.conf.g_min))
+                case 'gmin':
+                    this.conf.gmin = Math.max(0, Number(v || this.conf.gmin))
                     break
 
-                case 'g_max':
-                    this.conf.g_max = Math.max(0, Number(v || this.conf.g_max))
+                case 'gmax':
+                    this.conf.gmax = Math.max(0, Number(v || this.conf.gmax))
                     break
 
-                case 'b_min':
-                    this.conf.b_min = Math.max(0, Number(v || this.conf.b_min))
+                case 'bmin':
+                    this.conf.bmin = Math.max(0, Number(v || this.conf.bmin))
                     break
 
-                case 'b_max':
-                    this.conf.b_max = Math.max(0, Number(v || this.conf.b_max))
+                case 'bmax':
+                    this.conf.bmax = Math.max(0, Number(v || this.conf.bmax))
                     break
 
                 default:
@@ -67,12 +67,12 @@ export class Olay_Colorfader extends Olay
 
         this.ui.mod.dataset['dur'] = String(this.conf.duration)
         this.ui.mod.dataset['func'] = this.conf.func
-        this.ui.mod.dataset['rMin'] = String(this.conf.r_min)
-        this.ui.mod.dataset['rMax'] = String(this.conf.r_max)
-        this.ui.mod.dataset['gMin'] = String(this.conf.g_min)
-        this.ui.mod.dataset['gMax'] = String(this.conf.g_max)
-        this.ui.mod.dataset['bMin'] = String(this.conf.b_min)
-        this.ui.mod.dataset['bMax'] = String(this.conf.b_max)
+        this.ui.mod.dataset['rMin'] = String(this.conf.rmin)
+        this.ui.mod.dataset['rMax'] = String(this.conf.rmax)
+        this.ui.mod.dataset['gMin'] = String(this.conf.gmin)
+        this.ui.mod.dataset['gMax'] = String(this.conf.gmax)
+        this.ui.mod.dataset['bMin'] = String(this.conf.bmin)
+        this.ui.mod.dataset['bMax'] = String(this.conf.bmax)
         this.ui.mod.dataset['target'] = 'background'
 
         new ElColorfader('.mod').start()

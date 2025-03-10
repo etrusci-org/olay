@@ -7,7 +7,7 @@ export class Olay_Rotator extends Olay
     conf: Olay_Rotator_Conf = {
         updaterate: 3,
         items: 'one|two|tree|four',
-        shuffle: false,
+        random: false,
     }
 
     ui: Olay_Rotator_UI = {
@@ -33,8 +33,8 @@ export class Olay_Rotator extends Olay
                     this.conf.items = v || this.conf.items
                     break
 
-                case 'shuffle':
-                    this.conf.shuffle = (v === 'true') ? true : false
+                case 'random':
+                    this.conf.random = (v === 'true') ? true : false
                     break
 
                 default:
@@ -55,7 +55,7 @@ export class Olay_Rotator extends Olay
                 this.queue.push(v)
             }
 
-            if (this.conf.shuffle) {
+            if (this.conf.random) {
                 this.queue = fyshuffle(this.queue)
             }
         }

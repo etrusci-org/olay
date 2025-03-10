@@ -6,12 +6,12 @@ soho
 available selectors:
 
 div.mod
-div.mod img
+div.mod img.sun
 ---------------------*/
 
 div.mod {
 
-    img {
+    img.sun {
         width: auto;
         height: 100vh;
     }

@@ -10,12 +10,12 @@ export class Olay_Dnmap extends Olay
 
     ui: Olay_Dnmap_UI = {
         mod: document.querySelector('.mod') as HTMLDivElement,
-        img: document.querySelector('.mod img') as HTMLImageElement,
+        map: document.querySelector('.mod .map') as HTMLImageElement,
     }
 
     min_updaterate: number = 180
-    valid_image_types: string[] = ['map', 'satellite']
-    img_url: string = 'https://www.timeanddate.com/scripts/sunmap.php?iso={iso}&earth={earth}'
+    valid_map_types: string[] = ['map', 'satellite']
+    map_url: string = 'https://www.timeanddate.com/scripts/sunmap.php?iso={iso}&earth={earth}'
 
 
     constructor()
@@ -27,7 +27,7 @@ export class Olay_Dnmap extends Olay
 
             switch (k) {
                 case 'type':
-                    this.conf.type = (this.valid_image_types.includes(v)) ? v : this.conf.type
+                    this.conf.type = (this.valid_map_types.includes(v)) ? v : this.conf.type
                     break
 
                 case 'updaterate':
@@ -45,11 +45,10 @@ export class Olay_Dnmap extends Olay
 
     update_ui(init_continous: boolean = false): void
     {
-        const img_url = this.img_url
+        this.ui.map.setAttribute('src', this.map_url
             .replace('{iso}', new Date().toISOString())
             .replace('{earth}', (this.conf.type == 'satellite') ? '1' : '0')
-
-        this.ui.img.setAttribute('src', img_url)
+        )
 
         if (!init_continous) {
             return

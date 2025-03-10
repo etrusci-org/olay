@@ -19,12 +19,12 @@ type Olay_Clock_UI = {
 type Olay_Colorfader_Conf = {
     duration: number
     func: string
-    r_min: number
-    r_max: number
-    g_min: number
-    g_max: number
-    b_min: number
-    b_max: number
+    rmin: number
+    rmax: number
+    gmin: number
+    gmax: number
+    bmin: number
+    bmax: number
 }
 
 type Olay_Colorfader_UI = {
@@ -37,12 +37,11 @@ type Olay_Colorfader_UI = {
 
 type Olay_Countdu_Conf = {
     type: string
-    number_start: number
-    number_end: number
-    time_end: string
-    time_format: string
+    startnumber: number
+    endnumber: number
+    endtime: string
     countingspeed: number
-    end_message: string
+    endmessage: string
 }
 
 type Olay_Countdu_UI = {
@@ -60,7 +59,7 @@ type Olay_Dnmap_Conf = {
 
 type Olay_Dnmap_UI = {
     mod: HTMLDivElement
-    img: HTMLImageElement
+    map: HTMLImageElement
 }
 
 
@@ -69,13 +68,13 @@ type Olay_Dnmap_UI = {
 
 type Olay_Floater_Conf = {
     text: string
-    pos_x: number
-    pos_y: number
-    vel_x: number
-    vel_y: number
-    flip_x: boolean
-    flip_y: boolean
-    colorchange: boolean
+    posx: number
+    posy: number
+    velx: number
+    vely: number
+    flipx: boolean
+    flipy: boolean
+    changecolor: boolean
 }
 
 type Olay_Floater_UI = {
@@ -109,8 +108,8 @@ type Olay_Goal_UI = {
 type Olay_Quotes_Conf = {
     updaterate: number
     typingspeed: number
-    format_quote: string
-    format_author: string
+    quoteformat: string
+    authorformat: string
     endpoint: string
 }
 
@@ -127,7 +126,7 @@ type Olay_Quotes_UI = {
 type Olay_Rotator_Conf = {
     updaterate: number
     items: string
-    shuffle: boolean
+    random: boolean
 }
 
 type Olay_Rotator_UI = {
@@ -145,7 +144,7 @@ type Olay_Soho_Conf = {
 
 type Olay_Soho_UI = {
     mod: HTMLDivElement
-    img: HTMLImageElement
+    sun: HTMLImageElement
 }
 
 

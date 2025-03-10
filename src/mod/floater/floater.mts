@@ -8,13 +8,13 @@ export class Olay_Floater extends Olay
 {
     conf: Olay_Floater_Conf = {
         text: 'hello<br>cruel<br>world',
-        pos_x: -1,
-        pos_y: -1,
-        vel_x: 1.0,
-        vel_y: 1.0,
-        flip_x: false,
-        flip_y: false,
-        colorchange: false,
+        posx: -1,
+        posy: -1,
+        velx: 1.0,
+        vely: 1.0,
+        flipx: false,
+        flipy: false,
+        changecolor: false,
     }
 
     ui: Olay_Floater_UI = {
@@ -35,32 +35,32 @@ export class Olay_Floater extends Olay
                     this.conf.text = v || this.conf.text
                     break
 
-                case 'pos_x':
-                    this.conf.pos_x = Math.max(-1, Number(v || this.conf.pos_x))
+                case 'posx':
+                    this.conf.posx = Math.max(-1, Number(v || this.conf.posx))
                     break
 
-                case 'pos_y':
-                    this.conf.pos_y = Math.max(-1, Number(v || this.conf.pos_y))
+                case 'posy':
+                    this.conf.posy = Math.max(-1, Number(v || this.conf.posy))
                     break
 
-                case 'vel_x':
-                    this.conf.vel_x = Math.max(0, Number(v || this.conf.vel_x))
+                case 'velx':
+                    this.conf.velx = Math.max(0, Number(v || this.conf.velx))
                     break
 
-                case 'vel_y':
-                    this.conf.vel_y = Math.max(0, Number(v || this.conf.vel_y))
+                case 'vely':
+                    this.conf.vely = Math.max(0, Number(v || this.conf.vely))
                     break
 
-                case 'flip_x':
-                    this.conf.flip_x = (v === 'true') ? true : false
+                case 'flipx':
+                    this.conf.flipx = (v === 'true') ? true : false
                     break
 
-                case 'flip_y':
-                    this.conf.flip_y = (v === 'true') ? true : false
+                case 'flipy':
+                    this.conf.flipy = (v === 'true') ? true : false
                     break
 
-                case 'colorchange':
-                    this.conf.colorchange = (v === 'true') ? true : false
+                case 'changecolor':
+                    this.conf.changecolor = (v === 'true') ? true : false
                     break
 
                 default:
@@ -68,27 +68,25 @@ export class Olay_Floater extends Olay
             }
         }
 
-        // const floater = this.ui.mod.querySelector('.floater')
-
         if (!(this.ui.floater instanceof HTMLDivElement)) {
             return
         }
 
         this.ui.floater.innerHTML = this.conf.text
 
-        if (this.conf.pos_x >= 0) {
-            this.ui.floater.dataset['posX'] = String(this.conf.pos_x)
+        if (this.conf.posx >= 0) {
+            this.ui.floater.dataset['posX'] = String(this.conf.posx)
         }
 
-        if (this.conf.pos_y >= 0) {
-            this.ui.floater.dataset['posY'] = String(this.conf.pos_y)
+        if (this.conf.posy >= 0) {
+            this.ui.floater.dataset['posY'] = String(this.conf.posy)
         }
 
-        this.ui.floater.dataset['velX'] = String(this.conf.vel_x)
-        this.ui.floater.dataset['velY'] = String(this.conf.vel_y)
-        this.ui.floater.dataset['flipX'] = String(this.conf.flip_x)
-        this.ui.floater.dataset['flipY'] = String(this.conf.flip_y)
-        this.ui.floater.dataset['randomColor'] = String(this.conf.colorchange)
+        this.ui.floater.dataset['velX'] = String(this.conf.velx)
+        this.ui.floater.dataset['velY'] = String(this.conf.vely)
+        this.ui.floater.dataset['flipX'] = String(this.conf.flipx)
+        this.ui.floater.dataset['flipY'] = String(this.conf.flipy)
+        this.ui.floater.dataset['randomColor'] = String(this.conf.changecolor)
 
         new ElFloaterLoader('.floater', '.mod')
     }

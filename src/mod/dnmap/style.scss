@@ -6,13 +6,13 @@ dnmap
 available selectors:
 
 div.mod
-div.mod img
+div.mod img.map
 ---------------------*/
 
 div.mod {
 
-    img {
-        width: 100%;
+    img.map {
+        width: 100vw;
         height: auto;
     }
 

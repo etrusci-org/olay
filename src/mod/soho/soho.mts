@@ -10,7 +10,7 @@ export class Olay_Soho extends Olay
 
     ui: Olay_Soho_UI = {
         mod: document.querySelector('.mod') as HTMLDivElement,
-        img: document.querySelector('.mod img') as HTMLImageElement,
+        sun: document.querySelector('.mod .sun') as HTMLImageElement,
     }
 
     min_updaterate: number = 600
@@ -54,7 +54,7 @@ export class Olay_Soho extends Olay
 
     update_ui(init_continous: boolean = false): void
     {
-        this.ui.img.setAttribute('src', `${this.camera_images[this.conf.camera]}?t=${Date.now()}`)
+        this.ui.sun.setAttribute('src', `${this.camera_images[this.conf.camera]}?t=${Date.now()}`)
 
         if (!init_continous) {
             return
