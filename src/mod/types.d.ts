@@ -1,5 +1,5 @@
 // -----------------------------------------------
-// Clock
+// clock
 
 type Olay_Clock_Conf = {
     type: string
@@ -14,7 +14,7 @@ type Olay_Clock_UI = {
 
 
 // -----------------------------------------------
-// Colorfader
+// colorfader
 
 type Olay_Colorfader_Conf = {
     duration: number
@@ -33,7 +33,7 @@ type Olay_Colorfader_UI = {
 
 
 // -----------------------------------------------
-// Countdu
+// countdu
 
 type Olay_Countdu_Conf = {
     type: string
@@ -51,7 +51,7 @@ type Olay_Countdu_UI = {
 
 
 // -----------------------------------------------
-// Dnmap
+// dnmap
 
 type Olay_Dnmap_Conf = {
     type: string
@@ -65,7 +65,7 @@ type Olay_Dnmap_UI = {
 
 
 // -----------------------------------------------
-// Floater
+// floater
 
 type Olay_Floater_Conf = {
     text: string
@@ -85,7 +85,7 @@ type Olay_Floater_UI = {
 
 
 // -----------------------------------------------
-// Goal
+// goal
 
 type Olay_Goal_Conf = {
     description: string
@@ -104,7 +104,7 @@ type Olay_Goal_UI = {
 
 
 // -----------------------------------------------
-// Quotes
+// quotes
 
 type Olay_Quotes_Conf = {
     updaterate: number
@@ -122,7 +122,7 @@ type Olay_Quotes_UI = {
 
 
 // -----------------------------------------------
-// Rotator
+// rotator
 
 type Olay_Rotator_Conf = {
     updaterate: number
@@ -136,7 +136,20 @@ type Olay_Rotator_UI = {
 
 
 // -----------------------------------------------
-// Soho
+// skyrecorder
+
+type Olay_Skyrecorder_Conf = {
+    updaterate: number
+}
+
+type Olay_Skyrecorder_UI = {
+    mod: HTMLDivElement
+    img: HTMLImageElement
+}
+
+
+// -----------------------------------------------
+// soho
 
 type Olay_Soho_Conf = {
     camera: string
@@ -150,7 +163,7 @@ type Olay_Soho_UI = {
 
 
 // -----------------------------------------------
-// TwitchChat
+// twitchchat
 
 type Olay_TwitchChat_Conf = {
     channels: string[]
