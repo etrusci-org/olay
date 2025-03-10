@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fuchsia.min.css">
     <style>
         a:link, a:visited { text-decoration-style: dotted; }
@@ -13,6 +14,7 @@
         .ti { background: linear-gradient(to right, var(--pico-primary), var(--pico-h1-color)); background-clip: text; color: transparent; }
         [x-cloak] { display: none !important; }
     </style>
+
     <title>Olay | Livestream overlay stuff</title>
 </head>
 <body>
@@ -29,10 +31,6 @@
         <details>
             <summary>[get started]</summary>
 
-            <!--
-            User Guide
-            TODO: rewrite this in more comprehendable form.
-            -->
             <p>
                 <strong>1.</strong> Setup and preview the overlays below.
                 If you do not enter any values, defaults will be used.
@@ -46,7 +44,7 @@
             </p>
             <p>
                 <strong>4.</strong> Optionally, copy & paste the parts of the default CSS <small>(displayed for each module below)</small> you want to adjust into the CSS field of the Browser-Source and start adjusting it to your liking.
-                Advanced users can also do this in the developer console of the webbrowser <small>(navigate to the <em>Style Editor</em> - Tab and select <em>style.css</em>)</small> - this has the benefit of providing a realtime preview of your changes.
+                Advanced users can also do this in the developer console of the webbrowser <small>(navigate to the <em>Style Editor</em>-Tab and select <em>style.css</em>)</small> - this has the benefit of providing a realtime preview of your changes.
             </p>
             <p>
                 Feel free to <a href="https://github.com/etrusci-org/olay/discussions" target="_blank">start a new discussion</a> if you need more help with, or have specific questions about, <span class="ti">Olay</span>.
@@ -60,7 +58,6 @@
 
 
     <main class="container">
-
         <!-- clock -->
         <article
             x-data="{
@@ -802,7 +799,6 @@
 
             </details>
         </article>
-
     </main>
 
 
@@ -821,7 +817,12 @@
             >arT2</a>
         </p>
         <p>
-            <a href="https://github.com/etrusci-org/olay" target="_blank">source-code</a>
+            <a href="https://github.com/etrusci-org/olay" target="_blank">source-code</a><br>
+            <a href="https://github.com/etrusci-org/olay/releases" target="_blank"><img src="https://img.shields.io/github/v/release/etrusci-org/olay?label=latest%20release" alt="GitHub Release" loading="lazy"></a>
+            <a href="https://www.codefactor.io/repository/github/etrusci-org/olay" target="_blank"><img src="https://img.shields.io/github/checks-status/etrusci-org/olay/main" alt="GitHub Branch status" loading="lazy"></a>
+            <a href="https://github.com/etrusci-org/olay/issues" target="_blank"><img src="https://img.shields.io/github/issues/etrusci-org/olay" alt="GitHub Issues" loading="lazy"></a>
+            <a href="https://github.com/etrusci-org/olay/pulls" target="_blank"><img src="https://img.shields.io/github/issues-pr/etrusci-org/olay" alt="GitHub Pull Requests" loading="lazy"></a>
+            <a href="https://github.com/etrusci-org/olay/stargazers" target="_blank"><img src="https://img.shields.io/github/stars/etrusci-org/olay" alt="GitHub Repo Stars" loading="lazy"></a>
         </p>
     </footer>
 
