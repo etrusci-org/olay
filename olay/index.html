@@ -643,48 +643,6 @@
         </article>
 
 
-        <!-- skyrecorder -->
-        <article
-            x-data=""
-            x-init=""
-        >
-            <h2><span class="ti">skyrecorder</span></h2>
-            <p>Recent live view of the sky somehwere in Europe.</p>
-
-            <details>
-                <summary>[setup]</summary>
-
-                <small>The more you know...</small>
-                <ul>
-                    <li>Image provided by <a href="https://sky.etrusci.org" target="_blank">SKYRECORDER</a>.</li>
-                    <li>There will be a new image every ~30 minutes if all systems are running. It is dark at night.</li>
-                </ul>
-
-                <form action="./mod/skyrecorder/" method="get" target="_blank">
-                    <label>
-                        Update rate
-                        <input type="number" name="updaterate" min="600" step="any" placeholder="900">
-                        <small>
-                            Seconds.
-                        </small>
-                    </label>
-
-                    <fieldset class="grid">
-                        <input type="submit" value="preview &nearr;">
-                        <input type="reset" value="reset to defaults">
-                    </fieldset>
-
-                    <details>
-                        <summary>[Default CSS]</summary>
-                        <pre data-mod-style="skyrecorder"></pre>
-                    </details>
-                </form>
-
-            </details>
-
-        </article>
-
-
         <!-- soho -->
         <article
             x-data=""

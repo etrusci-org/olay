@@ -136,19 +136,6 @@ type Olay_Rotator_UI = {
 
 
 // -----------------------------------------------
-// skyrecorder
-
-type Olay_Skyrecorder_Conf = {
-    updaterate: number
-}
-
-type Olay_Skyrecorder_UI = {
-    mod: HTMLDivElement
-    img: HTMLImageElement
-}
-
-
-// -----------------------------------------------
 // soho
 
 type Olay_Soho_Conf = {
