@@ -169,5 +169,5 @@ type Olay_TwitchChat_UI = {
     stats: HTMLDivElement
     stats_messages: HTMLSpanElement
     stats_chatters: HTMLSpanElement
-    stats_trackingdur: HTMLSpanElement
+    stats_duration: HTMLSpanElement
 }

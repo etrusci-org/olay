@@ -26,7 +26,7 @@ export class Olay_TwitchChat extends Olay
         stats: document.querySelector('.mod .stats') as HTMLDivElement,
         stats_messages: document.querySelector('.mod .stats .messages') as HTMLSpanElement,
         stats_chatters: document.querySelector('.mod .stats .chatters') as HTMLSpanElement,
-        stats_trackingdur: document.querySelector('.mod .stats .trackingdur') as HTMLSpanElement,
+        stats_duration: document.querySelector('.mod .stats .duration') as HTMLSpanElement,
     }
 
     valid_emotesthemes: string[] = ['light', 'dark']
@@ -124,7 +124,7 @@ export class Olay_TwitchChat extends Olay
             this.tracking_stats_since = Date.now()
 
             setInterval(() => {
-                this.ui.stats_trackingdur.innerHTML = mstodur(Date.now() - this.tracking_stats_since)
+                this.ui.stats_duration.innerHTML = mstodur(Date.now() - this.tracking_stats_since)
             }, 500)
         }, 3_000)
     }
@@ -172,7 +172,7 @@ export class Olay_TwitchChat extends Olay
 
         this.ui.stats_messages.innerHTML = String(this.stats_messages)
         this.ui.stats_chatters.innerHTML = String(this.stats_chatters)
-        this.ui.stats_trackingdur.innerHTML = mstodur(Date.now() - this.tracking_stats_since)
+        this.ui.stats_duration.innerHTML = mstodur(Date.now() - this.tracking_stats_since)
 
         const dump: NodeListOf<HTMLDivElement> = this.ui.chat.querySelectorAll('.chatline')
         if (dump.length > this.conf.limit) {
