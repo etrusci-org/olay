@@ -165,4 +165,9 @@ type Olay_TwitchChat_Conf = {
 
 type Olay_TwitchChat_UI = {
     mod: HTMLDivElement
+    chat: HTMLDivElement
+    stats: HTMLDivElement
+    stats_messages: HTMLSpanElement
+    stats_chatters: HTMLSpanElement
+    stats_trackingdur: HTMLSpanElement
 }

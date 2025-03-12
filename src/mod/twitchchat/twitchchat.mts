@@ -3,6 +3,7 @@ import { striphtml } from '../../lib/striphtml.mjs'
 import { humantime } from '../../lib/humantime.mjs'
 import { injecttwitchemotes } from '../../lib/injecttwitchemotes.mjs'
 import { beatsnow } from '../../lib/beatsnow.mjs'
+import { mstodur } from '../../lib/mstodur.mjs'
 
 
 export class Olay_TwitchChat extends Olay
@@ -21,10 +22,19 @@ export class Olay_TwitchChat extends Olay
 
     ui: Olay_TwitchChat_UI = {
         mod: document.querySelector('.mod') as HTMLDivElement,
+        chat: document.querySelector('.mod .chat') as HTMLDivElement,
+        stats: document.querySelector('.mod .stats') as HTMLDivElement,
+        stats_messages: document.querySelector('.mod .stats .messages') as HTMLSpanElement,
+        stats_chatters: document.querySelector('.mod .stats .chatters') as HTMLSpanElement,
+        stats_trackingdur: document.querySelector('.mod .stats .trackingdur') as HTMLSpanElement,
     }
 
     valid_emotesthemes: string[] = ['light', 'dark']
-    messages_counter: number = 0
+    stats_messages: number = 0
+    stats_chatters: number = 0
+    // seen_chatters: string[] = []
+    seen_chatters: {[key: string]: number} = {}
+    tracking_stats_since: number = 0
     TwitchClient: any
 
 
@@ -92,7 +102,7 @@ export class Olay_TwitchChat extends Olay
             return
         }
 
-        this.ui.mod.innerHTML = 'initializing chat client ...'
+        this.ui.chat.innerHTML = 'initializing chat client ...'
 
         // @ts-ignore: the tmi client is there, promise! (see src/mod/twitchchat/body.html)
         this.TwitchClient = new tmi.Client({
@@ -100,7 +110,7 @@ export class Olay_TwitchChat extends Olay
             options: {}
         })
 
-        this.ui.mod.innerHTML = `joining ${this.conf.channels.join(', ')} ...`
+        this.ui.chat.innerHTML = `joining ${this.conf.channels.join(', ')} ...`
 
         setTimeout(async () => {
             await this.TwitchClient.connect().catch(console.error)
@@ -109,7 +119,13 @@ export class Olay_TwitchChat extends Olay
                 this.on_message(channel, tags, message, self)
             })
 
-            this.ui.mod.innerHTML = ''
+            this.ui.chat.innerHTML = ''
+
+            this.tracking_stats_since = Date.now()
+
+            setInterval(() => {
+                this.ui.stats_trackingdur.innerHTML = mstodur(Date.now() - this.tracking_stats_since)
+            }, 500)
         }, 3_000)
     }
 
@@ -134,7 +150,10 @@ export class Olay_TwitchChat extends Olay
             message = injecttwitchemotes(message, tags['emotes'], this.conf.emotestheme, this.conf.emotessize)
         }
 
-        this.messages_counter += 1
+        this.stats_messages += 1
+        this.seen_chatters[tags['display-name']] = (this.seen_chatters[tags['display-name']] || 0) + 1
+        this.stats_chatters = Object.keys(this.seen_chatters).length
+        console.debug(this.stats_chatters, this.seen_chatters)
 
         const user_color_css: string = (this.conf.usercolor && tags['color']) ? ` style="color: ${tags['color']};"` : ''
         const timestamp: string = (!this.conf.timeformat.includes('{beats}')) ? humantime(this.conf.timeformat) : beatsnow(2, this.conf.timeformat)
@@ -143,21 +162,24 @@ export class Olay_TwitchChat extends Olay
         chatline.classList.add('chatline')
         chatline.dataset['id'] = tags['id'] || ''
         chatline.innerHTML = `
-            <span class="counter">${this.messages_counter}</span>
             <span class="channel">${channel}</span>
             <span class="time">${timestamp}</span>
             <span class="user" ${user_color_css}>${tags['display-name']}</span>
             <span class="message">${message}</span>
         `
 
-        this.ui.mod.append(chatline)
+        this.ui.chat.append(chatline)
 
-        const dump: NodeListOf<HTMLDivElement> = this.ui.mod.querySelectorAll('.chatline')
+        this.ui.stats_messages.innerHTML = String(this.stats_messages)
+        this.ui.stats_chatters.innerHTML = String(this.stats_chatters)
+        this.ui.stats_trackingdur.innerHTML = mstodur(Date.now() - this.tracking_stats_since)
+
+        const dump: NodeListOf<HTMLDivElement> = this.ui.chat.querySelectorAll('.chatline')
         if (dump.length > this.conf.limit) {
             if (!dump[0]) {
                 return
             }
-            this.ui.mod.removeChild(dump[0])
+            this.ui.chat.removeChild(dump[0])
         }
 
         if (this.conf.removeafter > 0) {

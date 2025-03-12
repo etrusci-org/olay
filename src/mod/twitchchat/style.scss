@@ -6,14 +6,18 @@ twitchchat
 available selectors:
 
 div.mod
-div.mod div.chatline
-div.mod div.chatline span.counter
-div.mod div.chatline span.channel
-div.mod div.chatline span.time
-div.mod div.chatline span.user
-div.mod div.chatline span.user::after
-div.mod div.chatline span.message
-div.mod div.chatline span.message img.emote
+div.mod div.chat
+div.mod div.chat div.chatline
+div.mod div.chat div.chatline span.channel
+div.mod div.chat div.chatline span.time
+div.mod div.chat div.chatline span.user
+div.mod div.chat div.chatline span.message
+div.mod div.chat div.chatline span.message img.emote
+div.mod div.stats
+div.mod div.stats span.messages
+div.mod div.stats span.chatters
+div.mod div.stats span.trackingdur
+
 ---------------------*/
 
 div.mod {
@@ -22,35 +26,60 @@ div.mod {
     position: absolute;
     bottom: 0;
 
-    div.chatline {
-        span.counter {
-            display: none;
+    div.chat {
+        div.chatline {
+            margin-top: 10px;
+
+            span.channel {
+                display: none;
+            }
+
+            span.time {
+                font-family: monospace;
+            }
+
+            span.user {
+                font-weight: bold;
+
+                &::after {
+                    content: ': ';
+                }
+            }
+
+            span.message {
+                font-family: monospace;
+
+                img.emote {
+                    width: auto;
+                    height: 20px;
+                }
+            }
+
         }
+    }
 
-        span.channel {
-            display: none;
-        }
+    div.stats {
+        width: fit-content;
+        margin-top: 20px;
+        border-top-width: 1px;
+        border-top-style: solid;
 
-        span.time {
-            font-family: monospace;
-        }
-
-        span.user {
-            font-weight: bold;
-        }
-
-        span.user::after {
-            content: ': ';
-        }
-
-        span.message {
-            font-family: monospace;
-
-            img.emote {
-                width: auto;
-                height: 20px;
+        span.messages {
+            &::after {
+                content: ' messages · ';
             }
         }
 
+        span.chatters {
+            &::after {
+                content: ' chatters · ';
+            }
+        }
+
+        span.trackingdur {
+            &::before {
+                content: 'in ';
+            }
+        }
     }
 }
