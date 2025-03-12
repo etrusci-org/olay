@@ -10,10 +10,12 @@ div.mod img.sun
 ---------------------*/
 
 div.mod {
+    width: 100vw;
+    height: 100vh;
 
     img.sun {
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: contain;
     }
-
 }
