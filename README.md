@@ -29,6 +29,8 @@ Go to <https://etrusci.org/tool/olay> to read the *get started*-guide and setup/
 
 Feel free to [start a new discussion](https://github.com/etrusci-org/olay/discussions) if you need more help with, or have specific questions about, Olay.
 
+If you need help with CSS, please see [CSS for starters](./CSS.md).
+
 
 
 
