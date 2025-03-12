@@ -21,7 +21,14 @@
     <noscript>Olay needs JavaScript to work but it is disabled it in your webbrowser.</noscript>
 
     <header class="container">
-        <h1><span class="ti">Olay</span></h1>
+        <h1>
+            <span class="ti">Olay</span>
+            <a href="https://github.com/etrusci-org/olay/releases" target="_blank"><img src="https://img.shields.io/github/v/release/etrusci-org/olay?label=" alt="GitHub Release"></a>
+            <a href="https://www.codefactor.io/repository/github/etrusci-org/olay" target="_blank"><img src="https://img.shields.io/github/checks-status/etrusci-org/olay/main" alt="GitHub Branch status"></a>
+            <a href="https://github.com/etrusci-org/olay/issues" target="_blank"><img src="https://img.shields.io/github/issues/etrusci-org/olay" alt="GitHub Issues"></a>
+            <a href="https://github.com/etrusci-org/olay/stargazers" target="_blank"><img src="https://img.shields.io/github/stars/etrusci-org/olay" alt="GitHub Repo Stars"></a>
+        </h1>
+
         <p>
             Livestream overlay stuff for use
             as <a href="https://obsproject.com/kb/browser-source" target="_blank">Browser-Source</a>
@@ -43,7 +50,7 @@
                 <span class="ti">Olay</span> will load its own styles for each overlay.
             </p>
             <p>
-                <strong>4.</strong> Optionally, copy & paste the parts of the default CSS <small>(displayed for each module below)</small> you want to adjust into the CSS field of the Browser-Source and start adjusting it to your liking.
+                <strong>4.</strong> Optionally, copy & paste the parts of the default CSS <small>(displayed for each module below)</small> you want to override into the CSS field of the Browser-Source and start adjusting it to your liking.
                 Advanced users can also do this in the developer console of the webbrowser <small>(navigate to the <em>Style Editor</em>-Tab and select <em>style.css</em>)</small> - this has the benefit of providing a realtime preview of your changes.
             </p>
             <p>
@@ -354,6 +361,7 @@
                 <small>The more you know...</small>
                 <ul>
                     <li>Map image provided by <a href="https://www.timeanddate.com/worldclock/sunearth.html" target="_blank">timeanddate.com</a></li>
+                    <li>Original size of the image is 1200x600 pixels.</li>
                 </ul>
 
                 <hr>
@@ -679,6 +687,7 @@
                 <small>The more you know...</small>
                 <ul>
                     <li>Images provided by <a href="https://soho.nascom.nasa.gov/data/realtime-images.html" target="_blank">SOHO.</a></li>
+                    <li>Original size of the images is 1024x1024 pixels.</li>
                 </ul>
 
                 <form action="./mod/soho/" method="get" target="_blank">
@@ -737,9 +746,10 @@
                 <form action="./mod/twitchchat/" method="get" target="_blank">
                     <label>
                         Channel(s) to join
-                        <input type="text" name="channels" placeholder="chanone|chantwo" required>
+                        <input type="text" name="channels" placeholder="userone|usertwo" required>
                         <small>
-                            Separate multiple with <code>|</code>
+                            Separate multiple with <code>|</code>.<br>
+                            Enter user names, not display names.
                         </small>
                     </label>
 
@@ -788,12 +798,12 @@
 
                     <label>
                         <input type="checkbox" name="usercolor" value="true">
-                        Use user color
+                        Color user names with their own chosen color
                     </label>
 
                     <label>
                         <input type="checkbox" name="emotes" value="true" x-model="parse_emotes">
-                        Parse emotes
+                        Load Twitch emotes
                     </label>
 
                     <div class="grid" x-show="parse_emotes" x-cloak>
@@ -808,9 +818,9 @@
                         <label>
                             Emotes size
                             <select name="emotessize">
-                                <option value="large">large</option>
-                                <option value="medium" selected>medium</option>
-                                <option value="small">small</option>
+                                <option value="large">large (112x112)</option>
+                                <option value="medium" selected>medium (56x56)</option>
+                                <option value="small">small (28x28)</option>
                             </select>
                         </label>
                     </div>
@@ -846,14 +856,6 @@
                 data-func="ease-in-out"
                 data-target="text"
             >arT2</a>
-        </p>
-        <p>
-            <a href="https://github.com/etrusci-org/olay" target="_blank">source-code</a><br>
-            <a href="https://github.com/etrusci-org/olay/releases" target="_blank"><img src="https://img.shields.io/github/v/release/etrusci-org/olay?label=latest%20release" alt="GitHub Release" loading="lazy"></a>
-            <a href="https://www.codefactor.io/repository/github/etrusci-org/olay" target="_blank"><img src="https://img.shields.io/github/checks-status/etrusci-org/olay/main" alt="GitHub Branch status" loading="lazy"></a>
-            <a href="https://github.com/etrusci-org/olay/issues" target="_blank"><img src="https://img.shields.io/github/issues/etrusci-org/olay" alt="GitHub Issues" loading="lazy"></a>
-            <a href="https://github.com/etrusci-org/olay/pulls" target="_blank"><img src="https://img.shields.io/github/issues-pr/etrusci-org/olay" alt="GitHub Pull Requests" loading="lazy"></a>
-            <a href="https://github.com/etrusci-org/olay/stargazers" target="_blank"><img src="https://img.shields.io/github/stars/etrusci-org/olay" alt="GitHub Repo Stars" loading="lazy"></a>
         </p>
     </footer>
 

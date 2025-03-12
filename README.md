@@ -2,6 +2,8 @@
 
 Livestream overlay stuff for use as [Browser-Source](https://obsproject.com/kb/browser-source) in [OBS Studio](https://obsproject.com/).
 
+[![GitHub Release](https://img.shields.io/github/v/release/etrusci-org/olay?label=latest%20release)](https://github.com/etrusci-org/olay/releases) [![GitHub Branch status](https://img.shields.io/github/checks-status/etrusci-org/olay/main)](https://www.codefactor.io/repository/github/etrusci-org/olay) [![GitHub Issues](https://img.shields.io/github/issues/etrusci-org/olay)](https://github.com/etrusci-org/olay/issues) [![GitHub Repo Stars](https://img.shields.io/github/stars/etrusci-org/olay)](https://github.com/etrusci-org/olay/stargazers)
+
 
 
 
@@ -24,6 +26,8 @@ Livestream overlay stuff for use as [Browser-Source](https://obsproject.com/kb/b
 ## Get started
 
 Go to <https://etrusci.org/tool/olay> to read the *get started*-guide and setup/preview the overlays with the provided configurator.
+
+Feel free to [start a new discussion](https://github.com/etrusci-org/olay/discussions) if you need more help with, or have specific questions about, Olay.
 
 
 
@@ -51,9 +55,3 @@ Once everything is built, just copy the [olay/](./olay/) directory to your webse
 ## License
 
 See [LICENSE.md](./LICENSE.md).
-
-
----
-
-
-[![GitHub Release](https://img.shields.io/github/v/release/etrusci-org/olay?label=latest%20release)](https://github.com/etrusci-org/olay/releases) [![GitHub Branch status](https://img.shields.io/github/checks-status/etrusci-org/olay/main)](https://www.codefactor.io/repository/github/etrusci-org/olay) [![GitHub Issues](https://img.shields.io/github/issues/etrusci-org/olay)](https://github.com/etrusci-org/olay/issues) [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/etrusci-org/olay)](https://github.com/etrusci-org/olay/pulls) [![GitHub Repo Stars](https://img.shields.io/github/stars/etrusci-org/olay)](https://github.com/etrusci-org/olay/stargazers)
