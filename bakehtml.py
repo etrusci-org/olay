@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import pathlib
+import sys
 import time
 
 
@@ -16,6 +17,8 @@ def fancycb() -> str:
 
 
 if __name__ == '__main__':
+    force_all: bool = True if len(sys.argv) > 1 and sys.argv[1] in ['force', 'all'] else False
+
     REPO_DIR: pathlib.Path = pathlib.Path(__file__).parent.resolve()
     SRC_DIR: pathlib.Path = REPO_DIR.joinpath('src')
     MOD_DIR: pathlib.Path = REPO_DIR.joinpath('src', 'mod')
@@ -36,6 +39,6 @@ if __name__ == '__main__':
 
         code = code.replace('{CACHE_BUST}', CACHE_BUST)
 
-        if not out_file.is_file() or len(code) != len(out_file.read_text().strip()):
+        if force_all or not out_file.is_file() or len(code) != len(out_file.read_text().strip()):
             print(f'{int(time.time())} baking {mod} html ...')
             out_file.write_text(code)
