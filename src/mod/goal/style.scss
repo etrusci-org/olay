@@ -1,38 +1,28 @@
 @use '../_default.scss';
 
-/*---------------------
-goal
+/*--- goal ---*/
 
-available selectors:
-
-div.mod
-div.mod div.description
-div.mod span.current
-div.mod span.target
-div.mod span.unit
----------------------*/
-
-div.mod {
+.mod {
     font-family: sans-serif;
     font-size: 24px;
 
-    div.description {
+    .description {
         font-weight: bold;
     }
 
-    span.current {
+    .current {
         font-family: monospace;
     }
 
-    span.current::after {
+    .current::after {
         content: ' / ';
     }
 
-    span.target {
+    .target {
         font-family: monospace;
     }
 
-    span.unit {
+    .unit {
         font-style: italic;
     }
 }

@@ -111,6 +111,9 @@ export class Olay_TwitchChat extends Olay
         })
 
         this.ui.chat.innerHTML = `joining ${this.conf.channels.join(', ')} ...`
+        this.ui.stats_messages.innerHTML = '0'
+        this.ui.stats_chatters.innerHTML = '0'
+        this.ui.stats_duration.innerHTML = '0'
 
         setTimeout(async () => {
             await this.TwitchClient.connect().catch(console.error)

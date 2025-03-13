@@ -20,6 +20,13 @@
 <body>
     <noscript>Olay needs JavaScript to work but it is disabled it in your webbrowser.</noscript>
 
+
+    <!-- <details data-mod-style="clock">
+        <summary>Test me</summary>
+    </details> -->
+
+
+
     <header class="container">
         <h1><span class="ti">Olay</span></h1>
 
@@ -143,9 +150,12 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <details>
+                    <details data-mod-style="clock">
                         <summary>[Default CSS]</summary>
-                        <pre data-mod-style="clock"></pre>
+                    </details>
+
+                    <details data-mod-html="clock">
+                        <summary>[HTML Elements]</summary>
                     </details>
                 </form>
 
@@ -238,9 +248,12 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <details>
+                    <details data-mod-style="colorfader">
                         <summary>[Default CSS]</summary>
-                        <pre data-mod-style="colorfader"></pre>
+                    </details>
+
+                    <details data-mod-html="colorfader">
+                        <summary>[HTML Elements]</summary>
                     </details>
                 </form>
 
@@ -335,9 +348,12 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <details>
+                    <details data-mod-style="countdu">
                         <summary>[Default CSS]</summary>
-                        <pre data-mod-style="countdu"></pre>
+                    </details>
+
+                    <details data-mod-html="countdu">
+                        <summary>[HTML Elements]</summary>
                     </details>
                 </form>
             </details>
@@ -389,9 +405,12 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <details>
+                    <details data-mod-style="dnmap">
                         <summary>[Default CSS]</summary>
-                        <pre data-mod-style="dnmap"></pre>
+                    </details>
+
+                    <details data-mod-html="dnmap">
+                        <summary>[HTML Elements]</summary>
                     </details>
                 </form>
 
@@ -475,9 +494,12 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <details>
+                    <details data-mod-style="floater">
                         <summary>[Default CSS]</summary>
-                        <pre data-mod-style="floater"></pre>
+                    </details>
+
+                    <details data-mod-html="floater">
+                        <summary>[HTML Elements]</summary>
                     </details>
                 </form>
 
@@ -526,9 +548,12 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <details>
+                    <details data-mod-style="goal">
                         <summary>[Default CSS]</summary>
-                        <pre data-mod-style="goal"></pre>
+                    </details>
+
+                    <details data-mod-html="goal">
+                        <summary>[HTML Elements]</summary>
                     </details>
                 </form>
 
@@ -610,9 +635,12 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <details>
+                    <details data-mod-style="quotes">
                         <summary>[Default CSS]</summary>
-                        <pre data-mod-style="quotes"></pre>
+                    </details>
+
+                    <details data-mod-html="quotes">
+                        <summary>[HTML Elements]</summary>
                     </details>
                 </form>
 
@@ -660,9 +688,12 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <details>
+                    <details data-mod-style="rotator">
                         <summary>[Default CSS]</summary>
-                        <pre data-mod-style="rotator"></pre>
+                    </details>
+
+                    <details data-mod-html="rotator">
+                        <summary>[HTML Elements]</summary>
                     </details>
                 </form>
 
@@ -719,9 +750,12 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <details>
+                    <details data-mod-style="soho">
                         <summary>[Default CSS]</summary>
-                        <pre data-mod-style="soho"></pre>
+                    </details>
+
+                    <details data-mod-html="soho">
+                        <summary>[HTML Elements]</summary>
                     </details>
                 </form>
 
@@ -738,7 +772,7 @@
             <p>Chat messages from one or more <a href="https://twitch.tv" target="_blank">Twitch</a> channels.</p>
 
             <details>
-                <summary>[setup]</summary>
+                <summary>[Setup]</summary>
 
                 <form action="./mod/twitchchat/" method="get" target="_blank">
                     <label>
@@ -829,9 +863,12 @@
                         <input type="reset" value="reset to defaults">
                     </fieldset>
 
-                    <details>
+                    <details data-mod-style="twitchchat">
                         <summary>[Default CSS]</summary>
-                        <pre data-mod-style="twitchchat"></pre>
+                    </details>
+
+                    <details data-mod-html="twitchchat">
+                        <summary>[HTML Elements]</summary>
                     </details>
                 </form>
 
@@ -871,28 +908,72 @@
         import { fetchtext } from './lib/fetchtext.mjs'
         import { ElColorfader } from './lib/elcolorfader.mjs'
 
+
         const auto_theme = () => {
             const h = new Date().getHours()
             document.documentElement.dataset['theme'] = (h >= 6 && h <= 17) ? 'light' : 'dark'
         }
 
-        const load_css_previews = async () => {
-            const csspreviews = document.querySelectorAll('pre[data-mod-style]')
 
-            for (const ele of csspreviews) {
-                if (!(ele instanceof HTMLPreElement)) {
+        const init_html_previews = async () => {
+            const htmlpreviews = document.querySelectorAll('details[data-mod-html]')
+
+            for (const ele of htmlpreviews) {
+                if (!(ele instanceof HTMLDetailsElement)) {
                     return
                 }
 
-                const cssfile = `./mod/${ele.dataset['modStyle']}/style.css?cb=${Date.now()}`
-                const css = await fetchtext(cssfile)
-                ele.textContent = css
+                ele.addEventListener('click', async () => {
+                    const mod = ele.dataset['modHtml']
+                    const htmlfile = `./mod/${mod}/index.html?cb=${Date.now()}`
+
+                    let html = await fetchtext(htmlfile)
+                    html = html.split('<body>')[1]
+                    html = html.split('</body>')[0]
+                    html = html.split('<script')[0]
+                    html = `<!-- elements you can target with css -->\n${html}`
+
+                    const pre = document.createElement('pre')
+                    pre.textContent = html.trim()
+
+                    ele.append(pre)
+                },
+                {
+                    once: true
+                })
             }
         }
 
+
+        const init_css_previews = async () => {
+            const csspreviews = document.querySelectorAll('details[data-mod-style]')
+
+            for (const ele of csspreviews) {
+                if (!(ele instanceof HTMLDetailsElement)) {
+                    return
+                }
+
+                ele.addEventListener('click', async () => {
+                    const mod = ele.dataset['modStyle']
+                    const cssfile = `./mod/${mod}/style.css?cb=${Date.now()}`
+                    const css = await fetchtext(cssfile)
+
+                    const pre = document.createElement('pre')
+                    pre.textContent = css.trim()
+
+                    ele.append(pre)
+                },
+                {
+                    once: true
+                })
+            }
+        }
+
+
         window.addEventListener('load', () => {
             auto_theme()
-            load_css_previews()
+            init_html_previews()
+            init_css_previews()
             new ElColorfader().start()
         })
     </script>

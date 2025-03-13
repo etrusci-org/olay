@@ -1,19 +1,12 @@
 @use '../_default.scss';
 
-/*---------------------
-soho
+/*--- soho ---*/
 
-available selectors:
-
-div.mod
-div.mod img.sun
----------------------*/
-
-div.mod {
+.mod {
     width: 100vw;
     height: 100vh;
 
-    img.sun {
+    .sun {
         width: 100%;
         height: 100%;
         object-fit: contain;

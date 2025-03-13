@@ -1,24 +1,16 @@
 @use '../_default.scss';
 
-/*---------------------
-quotes
+/*--- quotes ---*/
 
-available selectors:
-
-div.mod
-div.mod div.quote
-div.mod div.author
----------------------*/
-
-div.mod {
+.mod {
     font-family: sans-serif;
     font-size: 24px;
 
-    div.quote {
+    .quote {
         font-family: serif;
     }
 
-    div.author {
+    .author {
         font-size: 18px;
     }
 }
