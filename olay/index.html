@@ -6,9 +6,13 @@
     <meta name="color-scheme" content="light dark">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fuchsia.min.css">
+
+    <link rel="stylesheet" id="hljscss" href="">
+
     <style>
         a:link, a:visited { text-decoration-style: dotted; }
         a:focus, a:hover, a:active { text-decoration-style: wavy; }
+        pre { padding: 5px; }
         details summary:hover { color: var(--pico-primary); }
         footer { text-align: center; margin-top: 50vh; }
         .ti { background: linear-gradient(to right, var(--pico-primary), var(--pico-h1-color)); background-clip: text; color: transparent; }
@@ -20,15 +24,11 @@
 <body>
     <noscript>Olay needs JavaScript to work but it is disabled it in your webbrowser.</noscript>
 
-
-    <!-- <details data-mod-style="clock">
-        <summary>Test me</summary>
-    </details> -->
-
-
-
     <header class="container">
-        <h1><span class="ti">Olay</span></h1>
+        <h1>
+            <span class="ti">Olay</span>
+            <a href="https://github.com/etrusci-org/olay/releases" target="_blank"><img src="https://img.shields.io/github/v/release/etrusci-org/olay?color=%23D9269D&label=" alt="GitHub Release"></a>
+        </h1>
 
         <p>
             Livestream overlay stuff for use
@@ -892,11 +892,7 @@
             >arT2</a>
         </p>
         <p>
-            <a href="https://github.com/etrusci-org/olay" target="_blank">source-code</a><br>
-            <a href="https://github.com/etrusci-org/olay/releases" target="_blank"><img src="https://img.shields.io/github/v/release/etrusci-org/olay?label=latest%20release" alt="GitHub Release"></a>
-            <a href="https://www.codefactor.io/repository/github/etrusci-org/olay" target="_blank"><img src="https://img.shields.io/github/checks-status/etrusci-org/olay/main" alt="GitHub Branch status"></a>
-            <a href="https://github.com/etrusci-org/olay/issues" target="_blank"><img src="https://img.shields.io/github/issues/etrusci-org/olay" alt="GitHub Issues"></a>
-            <a href="https://github.com/etrusci-org/olay/stargazers" target="_blank"><img src="https://img.shields.io/github/stars/etrusci-org/olay" alt="GitHub Repo Stars"></a>
+            <a href="https://github.com/etrusci-org/olay" target="_blank">source-code</a>
         </p>
     </footer>
 
@@ -907,41 +903,13 @@
         // @ts-check
         import { fetchtext } from './lib/fetchtext.mjs'
         import { ElColorfader } from './lib/elcolorfader.mjs'
+        import hljs from 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/es/highlight.min.js';
 
 
         const auto_theme = () => {
             const h = new Date().getHours()
             document.documentElement.dataset['theme'] = (h >= 6 && h <= 17) ? 'light' : 'dark'
-        }
-
-
-        const init_html_previews = async () => {
-            const htmlpreviews = document.querySelectorAll('details[data-mod-html]')
-
-            for (const ele of htmlpreviews) {
-                if (!(ele instanceof HTMLDetailsElement)) {
-                    return
-                }
-
-                ele.addEventListener('click', async () => {
-                    const mod = ele.dataset['modHtml']
-                    const htmlfile = `./mod/${mod}/index.html?cb=${Date.now()}`
-
-                    let html = await fetchtext(htmlfile)
-                    html = html.split('<body>')[1]
-                    html = html.split('</body>')[0]
-                    html = html.split('<script')[0]
-                    html = `<!-- elements you can target with css -->\n${html}`
-
-                    const pre = document.createElement('pre')
-                    pre.textContent = html.trim()
-
-                    ele.append(pre)
-                },
-                {
-                    once: true
-                })
-            }
+            document.querySelector('#hljscss')?.setAttribute('href', `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/atom-one-${document.documentElement.dataset['theme']}.min.css`)
         }
 
 
@@ -956,12 +924,51 @@
                 ele.addEventListener('click', async () => {
                     const mod = ele.dataset['modStyle']
                     const cssfile = `./mod/${mod}/style.css?cb=${Date.now()}`
-                    const css = await fetchtext(cssfile)
-
                     const pre = document.createElement('pre')
-                    pre.textContent = css.trim()
+                    pre.setAttribute('aria-busy', 'true')
 
                     ele.append(pre)
+
+                    const css = await fetchtext(cssfile)
+                    pre.textContent = css.trim()
+
+                    hljs.highlightElement(pre)
+
+                    pre.removeAttribute('aria-busy')
+                },
+                {
+                    once: true
+                })
+            }
+        }
+
+
+        const init_html_previews = async () => {
+            const htmlpreviews = document.querySelectorAll('details[data-mod-html]')
+
+            for (const ele of htmlpreviews) {
+                if (!(ele instanceof HTMLDetailsElement)) {
+                    return
+                }
+
+                ele.addEventListener('click', async () => {
+                    const mod = ele.dataset['modHtml']
+                    const htmlfile = `./mod/${mod}/index.html?cb=${Date.now()}`
+                    const pre = document.createElement('pre')
+                    pre.setAttribute('aria-busy', 'true')
+
+                    ele.append(pre)
+
+                    let html = await fetchtext(htmlfile)
+                    html = html.split('<body>')[1]
+                    html = html.split('</body>')[0]
+                    html = html.split('<script')[0]
+                    html = `<!-- module elements you can target with css selectors -->\n${html}`
+                    pre.textContent = html.trim()
+
+                    hljs.highlightElement(pre)
+
+                    pre.removeAttribute('aria-busy')
                 },
                 {
                     once: true
