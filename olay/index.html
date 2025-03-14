@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fuchsia.min.css">
+    <link rel="stylesheet" id="hljscss" href="">
+    <style>
+        a:link, a:visited { text-decoration-style: dotted; }
+        a:focus, a:hover, a:active { text-decoration-style: wavy; }
+        pre { padding: 5px; }
+        details summary:hover { color: var(--pico-primary); }
+        footer { text-align: center; margin-top: 50vh; }
+        .ti { background: linear-gradient(to right, var(--pico-primary), var(--pico-h1-color)); background-clip: text; color: transparent; }
+        [x-cloak] { display: none !important; }
+    </style>
+
+    <title>Olay | Livestream overlay stuff</title>
+</head>
+<body>
+    <noscript>Olay needs JavaScript to work but it is disabled it in your webbrowser.</noscript>
+
+    <header class="container">
+        <h1>
+            <span class="ti">Olay</span>
+            <a href="https://github.com/etrusci-org/olay/releases" target="_blank"><img src="https://img.shields.io/github/v/release/etrusci-org/olay?color=%23D9269D&label=" alt="GitHub Release"></a>
+        </h1>
+
+        <p>
+            Livestream overlay stuff for use
+            as <a href="https://obsproject.com/kb/browser-source" target="_blank">Browser-Source</a>
+            in <a href="https://obsproject.com" target="_blank">OBS Studio</a>.
+        </p>
+
+        <details>
+            <summary><strong>[get started]</strong></summary>
+
+            <p>
+                <strong>1.</strong> Setup and preview the overlays below.
+                If you do not enter any values, defaults will be used.
+            </p>
+            <p>
+                <strong>2.</strong> When you're happy with the preview, copy & paste the URL into OBS' Browser-Source.
+            </p>
+            <p>
+                <strong>3.</strong> Remove all code from the CSS field of the Browser-Source.
+                <span class="ti">Olay</span> will load its own styles for each overlay.
+            </p>
+            <p>
+                <strong>4.</strong> Optionally, copy & paste the parts of the default CSS <small>(displayed for each module below)</small> you want to override into the CSS field of the Browser-Source and start adjusting it to your liking.
+                Advanced users can also do this in the developer console of the webbrowser <small>(navigate to the <em>Style Editor</em>-Tab and select <em>style.css</em>)</small> - this has the benefit of providing a realtime preview of your changes.
+            </p>
+            <p>
+                Feel free to <a href="https://github.com/etrusci-org/olay/discussions" target="_blank">start a new discussion</a> if you need more help with, or have specific questions about, <span class="ti">Olay</span>.
+            </p>
+            <p>
+                If you need help with CSS, please see <a href="https://github.com/etrusci-org/olay/blob/main/CSS.md" target="_blank">CSS for starters</a>.
+            </p>
+
+            <hr>
+        </details>
+    </header>
+
+
+
+
+    <main class="container">
+        <!-- clock -->
+        <article
+            x-data="{
+                type: 'human',
+                format_placeholder: '',
+                update_format_placeholder() {
+                    if (this.type == 'human') this.format_placeholder = '{year}-{month}-{day} {hour}:{minute}:{second}'
+                    if (this.type == 'beats') this.format_placeholder = '@{beats}'
+                },
+            }"
+            x-init="update_format_placeholder()"
+        >
+            <h2><span class="ti">clock</span></h2>
+            <p>Current local date/time in various formats.</p>
+
+            <details>
+                <summary>[setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li><a href="https://en.wikipedia.org/wiki/Swatch_Internet_Time" target="_blank">Internet time</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Unix_time" target="_blank">Unix time</a></li>
+                </ul>
+
+                <hr>
+
+                <form action="./mod/clock/" method="get" target="_blank">
+                    <div class="grid">
+                        <label>
+                            Type
+                            <select name="type" x-model="type" x-on:change="update_format_placeholder()">
+                                <option value="human" selected>human : Human-readable date/time</option>
+                                <option value="beats">beats : Internet time</option>
+                                <option value="unix">unix : Unix timestamp in seconds</option>
+                                <option value="unixms">unixms : Unix timestamp in milliseconds</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Update rate
+                            <input type="number" name="updaterate" min="0" step="any" placeholder="0.5">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+                    </div>
+
+                    <label x-show="['unix', 'beats'].includes(type)" x-cloak>
+                        Decimals
+                        <input type="number" name="decimals" min="0" max="100" step="1" placeholder="0">
+                    </label>
+
+                    <label x-show="['human', 'beats'].includes(type)" x-cloak>
+                        Format
+                        <input type="text" name="format" x-bind:placeholder="format_placeholder">
+                        <small>
+                            <span x-show="type == 'human'" x-cloak>
+                                Available variables:
+                                <code>{year}</code>
+                                <code>{month}</code>
+                                <code>{day}</code>
+                                <code>{hour}</code>
+                                <code>{minute}</code>
+                                <code>{second}</code>
+                                <code>{millisecond}</code>
+                                <code>{timezoneOffset}</code>
+                            </span>
+                            <span x-show="type == 'beats'" x-cloak>
+                                Available variables:
+                                <code>{beats}</code>
+                            </span>
+                        </small>
+                    </label>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <details data-mod-style="clock">
+                        <summary>[Default CSS]</summary>
+                    </details>
+
+                    <details data-mod-html="clock">
+                        <summary>[HTML Elements]</summary>
+                    </details>
+                </form>
+
+            </details>
+        </article>
+
+
+        <!-- colorfader -->
+        <article
+            x-data="{}"
+            x-init=""
+        >
+            <h2><span class="ti">colorfader</span></h2>
+            <p>Fade the whole page through random colors.</p>
+
+            <details>
+                <summary>[setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function#values" target="_blank">Transition function descriptions</a></li>
+                </ul>
+
+                <hr>
+
+                <form action="./mod/colorfader/" method="get" target="_blank">
+                    <div class="grid">
+                        <label>
+                            Transition duration
+                            <input type="number" name="duration" min="0" step="any" placeholder="3">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+
+                        <label>
+                            Transition function
+                            <select name="func">
+                                <option value="ease-in-out" selected>ease-in-out</option>
+                                <option value="ease-in">ease-in</option>
+                                <option value="ease-out">ease-out</option>
+                                <option value="ease">ease</option>
+                                <option value="linear">linear</option>
+                                <option value="step-start">step-start</option>
+                                <option value="step-end">step-end</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="grid">
+                        <label>
+                            Red minimum
+                            <input type="number" name="rmin" min="0" max="255" step="1" placeholder="70">
+                        </label>
+
+                        <label>
+                            Red maximum
+                            <input type="number" name="rmax" min="0" max="255" step="1" placeholder="180">
+                        </label>
+                    </div>
+
+                    <div class="grid">
+                        <label>
+                            Green minimum
+                            <input type="number" name="gmin" min="0" max="255" step="1" placeholder="70">
+                        </label>
+
+                        <label>
+                            Green maximum
+                            <input type="number" name="gmax" min="0" max="255" step="1" placeholder="180">
+                        </label>
+                    </div>
+
+                    <div class="grid">
+                        <label>
+                            Blue minimum
+                            <input type="number" name="bmin" min="0" max="255" step="1" placeholder="70">
+                        </label>
+
+                        <label>
+                            Blue maximum
+                            <input type="number" name="bmax" min="0" max="255" step="1" placeholder="180">
+                        </label>
+                    </div>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <details data-mod-style="colorfader">
+                        <summary>[Default CSS]</summary>
+                    </details>
+
+                    <details data-mod-html="colorfader">
+                        <summary>[HTML Elements]</summary>
+                    </details>
+                </form>
+
+            </details>
+        </article>
+
+
+        <!-- countdu -->
+        <article
+            x-data="{
+                type: 'number',
+                endmessage_placeholder: '',
+                update_endmessage_placeholder() {
+                    if (this.type == 'number') this.endmessage_placeholder = 'end number reached: {endnumber}'
+                    if (this.type == 'time') this.endmessage_placeholder = 'end time reached: {endtime}'
+                },
+            }"
+            x-init="update_endmessage_placeholder()"
+        >
+            <h2><span class="ti">countdu</span></h2>
+            <p>Count down/up within a number or time range.</p>
+
+            <details>
+                <summary>[setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li>If <em>ResistFingerprinting</em> is turned on in the webbrowser, <code>time</code> counters may not yield correct results because the local timezone will not be accessible to JavaScript.</li>
+                </ul>
+
+                <hr>
+
+                <form action="./mod/countdu/" method="get" target="_blank">
+                    <div class="grid">
+                        <label>
+                            Type
+                            <select name="type" x-model="type" x-on:change="update_endmessage_placeholder()">
+                                <option value="number" selected>number : From number to number</option>
+                                <option value="time">time : From now to time</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Counting speed
+                            <input type="number" name="countingspeed" min="0" step="any" placeholder="1">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+                    </div>
+
+                    <div class="grid" x-show="type == 'number'" x-cloak>
+                        <label>
+                            Start number
+                            <input type="number" name="startnumber" step="any" placeholder="0">
+                        </label>
+
+                        <label>
+                            End number
+                            <input type="number" name="endnumber" step="any" placeholder="5">
+                        </label>
+                    </div>
+
+                    <label x-show="type == 'time'" x-cloak>
+                        End time
+                        <input type="text" name="endtime" placeholder="YYYY-MM-DD HH:MM:SS">
+                        <small>
+                            In your local timezone.
+                        </small>
+                    </label>
+
+                    <label>
+                        On end message
+                        <input type="text" name="endmessage" x-bind:placeholder="endmessage_placeholder">
+                        <small>
+                            <span x-show="type == 'number'" x-cloak>
+                                Available variables:
+                                <code>{endnumber}</code>
+                            </span>
+                            <span x-show="type == 'time'" x-cloak>
+                                Available variables:
+                                <code>{endtime}</code>
+                            </span>
+                            <br>Set to <code>none</code> to show nothing on end.
+                        </small>
+                    </label>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <details data-mod-style="countdu">
+                        <summary>[Default CSS]</summary>
+                    </details>
+
+                    <details data-mod-html="countdu">
+                        <summary>[HTML Elements]</summary>
+                    </details>
+                </form>
+            </details>
+        </article>
+
+
+        <!-- dnmap -->
+        <article
+            x-data="{}"
+            x-init=""
+        >
+            <h2><span class="ti">dnmap</span></h2>
+            <p>A world map that shows the current day and night on Earth and the positions of the Sun <small>(subsolar point)</small> and the Moon <small>(sublunar point)</small>.</p>
+
+            <details>
+                <summary>[setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li>Map image provided by <a href="https://www.timeanddate.com/worldclock/sunearth.html" target="_blank">timeanddate.com</a></li>
+                    <li>Original size of the image is 1200x600 pixels.</li>
+                </ul>
+
+                <hr>
+
+                <form action="./mod/dnmap/" method="get" target="_blank">
+                    <div class="grid">
+                        <label>
+                            Type
+                            <select name="type">
+                                <option value="map" selected>map : Simple map</option>
+                                <option value="satellite">satellite : Satellite-like map</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Update rate
+                            <input type="number" name="updaterate" min="180" step="1" placeholder="300">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+                    </div>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <details data-mod-style="dnmap">
+                        <summary>[Default CSS]</summary>
+                    </details>
+
+                    <details data-mod-html="dnmap">
+                        <summary>[HTML Elements]</summary>
+                    </details>
+                </form>
+
+            </details>
+        </article>
+
+
+        <!-- floater -->
+        <article
+            x-data="{}"
+            x-init=""
+        >
+            <h2><span class="ti">floater</span></h2>
+            <p>Floating text like the old DVD logo screensaver.</p>
+
+            <details>
+                <summary>[setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li>Flipping may not always work on the first edge collision but then does afterwards.</li>
+                </ul>
+
+                <hr>
+
+                <form action="./mod/floater/" method="get" target="_blank">
+                    <label>
+                        Text
+                        <input type="text" name="text" placeholder="hello&lt;br&gt;cruel&lt;br&gt;world">
+                    </label>
+
+                    <div class="grid">
+                        <label>
+                            Velocity on x-axis
+                            <input type="number" name="velx" min="0" step="any" placeholder="1.0">
+                        </label>
+
+                        <label>
+                            Velocity on y-axis
+                            <input type="number" name="vely" min="0" step="any" placeholder="1.0">
+                        </label>
+                    </div>
+
+                    <div class="grid">
+                        <label>
+                            Start position on x-axis
+                            <input type="number" name="posx" min="-1" step="1" placeholder="-1">
+                            <small>
+                                Enter <code>-1</code> for random position on x-axis.
+                            </small>
+                        </label>
+
+                        <label>
+                            Start position on y-axis
+                            <input type="number" name="posy" min="-1" step="1" placeholder="-1">
+                            <small>
+                                Enter <code>-1</code> for random position on y-axis.
+                            </small>
+                        </label>
+                    </div>
+
+                    <label>
+                        <input type="checkbox" name="flipx" value="true">
+                        Flip x-axis on left and right edge collision
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="flipy" value="true">
+                        Flip y-axis on top and bottom edge collision
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="changecolor" value="true">
+                        Change to random color on edge collision
+                    </label>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <details data-mod-style="floater">
+                        <summary>[Default CSS]</summary>
+                    </details>
+
+                    <details data-mod-html="floater">
+                        <summary>[HTML Elements]</summary>
+                    </details>
+                </form>
+
+            </details>
+        </article>
+
+
+        <!-- goal -->
+        <article
+            x-data="{}"
+            x-init=""
+        >
+            <h2><span class="ti">goal</span></h2>
+            <p>Status of one of your personal goals.</p>
+
+            <details>
+                <summary>[setup]</summary>
+
+                <form action="./mod/goal/" method="get" target="_blank">
+                    <label>
+                        Description
+                        <input type="text" name="description" placeholder="Road to something">
+                    </label>
+
+                    <div class="grid">
+                        <label>
+                            Current value
+                            <input type="number" name="current" min="0" step="any" placeholder="5">
+                        </label>
+
+                        <label>
+                            Target value
+                            <input type="number" name="target" min="0" step="any" placeholder="10">
+                        </label>
+
+                        <label>
+                            Value unit
+                            <input type="text" name="unit" placeholder="something">
+                        </label>
+                    </div>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <details data-mod-style="goal">
+                        <summary>[Default CSS]</summary>
+                    </details>
+
+                    <details data-mod-html="goal">
+                        <summary>[HTML Elements]</summary>
+                    </details>
+                </form>
+
+            </details>
+        </article>
+
+
+        <!-- quotes -->
+        <article
+            x-data=""
+            x-init=""
+        >
+            <h2><span class="ti">quotes</span></h2>
+            <p>Random quotes typewriter.</p>
+
+            <details>
+                <summary>[setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li>Default quotes provided by <a href="https://pdv.ourspace.ch" target="_blank">PolyDataVault</a>.</li>
+                </ul>
+
+                <hr>
+
+                <form action="./mod/quotes/" method="get" target="_blank">
+                    <div class="grid">
+                        <label>
+                            Update rate
+                            <input type="number" name="updaterate" min="10" step="any" placeholder="60">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+
+                        <label>
+                            Typing speed
+                            <input type="number" name="typingspeed" min="0" step="any" placeholder="0.05">
+                            <small>
+                                Seconds.<br>
+                                Set to <code>0</code> to disable the typing effect.
+                            </small>
+                        </label>
+                    </div>
+
+                    <div class="grid">
+                        <label>
+                            Quote format
+                            <input type="text" name="quoteformat" placeholder="&quot;{quote}&quot;">
+                            <small>
+                                Available variables:
+                                <code>{quote}</code>
+                            </small>
+                        </label>
+
+                        <label>
+                            Author format
+                            <input type="text" name="authorformat" placeholder="— {author}">
+                            <small>
+                                Available variables:
+                                <code>{author}</code>
+                            </small>
+                        </label>
+                    </div>
+
+                    <label>
+                        Quotes API endpoint
+                        <input type="text" name="endpoint" placeholder="https://pdv.ourspace.ch/api/collections/random_quote/records/1?fields=author,quote">
+                        <small>
+                            Must return a JSON response for a single item with an author and quote field.
+                            E.g.: <code>{author: string, quote: string}</code>
+                        </small>
+                    </label>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <details data-mod-style="quotes">
+                        <summary>[Default CSS]</summary>
+                    </details>
+
+                    <details data-mod-html="quotes">
+                        <summary>[HTML Elements]</summary>
+                    </details>
+                </form>
+
+            </details>
+        </article>
+
+
+        <!-- rotator -->
+        <article
+            x-data=""
+            x-init=""
+        >
+            <h2><span class="ti">rotator</span></h2>
+            <p>Rotate through text items.</p>
+
+            <details>
+                <summary>[setup]</summary>
+
+                <form action="./mod/rotator/" method="get" target="_blank">
+                    <label>
+                        Items
+                        <input type="text" name="items" placeholder="one|two|tree|four">
+                        <small>
+                            Separate multiple with <code>|</code>
+                        </small>
+                    </label>
+
+                    <label>
+                        Update rate
+                        <input type="number" name="updaterate" min="0" step="any" placeholder="3">
+                        <small>
+                            Seconds.
+                        </small>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="random" value="true">
+                        Random order
+                    </label>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <details data-mod-style="rotator">
+                        <summary>[Default CSS]</summary>
+                    </details>
+
+                    <details data-mod-html="rotator">
+                        <summary>[HTML Elements]</summary>
+                    </details>
+                </form>
+
+            </details>
+        </article>
+
+
+        <!-- soho -->
+        <article
+            x-data=""
+            x-init=""
+        >
+            <h2><span class="ti">soho</span></h2>
+            <p>Current images of the sun in various spectrums.</p>
+
+            <details>
+                <summary>[setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li>Images provided by <a href="https://soho.nascom.nasa.gov/data/realtime-images.html" target="_blank">SOHO.</a></li>
+                    <li>Original size of the images is 1024x1024 pixels.</li>
+                </ul>
+
+                <form action="./mod/soho/" method="get" target="_blank">
+                    <div class="grid">
+                        <label>
+                            Camera
+                            <select name="camera">
+                                <option value="c2" selected>C2</option>
+                                <option value="c3">C3</option>
+                                <option value="eit_171">EIT 171</option>
+                                <option value="eit_195">EIT 195</option>
+                                <option value="eit_284">EIT 284</option>
+                                <option value="eit_304">EIT 304</option>
+                                <option value="hmi_igr">HMI IGR</option>
+                                <option value="hmi_mag">HMI MAG</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Update rate
+                            <input type="number" name="updaterate" min="600" step="any" placeholder="900">
+                            <small>
+                                Seconds.
+                            </small>
+                        </label>
+                    </div>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <details data-mod-style="soho">
+                        <summary>[Default CSS]</summary>
+                    </details>
+
+                    <details data-mod-html="soho">
+                        <summary>[HTML Elements]</summary>
+                    </details>
+                </form>
+
+            </details>
+        </article>
+
+
+        <!-- twitchchat -->
+        <article
+            x-data="{ parse_emotes: false }"
+            x-init=""
+        >
+            <h2><span class="ti">twitchchat</span></h2>
+            <p>Chat messages from one or more <a href="https://twitch.tv" target="_blank">Twitch</a> channels.</p>
+
+            <details>
+                <summary>[Setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li>You can delete messages in the overlay by <em>interacting</em> with the Browser-Source and clicking on a message.</li>
+                </ul>
+
+                <form action="./mod/twitchchat/" method="get" target="_blank">
+                    <label>
+                        Channel(s) to join
+                        <input type="text" name="channels" placeholder="userone|usertwo" required>
+                        <small>
+                            Separate multiple with <code>|</code>.<br>
+                            Enter user names, not display names.
+                        </small>
+                    </label>
+
+                    <label>
+                        User(s) to ignore
+                        <input type="text" name="ignore" placeholder="userone|usertwo">
+                        <small>
+                            Separate multiple with <code>|</code>.<br>
+                            Enter user names, not display names.
+                        </small>
+                    </label>
+
+                    <label>
+                        Timestamp format
+                        <input type="text" name="timeformat" placeholder="{hour}:{minute}:{second}">
+                        <small>
+                            Available variables:
+                            <code>{year}</code>
+                            <code>{month}</code>
+                            <code>{day}</code>
+                            <code>{hour}</code>
+                            <code>{minute}</code>
+                            <code>{second}</code>
+                            <code>{millisecond}</code>
+                            <code>{timezoneOffset}</code>
+                            <code>{beats}</code><br>
+                            If the variable <code>{beats}</code> is present, other format variables will be ignored and the decimals will be auto-set to <code>2</code>.
+                        </small>
+                    </label>
+
+                    <div class="grid">
+                        <label>
+                            Limit displayed messages
+                            <input type="number" name="limit" min="1" step="1" placeholder="100">
+                        </label>
+
+                        <label>
+                            Remove old messages after
+                            <input type="number" name="removeafter" min="0" step="any" placeholder="0">
+                            <small>
+                                Seconds.<br>
+                                Set to <code>0</code> to keep all (still respecting limit).
+                            </small>
+                        </label>
+                    </div>
+
+                    <label>
+                        <input type="checkbox" name="usercolor" value="true">
+                        Color user names with their own chosen color
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="emotes" value="true" x-model="parse_emotes">
+                        Load Twitch emotes
+                    </label>
+
+                    <div class="grid" x-show="parse_emotes" x-cloak>
+                        <label>
+                            Emotes theme
+                            <select name="emotestheme">
+                                <option value="light" selected>light</option>
+                                <option value="dark">dark</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Emotes size
+                            <select name="emotessize">
+                                <option value="large">large (112x112)</option>
+                                <option value="medium" selected>medium (56x56)</option>
+                                <option value="small">small (28x28)</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <details data-mod-style="twitchchat">
+                        <summary>[Default CSS]</summary>
+                    </details>
+
+                    <details data-mod-html="twitchchat">
+                        <summary>[HTML Elements]</summary>
+                    </details>
+                </form>
+
+            </details>
+        </article>
+    </main>
+
+
+
+
+    <footer class="container">
+        <p>
+            <strong class="ti">Olay</strong><br>
+            made by
+            <a
+                href="https://etrusci.org" target="_blank"
+                class="cf"
+                data-dur="1.5"
+                data-func="ease-in-out"
+                data-target="text"
+            >arT2</a>
+        </p>
+        <p>
+            <a href="https://github.com/etrusci-org/olay" target="_blank">source-code</a>
+        </p>
+    </footer>
+
+
+
+
+    <script type="module" defer>
+        // @ts-check
+        import { fetchtext } from './lib/fetchtext.mjs'
+        import { ElColorfader } from './lib/elcolorfader.mjs'
+        import hljs from 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/es/highlight.min.js';
+
+
+        const auto_theme = () => {
+            const h = new Date().getHours()
+            document.documentElement.dataset['theme'] = (h >= 6 && h <= 17) ? 'light' : 'dark'
+            document.querySelector('#hljscss')?.setAttribute('href', `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/atom-one-${document.documentElement.dataset['theme']}.min.css`)
+        }
+
+
+        const init_css_previews = async () => {
+            const csspreviews = document.querySelectorAll('details[data-mod-style]')
+
+            for (const ele of csspreviews) {
+                if (!(ele instanceof HTMLDetailsElement)) {
+                    return
+                }
+
+                ele.addEventListener('click', async () => {
+                    const mod = ele.dataset['modStyle']
+                    const cssfile = `./mod/${mod}/style.css?cb=${Date.now()}`
+                    const pre = document.createElement('pre')
+                    pre.setAttribute('aria-busy', 'true')
+
+                    ele.append(pre)
+
+                    const css = await fetchtext(cssfile)
+                    pre.textContent = css.trim()
+
+                    hljs.highlightElement(pre)
+
+                    pre.removeAttribute('aria-busy')
+                },
+                {
+                    once: true
+                })
+            }
+        }
+
+
+        const init_html_previews = async () => {
+            const htmlpreviews = document.querySelectorAll('details[data-mod-html]')
+
+            for (const ele of htmlpreviews) {
+                if (!(ele instanceof HTMLDetailsElement)) {
+                    return
+                }
+
+                ele.addEventListener('click', async () => {
+                    const mod = ele.dataset['modHtml']
+                    const htmlfile = `./mod/${mod}/index.html?cb=${Date.now()}`
+                    const pre = document.createElement('pre')
+                    pre.setAttribute('aria-busy', 'true')
+
+                    ele.append(pre)
+
+                    let html = await fetchtext(htmlfile)
+                    html = html.split('<body>')[1]
+                    html = html.split('</body>')[0]
+                    html = html.split('<script')[0]
+                    html = `<!-- module elements you can target with css selectors -->\n${html}`
+                    pre.textContent = html.trim()
+
+                    hljs.highlightElement(pre)
+
+                    pre.removeAttribute('aria-busy')
+                },
+                {
+                    once: true
+                })
+            }
+        }
+
+
+        window.addEventListener('load', () => {
+            auto_theme()
+            init_css_previews()
+            init_html_previews()
+            new ElColorfader().start()
+        })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js" defer></script>
+</body>
+</html>

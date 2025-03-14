@@ -1,0 +1,14 @@
+@use '../_default.scss';
+
+/*--- soho default styles ---*/
+
+.mod {
+    width: 100vw;
+    height: 100vh;
+
+    .sun {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}

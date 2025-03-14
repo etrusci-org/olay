@@ -1,6 +1,24 @@
-# [Olay](./README.md) - CSS For Starters
+# CSS for starters
 
-Here's a list of the most commonly used properties for your Browser-Source's CSS field. Follow the links for documentation and interactive examples!
+This is a mega simple starter help but it should be enough to let you adjust the overlays to your liking.  
+Read through the resources please - educating about CSS is not one of the scopes of this project - and I mean that in the most polite way... it's just... time is ticking.
+
+
+
+
+## Useful resources
+
+- [CSS styling basics](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics)
+- [What is CSS?](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/What_is_CSS)
+- [Getting started with CSS](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Getting_started)
+
+
+
+
+## Commonly used properties
+
+Here's a list of the most commonly used properties for your Browser-Source's CSS field.  
+Follow the links for documentation and interactive examples!
 
 - [background](https://developer.mozilla.org/docs/Web/CSS/background): Set the background.
 - [border-radius](https://developer.mozilla.org/docs/Web/CSS/border-radius): Set the border edge roundness.
@@ -17,12 +35,10 @@ Here's a list of the most commonly used properties for your Browser-Source's CSS
 - [text-align](https://developer.mozilla.org/docs/Web/CSS/text-align): Set horizontal alignment.
 - [text-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow): Add shadows to text.
 - [::before](https://developer.mozilla.org/en-US/docs/Web/CSS/::before): Create an element before another element.
+- [::after](https://developer.mozilla.org/en-US/docs/Web/CSS/::after): Create an element after another element.
 - [content](https://developer.mozilla.org/en-US/docs/Web/CSS/content): Replace content with a value.
----
 
-## Example
-
-Here's a fictional example that uses all the properties from the list above.
+Here's a fictional example that uses all the properties from the list above:
 
 ```css
 .mod {
@@ -42,8 +58,46 @@ Here's a fictional example that uses all the properties from the list above.
 }
 
 .mod::before { 
-    content: 'hello cruel world! ';
+    content: 'before! ';
+}
+
+.mod::before { 
+    content: ' after!';
 }
 ```
 
----
+
+## CSS selectors
+
+Imagine we work with this HTML code and we want to change the font size of the element with the class `sheep` within the element with the class `sounds`.
+
+```html
+<div class="sound">
+    <span class="cat">miaoo</span>
+    <span class="sheep">bhaah</span>
+</div>
+
+<div class="weight">
+    <span class="cat">light</span>
+    <span class="sheep">heavy</span>
+</div>
+```
+
+```css
+.sounds .sheep {
+    font-size: 36px;
+}
+
+/* or if you want/need to specify the element type too: */
+
+div.sounds span.sheep {
+    font-size: 36px;
+}
+
+/* if you want everything with the class sheep, even outside the `sounds` element, you could also just do: */
+
+.sheep {
+    font-size: 36px;
+}
+
+```

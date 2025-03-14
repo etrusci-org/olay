@@ -1,0 +1,28 @@
+@use '../_default.scss';
+
+/*--- goal default styles ---*/
+
+.mod {
+    font-family: sans-serif;
+    font-size: 24px;
+
+    .description {
+        font-weight: bold;
+    }
+
+    .current {
+        font-family: monospace;
+    }
+
+    .current::after {
+        content: ' / ';
+    }
+
+    .target {
+        font-family: monospace;
+    }
+
+    .unit {
+        font-style: italic;
+    }
+}

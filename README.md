@@ -1,75 +1,59 @@
 # Olay
 
-Live stream overlay stuff for use as Browser-Source in [OBS Studio](https://github.com/obsproject/obs-studio).
+Livestream overlay stuff for use as [Browser-Source](https://obsproject.com/kb/browser-source) in [OBS Studio](https://obsproject.com/).
 
----
+[![GitHub Release](https://img.shields.io/github/v/release/etrusci-org/olay?label=latest%20release)](https://github.com/etrusci-org/olay/releases) [![GitHub Branch status](https://img.shields.io/github/checks-status/etrusci-org/olay/main)](https://www.codefactor.io/repository/github/etrusci-org/olay) [![GitHub Issues](https://img.shields.io/github/issues/etrusci-org/olay)](https://github.com/etrusci-org/olay/issues) [![GitHub Repo Stars](https://img.shields.io/github/stars/etrusci-org/olay)](https://github.com/etrusci-org/olay/stargazers)
+
+
+
 
 ## Modules
 
-- [chat](./app/mod/chat/README.md)
-- [clock](./app/mod/clock/README.md)
-- [colorfader](./app/mod/colorfader/README.md)
-- [goal](./app/mod/goal/README.md)
-- [numbers](./app/mod/numbers/README.md)
-- [quotes](./app/mod/quotes/README.md)
-- [rotator](./app/mod/rotator/README.md)
+- **clock**: Current local date/time in various formats.
+- **colorfader**: Fade the whole page through random colors.
+- **countdu**: Count down/up within a number or time range.
+- **dnmap**: A world map that shows the current day and night on Earth and the positions of the Sun (subsolar point) and the Moon (sublunar point).
+- **floater**: Let a text float around the screen like the old DVD logo screensaver.
+- **goal**: Status of one of your personal goals.
+- **quotes**: Random quotes typewriter.
+- **rotator**: Rotate through text items.
+- **soho**: Current images of the sun in various spectrums.
+- **twitchchat**: Chat messages from one or more Twitch channels.
 
----
 
-## Hosting
 
-I host the current [main branch](https://github.com/etrusci-org/olay/tree/main), which is most likely ahead of the latest release.  
-Access it at: <https://etrusci.org/tool/olay/>
 
-You can also clone this repo or download a specific [release](https://github.com/etrusci-org/olay/releases) and put it on your own webserver.
+## Get started
 
----
+Go to <https://etrusci.org/tool/olay/3> to read the *get started*-guide and setup/preview the overlays with the provided configurator.
 
-## Output Styling
+Feel free to [start a new discussion](https://github.com/etrusci-org/olay/discussions) if you need more help with, or have specific questions about, Olay.
 
-All modules will output their content inside a `<div>` with the class `mod`. Some modules may introduce sub-elements (see module documentation), but in general it's enough to style `.mod` like so:
+If you need help with CSS, please see [CSS for starters](./CSS.md).
 
-```css
-.mod {
-    font-family: sans-serif;
-    font-size: 42px;
-    color: #009900;
-}
-```
 
-For specific CSS selectors, see the individual README's of the modules.
 
-Global default style: [app/lib/default.css](./app/lib/default.css)  
-For help with CSS see:
 
-- [CSS For Starters](./CSS.md)
-- [Full CSS Reference](https://developer.mozilla.org/docs/Web/CSS)
+## Self-hosting
 
----
+You can also clone this repository or download a specific [release](https://github.com/etrusci-org/olay/releases) and put it on your own webserver.
 
-## Browser-Source Settings
+Requirements:
 
-![Browser-Source Settings](./browser-source.png)
+- Webserver (only needs to output HTML)
+- To build the [src/](./src/) files:
+  - tsc
+  - sass
+  - bash for: [watchhtml.sh](./watchhtml.sh)
+  - python for: [bakehtml.py](./bakehtml.py)
 
-- **URL**: Module URL goes here
-- **Width**: Maximum module output width in pixels
-- **Height**: Maximum module output height in pixels
-- **Control audio via OBS**: Leave unchecked
-- **Use custom frame rate**: Leave unchecked
-- **Custom CSS**: Custom module CSS styles go here
-- **Shutdown source when not visible**: Read below
-- **Refresh browser when scene becomes active**: Read below
-- **Page permissions**: Set to "No access to OBS"
+See [tasks.json](./.vscode/tasks.json) for build commands.
 
-You must decide per use-case if you want to have both **Shutdown source when not visible** and **Refresh browser when scene becomes active** checked. For example, if you use a number counter, it'll reset when whenever the overlay becomes invisible because of a scene switch or similar actions in OBS. Also, any queue will be reset too, for example in the quotes module, and therefore you'll see more duplicates when switching scenes often. Basically, if you leave both unchecked, the module will run in the background even if it is not visible.
+Once everything is built, just copy the [olay/](./olay/) directory to your webserver.
 
----
 
-## Notes
 
-- If you're unsure, test the module URL in a webbrowser and not OBS directly. This way you can quickly edit the URL parameters or add `&debug=true` to see the current module configuration.
-- To install it on your own webserver, just copy the contents of the **olay/app/** directory.
-- If you install it on your own webserver and edit the module configurations, always enter values as *strings*. E.g. enclose in single-quotes (') or backticks (`).
-- It won't run if not loaded from a webserver. E.g. just loading it from your local filesystem won't work because of [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
 
----
+## License
+
+See [LICENSE.md](./LICENSE.md).
