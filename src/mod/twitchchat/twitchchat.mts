@@ -32,7 +32,6 @@ export class Olay_TwitchChat extends Olay
     valid_emotesthemes: string[] = ['light', 'dark']
     stats_messages: number = 0
     stats_chatters: number = 0
-    // seen_chatters: string[] = []
     seen_chatters: {[key: string]: number} = {}
     tracking_stats_since: number = 0
     TwitchClient: any
@@ -156,7 +155,6 @@ export class Olay_TwitchChat extends Olay
         this.stats_messages += 1
         this.seen_chatters[tags['display-name']] = (this.seen_chatters[tags['display-name']] || 0) + 1
         this.stats_chatters = Object.keys(this.seen_chatters).length
-        console.debug(this.stats_chatters, this.seen_chatters)
 
         const user_color_css: string = (this.conf.usercolor && tags['color']) ? ` style="color: ${tags['color']};"` : ''
         const timestamp: string = (!this.conf.timeformat.includes('{beats}')) ? humantime(this.conf.timeformat) : beatsnow(2, this.conf.timeformat)
@@ -170,6 +168,10 @@ export class Olay_TwitchChat extends Olay
             <span class="user" ${user_color_css}>${tags['display-name']}</span>
             <span class="message">${message}</span>
         `
+
+        chatline.addEventListener('click', () => {
+            chatline.remove()
+        }, { once: true })
 
         this.ui.chat.append(chatline)
 

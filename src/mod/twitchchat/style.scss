@@ -1,6 +1,6 @@
 @use '../_default.scss';
 
-/*--- twitchchat ---*/
+/*--- twitchchat default styles ---*/
 
 .mod {
     font-family: sans-serif;
@@ -31,12 +31,17 @@
             .message {
                 font-family: monospace;
 
-                img.emote {
+                .emote {
                     width: auto;
                     height: 20px;
                 }
             }
 
+            &:hover {
+                cursor: pointer;
+                color: #ffffff;
+                background-color: #ae1e1e;
+            }
         }
     }
 
@@ -50,13 +55,13 @@
 
         .messages {
             &::after {
-                content: ' messages · ';
+                content: ' messages | ';
             }
         }
 
         .chatters {
             &::after {
-                content: ' chatters · ';
+                content: ' chatters | ';
             }
         }
 
