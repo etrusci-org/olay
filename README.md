@@ -25,7 +25,7 @@ Livestream overlay stuff for use as [Browser-Source](https://obsproject.com/kb/b
 
 ## Get started
 
-Go to <https://etrusci.org/tool/olay> to read the *get started*-guide and setup/preview the overlays with the provided configurator.
+Go to <https://etrusci.org/tool/olay/3> to read the *get started*-guide and setup/preview the overlays with the provided configurator.
 
 Feel free to [start a new discussion](https://github.com/etrusci-org/olay/discussions) if you need more help with, or have specific questions about, Olay.
 
