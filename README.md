@@ -11,7 +11,7 @@ Livestream overlay stuff for use as [Browser-Source](https://obsproject.com/kb/b
 
 - **clock**: Current local date/time in various formats.
 - **colorfader**: Fade the whole page through random colors.
-- **countdu**: Count down/up within a number or time range.
+- **countdu**: Count down/up within a number range or up to a future date.
 - **dnmap**: A world map that shows the current day and night on Earth and the positions of the Sun (subsolar point) and the Moon (sublunar point).
 - **floater**: Let a text float around the screen like the old DVD logo screensaver.
 - **goal**: Status of one of your personal goals.
