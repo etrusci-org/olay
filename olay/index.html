@@ -14,6 +14,7 @@
         details summary:hover { color: var(--pico-primary); }
         footer { text-align: center; margin-top: 50vh; }
         .ti { background: linear-gradient(to right, var(--pico-primary), var(--pico-h1-color)); background-clip: text; color: transparent; }
+        .themetoggle { position: fixed; top: 5px; right: 20px; cursor: pointer; }
         [x-cloak] { display: none !important; }
     </style>
 
@@ -25,7 +26,7 @@
     <header class="container">
         <h1>
             <span class="ti">Olay</span>
-            <a href="https://github.com/etrusci-org/olay/releases" target="_blank"><img src="https://img.shields.io/github/v/release/etrusci-org/olay?color=%23D9269D&label=" alt="GitHub Release"></a>
+            <a href="https://github.com/etrusci-org/olay" target="_blank"><img src="https://img.shields.io/github/v/release/etrusci-org/olay?color=%23D9269D&label=" alt="GitHub Release"></a>
         </h1>
 
         <p>
@@ -83,7 +84,7 @@
             <p>Current local date/time in various formats.</p>
 
             <details>
-                <summary>[setup]</summary>
+                <summary>[Setup]</summary>
 
                 <small>The more you know...</small>
                 <ul>
@@ -170,7 +171,7 @@
             <p>Fade the whole page through random colors.</p>
 
             <details>
-                <summary>[setup]</summary>
+                <summary>[Setup]</summary>
 
                 <small>The more you know...</small>
                 <ul>
@@ -272,10 +273,10 @@
             x-init="update_endmessage_placeholder()"
         >
             <h2><span class="ti">countdu</span></h2>
-            <p>Count down/up within a number or time range.</p>
+            <p>Count down/up within a number range or up to a future date.</p>
 
             <details>
-                <summary>[setup]</summary>
+                <summary>[Setup]</summary>
 
                 <small>The more you know...</small>
                 <ul>
@@ -367,7 +368,7 @@
             <p>A world map that shows the current day and night on Earth and the positions of the Sun <small>(subsolar point)</small> and the Moon <small>(sublunar point)</small>.</p>
 
             <details>
-                <summary>[setup]</summary>
+                <summary>[Setup]</summary>
 
                 <small>The more you know...</small>
                 <ul>
@@ -425,7 +426,7 @@
             <p>Floating text like the old DVD logo screensaver.</p>
 
             <details>
-                <summary>[setup]</summary>
+                <summary>[Setup]</summary>
 
                 <small>The more you know...</small>
                 <ul>
@@ -457,6 +458,7 @@
                             Start position on x-axis
                             <input type="number" name="posx" min="-1" step="1" placeholder="-1">
                             <small>
+                                Pixels.<br>
                                 Enter <code>-1</code> for random position on x-axis.
                             </small>
                         </label>
@@ -465,6 +467,7 @@
                             Start position on y-axis
                             <input type="number" name="posy" min="-1" step="1" placeholder="-1">
                             <small>
+                                Pixels.<br>
                                 Enter <code>-1</code> for random position on y-axis.
                             </small>
                         </label>
@@ -514,7 +517,7 @@
             <p>Status of one of your personal goals.</p>
 
             <details>
-                <summary>[setup]</summary>
+                <summary>[Setup]</summary>
 
                 <form action="./mod/goal/" method="get" target="_blank">
                     <label>
@@ -568,7 +571,7 @@
             <p>Random quotes typewriter.</p>
 
             <details>
-                <summary>[setup]</summary>
+                <summary>[Setup]</summary>
 
                 <small>The more you know...</small>
                 <ul>
@@ -655,7 +658,7 @@
             <p>Rotate through text items.</p>
 
             <details>
-                <summary>[setup]</summary>
+                <summary>[Setup]</summary>
 
                 <form action="./mod/rotator/" method="get" target="_blank">
                     <label>
@@ -708,7 +711,7 @@
             <p>Current images of the sun in various spectrums.</p>
 
             <details>
-                <summary>[setup]</summary>
+                <summary>[Setup]</summary>
 
                 <small>The more you know...</small>
                 <ul>
@@ -901,18 +904,19 @@
 
 
 
-
     <script type="module" defer>
         // @ts-check
         import { fetchtext } from './lib/fetchtext.mjs'
         import { ElColorfader } from './lib/elcolorfader.mjs'
+        import { Alpine } from 'https://cdn.jsdelivr.net/npm/alpinejs@3/dist/module.esm.min.js'
         import hljs from 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/es/highlight.min.js';
 
 
         const auto_theme = () => {
             const h = new Date().getHours()
-            document.documentElement.dataset['theme'] = (h >= 6 && h <= 17) ? 'light' : 'dark'
-            document.querySelector('#hljscss')?.setAttribute('href', `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/atom-one-${document.documentElement.dataset['theme']}.min.css`)
+            const doc = document.documentElement
+            doc.dataset['theme'] = (h >= 6 && h <= 17) ? 'light' : 'dark'
+            document.querySelector('#hljscss')?.setAttribute('href', `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/atom-one-${doc.dataset['theme']}.min.css`)
         }
 
 
@@ -966,7 +970,7 @@
                     html = html.split('<body>')[1]
                     html = html.split('</body>')[0]
                     html = html.split('<script')[0]
-                    html = `<!-- module elements you can target with css selectors -->\n${html}`
+                    html = `<!-- ${mod} elements you can target with css selectors -->\n${html}`
                     pre.textContent = html.trim()
 
                     hljs.highlightElement(pre)
@@ -985,9 +989,8 @@
             init_css_previews()
             init_html_previews()
             new ElColorfader().start()
+            Alpine.start()
         })
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js" defer></script>
 </body>
 </html>
