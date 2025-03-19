@@ -1,5 +1,6 @@
 import { Olay } from '../../lib/olay.mjs'
-import { fetchjson } from '../../lib/fetchjson.mjs'
+import { OLAY_USER_AGENT } from '../../lib/olay.mjs'
+import { fetchx } from '../../lib/fetchx.mjs'
 
 
 export class Olay_Quotes extends Olay
@@ -60,7 +61,7 @@ export class Olay_Quotes extends Olay
 
     async update_ui(): Promise<void>
     {
-        const data: {author: string, quote: string} = await fetchjson(this.conf.endpoint)
+        const data: {author: string, quote: string} = await fetchx('json', this.conf.endpoint, {headers: {'User-Agent': OLAY_USER_AGENT}})
 
         if (!data.author || !data.quote) {
             console.error(`missing author and/or quote in response data:`, data)
