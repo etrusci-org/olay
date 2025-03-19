@@ -906,7 +906,7 @@
 
     <script type="module" defer>
         // @ts-check
-        import { fetchtext } from './lib/fetchtext.mjs'
+        import { fetchx } from './lib/fetchx.mjs'
         import { ElColorfader } from './lib/elcolorfader.mjs'
         import { Alpine } from 'https://cdn.jsdelivr.net/npm/alpinejs@3/dist/module.esm.min.js'
         import hljs from 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/es/highlight.min.js';
@@ -936,7 +936,7 @@
 
                     ele.append(pre)
 
-                    const css = await fetchtext(cssfile)
+                    const css = await fetchx('text', cssfile)
                     pre.textContent = css.trim()
 
                     hljs.highlightElement(pre)
@@ -966,7 +966,7 @@
 
                     ele.append(pre)
 
-                    let html = await fetchtext(htmlfile)
+                    let html = await fetchx('text', htmlfile)
                     html = html.split('<body>')[1]
                     html = html.split('</body>')[0]
                     html = html.split('<script')[0]
