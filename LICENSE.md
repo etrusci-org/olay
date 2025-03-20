@@ -15,7 +15,7 @@ For more information, please refer to <http://unlicense.org>
 
 
 
-## Thanks to the creators of the following stuff
+## Many thanks to the creators of the following stuff
 
 ### tmi.js *(used for the twitchchat module)*
 
@@ -31,13 +31,30 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-### injecttwitchemotes.mts *(used for the twitchchat module)*
+### src/lib/injecttwitchemotes.mts *(used for the twitchchat module)*
 
-This is a slightly modified version of the code I've stolen from [AlcaDesign](https://github.com/AlcaDesign).  
+Find and replace Twitch emote codes in a chat message.
+
+This is a slightly modified version of the code from [AlcaDesign](https://github.com/AlcaDesign)  
 <https://github.com/tmijs/tmi.js/issues/11#issuecomment-116459845>
 
 
-### alpine.js *(used for the configurator page)*
+### Pico CSS *(used for the configurator page)*
+
+Minimal CSS Framework for Semantic HTML.  
+<https://github.com/picocss/pico>
+
+The MIT License (MIT)  
+Copyright (c) 2019-2024 Pico
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+### Alpine.js *(used for the configurator page)*
 
 A rugged, minimal framework for composing JavaScript behavior in your markup.  
 <https://github.com/alpinejs/alpine>
@@ -52,7 +69,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-### highlight.js *(used for the configurator page)*
+### Highlight.js *(used for the configurator page)*
 
 Syntax highlighter written in JavaScript.  
 <https://github.com/highlightjs/highlight.js>

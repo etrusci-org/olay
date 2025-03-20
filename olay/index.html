@@ -23,11 +23,9 @@
 <body>
     <noscript>Olay needs JavaScript to work but it is disabled it in your webbrowser.</noscript>
 
+
     <header class="container">
-        <h1>
-            <span class="ti">Olay</span>
-            <a href="https://github.com/etrusci-org/olay" target="_blank"><img src="https://img.shields.io/github/v/release/etrusci-org/olay?color=%23D9269D&label=" alt="GitHub Release"></a>
-        </h1>
+        <h1><span class="ti">Olay</span></h1>
 
         <p>
             Livestream overlay stuff for use
@@ -53,6 +51,13 @@
                 <strong>4.</strong> Optionally, copy & paste the parts of the default CSS <small>(displayed for each module below)</small> you want to override into the CSS field of the Browser-Source and start adjusting it to your liking.
                 Advanced users can also do this in the developer console of the webbrowser <small>(navigate to the <em>Style Editor</em>-Tab and select <em>style.css</em>)</small> - this has the benefit of providing a realtime preview of your changes.
             </p>
+
+            <hr>
+
+            <img src="./browser-source.png" alt="Basic Browser-Source usage">
+
+            <hr>
+
             <p>
                 Feel free to <a href="https://github.com/etrusci-org/olay/discussions" target="_blank">start a new discussion</a> if you need more help with, or have specific questions about, <span class="ti">Olay</span>.
             </p>
@@ -904,6 +909,7 @@
 
 
 
+
     <script type="module" defer>
         // @ts-check
         import { fetchx } from './lib/fetchx.mjs'
@@ -920,61 +926,45 @@
         }
 
 
-        const init_css_previews = async () => {
-            const csspreviews = document.querySelectorAll('details[data-mod-style]')
+        const init_code_viewers = async (type) => {
+            const viewers = document.querySelectorAll(`details[data-mod-${type}]`)
 
-            for (const ele of csspreviews) {
+            for (const ele of viewers) {
                 if (!(ele instanceof HTMLDetailsElement)) {
                     return
                 }
 
                 ele.addEventListener('click', async () => {
-                    const mod = ele.dataset['modStyle']
-                    const cssfile = `./mod/${mod}/style.css?cb=${Date.now()}`
+                    const mod = ele.dataset[`mod${type.substring(0, 1).toUpperCase()}${type.substring(1)}`]
+
+                    let file = `./mod/${mod}/{filename}?cb=${Date.now()}`
+
+                    switch (type)
+                    {
+                        case 'style':
+                            file = file.replace('{filename}', 'style.css')
+                            break
+
+                        case 'html':
+                            file = file.replace('{filename}', 'index.html')
+                            break
+                    }
+
                     const pre = document.createElement('pre')
+                    ele.append(pre)
                     pre.setAttribute('aria-busy', 'true')
 
-                    ele.append(pre)
+                    let code = await fetchx('text', file)
+                    if (type == 'html') {
+                        code = code.split('<body>')[1]
+                        code = code.split('</body>')[0]
+                        code = code.split('<script')[0]
+                        code = `<!-- ${mod} elements you can target with css selectors -->\n${code}`
 
-                    const css = await fetchx('text', cssfile)
-                    pre.textContent = css.trim()
+                    }
 
+                    pre.textContent = code.trim()
                     hljs.highlightElement(pre)
-
-                    pre.removeAttribute('aria-busy')
-                },
-                {
-                    once: true
-                })
-            }
-        }
-
-
-        const init_html_previews = async () => {
-            const htmlpreviews = document.querySelectorAll('details[data-mod-html]')
-
-            for (const ele of htmlpreviews) {
-                if (!(ele instanceof HTMLDetailsElement)) {
-                    return
-                }
-
-                ele.addEventListener('click', async () => {
-                    const mod = ele.dataset['modHtml']
-                    const htmlfile = `./mod/${mod}/index.html?cb=${Date.now()}`
-                    const pre = document.createElement('pre')
-                    pre.setAttribute('aria-busy', 'true')
-
-                    ele.append(pre)
-
-                    let html = await fetchx('text', htmlfile)
-                    html = html.split('<body>')[1]
-                    html = html.split('</body>')[0]
-                    html = html.split('<script')[0]
-                    html = `<!-- ${mod} elements you can target with css selectors -->\n${html}`
-                    pre.textContent = html.trim()
-
-                    hljs.highlightElement(pre)
-
                     pre.removeAttribute('aria-busy')
                 },
                 {
@@ -986,8 +976,8 @@
 
         window.addEventListener('load', () => {
             auto_theme()
-            init_css_previews()
-            init_html_previews()
+            init_code_viewers('style')
+            init_code_viewers('html')
             new ElColorfader().start()
             Alpine.start()
         })

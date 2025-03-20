@@ -2,8 +2,6 @@
 
 Livestream overlay stuff for use as [Browser-Source](https://obsproject.com/kb/browser-source) in [OBS Studio](https://obsproject.com/).
 
-[![GitHub Release](https://img.shields.io/github/v/release/etrusci-org/olay?label=latest%20release)](https://github.com/etrusci-org/olay/releases) [![GitHub Branch status](https://img.shields.io/github/checks-status/etrusci-org/olay/main)](https://www.codefactor.io/repository/github/etrusci-org/olay) [![GitHub Issues](https://img.shields.io/github/issues/etrusci-org/olay)](https://github.com/etrusci-org/olay/issues) [![GitHub Repo Stars](https://img.shields.io/github/stars/etrusci-org/olay)](https://github.com/etrusci-org/olay/stargazers)
-
 
 
 
@@ -27,6 +25,8 @@ Livestream overlay stuff for use as [Browser-Source](https://obsproject.com/kb/b
 
 Go to <https://etrusci.org/tool/olay/3> to read the *get started*-guide and setup/preview the overlays with the provided configurator.
 
+![Basic Browser-Source usage](./olay/browser-source.png)
+
 Feel free to [start a new discussion](https://github.com/etrusci-org/olay/discussions) if you need more help with, or have specific questions about, Olay.
 
 If you need help with CSS, please see [CSS for starters](./CSS.md).
@@ -36,20 +36,20 @@ If you need help with CSS, please see [CSS for starters](./CSS.md).
 
 ## Self-hosting
 
-You can also clone this repository or download a specific [release](https://github.com/etrusci-org/olay/releases) and put it on your own webserver.
+You can also download a specific [release](https://github.com/etrusci-org/olay/releases) and put it on your own webserver.
 
 Requirements:
 
-- Webserver (only needs to output HTML)
-- To build the [src/](./src/) files:
+- Webserver
+- To build the [src/](./src/) files (see [tasks.json](./.vscode/tasks.json) for build commands):
   - tsc
   - sass
   - bash for: [watchhtml.sh](./watchhtml.sh)
   - python for: [bakehtml.py](./bakehtml.py)
 
-See [tasks.json](./.vscode/tasks.json) for build commands.
+To fetch dependencies, run: [fetchdep.sh](./fetchdep.sh)
 
-Once everything is built, just copy the [olay/](./olay/) directory to your webserver.
+Once everything is ready, copy the [olay/](./olay/) directory to your webserver.
 
 
 
