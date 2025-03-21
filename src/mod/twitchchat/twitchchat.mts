@@ -161,7 +161,6 @@ export class Olay_TwitchChat extends Olay
 
         const chatline: HTMLDivElement = document.createElement('div')
         chatline.classList.add('chatline')
-        chatline.dataset['id'] = tags['id'] || ''
         chatline.innerHTML = `
             <span class="channel">${channel}</span>
             <span class="time">${timestamp}</span>

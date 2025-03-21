@@ -1,5 +1,5 @@
 export const OLAY_GITHUB_URL: string = 'https://github.com/etrusci-org/olay'
-export const OLAY_USER_AGENT: string = `Olay/${new Date().getFullYear()} +${OLAY_GITHUB_URL}`
+export const OLAY_USER_AGENT: string = `Olay/3 +${OLAY_GITHUB_URL}`
 export const OLAY_COLOR: string = '#D9269D'
 
 

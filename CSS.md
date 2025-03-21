@@ -1,7 +1,7 @@
 # CSS for starters
 
 This is a mega simple starter help but it should be enough to let you adjust the overlays to your liking.  
-Read through the resources please - educating about CSS is not one of the scopes of this project - and I mean that in the most polite way... it's just... time is ticking.
+Please take some time to review the provided resources. CSS education falls outside the scope of this project.
 
 
 
@@ -69,7 +69,7 @@ Here's a fictional example that uses all the properties from the list above:
 
 ## CSS selectors
 
-Imagine we work with this HTML code and we want to change the font size of the element with the class `sheep` within the element with the class `sounds`.
+Imagine we work with this HTML code:
 
 ```html
 <div class="sound">
@@ -84,20 +84,31 @@ Imagine we work with this HTML code and we want to change the font size of the e
 ```
 
 ```css
-.sounds .sheep {
-    font-size: 36px;
+.sound .cat {
+    color: #11aa77;
 }
 
-/* or if you want/need to specify the element type too: */
-
-div.sounds span.sheep {
-    font-size: 36px;
+.sound .sheep {
+    color: #003399;
 }
 
-/* if you want everything with the class sheep, even outside the `sounds` element, you could also just do: */
-
-.sheep {
-    font-size: 36px;
+.weight .cat {
+    color: #11aa77;
 }
 
+.weight .sheep {
+    color: #003399;
+}
+
+/* could also be combined: */
+
+.sound .sheep,
+.weight .sheep {
+    color: #003399;
+}
+
+.sound .cat,
+.weight .cat {
+    color: #11aa77;
+}
 ```

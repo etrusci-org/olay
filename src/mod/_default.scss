@@ -2,7 +2,9 @@
 
 html,
 body,
-.mod {
+div,
+span,
+img {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -11,4 +13,8 @@ body,
 
 body {
     background-color: transparent;
+}
+
+.mod {
+    color: #D9269D;
 }
