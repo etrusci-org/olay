@@ -27,7 +27,7 @@ Go to <https://etrusci.org/tool/olay/3> to read the *get started*-guide and setu
 
 ![Basic Browser-Source usage](./olay/browser-source.png)
 
-Feel free to [start a new discussion](https://github.com/etrusci-org/olay/discussions) if you need more help with, or have specific questions about, Olay.
+Feel free to post your questions/feedback/ideas in either the [GitHub]((https://github.com/etrusci-org/olay/discussions)) or [OBS](https://obsproject.com/forum/threads/olay.184803) forums if you need more help with, or have specific questions about, Olay.
 
 If you need help with CSS, please see [CSS for starters](./CSS.md).
 

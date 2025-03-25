@@ -53,7 +53,7 @@
 
             <hr>
 
-            <img src="./browser-source.png?v=2" alt="Basic Browser-Source usage">
+            <a href="./browser-source.png?v=c" target="_blank"><img src="./browser-source.png?v=c" alt="Basic Browser-Source usage"></a>
 
             <hr>
 
@@ -919,16 +919,13 @@
 
         const auto_theme = () => {
             const h = new Date().getHours()
-            const doc = document.documentElement
-            doc.dataset['theme'] = (h >= 6 && h <= 17) ? 'light' : 'dark'
-            document.querySelector('#hljscss')?.setAttribute('href', `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/atom-one-${doc.dataset['theme']}.min.css`)
+            document.documentElement.dataset['theme'] = (h >= 6 && h <= 17) ? 'light' : 'dark'
+            document.querySelector('#hljscss')?.setAttribute('href', `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/atom-one-${document.documentElement.dataset['theme']}.min.css`)
         }
 
 
         const init_code_viewers = async (type) => {
-            const viewers = document.querySelectorAll(`details[data-mod-${type}]`)
-
-            for (const ele of viewers) {
+            for (const ele of document.querySelectorAll(`details[data-mod-${type}]`)) {
                 if (!(ele instanceof HTMLDetailsElement)) {
                     return
                 }
@@ -959,7 +956,6 @@
                         code = code.split('</body>')[0]
                         code = code.split('<script')[0]
                         code = `<!-- ${mod} elements you can target with css selectors -->\n${code}`
-
                     }
 
                     pre.textContent = code.trim()
