@@ -14,7 +14,6 @@
         details summary:hover { color: var(--pico-primary); }
         footer { text-align: center; margin-top: 50vh; }
         .ti { background: linear-gradient(to right, var(--pico-primary), var(--pico-h1-color)); background-clip: text; color: transparent; }
-        .themetoggle { position: fixed; top: 5px; right: 20px; cursor: pointer; }
         [x-cloak] { display: none !important; }
     </style>
 
@@ -23,11 +22,9 @@
 <body>
     <noscript>Olay needs JavaScript to work but it is disabled it in your webbrowser.</noscript>
 
+
     <header class="container">
-        <h1>
-            <span class="ti">Olay</span>
-            <a href="https://github.com/etrusci-org/olay" target="_blank"><img src="https://img.shields.io/github/v/release/etrusci-org/olay?color=%23D9269D&label=" alt="GitHub Release"></a>
-        </h1>
+        <h1><span class="ti">Olay</span></h1>
 
         <p>
             Livestream overlay stuff for use
@@ -36,14 +33,14 @@
         </p>
 
         <details>
-            <summary><strong>[get started]</strong></summary>
+            <summary><strong>[Get started guide]</strong></summary>
 
             <p>
                 <strong>1.</strong> Setup and preview the overlays below.
                 If you do not enter any values, defaults will be used.
             </p>
             <p>
-                <strong>2.</strong> When you're happy with the preview, copy & paste the URL into OBS' Browser-Source.
+                <strong>2.</strong> When you're happy with the preview, copy & paste the URL of the overlay into OBS' Browser-Source.
             </p>
             <p>
                 <strong>3.</strong> Remove all code from the CSS field of the Browser-Source.
@@ -53,8 +50,15 @@
                 <strong>4.</strong> Optionally, copy & paste the parts of the default CSS <small>(displayed for each module below)</small> you want to override into the CSS field of the Browser-Source and start adjusting it to your liking.
                 Advanced users can also do this in the developer console of the webbrowser <small>(navigate to the <em>Style Editor</em>-Tab and select <em>style.css</em>)</small> - this has the benefit of providing a realtime preview of your changes.
             </p>
+
+            <hr>
+
+            <a href="./browser-source.png?v=d" target="_blank"><img src="./browser-source.png?v=d" alt="Basic Browser-Source usage"></a>
+
+            <hr>
+
             <p>
-                Feel free to <a href="https://github.com/etrusci-org/olay/discussions" target="_blank">start a new discussion</a> if you need more help with, or have specific questions about, <span class="ti">Olay</span>.
+                Feel free to post your questions/feedback/ideas in either the <a href="https://github.com/etrusci-org/olay/discussions" target="_blank">GitHub</a> or <a href="https://obsproject.com/forum/threads/olay.184803/" target="_blank">OBS</a> forums if you need more help with, or have specific questions about, <span class="ti">Olay</span>.
             </p>
             <p>
                 If you need help with CSS, please see <a href="https://github.com/etrusci-org/olay/blob/main/CSS.md" target="_blank">CSS for starters</a>.
@@ -904,9 +908,10 @@
 
 
 
+
     <script type="module" defer>
         // @ts-check
-        import { fetchtext } from './lib/fetchtext.mjs'
+        import { fetchx } from './lib/fetchx.mjs'
         import { ElColorfader } from './lib/elcolorfader.mjs'
         import { Alpine } from 'https://cdn.jsdelivr.net/npm/alpinejs@3/dist/module.esm.min.js'
         import hljs from 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/es/highlight.min.js';
@@ -914,67 +919,47 @@
 
         const auto_theme = () => {
             const h = new Date().getHours()
-            const doc = document.documentElement
-            doc.dataset['theme'] = (h >= 6 && h <= 17) ? 'light' : 'dark'
-            document.querySelector('#hljscss')?.setAttribute('href', `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/atom-one-${doc.dataset['theme']}.min.css`)
+            document.documentElement.dataset['theme'] = (h >= 6 && h <= 17) ? 'light' : 'dark'
+            document.querySelector('#hljscss')?.setAttribute('href', `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/atom-one-${document.documentElement.dataset['theme']}.min.css`)
         }
 
 
-        const init_css_previews = async () => {
-            const csspreviews = document.querySelectorAll('details[data-mod-style]')
-
-            for (const ele of csspreviews) {
+        const init_code_viewers = async (type) => {
+            for (const ele of document.querySelectorAll(`details[data-mod-${type}]`)) {
                 if (!(ele instanceof HTMLDetailsElement)) {
                     return
                 }
 
                 ele.addEventListener('click', async () => {
-                    const mod = ele.dataset['modStyle']
-                    const cssfile = `./mod/${mod}/style.css?cb=${Date.now()}`
+                    const mod = ele.dataset[`mod${type.substring(0, 1).toUpperCase()}${type.substring(1)}`]
+
+                    let file = `./mod/${mod}/{filename}?cb=${Date.now()}`
+
+                    switch (type)
+                    {
+                        case 'style':
+                            file = file.replace('{filename}', 'style.css')
+                            break
+
+                        case 'html':
+                            file = file.replace('{filename}', 'index.html')
+                            break
+                    }
+
                     const pre = document.createElement('pre')
+                    ele.append(pre)
                     pre.setAttribute('aria-busy', 'true')
 
-                    ele.append(pre)
+                    let code = await fetchx('text', file)
+                    if (type == 'html') {
+                        code = code.split('<body>')[1]
+                        code = code.split('</body>')[0]
+                        code = code.split('<script')[0]
+                        code = `<!-- ${mod} elements you can target with css selectors -->\n${code}`
+                    }
 
-                    const css = await fetchtext(cssfile)
-                    pre.textContent = css.trim()
-
+                    pre.textContent = code.trim()
                     hljs.highlightElement(pre)
-
-                    pre.removeAttribute('aria-busy')
-                },
-                {
-                    once: true
-                })
-            }
-        }
-
-
-        const init_html_previews = async () => {
-            const htmlpreviews = document.querySelectorAll('details[data-mod-html]')
-
-            for (const ele of htmlpreviews) {
-                if (!(ele instanceof HTMLDetailsElement)) {
-                    return
-                }
-
-                ele.addEventListener('click', async () => {
-                    const mod = ele.dataset['modHtml']
-                    const htmlfile = `./mod/${mod}/index.html?cb=${Date.now()}`
-                    const pre = document.createElement('pre')
-                    pre.setAttribute('aria-busy', 'true')
-
-                    ele.append(pre)
-
-                    let html = await fetchtext(htmlfile)
-                    html = html.split('<body>')[1]
-                    html = html.split('</body>')[0]
-                    html = html.split('<script')[0]
-                    html = `<!-- ${mod} elements you can target with css selectors -->\n${html}`
-                    pre.textContent = html.trim()
-
-                    hljs.highlightElement(pre)
-
                     pre.removeAttribute('aria-busy')
                 },
                 {
@@ -986,8 +971,8 @@
 
         window.addEventListener('load', () => {
             auto_theme()
-            init_css_previews()
-            init_html_previews()
+            init_code_viewers('style')
+            init_code_viewers('html')
             new ElColorfader().start()
             Alpine.start()
         })
