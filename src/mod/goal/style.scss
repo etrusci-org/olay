@@ -1,6 +1,15 @@
 @use '../_default.scss';
 
-/*--- goal default styles ---*/
+/*----------------------------------------
+goal default styles
+
+available selectors:
+.mod
+.mod .description
+.mod .current
+.mod .target
+.mod .unit
+----------------------------------------*/
 
 .mod {
     font-family: sans-serif;

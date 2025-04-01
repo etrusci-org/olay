@@ -1,6 +1,12 @@
 @use '../_default.scss';
 
-/*--- floater default styles ---*/
+/*----------------------------------------
+floater default styles
+
+available selectors:
+.mod
+.mod .floater
+----------------------------------------*/
 
 .mod {
     position: absolute;

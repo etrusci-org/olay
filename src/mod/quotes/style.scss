@@ -1,6 +1,13 @@
 @use '../_default.scss';
 
-/*--- quotes default styles ---*/
+/*----------------------------------------
+quotes default styles
+
+available selectors:
+.mod
+.mod .quote
+.mod .author
+----------------------------------------*/
 
 .mod {
     font-family: sans-serif;
