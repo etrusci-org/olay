@@ -1,0 +1,61 @@
+<div class="mod">
+    <div class="description"></div>
+
+    <div class="temperature">
+        <span class="real"></span>
+        <span class="feel"></span>
+    </div>
+
+    <div class="wind">
+        <span class="speed"></span>
+        <span class="directiontext"></span>
+        <span class="directiondegrees"></span>
+    </div>
+
+    <div class="humidity"></div>
+
+    <div class="precipitation"></div>
+
+    <div class="elevation"></div>
+
+    <div class="updatedon"></div>
+</div>
+
+
+<div class="findcoords" style="padding: 10px 20px;">
+    <p>
+        Use this tool to find the latitude and longitude for the <a href="../../">weather configurator</a>.
+    </p>
+    <ol>
+        <li>Search location by name or post code.</li>
+        <li>Optionally open <a href="https://www.openstreetmap.org" target="_blank">map</a> link by clicking on a location in the results and fine tune the coordinates selection by right-clicking on any place on the map and selecting "show address". This will give you the latitude and longitude of the place below your mouse cursor.</li>
+        <li>Copy over the latitude and longitude into the configurator input fields.</li>
+    </ol>
+
+    <p>
+        <input type="search" placeholder="search for location...">
+    </p>
+
+    Search result:
+
+    <table style="text-align: left;">
+        <thead>
+            <tr>
+                <th>location</th>
+                <th>latitude</th>
+                <th>longitude</th>
+                <th>country</th>
+                <th>timezone</th>
+                <th>elevation</th>
+                <th>population</th>
+            </tr>
+        </thead>
+        <tbody class="result"></tbody>
+    </table>
+</div>
+
+
+<script type="module" defer>
+    import { Olay_Weather } from './weather.mjs?b={CACHE_BUST}'
+    new Olay_Weather()
+</script>

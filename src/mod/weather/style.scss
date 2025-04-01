@@ -1,0 +1,91 @@
+@use '../_default.scss';
+
+/*--- weather default styles ---
+
+available selectors:
+.mod
+.mod .type
+.mod .temperature
+.mod .temperature .real
+.mod .temperature .feel
+.mod .wind
+.mod .wind .speed
+.mod .wind .directiontext
+.mod .wind .directiondegrees
+.mod .humidity
+.mod .precipitation
+.mod .elevation
+.mod .updatedon
+*/
+
+.mod {
+    font-family: sans-serif;
+    font-size: 24px;
+
+    .description {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .temperature {
+        &::before {
+            content: 'Temperature: ';
+        }
+
+        .real {
+            &::after {
+                content: ', ';
+            }
+        }
+
+        .feel {
+            &::before {
+                content: 'feels like ';
+            }
+        }
+    }
+
+    .wind {
+        &::before {
+            content: 'Wind: ';
+        }
+
+        .speed {
+            &::after {
+                content: ', ';
+            }
+        }
+
+        .directiontext {
+            &::after {
+                content: ', ';
+            }
+        }
+
+        .directiondegrees { /* ... */ }
+    }
+
+    .humidity {
+        &::before {
+            content: 'Humidity: ';
+        }
+    }
+
+    .precipitation {
+        &::before {
+            content: 'Precipitation: ';
+        }
+    }
+
+    .elevation {
+        &::before {
+            content: 'Elevation: ';
+        }
+    }
+
+    .updatedon {
+        &::before {
+            content: 'Updated on: ';
+        }
+    }
+}

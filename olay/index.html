@@ -884,6 +884,85 @@
 
             </details>
         </article>
+
+
+        <!-- weather -->
+        <article
+            x-data="{}"
+            x-init=""
+        >
+            <h2><span class="ti">weather</span></h2>
+            <p>Current weather data.</p>
+
+            <details open>
+                <summary>[Setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li><a href="./mod/weather/?findcoords" target="_blank">Coordinates search tool</a></li>
+                    <li>Weather data provided by <a href="https://open-meteo.com" target="_blank">open-meteo.com</a>.</li>
+                </ul>
+
+                <form action="./mod/weather/" method="get" target="_blank">
+                    <div class="grid">
+                        <label>
+                            Latitude
+                            <input type="number" name="latitude" min="-90" max="90" step="any" placeholder="45.97">
+                        </label>
+
+                        <label>
+                            Longitude
+                            <input type="number" name="longitude" min="-180" max="180" step="any" placeholder="7.65">
+                        </label>
+                    </div>
+
+                    <div class="grid">
+                        <label>
+                            Temperature unit
+                            <select name="temperatureunit">
+                                <option value="celsius" selected>celsius</option>
+                                <option value="fahrenheit">fahrenheit</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Windspeed unit
+                            <select name="windspeedunit">
+                                <option value="kmh" selected>kmh</option>
+                                <option value="ms">ms</option>
+                                <option value="mph">mph</option>
+                                <option value="kn">kn</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Precipitation unit
+                            <select name="precipitationunit">
+                                <option value="mm" selected>mm</option>
+                                <option value="inch">inch</option>
+                            </select>
+                        </label>
+
+                    </div>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <details data-mod-style="weather">
+                        <summary>[Default CSS]</summary>
+                    </details>
+
+                    <details data-mod-html="weather">
+                        <summary>[HTML Elements]</summary>
+                    </details>
+                </form>
+
+            </details>
+        </article>
     </main>
 
 

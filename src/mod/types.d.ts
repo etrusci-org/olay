@@ -167,7 +167,40 @@ type Olay_TwitchChat_UI = {
     mod: HTMLDivElement
     chat: HTMLDivElement
     stats: HTMLDivElement
+    // TODO: remove underscores in names
     stats_messages: HTMLSpanElement
     stats_chatters: HTMLSpanElement
     stats_duration: HTMLSpanElement
+}
+
+
+// -----------------------------------------------
+// weather
+
+type Olay_Weather_Conf = {
+    latitude: number
+    longitude: number
+    temperatureunit: string
+    windspeedunit: string
+    precipitationunit: string
+}
+
+type Olay_Weather_UI = {
+    mod: HTMLDivElement
+    description: HTMLDivElement
+    temperature: HTMLDivElement
+    temperaturereal: HTMLSpanElement
+    temperaturefeel: HTMLSpanElement
+    wind: HTMLDivElement
+    windspeed: HTMLSpanElement
+    winddirectiontext: HTMLSpanElement
+    winddirectiondegrees: HTMLSpanElement
+    humidity: HTMLDivElement
+    precipitation: HTMLDivElement
+    elevation: HTMLDivElement
+    updatedon: HTMLDivElement
+
+    findcoords: HTMLDivElement
+    findcoordsinput: HTMLInputElement
+    findcoordsresult: HTMLTableSectionElement
 }
