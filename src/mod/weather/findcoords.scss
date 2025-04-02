@@ -1,0 +1,36 @@
+body {
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
+body, input {
+    font-family: sans-serif;
+}
+
+input {
+    font-size: inherit;
+    padding: 5px;
+    width: 300px;
+    max-width: 100%;
+}
+
+code {
+    font-size: inherit;
+    color: #D9269D;
+}
+
+th, td {
+    text-align: left;
+    padding: 5px;
+}
+
+td img {
+    display: inline-block;
+    width: auto;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.findcoords {
+    max-width: 1000px;
+}

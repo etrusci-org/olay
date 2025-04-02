@@ -73,7 +73,7 @@
 
     <main class="container">
         <!-- clock -->
-        <article
+        <article id="clock"
             x-data="{
                 type: 'human',
                 format_placeholder: '',
@@ -167,7 +167,7 @@
 
 
         <!-- colorfader -->
-        <article
+        <article id="colorfader"
             x-data="{}"
             x-init=""
         >
@@ -265,7 +265,7 @@
 
 
         <!-- countdu -->
-        <article
+        <article id="countdu"
             x-data="{
                 type: 'number',
                 endmessage_placeholder: '',
@@ -364,7 +364,7 @@
 
 
         <!-- dnmap -->
-        <article
+        <article id="dnmap"
             x-data="{}"
             x-init=""
         >
@@ -422,7 +422,7 @@
 
 
         <!-- floater -->
-        <article
+        <article id="floater"
             x-data="{}"
             x-init=""
         >
@@ -513,7 +513,7 @@
 
 
         <!-- goal -->
-        <article
+        <article id="goal"
             x-data="{}"
             x-init=""
         >
@@ -567,7 +567,7 @@
 
 
         <!-- quotes -->
-        <article
+        <article id="quotes"
             x-data=""
             x-init=""
         >
@@ -654,7 +654,7 @@
 
 
         <!-- rotator -->
-        <article
+        <article id="rotator"
             x-data=""
             x-init=""
         >
@@ -707,7 +707,7 @@
 
 
         <!-- soho -->
-        <article
+        <article id="soho"
             x-data=""
             x-init=""
         >
@@ -769,7 +769,7 @@
 
 
         <!-- twitchchat -->
-        <article
+        <article id="twitchchat"
             x-data="{ parse_emotes: false }"
             x-init=""
         >
@@ -887,14 +887,14 @@
 
 
         <!-- weather -->
-        <article
+        <article id="weather"
             x-data="{}"
             x-init=""
         >
             <h2><span class="ti">weather</span></h2>
             <p>Current weather data.</p>
 
-            <details open>
+            <details>
                 <summary>[Setup]</summary>
 
                 <small>The more you know...</small>
@@ -907,12 +907,12 @@
                     <div class="grid">
                         <label>
                             Latitude
-                            <input type="number" name="latitude" min="-90" max="90" step="any" placeholder="45.97">
+                            <input type="number" name="latitude" min="-90" max="90" step="any" placeholder="45.976424">
                         </label>
 
                         <label>
                             Longitude
-                            <input type="number" name="longitude" min="-180" max="180" step="any" placeholder="7.65">
+                            <input type="number" name="longitude" min="-180" max="180" step="any" placeholder="7.658605">
                         </label>
                     </div>
 

@@ -22,12 +22,22 @@
 </div>
 
 
-<div class="findcoords" style="padding: 10px 20px;">
+
+
+<script type="module" defer>
+    import { Olay_Weather } from './weather.mjs?b={CACHE_BUST}'
+    new Olay_Weather()
+</script>
+
+
+
+
+<div class="findcoords">
     <p>
-        Use this tool to find the latitude and longitude for the <a href="../../">weather configurator</a>.
+        Use this tool to find the latitude and longitude for the <a href="../../#weather">weather configuration</a>.
     </p>
     <ol>
-        <li>Search location by name or post code.</li>
+        <li>Search for cities or postal codes.</li>
         <li>Optionally open <a href="https://www.openstreetmap.org" target="_blank">map</a> link by clicking on a location in the results and fine tune the coordinates selection by right-clicking on any place on the map and selecting "show address". This will give you the latitude and longitude of the place below your mouse cursor.</li>
         <li>Copy over the latitude and longitude into the configurator input fields.</li>
     </ol>
@@ -38,7 +48,7 @@
 
     Search result:
 
-    <table style="text-align: left;">
+    <table>
         <thead>
             <tr>
                 <th>location</th>
@@ -53,9 +63,3 @@
         <tbody class="result"></tbody>
     </table>
 </div>
-
-
-<script type="module" defer>
-    import { Olay_Weather } from './weather.mjs?b={CACHE_BUST}'
-    new Olay_Weather()
-</script>

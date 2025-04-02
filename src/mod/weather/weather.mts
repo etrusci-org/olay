@@ -1,5 +1,4 @@
 import { Olay } from '../../lib/olay.mjs'
-import { OLAY_USER_AGENT } from '../../lib/olay.mjs'
 import { fetchx } from '../../lib/fetchx.mjs'
 import { clampnumber } from '../../lib/clampnumber.mjs'
 import { winddirtotext } from '../../lib/winddirtotext.mjs'
@@ -8,8 +7,8 @@ import { winddirtotext } from '../../lib/winddirtotext.mjs'
 export class Olay_Weather extends Olay
 {
     conf: Olay_Weather_Conf = {
-        latitude: 45.97,
-        longitude: 7.65,
+        latitude: 45.976424,
+        longitude: 7.658605,
         temperatureunit: 'celsius',
         windspeedunit: 'kmh',
         precipitationunit: 'mm',
@@ -34,7 +33,8 @@ export class Olay_Weather extends Olay
         findcoordsresult: document.querySelector('.findcoords .result') as HTMLTableSectionElement,
     }
 
-    endpoint: string = 'https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=precipitation,temperature_2m,relative_humidity_2m,apparent_temperature,is_day,weather_code,wind_speed_10m,wind_direction_10m&timezone=auto&forecast_days=1&timeformat=iso8601&temperature_unit={temperatureunit}&wind_speed_unit={windspeedunit}&precipitation_unit={precipitationunit}'
+    endpoint_weather: string = 'https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=precipitation,temperature_2m,relative_humidity_2m,apparent_temperature,is_day,weather_code,wind_speed_10m,wind_direction_10m&timezone=auto&forecast_days=1&timeformat=iso8601&temperature_unit={temperatureunit}&wind_speed_unit={windspeedunit}&precipitation_unit={precipitationunit}'
+    endpoint_coords: string = 'https://geocoding-api.open-meteo.com/v1/search?name={query}&count=10&language=en&format=json'
     valid_temperature_units: string[] = ['celsius', 'fahrenheit']
     valid_windspeed_units: string[] = ['kmh', 'ms', 'mph', 'kn']
     valid_precipitation_units: string[] = ['mm', 'inch']
@@ -77,6 +77,11 @@ export class Olay_Weather extends Olay
         if (this.urlparams.has('findcoords')) {
             this.ui.mod.remove()
 
+            const css = document.createElement('link')
+            css.setAttribute('rel', 'stylesheet')
+            css.setAttribute('href', `./findcoords.css?b=${Date.now()}`)
+            document.head.append(css)
+
             this.ui.findcoordsinput.addEventListener('keyup', async () => await this.querycoords())
 
             return
@@ -108,20 +113,16 @@ export class Olay_Weather extends Olay
                     this.conf.precipitationunit = (this.valid_precipitation_units.includes(v)) ? v : this.conf.precipitationunit
                     break
 
-                case 'endpoint':
-                    this.endpoint = v || this.endpoint
-                    break
-
                 default:
                     console.warn(`skipping unknown parameter "${k}" with value "${v}"`)
             }
         }
 
-        this.endpoint = this.endpoint.replace('{latitude}', String(this.conf.latitude))
-        this.endpoint = this.endpoint.replace('{longitude}', String(this.conf.longitude))
-        this.endpoint = this.endpoint.replace('{temperatureunit}', this.conf.temperatureunit)
-        this.endpoint = this.endpoint.replace('{windspeedunit}', this.conf.windspeedunit)
-        this.endpoint = this.endpoint.replace('{precipitationunit}', this.conf.precipitationunit)
+        this.endpoint_weather = this.endpoint_weather.replace('{latitude}', String(this.conf.latitude))
+        this.endpoint_weather = this.endpoint_weather.replace('{longitude}', String(this.conf.longitude))
+        this.endpoint_weather = this.endpoint_weather.replace('{temperatureunit}', this.conf.temperatureunit)
+        this.endpoint_weather = this.endpoint_weather.replace('{windspeedunit}', this.conf.windspeedunit)
+        this.endpoint_weather = this.endpoint_weather.replace('{precipitationunit}', this.conf.precipitationunit)
 
         this.update_ui(true)
     }
@@ -162,7 +163,7 @@ export class Olay_Weather extends Olay
                 wind_direction_10m: number
                 wind_speed_10m: number
             }
-        } = await fetchx('json', this.endpoint, {headers: {'User-Agent': OLAY_USER_AGENT}})
+        } = await fetchx('json', this.endpoint_weather)
 
         if (!data || data.error) {
             console.warn('error while fetching weather data')
@@ -191,13 +192,10 @@ export class Olay_Weather extends Olay
 
     async querycoords(): Promise<void>
     {
-        // console.log(Date.now(), 'keyup!', event, this.ui.findcoordsinput.value)
-
         const query = this.ui.findcoordsinput.value.trim()
 
         if (!query || query.length < 2) {
             this.ui.findcoordsresult.innerHTML = ''
-            // console.log(Date.now(), 'no string no query')
             return
         }
 
@@ -213,15 +211,13 @@ export class Olay_Weather extends Olay
                 elevation: number
                 population: number
             }[]
-        } = await fetchx('json', `https://geocoding-api.open-meteo.com/v1/search?name=${query}&count=10&language=en&format=json`)
+        } = await fetchx('json', this.endpoint_coords.replace('{query}', query))
 
         if (!data || data.error || !data.results) {
             this.ui.findcoordsresult.innerHTML = ''
-            // console.log(Date.now(), 'no data no results')
+            console.warn('error while fetching geo data')
             return
         }
-
-        // console.log(Date.now(), 'data', data)
 
         this.ui.findcoordsresult.innerHTML = ''
 
@@ -231,7 +227,7 @@ export class Olay_Weather extends Olay
                 <td><a href="https://www.openstreetmap.org/?mlat=${v.latitude}&mlon=${v.longitude}&zoom=15" target="_blank">${v.name}</a></td>
                 <td><code>${v.latitude || '?'}</code></td>
                 <td><code>${v.longitude || '?'}</code></td>
-                <td>${v.country || '?'} [${v.country_code || '?'}]</td>
+                <td>${v.country || '?'}</td>
                 <td>${v.timezone || '?'}</td>
                 <td>${v.elevation || '?'}</td>
                 <td>${v.population || '?'}</td>
