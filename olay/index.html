@@ -344,6 +344,11 @@
                         </small>
                     </label>
 
+                    <label x-show="type == 'time'" x-cloak>
+                        <input type="checkbox" name="timeunitletters" value="true">
+                        Use <code>d h m s</code> instead of only <code>:</code> as separator in countdown
+                    </label>
+
                     <hr>
 
                     <fieldset class="grid">

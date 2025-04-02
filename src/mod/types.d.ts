@@ -42,6 +42,7 @@ type Olay_Countdu_Conf = {
     endtime: string
     countingspeed: number
     endmessage: string
+    timeunitletters: boolean
 }
 
 type Olay_Countdu_UI = {
