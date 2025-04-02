@@ -225,8 +225,8 @@ export class Olay_Weather extends Olay
             const item = document.createElement('tr')
             item.innerHTML = `
                 <td><a href="https://www.openstreetmap.org/?mlat=${v.latitude}&mlon=${v.longitude}&zoom=15" target="_blank">${v.name}</a></td>
-                <td><code>${v.latitude || '?'}</code></td>
-                <td><code>${v.longitude || '?'}</code></td>
+                <td><input type="text" value="${v.latitude || '?'}" readonly></td>
+                <td><input type="text" value="${v.longitude || '?'}" readonly></td>
                 <td>${v.country || '?'}</td>
                 <td>${v.timezone || '?'}</td>
                 <td>${v.elevation || '?'}</td>

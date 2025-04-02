@@ -37,13 +37,19 @@
         Use this tool to find the latitude and longitude for the <a href="../../#weather">weather configuration</a>.
     </p>
     <ol>
-        <li>Search for cities or postal codes.</li>
-        <li>Optionally open <a href="https://www.openstreetmap.org" target="_blank">map</a> link by clicking on a location in the results and fine tune the coordinates selection by right-clicking on any place on the map and selecting "show address". This will give you the latitude and longitude of the place below your mouse cursor.</li>
-        <li>Copy over the latitude and longitude into the configurator input fields.</li>
+        <li>Search for a location by typing in the field below.</li>
+        <li>Copy and paste the latitude and longitude into the configurator input fields.</li>
+        <li>Optionally open the <a href="https://www.openstreetmap.org" target="_blank">map</a> link by clicking on a location in the results and fine tune the coordinates selection by right-clicking on any place on the map and selecting "show address". This will give you the latitude and longitude of the place below your mouse cursor.</li>
     </ol>
 
     <p>
-        <input type="search" placeholder="search for location...">
+        <input type="search" placeholder="search for location..."><br>
+        <small>
+            The search string can be a location name or a postal code.<br>
+            Minimum 2 characters.<br>
+            2 characters will only match exact matching locations.<br>
+            3 and more characters will perform fuzzy matching.
+        </small>
     </p>
 
     Search result:
@@ -51,13 +57,13 @@
     <table>
         <thead>
             <tr>
-                <th>location</th>
-                <th>latitude</th>
-                <th>longitude</th>
-                <th>country</th>
-                <th>timezone</th>
-                <th>elevation</th>
-                <th>population</th>
+                <th>Location</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Country</th>
+                <th>Timezone</th>
+                <th>Elevation</th>
+                <th>Population</th>
             </tr>
         </thead>
         <tbody class="result"></tbody>

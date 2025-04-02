@@ -1,36 +1,38 @@
 body {
-    font-size: 20px;
-    padding: 10px 20px;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
 }
 
-body, input {
+body,
+input {
     font-family: sans-serif;
+}
+
+p,
+ol {
+    max-width: 1000px;
 }
 
 input {
     font-size: inherit;
-    padding: 5px;
-    width: 300px;
+    padding: .5rem;
+    width: 20rem;
     max-width: 100%;
 }
 
-code {
-    font-size: inherit;
-    color: #D9269D;
-}
-
-th, td {
+table {
     text-align: left;
-    padding: 5px;
 }
 
-td img {
-    display: inline-block;
-    width: auto;
-    height: 20px;
-    vertical-align: middle;
+th,
+td {
+    padding: 0 1rem .5rem 0;
 }
 
-.findcoords {
-    max-width: 1000px;
+td input {
+    color: #D9269D;
+    width: 10rem;
+    border-style: dotted;
 }
+
+// .findcoords {}
