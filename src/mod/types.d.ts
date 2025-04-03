@@ -201,7 +201,6 @@ type Olay_Weather_UI = {
     precipitation: HTMLDivElement
     elevation: HTMLDivElement
     updatedon: HTMLDivElement
-
     findcoords: HTMLDivElement
     findcoordsinput: HTMLInputElement
     findcoordsresult: HTMLTableSectionElement
