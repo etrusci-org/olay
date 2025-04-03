@@ -1,35 +1,27 @@
 <div class="mod">
     <div class="description"></div>
-
     <div class="temperature">
         <span class="real"></span>
         <span class="feel"></span>
     </div>
-
     <div class="wind">
         <span class="speed"></span>
+        <span class="gusts"></span>
         <span class="directiontext"></span>
         <span class="directiondegrees"></span>
     </div>
-
+    <div class="cloudcover"></div>
     <div class="humidity"></div>
-
     <div class="precipitation"></div>
-
     <div class="elevation"></div>
-
     <div class="updatedon"></div>
 </div>
-
-
 
 
 <script type="module" defer>
     import { Olay_Weather } from './weather.mjs?b={CACHE_BUST}'
     new Olay_Weather()
 </script>
-
-
 
 
 <div class="findcoords">

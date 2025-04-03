@@ -10,8 +10,10 @@ available selectors:
 .mod .temperature .feel
 .mod .wind
 .mod .wind .speed
+.mod .wind .gusts
 .mod .wind .directiontext
 .mod .wind .directiondegrees
+.mod .cloudcover
 .mod .humidity
 .mod .precipitation
 .mod .elevation
@@ -56,6 +58,12 @@ available selectors:
             }
         }
 
+        .gusts {
+            &::after {
+                content: ', ';
+            }
+        }
+
         .directiontext {
             &::after {
                 content: ', ';
@@ -63,6 +71,12 @@ available selectors:
         }
 
         .directiondegrees { /* ... */ }
+    }
+
+    .cloudcover {
+        &::before {
+            content: 'Cloud cover: ';
+        }
     }
 
     .humidity {
@@ -84,8 +98,10 @@ available selectors:
     }
 
     .updatedon {
-        &::before {
-            content: 'Updated on: ';
-        }
+        display: none;
+
+        // &::before {
+        //     content: 'Updated on: ';
+        // }
     }
 }

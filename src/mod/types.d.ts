@@ -168,10 +168,9 @@ type Olay_TwitchChat_UI = {
     mod: HTMLDivElement
     chat: HTMLDivElement
     stats: HTMLDivElement
-    // TODO: remove underscores in names
-    stats_messages: HTMLSpanElement
-    stats_chatters: HTMLSpanElement
-    stats_duration: HTMLSpanElement
+    statsmessages: HTMLSpanElement
+    statschatters: HTMLSpanElement
+    statsduration: HTMLSpanElement
 }
 
 
@@ -194,8 +193,10 @@ type Olay_Weather_UI = {
     temperaturefeel: HTMLSpanElement
     wind: HTMLDivElement
     windspeed: HTMLSpanElement
+    windgusts: HTMLSpanElement
     winddirectiontext: HTMLSpanElement
     winddirectiondegrees: HTMLSpanElement
+    cloudcover: HTMLDivElement
     humidity: HTMLDivElement
     precipitation: HTMLDivElement
     elevation: HTMLDivElement
