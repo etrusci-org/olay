@@ -12,7 +12,8 @@ export class Olay_Countdu extends Olay
         endnumber: 5,
         endtime: '',
         countingspeed: 1,
-        endmessage: ''
+        endmessage: '',
+        timeunitletters: false,
     }
 
     ui: Olay_Countdu_UI = {
@@ -73,6 +74,10 @@ export class Olay_Countdu extends Olay
                     }
                     break
 
+                case 'timeunitletters':
+                    this.conf.timeunitletters = (v === 'true') ? true : false
+                    break
+
                 default:
                     console.warn(`skipping unknown parameter "${k}" with value "${v}"`)
             }
@@ -115,7 +120,7 @@ export class Olay_Countdu extends Olay
                     return
                 }
 
-                this.ui.mod.innerHTML = mstodur(delta)
+                this.ui.mod.innerHTML = mstodur(delta, false, this.conf.timeunitletters)
                 break
 
             default:

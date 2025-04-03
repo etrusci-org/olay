@@ -1,0 +1,38 @@
+body {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+}
+
+body,
+input {
+    font-family: sans-serif;
+}
+
+p,
+ol {
+    max-width: 1000px;
+}
+
+input {
+    font-size: inherit;
+    padding: .5rem;
+    width: 20rem;
+    max-width: 100%;
+}
+
+table {
+    text-align: left;
+}
+
+th,
+td {
+    padding: 0 1rem .5rem 0;
+}
+
+td input {
+    color: #D9269D;
+    width: 10rem;
+    border-style: dotted;
+}
+
+// .findcoords {}

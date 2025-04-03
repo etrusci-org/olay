@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
 
+    <link rel="icon" href="./favicon.ico">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fuchsia.min.css">
     <link rel="stylesheet" id="hljscss" href="">
     <style>
@@ -35,36 +37,34 @@
         <details>
             <summary><strong>[Get started guide]</strong></summary>
 
-            <p>
-                <strong>1.</strong> Setup and preview the overlays below.
-                If you do not enter any values, defaults will be used.
-            </p>
-            <p>
-                <strong>2.</strong> When you're happy with the preview, copy & paste the URL of the overlay into OBS' Browser-Source.
-            </p>
-            <p>
-                <strong>3.</strong> Remove all code from the CSS field of the Browser-Source.
-                <span class="ti">Olay</span> will load its own styles for each overlay.
-            </p>
-            <p>
-                <strong>4.</strong> Optionally, copy & paste the parts of the default CSS <small>(displayed for each module below)</small> you want to override into the CSS field of the Browser-Source and start adjusting it to your liking.
-                Advanced users can also do this in the developer console of the webbrowser <small>(navigate to the <em>Style Editor</em>-Tab and select <em>style.css</em>)</small> - this has the benefit of providing a realtime preview of your changes.
-            </p>
+            <article>
+                <p>
+                    <strong>1.</strong> Setup and preview the overlays below.
+                    If you do not enter any values, defaults will be used.
+                </p>
+                <p>
+                    <strong>2.</strong> When you're happy with the preview, copy & paste the URL of the overlay into OBS' Browser-Source.
+                </p>
+                <p>
+                    <strong>3.</strong> Remove all code from the CSS field of the Browser-Source.
+                    <span class="ti">Olay</span> will load its own styles for each overlay.
+                </p>
+                <p>
+                    <strong>4.</strong> Optionally, copy & paste the parts of the default CSS <small>(displayed for each module below)</small> you want to override into the CSS field of the Browser-Source and start adjusting it to your liking.
+                    Advanced users can also do this in the <a href="./dev-styletab.png?v=a" target="_blank">developer console</a>  of the webbrowser <small>(navigate to the <em>Style Editor</em>-Tab and select <em>style.css</em>)</small> - this has the benefit of providing a realtime preview of your changes.
+                </p>
 
-            <hr>
+                <hr>
 
-            <a href="./browser-source.png?v=d" target="_blank"><img src="./browser-source.png?v=d" alt="Basic Browser-Source usage"></a>
+                <a href="./browser-source.png?v=d" target="_blank"><img src="./browser-source.png?v=d" alt="Basic Browser-Source usage"></a>
 
-            <hr>
+                <hr>
 
-            <p>
-                Feel free to post your questions/feedback/ideas in either the <a href="https://github.com/etrusci-org/olay/discussions" target="_blank">GitHub</a> or <a href="https://obsproject.com/forum/threads/olay.184803/" target="_blank">OBS</a> forums if you need more help with, or have specific questions about, <span class="ti">Olay</span>.
-            </p>
-            <p>
-                If you need help with CSS, please see <a href="https://github.com/etrusci-org/olay/blob/main/CSS.md" target="_blank">CSS for starters</a>.
-            </p>
-
-            <hr>
+                <p>
+                    Feel free to post your questions/feedback/ideas in either the <a href="https://github.com/etrusci-org/olay/discussions" target="_blank">GitHub</a> or <a href="https://obsproject.com/forum/threads/olay.184803/" target="_blank">OBS</a> forums if you need more help with, or have specific questions about, <span class="ti">Olay</span>.<br>
+                    For help with CSS, please see <a href="https://github.com/etrusci-org/olay/blob/main/CSS.md" target="_blank">CSS for starters</a>.
+                </p>
+            </article>
         </details>
     </header>
 
@@ -73,7 +73,7 @@
 
     <main class="container">
         <!-- clock -->
-        <article
+        <article id="clock"
             x-data="{
                 type: 'human',
                 format_placeholder: '',
@@ -167,7 +167,7 @@
 
 
         <!-- colorfader -->
-        <article
+        <article id="colorfader"
             x-data="{}"
             x-init=""
         >
@@ -265,7 +265,7 @@
 
 
         <!-- countdu -->
-        <article
+        <article id="countdu"
             x-data="{
                 type: 'number',
                 endmessage_placeholder: '',
@@ -344,6 +344,11 @@
                         </small>
                     </label>
 
+                    <label x-show="type == 'time'" x-cloak>
+                        <input type="checkbox" name="timeunitletters" value="true">
+                        Use <code>d h m s</code> instead of only <code>:</code> as separator in countdown
+                    </label>
+
                     <hr>
 
                     <fieldset class="grid">
@@ -364,7 +369,7 @@
 
 
         <!-- dnmap -->
-        <article
+        <article id="dnmap"
             x-data="{}"
             x-init=""
         >
@@ -422,7 +427,7 @@
 
 
         <!-- floater -->
-        <article
+        <article id="floater"
             x-data="{}"
             x-init=""
         >
@@ -513,7 +518,7 @@
 
 
         <!-- goal -->
-        <article
+        <article id="goal"
             x-data="{}"
             x-init=""
         >
@@ -567,7 +572,7 @@
 
 
         <!-- quotes -->
-        <article
+        <article id="quotes"
             x-data=""
             x-init=""
         >
@@ -654,7 +659,7 @@
 
 
         <!-- rotator -->
-        <article
+        <article id="rotator"
             x-data=""
             x-init=""
         >
@@ -707,7 +712,7 @@
 
 
         <!-- soho -->
-        <article
+        <article id="soho"
             x-data=""
             x-init=""
         >
@@ -769,7 +774,7 @@
 
 
         <!-- twitchchat -->
-        <article
+        <article id="twitchchat"
             x-data="{ parse_emotes: false }"
             x-init=""
         >
@@ -884,6 +889,88 @@
 
             </details>
         </article>
+
+
+        <!-- weather -->
+        <article id="weather"
+            x-data="{}"
+            x-init=""
+        >
+            <h2><span class="ti">weather</span></h2>
+            <p>Current weather data.</p>
+
+            <details>
+                <summary>[Setup]</summary>
+
+                <small>The more you know...</small>
+                <ul>
+                    <li>Use this <a href="./mod/weather/?findcoords" target="_blank">Coordinates search tool</a> to find latitude and longitude.</li>
+                    <li>Elevation value is currently always shown as <a href="https://en.wikipedia.org/wiki/Metre" target="_blank">metres</a>.</li>
+                    <li>Temperature and Humidity values are from 2 metres above ground.</li>
+                    <li>Wind values are from 10 metres above ground.</li>
+                    <li>Weather data provided by <a href="https://open-meteo.com" target="_blank">open-meteo.com</a>.</li>
+                </ul>
+
+                <form action="./mod/weather/" method="get" target="_blank">
+                    <div class="grid">
+                        <label>
+                            Latitude
+                            <input type="number" name="latitude" min="-90" max="90" step="any" placeholder="45.976424">
+                        </label>
+
+                        <label>
+                            Longitude
+                            <input type="number" name="longitude" min="-180" max="180" step="any" placeholder="7.658605">
+                        </label>
+                    </div>
+
+                    <div class="grid">
+                        <label>
+                            Temperature unit
+                            <select name="temperatureunit">
+                                <option value="celsius" selected>celsius</option>
+                                <option value="fahrenheit">fahrenheit</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Windspeed unit
+                            <select name="windspeedunit">
+                                <option value="kmh" selected>kmh</option>
+                                <option value="ms">ms</option>
+                                <option value="mph">mph</option>
+                                <option value="kn">kn</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Precipitation unit
+                            <select name="precipitationunit">
+                                <option value="mm" selected>mm</option>
+                                <option value="inch">inch</option>
+                            </select>
+                        </label>
+
+                    </div>
+
+                    <hr>
+
+                    <fieldset class="grid">
+                        <input type="submit" value="preview &nearr;">
+                        <input type="reset" value="reset to defaults">
+                    </fieldset>
+
+                    <details data-mod-style="weather">
+                        <summary>[Default CSS]</summary>
+                    </details>
+
+                    <details data-mod-html="weather">
+                        <summary>[HTML Elements]</summary>
+                    </details>
+                </form>
+
+            </details>
+        </article>
     </main>
 
 
@@ -952,7 +1039,7 @@
 
                     let code = await fetchx('text', file)
                     if (type == 'html') {
-                        code = code.split('<body>')[1]
+                        code = code.split('</noscript>')[1]
                         code = code.split('</body>')[0]
                         code = code.split('<script')[0]
                         code = `<!-- ${mod} elements you can target with css selectors -->\n${code}`

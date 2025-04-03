@@ -1,6 +1,23 @@
 @use '../_default.scss';
 
-/*--- twitchchat default styles ---*/
+/*----------------------------------------
+twitchchat default styles
+
+available selectors:
+.mod
+.mod .chat
+.mod .chat .chatline
+.mod .chat .chatline .channel
+.mod .chat .chatline .time
+.mod .chat .chatline .user
+.mod .chat .chatline .message
+.mod .chat .chatline .message .emote
+.mod .stats
+.mod .stats .messages
+.mod .stats .chatters
+.mod .stats .duration
+----------------------------------------*/
+
 
 .mod {
     font-family: sans-serif;

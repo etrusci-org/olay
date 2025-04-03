@@ -1,6 +1,12 @@
-export function humantime(format: string = '{year}-{month}-{day} {hour}:{minute}:{second}.{millisecond} {timezoneOffset}'): string
+export function humantime(format?: string | null, unixtime?: number): string
 {
-    const dt: Date = new Date()
+    const default_format: string = '{year}-{month}-{day} {hour}:{minute}:{second}.{millisecond} {timezoneOffset}'
+
+    if (!format) {
+        format = default_format
+    }
+
+    const dt: Date = (!unixtime) ? new Date() : new Date(unixtime * 1000)
 
     let timestamp: string = format
 

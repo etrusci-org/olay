@@ -24,9 +24,9 @@ export class Olay_TwitchChat extends Olay
         mod: document.querySelector('.mod') as HTMLDivElement,
         chat: document.querySelector('.mod .chat') as HTMLDivElement,
         stats: document.querySelector('.mod .stats') as HTMLDivElement,
-        stats_messages: document.querySelector('.mod .stats .messages') as HTMLSpanElement,
-        stats_chatters: document.querySelector('.mod .stats .chatters') as HTMLSpanElement,
-        stats_duration: document.querySelector('.mod .stats .duration') as HTMLSpanElement,
+        statsmessages: document.querySelector('.mod .stats .messages') as HTMLSpanElement,
+        statschatters: document.querySelector('.mod .stats .chatters') as HTMLSpanElement,
+        statsduration: document.querySelector('.mod .stats .duration') as HTMLSpanElement,
     }
 
     valid_emotesthemes: string[] = ['light', 'dark']
@@ -110,9 +110,9 @@ export class Olay_TwitchChat extends Olay
         })
 
         this.ui.chat.innerHTML = `joining ${this.conf.channels.join(', ')} ...`
-        this.ui.stats_messages.innerHTML = '0'
-        this.ui.stats_chatters.innerHTML = '0'
-        this.ui.stats_duration.innerHTML = '0'
+        this.ui.statsmessages.innerHTML = '0'
+        this.ui.statschatters.innerHTML = '0'
+        this.ui.statsduration.innerHTML = '0'
 
         setTimeout(async () => {
             await this.TwitchClient.connect().catch(console.error)
@@ -125,9 +125,7 @@ export class Olay_TwitchChat extends Olay
 
             this.tracking_stats_since = Date.now()
 
-            setInterval(() => {
-                this.ui.stats_duration.innerHTML = mstodur(Date.now() - this.tracking_stats_since)
-            }, 500)
+            setInterval(() => this.ui.statsduration.innerHTML = mstodur(Date.now() - this.tracking_stats_since, false, true), 500)
         }, 3_000)
     }
 
@@ -174,9 +172,8 @@ export class Olay_TwitchChat extends Olay
 
         this.ui.chat.append(chatline)
 
-        this.ui.stats_messages.innerHTML = String(this.stats_messages)
-        this.ui.stats_chatters.innerHTML = String(this.stats_chatters)
-        this.ui.stats_duration.innerHTML = mstodur(Date.now() - this.tracking_stats_since)
+        this.ui.statsmessages.innerHTML = String(this.stats_messages)
+        this.ui.statschatters.innerHTML = String(this.stats_chatters)
 
         const dump: NodeListOf<HTMLDivElement> = this.ui.chat.querySelectorAll('.chatline')
         if (dump.length > this.conf.limit) {

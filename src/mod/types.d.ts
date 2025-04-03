@@ -42,6 +42,7 @@ type Olay_Countdu_Conf = {
     endtime: string
     countingspeed: number
     endmessage: string
+    timeunitletters: boolean
 }
 
 type Olay_Countdu_UI = {
@@ -167,7 +168,40 @@ type Olay_TwitchChat_UI = {
     mod: HTMLDivElement
     chat: HTMLDivElement
     stats: HTMLDivElement
-    stats_messages: HTMLSpanElement
-    stats_chatters: HTMLSpanElement
-    stats_duration: HTMLSpanElement
+    statsmessages: HTMLSpanElement
+    statschatters: HTMLSpanElement
+    statsduration: HTMLSpanElement
+}
+
+
+// -----------------------------------------------
+// weather
+
+type Olay_Weather_Conf = {
+    latitude: number
+    longitude: number
+    temperatureunit: string
+    windspeedunit: string
+    precipitationunit: string
+}
+
+type Olay_Weather_UI = {
+    mod: HTMLDivElement
+    description: HTMLDivElement
+    temperature: HTMLDivElement
+    temperaturereal: HTMLSpanElement
+    temperaturefeel: HTMLSpanElement
+    wind: HTMLDivElement
+    windspeed: HTMLSpanElement
+    windgusts: HTMLSpanElement
+    winddirectiontext: HTMLSpanElement
+    winddirectiondegrees: HTMLSpanElement
+    cloudcover: HTMLDivElement
+    humidity: HTMLDivElement
+    precipitation: HTMLDivElement
+    elevation: HTMLDivElement
+    updatedon: HTMLDivElement
+    findcoords: HTMLDivElement
+    findcoordsinput: HTMLInputElement
+    findcoordsresult: HTMLTableSectionElement
 }

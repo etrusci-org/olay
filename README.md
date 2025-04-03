@@ -17,6 +17,7 @@ Livestream overlay stuff for use as [Browser-Source](https://obsproject.com/kb/b
 - **rotator**: Rotate through text items.
 - **soho**: Current images of the sun in various spectrums.
 - **twitchchat**: Chat messages from one or more Twitch channels.
+- **weather**: Current weather data.
 
 
 
