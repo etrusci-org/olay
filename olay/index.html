@@ -1039,7 +1039,7 @@
 
                     let code = await fetchx('text', file)
                     if (type == 'html') {
-                        code = code.split('<body>')[1]
+                        code = code.split('</noscript>')[1]
                         code = code.split('</body>')[0]
                         code = code.split('<script')[0]
                         code = `<!-- ${mod} elements you can target with css selectors -->\n${code}`
