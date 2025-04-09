@@ -1,0 +1,14 @@
+@use './_themestuff.scss' as *;
+
+/*----------------------------------------
+twitchchat theme: simple
+----------------------------------------*/
+
+.mod .chat {
+    @include simple-box(block);
+    @include simple-theme;
+}
+
+.mod .stats {
+    display: none;
+}

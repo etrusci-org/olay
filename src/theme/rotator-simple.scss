@@ -1,0 +1,10 @@
+@use './_themestuff.scss' as *;
+
+/*----------------------------------------
+rotator theme: simple
+----------------------------------------*/
+
+.mod {
+    @include simple-box(inline-block);
+    @include theme-light;
+}

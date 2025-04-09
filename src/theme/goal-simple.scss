@@ -1,0 +1,10 @@
+@use './_themestuff.scss' as *;
+
+/*----------------------------------------
+goal theme: simple
+----------------------------------------*/
+
+.mod {
+    @include simple-box(inline-block);
+    @include simple-theme;
+}

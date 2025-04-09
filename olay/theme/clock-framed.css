@@ -1,0 +1,18 @@
+/*----------------------------------------
+clock theme: framed
+----------------------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Doto:wght@900&display=swap");
+.mod {
+  width: fit-content;
+  padding: 10px 15px;
+  text-align: center;
+  font-family: "Doto", monospace;
+  font-size: 34px;
+  font-weight: 900;
+  border-width: 10px;
+  border-style: groove;
+  border-radius: 10px;
+  color: #e6e6e6;
+  background-color: #100900;
+  border-color: #6b3900;
+}
