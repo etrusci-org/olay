@@ -1,4 +1,4 @@
-@use './_themestuff.scss' as *;
+@use './_themestuff' as *;
 
 /*----------------------------------------
 weather theme: simple
@@ -6,7 +6,7 @@ weather theme: simple
 
 .mod {
     @include simple-box(inline-block);
-    @include simple-theme;
+    @include simple-colors;
 
     .description {
         letter-spacing: 2px;

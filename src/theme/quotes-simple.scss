@@ -1,4 +1,4 @@
-@use './_themestuff.scss' as *;
+@use './_themestuff' as *;
 
 /*----------------------------------------
 quotes theme: simple
@@ -6,7 +6,7 @@ quotes theme: simple
 
 .mod {
     @include simple-box(inline-block);
-    @include simple-theme;
+    @include simple-colors;
 
     .quote {
         font-weight: bold;

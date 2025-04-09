@@ -1,4 +1,4 @@
-@use './_themestuff.scss' as *;
+@use './_themestuff' as *;
 
 /*----------------------------------------
 goal theme: simple
@@ -6,5 +6,5 @@ goal theme: simple
 
 .mod {
     @include simple-box(inline-block);
-    @include simple-theme;
+    @include simple-colors;
 }

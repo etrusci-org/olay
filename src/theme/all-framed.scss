@@ -1,10 +1,11 @@
 @use './_themestuff' as *;
 
 /*----------------------------------------
-clock theme: simple
+theme: all-framed
+works with all modules
 ----------------------------------------*/
 
 .mod {
-    @include simple-box(inline-block);
-    @include simple-colors;
+    display: inline-block;
+    @include framed-box;
 }
