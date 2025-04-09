@@ -1,7 +1,8 @@
+/* optional custom font import */
+@import url("https://fonts.googleapis.com/css2?family=Doto:wght@900&display=swap");
 /*----------------------------------------
 clock theme: framed
 ----------------------------------------*/
-@import url("https://fonts.googleapis.com/css2?family=Doto:wght@900&display=swap");
 .mod {
   width: fit-content;
   padding: 10px 15px;
