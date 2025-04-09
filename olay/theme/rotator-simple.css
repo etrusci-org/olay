@@ -1,17 +1,10 @@
-/* Error: Undefined mixin.
- *   ,
- * 9 |     @include theme-light;
- *   |     ^^^^^^^^^^^^^^^^^^^^
- *   '
- *   src/theme/rotator-simple.scss 9:5  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Undefined mixin.\a   \2577 \a 9 \2502      @include theme-light;\a   \2502      ^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   src/theme/rotator-simple.scss 9:5  root stylesheet";
+/*----------------------------------------
+rotator theme: simple
+----------------------------------------*/
+.mod {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 5px;
+  color: #222222;
+  background-color: #e7e7e7;
 }

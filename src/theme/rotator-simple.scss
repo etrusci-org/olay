@@ -6,5 +6,5 @@ rotator theme: simple
 
 .mod {
     @include simple-box(inline-block);
-    @include theme-light;
+    @include simple-theme;
 }
