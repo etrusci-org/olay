@@ -1,0 +1,18 @@
+@use './_themestuff' as *;
+
+/*----------------------------------------
+weather theme: simple
+----------------------------------------*/
+
+.mod {
+    @include simple-box(inline-block);
+    @include simple-colors;
+
+    .description {
+        letter-spacing: 2px;
+    }
+
+    *::before {
+        font-weight: bold;
+    }
+}

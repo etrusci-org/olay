@@ -1,0 +1,14 @@
+/*----------------------------------------
+twitchchat theme: simple
+----------------------------------------*/
+.mod .chat {
+  display: block;
+  padding: 4px 8px;
+  border-radius: 5px;
+  color: #222222;
+  background-color: #e7e7e7;
+}
+
+.mod .stats {
+  display: none;
+}

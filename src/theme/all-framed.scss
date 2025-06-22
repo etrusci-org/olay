@@ -1,0 +1,11 @@
+@use './_themestuff' as *;
+
+/*----------------------------------------
+theme: all-framed
+works with all modules
+----------------------------------------*/
+
+.mod {
+    display: inline-block;
+    @include framed-box;
+}

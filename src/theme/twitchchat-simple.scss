@@ -1,0 +1,14 @@
+@use './_themestuff' as *;
+
+/*----------------------------------------
+twitchchat theme: simple
+----------------------------------------*/
+
+.mod .chat {
+    @include simple-box(block);
+    @include simple-colors;
+}
+
+.mod .stats {
+    display: none;
+}

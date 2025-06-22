@@ -1,0 +1,14 @@
+/*----------------------------------------
+theme: all-framed
+works with all modules
+----------------------------------------*/
+.mod {
+  display: inline-block;
+  padding: 10px 15px;
+  border-width: 10px;
+  border-style: groove;
+  border-radius: 10px;
+  color: #e6e6e6;
+  background-color: #100900;
+  border-color: #6b3900;
+}

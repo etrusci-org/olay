@@ -1,0 +1,10 @@
+@use './_themestuff' as *;
+
+/*----------------------------------------
+clock theme: simple
+----------------------------------------*/
+
+.mod {
+    @include simple-box(inline-block);
+    @include simple-colors;
+}

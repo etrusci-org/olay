@@ -1,0 +1,16 @@
+/*----------------------------------------
+weather theme: simple
+----------------------------------------*/
+.mod {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 5px;
+  color: #222222;
+  background-color: #e7e7e7;
+}
+.mod .description {
+  letter-spacing: 2px;
+}
+.mod *::before {
+  font-weight: bold;
+}

@@ -1,0 +1,19 @@
+@use './_themestuff' as *;
+
+/*----------------------------------------
+quotes theme: simple
+----------------------------------------*/
+
+.mod {
+    @include simple-box(inline-block);
+    @include simple-colors;
+
+    .quote {
+        font-weight: bold;
+    }
+
+    .author {
+        margin-top: 7px;
+        margin-left: 5px;
+    }
+}

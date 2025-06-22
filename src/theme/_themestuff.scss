@@ -1,0 +1,20 @@
+@mixin simple-box($display) {
+    display: $display;
+    padding: 4px 8px;
+    border-radius: 5px;
+}
+
+@mixin simple-colors {
+    color: #222222;
+    background-color: #e7e7e7;
+}
+
+@mixin framed-box {
+    padding: 10px 15px;
+    border-width: 10px;
+    border-style: groove;
+    border-radius: 10px;
+    color: #e6e6e6;
+    background-color: #100900;
+    border-color: #6b3900;
+}
