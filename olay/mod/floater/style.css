@@ -1,0 +1,44 @@
+/*----------------------------------------
+global default styles
+----------------------------------------*/
+html,
+body,
+div,
+span,
+img {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body {
+  background-color: transparent;
+}
+
+.mod {
+  color: #D9269D;
+}
+
+/*----------------------------------------
+floater default styles
+
+available selectors:
+.mod
+.mod .floater
+----------------------------------------*/
+.mod {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.mod .floater {
+  font-family: monospace;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 0.8;
+  transition: color 0.15s linear;
+}

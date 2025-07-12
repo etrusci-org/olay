@@ -1,0 +1,35 @@
+/*----------------------------------------
+global default styles
+----------------------------------------*/
+html,
+body,
+div,
+span,
+img {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body {
+  background-color: transparent;
+}
+
+.mod {
+  color: #D9269D;
+}
+
+/*----------------------------------------
+colorfader default styles
+
+available selectors:
+.mod
+----------------------------------------*/
+.mod {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}

@@ -1,0 +1,86 @@
+/*----------------------------------------
+global default styles
+----------------------------------------*/
+html,
+body,
+div,
+span,
+img {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body {
+  background-color: transparent;
+}
+
+.mod {
+  color: #D9269D;
+}
+
+/*--- weather default styles ---
+
+available selectors:
+.mod
+.mod .description
+.mod .temperature
+.mod .temperature .real
+.mod .temperature .feel
+.mod .wind
+.mod .wind .speed
+.mod .wind .gusts
+.mod .wind .directiontext
+.mod .wind .directiondegrees
+.mod .cloudcover
+.mod .humidity
+.mod .precipitation
+.mod .elevation
+.mod .updatedon
+*/
+.mod {
+  font-family: sans-serif;
+  font-size: 24px;
+}
+.mod .description {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.mod .temperature::before {
+  content: "Temperature: ";
+}
+.mod .temperature .real::after {
+  content: ", ";
+}
+.mod .temperature .feel::before {
+  content: "feels like ";
+}
+.mod .wind::before {
+  content: "Wind: ";
+}
+.mod .wind .speed::after {
+  content: ", ";
+}
+.mod .wind .gusts::after {
+  content: ", ";
+}
+.mod .wind .directiontext::after {
+  content: ", ";
+}
+.mod .wind .directiondegrees { /* ... */ }
+.mod .cloudcover::before {
+  content: "Cloud cover: ";
+}
+.mod .humidity::before {
+  content: "Humidity: ";
+}
+.mod .precipitation::before {
+  content: "Precipitation: ";
+}
+.mod .elevation::before {
+  content: "Elevation: ";
+}
+.mod .updatedon {
+  display: none;
+}
