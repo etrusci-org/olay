@@ -1,0 +1,32 @@
+/*----------------------------------------
+global default styles
+----------------------------------------*/
+html,
+body,
+div,
+span,
+img {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body {
+  background-color: transparent;
+}
+
+.mod {
+  color: #D9269D;
+}
+
+/*----------------------------------------
+countdu default styles
+
+available selectors:
+.mod
+----------------------------------------*/
+.mod {
+  font-family: monospace;
+  font-size: 24px;
+}

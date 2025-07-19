@@ -1,0 +1,51 @@
+/*----------------------------------------
+global default styles
+----------------------------------------*/
+html,
+body,
+div,
+span,
+img {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body {
+  background-color: transparent;
+}
+
+.mod {
+  color: #D9269D;
+}
+
+/*----------------------------------------
+goal default styles
+
+available selectors:
+.mod
+.mod .description
+.mod .current
+.mod .target
+.mod .unit
+----------------------------------------*/
+.mod {
+  font-family: sans-serif;
+  font-size: 24px;
+}
+.mod .description {
+  font-weight: bold;
+}
+.mod .current {
+  font-family: monospace;
+}
+.mod .current::after {
+  content: " / ";
+}
+.mod .target {
+  font-family: monospace;
+}
+.mod .unit {
+  font-style: italic;
+}

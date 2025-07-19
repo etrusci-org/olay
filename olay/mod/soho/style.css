@@ -1,0 +1,38 @@
+/*----------------------------------------
+global default styles
+----------------------------------------*/
+html,
+body,
+div,
+span,
+img {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body {
+  background-color: transparent;
+}
+
+.mod {
+  color: #D9269D;
+}
+
+/*----------------------------------------
+soho default styles
+
+available selectors:
+.mod
+.mod .sun
+----------------------------------------*/
+.mod {
+  width: 100vw;
+  height: 100vh;
+}
+.mod .sun {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
